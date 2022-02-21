@@ -25,15 +25,15 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0f)
-            velocity.y = -2f;
-
         Movement();
         Fall();
 
     }
     private void Fall()
     {
+        if (isGrounded && velocity.y < 0f)
+            velocity.y = -2f;
+
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
