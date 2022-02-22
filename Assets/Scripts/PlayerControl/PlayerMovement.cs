@@ -4,8 +4,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed = 10f;
-    private float groundDistance = 0.4f;
-    public float gravity = -9.81f;
+    [SerializeField]
+    private float gravity = -9.81f;
+    private float groundDistance = 0.4f;  
 
     private Vector3 velocity;
     private CharacterController controller;
@@ -13,14 +14,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform groundCheck;
     public LayerMask groundMask;
-    public bool isGrounded;
-    // Start is called before the first frame update
+    private bool isGrounded;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
