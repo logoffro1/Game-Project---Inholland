@@ -54,18 +54,5 @@ public class FPController : MonoBehaviour {
 		speedCombined = transform.rotation * speedCombined;
 
 		cc.Move (speedCombined * Time.deltaTime);
-
-		LoadRewire();
-
-	}
-
-	private void LoadRewire()
-	{
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			Debug.Log("Enter was pressed");
-			SceneManager.LoadScene("Rewire", LoadSceneMode.Additive);
-			Debug.Log("Rewire should be appearing somewhere...");
-		}
 	}
 }

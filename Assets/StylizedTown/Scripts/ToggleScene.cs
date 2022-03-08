@@ -10,8 +10,6 @@ public class ToggleScene : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.E)) {
             
-            
-
             if (SceneManager.GetActiveScene().name.Equals("SampleSceneDay")) {
 
                 SceneManager.LoadScene("SampleSceneNight");
@@ -21,8 +19,12 @@ public class ToggleScene : MonoBehaviour {
             }
             
         }
-       
-
-
+        else if (Input.GetKeyDown(KeyCode.R))
+        {
+            //LoadRewire
+            Debug.Log("Enter was pressed");
+            SceneManager.LoadScene("Rewire");
+            Debug.Log("Rewire should be appearing somewhere...");
+        }
     }
 }
