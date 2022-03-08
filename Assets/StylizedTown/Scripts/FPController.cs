@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FPController : MonoBehaviour {
 
@@ -54,7 +55,17 @@ public class FPController : MonoBehaviour {
 
 		cc.Move (speedCombined * Time.deltaTime);
 
+		LoadRewire();
 
+	}
 
+	private void LoadRewire()
+	{
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			Debug.Log("Enter was pressed");
+			SceneManager.LoadScene("Rewire", LoadSceneMode.Additive);
+			Debug.Log("Rewire should be appearing somewhere...");
+		}
 	}
 }
