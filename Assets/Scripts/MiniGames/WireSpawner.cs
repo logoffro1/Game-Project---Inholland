@@ -19,6 +19,8 @@ public class WireSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Cursor.lockState = CursorLockMode.None;
+
         amountFinished = 0;
         amountCorrect = 0;
 

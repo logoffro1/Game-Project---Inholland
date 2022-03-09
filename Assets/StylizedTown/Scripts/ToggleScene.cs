@@ -19,7 +19,7 @@ public class ToggleScene : MonoBehaviour {
             }
             
         }
-        else if (Input.GetKeyDown(KeyCode.R))
+        else if (Input.GetKeyDown(KeyCode.H))
         {
             //LoadRewire
             Debug.Log("Enter was pressed");

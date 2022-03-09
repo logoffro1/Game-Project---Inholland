@@ -12,16 +12,16 @@ public class ProgressBar : MonoBehaviour
         slider = gameObject.GetComponent<Slider>();
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        slider.value = 100f;
+        slider.value = 75f;
     }
 
     private void Update()
     {
         //This should be deleted. Only for testing purposes.
-        if (Input.GetMouseButton(0))
-            DecreasePollution(0.2f);
-        if (Input.GetMouseButton(1))
-            IncreasePollution(0.2f);
+        if (Input.GetKeyDown(KeyCode.Z))
+            DecreasePollution(5f);
+        if (Input.GetKeyDown(KeyCode.X))
+            IncreasePollution(5f);
     }
 
     public void IncreasePollution (float pollutionChange)
