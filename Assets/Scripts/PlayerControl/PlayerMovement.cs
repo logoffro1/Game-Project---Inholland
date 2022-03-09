@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (MiniGameManager.Instance.IsPlaying) return;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement();
