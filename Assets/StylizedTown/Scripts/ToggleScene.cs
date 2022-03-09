@@ -10,13 +10,13 @@ public class ToggleScene : MonoBehaviour {
         
         if (Input.GetKeyDown(KeyCode.E)) {
             
-            if (SceneManager.GetActiveScene().name.Equals("SampleSceneDay")) {
+            //if (SceneManager.GetActiveScene().name.Equals("SampleSceneDay")) {
 
-                SceneManager.LoadScene("SampleSceneNight");
-            }
-            else { 
-                SceneManager.LoadScene("SampleSceneDay");
-            }
+            //    SceneManager.LoadScene("SampleSceneDay");
+            //}
+            //else { 
+            //    SceneManager.LoadScene("SampleSceneDay");
+            //}
             
         }
         else if (Input.GetKeyDown(KeyCode.H))

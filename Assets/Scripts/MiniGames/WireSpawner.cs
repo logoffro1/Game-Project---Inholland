@@ -87,7 +87,7 @@ public class WireSpawner : MonoBehaviour
 
     GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
     {
-        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation);
+        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation,transform);
         someObject.GetComponent<Wire>().color = colors[colorIndex];
 
         return someObject;

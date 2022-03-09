@@ -11,8 +11,8 @@ public class BoatHook : MonoBehaviour
     public GameObject HookClosedPrefab;
     public AudioClip hookCollectSound;
     private AudioSource audioSource;
-    private float speed = .5f;
-    private float hookDistance = 0.6f;
+    private float speed = .7f;
+    private float hookDistance = 0.7f;
     private bool trashAttached = false;
     private void Awake()
     {
