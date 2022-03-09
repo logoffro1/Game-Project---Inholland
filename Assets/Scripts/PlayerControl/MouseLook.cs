@@ -16,6 +16,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if (MiniGameManager.Instance.IsPlaying) return;
         LookAround();
     }
     private void LookAround()
