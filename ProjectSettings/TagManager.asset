@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Interactable
+  - WireEnd
+  - WireBackgroundPoint
+  - WireTop
+  - WireMiddle
+  - RewireCam
   layers:
   - Default
   - TransparentFX

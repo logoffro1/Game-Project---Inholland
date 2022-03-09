@@ -51,6 +51,8 @@ public class WireSpawner : MonoBehaviour
             wire.transform.Find("EndBackground").transform.position = spawnPos;
             spawnPositionsEndPoint.RemoveAt(posIndex);
         }
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Update is called once per frame
