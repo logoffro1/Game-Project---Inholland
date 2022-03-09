@@ -6,7 +6,7 @@ public class SewageMiniGame : MonoBehaviour //change to event based
 {
     private int lives = 3;
     private int score = 0;
-    private int maxScore = 15;
+    private int maxScore = 10;
     public bool isPlaying { get; set; } = true;
     private static SewageMiniGame _instance = null;
     public static SewageMiniGame Instance { get { return _instance; } }

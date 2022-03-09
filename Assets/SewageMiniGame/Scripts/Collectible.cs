@@ -3,7 +3,7 @@ using System;
 public class Collectible : MonoBehaviour
 {
     public Action onCollect = delegate { };
-    private float speed = .4f;
+    private float speed = .25f;
     private float rotationSpeed;
     bool attached = false;
 
