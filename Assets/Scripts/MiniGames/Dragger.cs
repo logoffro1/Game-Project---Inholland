@@ -5,6 +5,14 @@ using System;
 
 public class Dragger : MonoBehaviour
 {
+    /* Notes from Cosmin
+     * 1. See Wire.cs & WireSpawner.cs
+     * 2. If you'll use LineRenderer this whole class can mostly go, and there is no need for a canvas
+     * 3. Try as much as possible to avoid using .Find() by name or by tag(extremely hard to manage the bigger the game gets),
+     *    you can use .FindObjectOfType<Type> to get an Object of the specified type (You can use this to return an object (a class))
+     *    For example: WireSpawner spawner = GameObject.FindObjectOfType<WireSpawner>();  will return the WireSpawner object that is in the scene
+     *    Or you can use .FindObjectsOfType<Type> to get an array of objects, which can be used to get all the enemies, or all the wires, etc
+     */
     private Vector3 _dragOffset;
     private Camera _cam;
     GameObject spawner;
