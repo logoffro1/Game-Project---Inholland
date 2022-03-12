@@ -20,7 +20,7 @@ public class CastRay : MonoBehaviour
     {
         GetObjectHit();
     }
-    private void GetObjectHit()
+    private void GetObjectHit() //THIS IS TEMP CODE / IMPROVE LATER
     {
         Debug.DrawRay(new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.TransformDirection(Vector3.forward) * maxObjectDistance, Color.green);
         RaycastHit hit;
@@ -30,11 +30,14 @@ public class CastRay : MonoBehaviour
             GameObject obj = hit.transform.gameObject; 
             objectHit = obj.GetComponent<IInteractableObject>() == null ? null : hit.transform.gameObject;
             if (objectHit != null)
-            {           
+            {
+                UIManager.Instance.SetHoverText(objectHit.GetComponent<IInteractableObject>().GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
                     objectHit.GetComponent<IInteractableObject>().DoAction(gameObject);
-            }
 
+                return;
+            }         
         }
+        UIManager.Instance.SetHoverText(null);
     }
 }

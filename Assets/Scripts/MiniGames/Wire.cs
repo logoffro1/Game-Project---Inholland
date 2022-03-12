@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Wire : MonoBehaviour
 {
-
+    /* Notes from Cosmin
+     * 1. Don't make variables public unless there is no other option but to assign from inspector
+     *    If you want to see variables in the inspector for debugging, add [SerializeField] in front of a private field and it will show in the inspector
+     *    Or for stuff that you want to use outside the class, use properties (get/ private set)
+     * 2. If you're gonna use tags, use .CompareTag() instead of '==' to compare them, it's faster and less prone to errors
+     * 3. Look into TryGetComponent<> - https://docs.unity3d.com/ScriptReference/Component.TryGetComponent.html
+     * 4. you can use an array to store the Presets (or even dictionary if you wanna assign them a name), but that's mostly just so it looks prettier 
+     */
     public Color color;
 
     public int veryDarkMultiplier = 6;
@@ -17,6 +24,7 @@ public class Wire : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
 
         foreach(Transform child in transform)
         {

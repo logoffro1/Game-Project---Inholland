@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class WireSpawner : MonoBehaviour
 {
+    /* Notes from Cosmin
+     * 1. See notes from Wire.cs & Dragger.cs
+     * 2. Research using LineRenderer instead of just stretching the sprites, it will make it cleaner and more scalable
+     */
     public GameObject wirePrefab;
     public Color[] colors;
     private float spawnX = 100;
@@ -51,9 +55,11 @@ public class WireSpawner : MonoBehaviour
             wire.transform.Find("EndBackground").transform.position = spawnPos;
             spawnPositionsEndPoint.RemoveAt(posIndex);
         }
+
+        Cursor.lockState = CursorLockMode.None;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -87,7 +93,7 @@ public class WireSpawner : MonoBehaviour
 
     GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
     {
-        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation);
+        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation,transform);
         someObject.GetComponent<Wire>().color = colors[colorIndex];
 
         return someObject;

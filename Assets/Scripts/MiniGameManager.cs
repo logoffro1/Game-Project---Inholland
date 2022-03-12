@@ -19,27 +19,30 @@ public class MiniGameManager : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            StartGame();
-        }
-        else if (Input.GetKeyDown(KeyCode.T))
+        //if (Input.GetKeyDown(KeyCode.E))
+        //{
+        //    StartGame();
+        //}
+        if (Input.GetKeyDown(KeyCode.T))
         {
             StartCoroutine(StopGame());
         }
 
     }
-    private void StartGame()
+    public void StartGame(GameObject miniGamePrefab)
     {
-        SewageMiniGame = Instantiate(SewageGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
+        SewageMiniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
         miniGameScreen.SetActive(true);
         IsPlaying = true;
+        UIManager.Instance.ChangeCanvasShown();
     }
     private IEnumerator StopGame()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         Destroy(SewageMiniGame);
         miniGameScreen.SetActive(false);
         IsPlaying = false;
+
+        UIManager.Instance.ChangeCanvasShown();
     }
 }
