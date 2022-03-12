@@ -3,7 +3,7 @@ using UnityEngine;
 public class MouseLook : MonoBehaviour
 {
     [SerializeField]
-    private float sensitivity = 300f;
+    private float sensitivity = 200f;
     private float xRotation = 0f;
 
     [SerializeField]
@@ -16,6 +16,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
+        if (MiniGameManager.Instance.IsPlaying) return;
         LookAround();
     }
     private void LookAround()

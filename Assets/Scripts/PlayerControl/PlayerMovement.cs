@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 10f;
+    private float speed = 5f;
     [SerializeField]
     private float gravity = -9.81f;
     private float groundDistance = 0.4f;  
@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (MiniGameManager.Instance.IsPlaying) return;
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement();
