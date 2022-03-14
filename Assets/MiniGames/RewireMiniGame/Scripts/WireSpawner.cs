@@ -23,14 +23,19 @@ public class WireSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.lockState = CursorLockMode.None;
+        //Centralizing cursor and making it appear
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
 
+        //Setting starts states
         amountFinished = 0;
         amountCorrect = 0;
 
         wires = new List<GameObject>();
         List<Vector3> spawnPositions = new List<Vector3>();
 
+        //Determining spawn positions according to how many wires will spawn, and the x & y coords
         for(int i = 1; i <= amountWires; i++)
         {
             spawnPositions.Add(new Vector3(0, (spawnYRange/amountWires)*i, 0));
@@ -38,6 +43,7 @@ public class WireSpawner : MonoBehaviour
 
         List<Vector3> spawnPositionsEndPoint = new List<Vector3>(spawnPositions);
 
+        //Instatiating each wire
         for (int i = 0; i < amountWires; i++)
         {
             int posIndex = Random.Range(0, spawnPositions.Count);
@@ -47,6 +53,7 @@ public class WireSpawner : MonoBehaviour
 
         foreach(GameObject wire in wires)
         {
+            //Changing the position of the EndWire and EndBackground
             int posIndex = Random.Range(0, spawnPositionsEndPoint.Count);
             Vector3 spawnPos = spawnPositionsEndPoint[posIndex];
             spawnPos.x = spawnX;
@@ -55,22 +62,12 @@ public class WireSpawner : MonoBehaviour
             wire.transform.Find("EndBackground").transform.position = spawnPos;
             spawnPositionsEndPoint.RemoveAt(posIndex);
 
+            //Resetting achoredPosition3DWire because of bug
             var achoredPosition3DWire = wire.GetComponent<RectTransform>().anchoredPosition3D;
             achoredPosition3DWire.z = 0;
             achoredPosition3DWire.x -= 40;
             achoredPosition3DWire.y -= 60;
             wire.GetComponent<RectTransform>().anchoredPosition3D = achoredPosition3DWire;
-        }
-
-        Cursor.lockState = CursorLockMode.None;
-    }
-
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            SceneManager.LoadScene("GameUKDay");
         }
     }
 

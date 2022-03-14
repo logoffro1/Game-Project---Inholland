@@ -34,7 +34,7 @@ public class MiniGameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            RewireMiniGame = Instantiate(RewireGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
+            RewireMiniGame = Instantiate(RewireGamePrefab, new Vector3(0, 0, 150), SewageGamePrefab.transform.rotation);
             miniGameScreen.SetActive(true);
             IsPlaying = true;
             UIManager.Instance.ChangeCanvasShown();
@@ -42,15 +42,7 @@ public class MiniGameManager : MonoBehaviour
 
     }
     public void StartGame(GameObject miniGamePrefab)
-    {
-        /*
-        RewireMiniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), RewireGamePrefab.transform.rotation);
-        miniGameScreen.SetActive(true);
-        IsPlaying = true;
-        UIManager.Instance.ChangeCanvasShown();
-        */
-
-        
+    {        
         SewageMiniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
         miniGameScreen.SetActive(true);
         IsPlaying = true;
@@ -61,7 +53,7 @@ public class MiniGameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(.5f);
         Destroy(SewageMiniGame);
-        //Destroy(RewireMiniGame);
+        Destroy(RewireMiniGame);
         miniGameScreen.SetActive(false);
         IsPlaying = false;
 
