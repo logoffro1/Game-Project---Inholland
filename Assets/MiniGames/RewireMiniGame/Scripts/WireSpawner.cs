@@ -54,6 +54,12 @@ public class WireSpawner : MonoBehaviour
             wire.transform.Find("EndWire").transform.position = spawnPos;
             wire.transform.Find("EndBackground").transform.position = spawnPos;
             spawnPositionsEndPoint.RemoveAt(posIndex);
+
+            var achoredPosition3DWire = wire.GetComponent<RectTransform>().anchoredPosition3D;
+            achoredPosition3DWire.z = 0;
+            achoredPosition3DWire.x -= 40;
+            achoredPosition3DWire.y -= 60;
+            wire.GetComponent<RectTransform>().anchoredPosition3D = achoredPosition3DWire;
         }
 
         Cursor.lockState = CursorLockMode.None;
@@ -93,7 +99,7 @@ public class WireSpawner : MonoBehaviour
 
     GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
     {
-        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation,transform);
+        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
         someObject.GetComponent<Wire>().color = colors[colorIndex];
 
         return someObject;

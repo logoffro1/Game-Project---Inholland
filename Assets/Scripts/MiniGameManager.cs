@@ -34,8 +34,8 @@ public class MiniGameManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            RewireMiniGame = Instantiate(RewireGamePrefab, transform.position + (transform.forward * 2), transform.rotation);
-            //miniGameScreen.SetActive(true);
+            RewireMiniGame = Instantiate(RewireGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
+            miniGameScreen.SetActive(true);
             IsPlaying = true;
             UIManager.Instance.ChangeCanvasShown();
         }
