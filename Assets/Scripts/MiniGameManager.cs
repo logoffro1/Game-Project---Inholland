@@ -7,8 +7,7 @@ public class MiniGameManager : MonoBehaviour
     private static MiniGameManager _instance = null;
     public static MiniGameManager Instance { get { return _instance; } }
     public bool IsPlaying { get; private set; }
-    public GameObject SewageGamePrefab;
-    private GameObject SewageMiniGame;
+    private GameObject miniGame;
     public GameObject miniGameScreen;
     private void Awake()
     {
@@ -31,18 +30,17 @@ public class MiniGameManager : MonoBehaviour
     }
     public void StartGame(GameObject miniGamePrefab)
     {
-        SewageMiniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), SewageGamePrefab.transform.rotation);
-        miniGameScreen.SetActive(true);
-        IsPlaying = true;
+        if (IsPlaying) return;
+
         UIManager.Instance.ChangeCanvasShown();
+        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), miniGamePrefab.transform.rotation);
+        IsPlaying = true;     
     }
-    private IEnumerator StopGame()
+    public IEnumerator StopGame()
     {
         yield return new WaitForSeconds(.5f);
-        Destroy(SewageMiniGame);
-        miniGameScreen.SetActive(false);
+        Destroy(miniGame);
         IsPlaying = false;
-
         UIManager.Instance.ChangeCanvasShown();
     }
 }
