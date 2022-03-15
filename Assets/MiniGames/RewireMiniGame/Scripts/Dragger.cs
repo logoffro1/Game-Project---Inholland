@@ -38,7 +38,7 @@ public class Dragger : MonoBehaviour
 
     private void Awake()
     {
-        _cam = Camera.main;
+        _cam = GameObject.Find("RewireCamera").GetComponent<Camera>();
     }
 
     private void OnMouseDown()
@@ -51,11 +51,11 @@ public class Dragger : MonoBehaviour
         var currentMousePos = GetMousePos();
 
         //Moving EndWire part
-        transform.position = currentMousePos + _dragOffset;
+        transform.position = currentMousePos;
 
         //Middle wire part
-        midWire.size = new Vector2(Vector2.Distance(startPoint, currentMousePos) * 1.9f, midWire.size.y);
-        midWire.transform.right = currentMousePos - startPoint;
+        //midWire.size = new Vector2(Vector2.Distance(startPoint, currentMousePos), midWire.size.y);
+        //midWire.transform.right = Vector3.Normalize(currentMousePos - startPoint);
 
     }
 
