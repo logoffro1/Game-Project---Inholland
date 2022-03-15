@@ -20,8 +20,18 @@ public class WireSpawner : MonoBehaviour
 
     private List<GameObject> wires;
 
+
     // Start is called before the first frame update
     void Start()
+    {
+        SetUpGame();
+
+        List<Vector3> spawnPositions = CreateSpawnPositoin();
+
+        InstansiateAllWires(spawnPositions);
+    }
+
+    private void SetUpGame()
     {
         //Centralizing cursor and making it appear
         Cursor.lockState = CursorLockMode.Locked;
@@ -33,17 +43,25 @@ public class WireSpawner : MonoBehaviour
         amountCorrect = 0;
 
         wires = new List<GameObject>();
+    }
+
+    private List<Vector3> CreateSpawnPositoin()
+    {
         List<Vector3> spawnPositions = new List<Vector3>();
 
         //Determining spawn positions according to how many wires will spawn, and the x & y coords
-        for(int i = 1; i <= amountWires; i++)
+        for (int i = 1; i <= amountWires; i++)
         {
-            spawnPositions.Add(new Vector3(0, (spawnYRange/amountWires)*i, 0));
+            spawnPositions.Add(new Vector3(0, (spawnYRange / amountWires) * i, 0));
         }
 
+        return spawnPositions;
+    }
+
+    private void InstansiateAllWires(List<Vector3> spawnPositions)
+    {
         List<Vector3> spawnPositionsEndPoint = new List<Vector3>(spawnPositions);
 
-        //Instatiating each wire
         for (int i = 0; i < amountWires; i++)
         {
             int posIndex = Random.Range(0, spawnPositions.Count);
@@ -51,7 +69,12 @@ public class WireSpawner : MonoBehaviour
             spawnPositions.RemoveAt(posIndex);
         }
 
-        foreach(GameObject wire in wires)
+        MoveEndWirePart(spawnPositionsEndPoint);
+    }
+
+    private void MoveEndWirePart(List<Vector3> spawnPositionsEndPoint)
+    {
+        foreach (GameObject wire in wires)
         {
             //Changing the position of the EndWire and EndBackground
             int posIndex = Random.Range(0, spawnPositionsEndPoint.Count);
@@ -77,7 +100,6 @@ public class WireSpawner : MonoBehaviour
 
         if (amountFinished >= amountWires)
         {
-            Time.timeScale = 0f;
             if (amountCorrect >= amountWires)
             {
                 Debug.Log("WINNER!");
@@ -94,11 +116,11 @@ public class WireSpawner : MonoBehaviour
         amountCorrect++;
     }
 
-    GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
+    private GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
     {
-        GameObject someObject = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
-        someObject.GetComponent<Wire>().color = colors[colorIndex];
+        GameObject wire = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
+        wire.GetComponent<Wire>().color = colors[colorIndex];
 
-        return someObject;
+        return wire;
     }
 }

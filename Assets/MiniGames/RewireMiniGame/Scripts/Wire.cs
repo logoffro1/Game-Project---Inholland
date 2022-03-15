@@ -12,20 +12,16 @@ public class Wire : MonoBehaviour
      * 3. Look into TryGetComponent<> - https://docs.unity3d.com/ScriptReference/Component.TryGetComponent.html
      * 4. you can use an array to store the Presets (or even dictionary if you wanna assign them a name), but that's mostly just so it looks prettier 
      */
+
     public Color color;
 
-    public int veryDarkMultiplier = 6;
-    public Color veryDarkPreset = new Color(0f, 0f, 0f);
-    public int darkMultiplier = 3;
-    public Color darkPreset = new Color(0.1f, 0.1f, 0.1f);
-    public Color mediumPreset = new Color(0.4f, 0.4f, 0.4f);
-    public Color lightPreset = new Color(0.8f, 0.8f, 0.8f);
+    private int darkMultiplier = 3;
+    private Color darkPreset = new Color(0.1f, 0.1f, 0.1f);
+    private Color mediumPreset = new Color(0.4f, 0.4f, 0.4f);
 
     // Start is called before the first frame update
     void Start()
     {
-        
-
         foreach(Transform child in transform)
         {
             var childSprite = child.GetComponent<SpriteRenderer>();
@@ -57,20 +53,15 @@ public class Wire : MonoBehaviour
 
                     var childSprite2 = child2.GetComponent<SpriteRenderer>();
 
-                    if (childSprite2.tag == "WireMiddle")
+                    if (childSprite2.tag == "WireEnd")
                     {
-                        tmpColor = (tmpColor / veryDarkMultiplier) + veryDarkPreset;
-                    }
-                    else if (childSprite2.tag == "WireEnd")
-                    {
-                        tmpColor = tmpColor + lightPreset;
+                        tmpColor = tmpColor + mediumPreset;
                     }
 
                     tmpColor.a = 1;
                     childSprite2.color = tmpColor;
 
                 }
-
             }
         }
     }
