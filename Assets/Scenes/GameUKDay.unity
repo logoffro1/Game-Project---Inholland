@@ -18946,6 +18946,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64f6fd1f6eb27ad49911d3dfb18d177c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gradient:
+    serializedVersion: 2
+    key0: {r: 0.9150943, g: 0.5087838, b: 0.030215396, a: 1}
+    key1: {r: 0.9939346, g: 0.9648909, b: 0.12041885, a: 1}
+    key2: {r: 1, g: 0.99998075, b: 0.1273585, a: 0}
+    key3: {r: 0.41373336, g: 0.8867924, b: 0.1966002, a: 0}
+    key4: {r: 0.41373336, g: 0.8867924, b: 0.1966002, a: 0}
+    key5: {r: 0.41373336, g: 0.8867924, b: 0.1966002, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 9830
+    ctime1: 22552
+    ctime2: 38743
+    ctime3: 52814
+    ctime4: 53392
+    ctime5: 65535
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 6
+    m_NumAlphaKeys: 2
+  fill: {fileID: 667457718}
 --- !u!1001 &1220313466
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28073,7 +28103,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dddc411499ae5458cdf72d026efcc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SewageGamePrefab: {fileID: 8619247169481751377, guid: a061e580c278ea546bcdaec51de06d96, type: 3}
   miniGameScreen: {fileID: 1229969342}
 --- !u!4 &1756624970
 Transform:
