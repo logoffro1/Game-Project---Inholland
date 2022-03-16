@@ -1,19 +1,21 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class TimerCountdown : MonoBehaviour
 {
-    public TextMeshProUGUI textDisplay;
+    public TextMeshProUGUI countdownTextDisplay;
     public GameObject endMissionText;
-    public int secondsLeft = 30;
+    public int secondsLeft = 5 * 60;
     private bool takingAway = false;
 
     void Start()
     {
-        textDisplay.text = "00:" + secondsLeft;
+        if (countdownTextDisplay != null) countdownTextDisplay.text = CountdownString();
     }
 
     void Update()
@@ -23,29 +25,30 @@ public class TimerCountdown : MonoBehaviour
             StartCoroutine(TimerTake());
         }
 
-        //tHIS IS NOT WORKING
-        if (secondsLeft < 0)
+        if (secondsLeft <= 0)
         {
             endMissionText.SetActive(true);
-            //wait few seconds
-            //switch to end of report scene
+            //TODO: wait few seconds
+            //TODO: switch to end of report scene
         }
     }
 
-    IEnumerator TimerTake()
+    private IEnumerator TimerTake()
     {
-        takingAway = true;
-        yield return new WaitForSeconds(1);
-        secondsLeft -= 1;
-        if (secondsLeft < 10)
+        if (countdownTextDisplay != null)
         {
-            textDisplay.text = "00:0" + secondsLeft;
+            takingAway = true;
+            yield return new WaitForSeconds(1);
+            secondsLeft -= 1;
+            countdownTextDisplay.text = CountdownString();
+            takingAway = false;
         }
-        else
-        {
-            textDisplay.text = "00:" + secondsLeft;
-        }
-        takingAway = false;
+    }
+
+    private string CountdownString()
+    {
+        TimeSpan time = TimeSpan.FromSeconds(secondsLeft);
+        return time.ToString(@"mm\:ss");
     }
 
 }
