@@ -8,16 +8,19 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameUKDay.unity
     guid: c0fcbdafe95baf340b4dc95dcf348e92
   - enabled: 0
-    path: Assets/Scenes/Game.unity
-    guid: 35299a6a99d6dfe4bb709527ba95aab0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Rewire.unity
     guid: c47b14335b033394eb3b044ad4722371
+  - enabled: 1
+    path: Assets/PolygonFarm/Demo/Demo.unity
+    guid: 28ac9a59020c6bc459f797acd217859a
   m_configObjects: {}
