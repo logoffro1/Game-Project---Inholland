@@ -2891,7 +2891,6 @@ GameObject:
   - component: {fileID: 189111538}
   - component: {fileID: 189111541}
   - component: {fileID: 189111540}
-  - component: {fileID: 189111539}
   m_Layer: 5
   m_Name: Countdown
   m_TagString: Untagged
@@ -2918,21 +2917,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 160}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &189111539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 189111537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01789d5478ad474e862d03e9e805f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownTextDisplay: {fileID: 0}
-  endMissionText: {fileID: 0}
-  secondsLeft: 30
 --- !u!114 &189111540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37469,7 +37453,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6081779196088764005}
-  - component: {fileID: 5941921310623102817}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -37477,21 +37460,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &5941921310623102817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5941921310623102816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c01789d5478ad474e862d03e9e805f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdownTextDisplay: {fileID: 189111540}
-  endMissionText: {fileID: 1297685270}
-  secondsLeft: 300
 --- !u!1001 &5965440091705773694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38178,6 +38146,7 @@ GameObject:
   - component: {fileID: 7757074438655741360}
   - component: {fileID: 7851283343482151334}
   - component: {fileID: 7757074438655741362}
+  - component: {fileID: 7757074438655741363}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -38198,6 +38167,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverText: {fileID: 764432958}
+  countDownText: {fileID: 189111540}
+  endMissionText: {fileID: 1297685270}
+--- !u!114 &7757074438655741363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7757074438655741361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01789d5478ad474e862d03e9e805f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7757074438655741365
 RectTransform:
   m_ObjectHideFlags: 0

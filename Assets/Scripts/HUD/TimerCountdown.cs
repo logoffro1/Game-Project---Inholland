@@ -8,44 +8,30 @@ using UnityEngine.UI;
 
 public class TimerCountdown : MonoBehaviour
 {
-    public TextMeshProUGUI countdownTextDisplay;
-    public GameObject endMissionText;
-    public int secondsLeft = 5 * 60;
-    private bool takingAway = false;
+    private int secondsLeft = 5 * 60;
+
+    public event Action<string> OnSecondChange;
+    public event EventHandler OnCountdownEnd;
 
     void Start()
     {
-        if (countdownTextDisplay != null) countdownTextDisplay.text = CountdownString();
-    }
-
-    void Update()
-    {
-        if (!takingAway && secondsLeft > 0)
-        {
-            StartCoroutine(TimerTake());
-        }
-
-        if (secondsLeft <= 0)
-        {
-            endMissionText.SetActive(true);
-            //TODO: wait few seconds
-            //TODO: switch to end of report scene
-        }
+        StartCoroutine(TimerTake());
+        
     }
 
     private IEnumerator TimerTake()
     {
-        if (countdownTextDisplay != null)
-        {
-            takingAway = true;
+        while (secondsLeft > 0)
+        { 
             yield return new WaitForSeconds(1);
             secondsLeft -= 1;
-            countdownTextDisplay.text = CountdownString();
-            takingAway = false;
+            OnSecondChange?.Invoke(CountdownString());
         }
+
+        OnCountdownEnd?.Invoke(this, EventArgs.Empty);        
     }
 
-    private string CountdownString()
+    public string CountdownString()
     {
         TimeSpan time = TimeSpan.FromSeconds(secondsLeft);
         return time.ToString(@"mm\:ss");
