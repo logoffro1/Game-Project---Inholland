@@ -10,9 +10,9 @@ public class Wire : MonoBehaviour
     private Color darkPreset = new Color(0.1f, 0.1f, 0.1f);
     private Color mediumPreset = new Color(0.4f, 0.4f, 0.4f);
 
-    // Start is called before the first frame update
     void Start()
     {
+        //Get the first child (wire -> child)
         foreach(Transform child in transform)
         {
             if (child.TryGetComponent(out SpriteRenderer childSprite))
@@ -34,11 +34,11 @@ public class Wire : MonoBehaviour
 
                     tmpColor.a = 1;
                     childSprite.color = tmpColor;
-
                 }
             }
             else
             {
+                //Get the second child (wire -> child -> child)
                 foreach (Transform childOfChild in child)
                 {
                     Color tmpColor = color;

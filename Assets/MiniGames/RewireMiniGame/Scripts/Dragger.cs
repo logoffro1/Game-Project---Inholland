@@ -5,30 +5,21 @@ using System;
 
 public class Dragger : MonoBehaviour
 {
-    /* Notes from Cosmin
-     * 1. See Wire.cs & WireSpawner.cs
-     * 2. If you'll use LineRenderer this whole class can mostly go, and there is no need for a canvas
-     * 3. Try as much as possible to avoid using .Find() by name or by tag(extremely hard to manage the bigger the game gets),
-     *    you can use .FindObjectOfType<Type> to get an Object of the specified type (You can use this to return an object (a class))
-     *    For example: WireSpawner spawner = GameObject.FindObjectOfType<WireSpawner>();  will return the WireSpawner object that is in the scene
-     *    Or you can use .FindObjectsOfType<Type> to get an array of objects, which can be used to get all the enemies, or all the wires, etc
-     */
     private Camera _cam;
-    GameObject spawner;
+    private WireSpawner spawner;
 
     //Game features
-    private bool connected = false;
     private bool connectedCorrect = false;
     private Collider2D inCollisionWith;
 
     private void Start()
     {
-        spawner = GameObject.Find("WireSpawner");
+        spawner = FindObjectOfType<WireSpawner>();
     }
 
     private void Awake()
     {
-        _cam = GameObject.Find("RewireCamera").GetComponent<Camera>();
+        _cam = transform.root.GetComponentInChildren<Camera>();
     }
 
     private void OnMouseDrag()
@@ -36,7 +27,7 @@ public class Dragger : MonoBehaviour
         transform.position = GetMousePos();
     }
 
-    Vector3 GetMousePos()
+    private Vector3 GetMousePos()
     {
         //Getting position of the mouse
         var mousePos = Input.mousePosition;
@@ -49,15 +40,10 @@ public class Dragger : MonoBehaviour
 
     private void OnMouseUp()
     {
-        Debug.Log("OnMouseUp");
-
-        if (inCollisionWith != null && inCollisionWith.tag == "WireBackgroundPoint")
+        if (inCollisionWith != null && inCollisionWith.CompareTag("WireBackgroundPoint"))
         {
-            //Putting state to connected
-            connected = true;
             //Getting if they have the same parent, thus saying they are matching
             connectedCorrect = transform.parent.parent == inCollisionWith.transform.parent;
-            Debug.Log("Same parent?: " + connectedCorrect);
 
             //Locking in spot that they dropped on, for the endWire
             var collidedObject = inCollisionWith.transform.GetComponent<RectTransform>();
@@ -65,28 +51,28 @@ public class Dragger : MonoBehaviour
             GetComponent<RectTransform>().position = endPosition;
         }
 
-        spawner.GetComponent<WireSpawner>().OneIsFinished();
+        //Changing states, and possibily ending the game
+        spawner.OneIsFinished();
 
         if (connectedCorrect)
         {
-            spawner.GetComponent<WireSpawner>().OneIsSuccessFul();
+            spawner.OneIsSuccessFul();
         }
-        else
+        
+        if (!connectedCorrect && inCollisionWith != null)
         {
-            spawner.GetComponent<WireSpawner>().OneFailed();
+            spawner.OneFailed();
         }
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerEnter2D");
         inCollisionWith = collision;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("OnTriggerExit2D");
         inCollisionWith = null;
     }
 

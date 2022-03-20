@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class WireSpawner : MonoBehaviour
 {
-    /* Notes from Cosmin
-     * 1. See notes from Wire.cs & Dragger.cs
-     * 2. Research using LineRenderer instead of just stretching the sprites, it will make it cleaner and more scalable
-     */
     public GameObject wirePrefab;
     public Color[] colors;
     private float spawnX = 100;
@@ -110,12 +106,10 @@ public class WireSpawner : MonoBehaviour
         {
             if (amountCorrect >= amountWires)
             {
-                Debug.Log("WINNER!");
                 GameSuccess?.Invoke(true);
             }
             else
             {
-                Debug.Log("lol loser");
                 GameSuccess?.Invoke(false);
             }
         }
