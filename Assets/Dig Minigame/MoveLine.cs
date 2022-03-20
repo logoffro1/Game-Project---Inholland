@@ -8,6 +8,7 @@ public class MoveLine : MonoBehaviour
     bool movingRight = false;
     double leftLimitX = -0.495f;
     double rightLimitX = 0.495f;
+    bool isOnTarget = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,11 @@ public class MoveLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameOver) { return; }
+        if (Input.GetKeyDown(KeyCode.Space) && isOnTarget)
+        {
+            gameOver = true;
+        }
         if (movingRight == false)
         {
             transform.Translate(Vector2.left * 2f * Time.deltaTime);
@@ -40,19 +46,13 @@ public class MoveLine : MonoBehaviour
    private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Enter");
+        isOnTarget = true;
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         Debug.Log("Exit");
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            Debug.Log("Victory!");
-        }
+        isOnTarget = false;
     }
 }
