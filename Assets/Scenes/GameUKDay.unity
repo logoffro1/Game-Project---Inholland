@@ -28074,8 +28074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dddc411499ae5458cdf72d026efcc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SewageGamePrefab: {fileID: 8619247169481751377, guid: a061e580c278ea546bcdaec51de06d96, type: 3}
-  RewireGamePrefab: {fileID: 4278559126353129008, guid: be5ab4bd4390e214ba784a0ac96c901a, type: 3}
   miniGameScreen: {fileID: 1229969342}
 --- !u!4 &1756624970
 Transform:

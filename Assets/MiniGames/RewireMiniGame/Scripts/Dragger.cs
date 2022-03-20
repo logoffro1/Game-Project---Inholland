@@ -56,7 +56,7 @@ public class Dragger : MonoBehaviour
             //Putting state to connected
             connected = true;
             //Getting if they have the same parent, thus saying they are matching
-            connectedCorrect = transform.parent.parent == inCollisionWith.transform.parent.parent;
+            connectedCorrect = transform.parent.parent == inCollisionWith.transform.parent;
             Debug.Log("Same parent?: " + connectedCorrect);
 
             //Locking in spot that they dropped on, for the endWire
@@ -65,14 +65,15 @@ public class Dragger : MonoBehaviour
             GetComponent<RectTransform>().position = endPosition;
         }
 
+        spawner.GetComponent<WireSpawner>().OneIsFinished();
+
         if (connectedCorrect)
         {
             spawner.GetComponent<WireSpawner>().OneIsSuccessFul();
         }
-
-        if (connected)
+        else
         {
-            spawner.GetComponent<WireSpawner>().OneIsFinished();
+            spawner.GetComponent<WireSpawner>().OneFailed();
         }
 
     }

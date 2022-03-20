@@ -16,6 +16,7 @@ public class MiniGameManager : MonoBehaviour
         else
             _instance = this;
     }
+
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.E))
@@ -25,14 +26,6 @@ public class MiniGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             StartCoroutine(StopGame());
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            //RewireMiniGame = Instantiate(RewireGamePrefab, new Vector3(0, 0, 150), SewageGamePrefab.transform.rotation);
-            miniGameScreen.SetActive(true);
-            IsPlaying = true;
-            UIManager.Instance.ChangeCanvasShown();
         }
 
     }

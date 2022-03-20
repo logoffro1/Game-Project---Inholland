@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class WireSpawner : MonoBehaviour
     public int amountCorrect;
 
     private List<GameObject> wires;
+
+    public event Action<bool> GameSuccess;
 
 
     // Start is called before the first frame update
@@ -64,7 +67,7 @@ public class WireSpawner : MonoBehaviour
 
         for (int i = 0; i < amountWires; i++)
         {
-            int posIndex = Random.Range(0, spawnPositions.Count);
+            int posIndex = UnityEngine.Random.Range(0, spawnPositions.Count);
             wires.Add(SpawnWire(i, spawnPositions[posIndex]));
             spawnPositions.RemoveAt(posIndex);
         }
@@ -77,7 +80,7 @@ public class WireSpawner : MonoBehaviour
         foreach (GameObject wire in wires)
         {
             //Changing the position of the EndWire and EndBackground
-            int posIndex = Random.Range(0, spawnPositionsEndPoint.Count);
+            int posIndex = UnityEngine.Random.Range(0, spawnPositionsEndPoint.Count);
             Vector3 spawnPos = spawnPositionsEndPoint[posIndex];
             spawnPos.x = spawnX;
 
@@ -97,23 +100,30 @@ public class WireSpawner : MonoBehaviour
     public void OneIsFinished()
     {
         amountFinished++;
+    }
+
+    public void OneIsSuccessFul()
+    {
+        amountCorrect++;
 
         if (amountFinished >= amountWires)
         {
             if (amountCorrect >= amountWires)
             {
                 Debug.Log("WINNER!");
+                GameSuccess?.Invoke(true);
             }
             else
             {
                 Debug.Log("lol loser");
+                GameSuccess?.Invoke(false);
             }
         }
     }
 
-    public void OneIsSuccessFul()
+    public void OneFailed()
     {
-        amountCorrect++;
+        GameSuccess?.Invoke(false);
     }
 
     private GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
