@@ -10,7 +10,8 @@ public class MainMenu : MonoBehaviour
         //TODO: Get save file, load safe file
         //Load lobby scene
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.Instance.LoadScene("GameUKDay");
     }
 
     public void NewGame()
