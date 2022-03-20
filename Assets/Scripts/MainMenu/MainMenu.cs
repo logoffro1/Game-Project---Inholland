@@ -17,8 +17,9 @@ public class MainMenu : MonoBehaviour
     {
         //TODO: If save file exists, ask if it can be deleted (no --> go back to main menu)
         // Yes --> create new save file, start tutorial
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.Instance.LoadScene("GameUKDay");
     }
 
     public void QuitGame()
