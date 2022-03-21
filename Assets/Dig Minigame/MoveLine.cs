@@ -6,8 +6,8 @@ public class MoveLine : MonoBehaviour
 {
     bool gameOver;
     bool movingRight = false;
-    double leftLimitX = -0.495f;
-    double rightLimitX = 0.495f;
+    double leftLimitX = -0.5f;
+    double rightLimitX = 0.5f;
     bool isOnTarget = false;
     // Start is called before the first frame update
     void Start()

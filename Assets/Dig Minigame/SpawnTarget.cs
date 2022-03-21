@@ -7,9 +7,9 @@ public class SpawnTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float rnd = Random.Range(-0.45f, 0.45f);
+        float rnd = Random.Range(-0.5f, 0.5f);
         Debug.Log(rnd);
-        transform.localPosition = new Vector3(rnd, 0, 0);
+        transform.localPosition = new Vector3(rnd, -0.327f, 0);
     }
 
     // Update is called once per frame
