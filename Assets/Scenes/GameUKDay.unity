@@ -7931,7 +7931,7 @@ Transform:
   m_GameObject: {fileID: 531889902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.01, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.079, z: 0.1}
+  m_LocalScale: {x: 0.098, y: 0.079, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1360452952}
   m_RootOrder: 5
@@ -14798,11 +14798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220485, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_LocalScale.x
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220485, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_LocalScale.y
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_Size.x
@@ -14815,10 +14815,14 @@ PrefabInstance:
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6ff6b85966aeb3f4ab304af07f4dd424, type: 3}
+      objectReference: {fileID: 21300000, guid: 0b10cc51d9a679b4d84fd07d6bcf08eb, type: 3}
+    - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_Color.b
-      value: 0.21226418
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_Color.g
@@ -14826,7 +14830,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_Color.r
-      value: 0.42691678
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2984598138667220491, guid: 73af3851e94b9204090d4431a04eb1c0, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -32558,6 +32562,7 @@ GameObject:
   - component: {fileID: 1938296696}
   - component: {fileID: 1938296698}
   - component: {fileID: 1938296697}
+  - component: {fileID: 1938296699}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
@@ -32594,19 +32599,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tetrominoes:
   - tetromino: 0
-    tile: {fileID: 11400000, guid: dab8de7f9c403e84a82a524479b219d8, type: 2}
+    tile: {fileID: 11400000, guid: 5fae17b83fe130d448a599ad666f92cc, type: 2}
   - tetromino: 1
-    tile: {fileID: 11400000, guid: 92f54f4c21bafe14c9f5108f5ed2a763, type: 2}
+    tile: {fileID: 11400000, guid: 748add5334654ca4eb5e8df3e61a37ca, type: 2}
   - tetromino: 2
-    tile: {fileID: 11400000, guid: dbe10164f638d1d40a319bdf4d56b84e, type: 2}
+    tile: {fileID: 11400000, guid: 4515f3f084092154eafaf7bff3468d67, type: 2}
   - tetromino: 3
-    tile: {fileID: 11400000, guid: 8e96724183ce0884e96e401ec8179d17, type: 2}
+    tile: {fileID: 11400000, guid: e0492bce1206afd40a004ab0e72ac270, type: 2}
   - tetromino: 4
-    tile: {fileID: 11400000, guid: e58a3219b814ebe4691839879cb1e3a5, type: 2}
+    tile: {fileID: 11400000, guid: 1160422129716574f811cd6528867927, type: 2}
   - tetromino: 5
-    tile: {fileID: 11400000, guid: b2f7a2048a27cb44f9151e3d5bf1db04, type: 2}
+    tile: {fileID: 11400000, guid: a0d52a7d2e58d9143a930c78ad635f13, type: 2}
   - tetromino: 6
-    tile: {fileID: 11400000, guid: aa010fc133a662d44b1f14cd87bb550f, type: 2}
+    tile: {fileID: 11400000, guid: 5efa128c92a8ce24a84cfdfa610ebb5a, type: 2}
 --- !u!156049354 &1938296698
 Grid:
   m_ObjectHideFlags: 0
@@ -32619,6 +32624,18 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1938296699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938296695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76cce106d2986b24e936913103e8b15e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1940562189
 PrefabInstance:
   m_ObjectHideFlags: 0
