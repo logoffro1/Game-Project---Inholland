@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnToxic()
     {
         GameObject go = toxicPrefab[Random.Range(0, toxicPrefab.Length)];
-        Vector3 spawnPos = new Vector3(xSpawn, Random.Range(-0.5f, 0.17f), 100f);
+        Vector3 spawnPos = new Vector3(xSpawn, Random.Range(-0.5f, 0.17f), 300f);
         Instantiate(go, spawnPos, go.transform.rotation, transform);
     }
     private IEnumerator SpawnLoop()

@@ -3,7 +3,7 @@ using System;
 public class Collectible : MonoBehaviour
 {
     public Action onCollect = delegate { };
-    private float speed = .25f;
+    private float speed = .35f;
     private float rotationSpeed;
     bool attached = false;
 
@@ -16,7 +16,7 @@ public class Collectible : MonoBehaviour
     }
     void Update()
     {
-        if (!SewageMiniGame.Instance.isPlaying) return;
+        if (!SewageMiniGame.Instance.IsPlaying) return;
 
         if (!attached)
         {
@@ -46,7 +46,6 @@ public class Collectible : MonoBehaviour
     }
     private void OutOfBounds()
     {
-        Debug.Log("OUT OF BOUNDS");
         SewageMiniGame.Instance.DecreaseLives();
 
         Destroy(gameObject);

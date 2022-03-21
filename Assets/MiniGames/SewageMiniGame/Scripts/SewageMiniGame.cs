@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SewageMiniGame : MonoBehaviour //change to event based
+public class SewageMiniGame : MiniGameBase //remove the singleton
 {
     private int lives = 3;
     private int score = 0;
     private int maxScore = 10;
-    public bool isPlaying { get; set; } = true;
     private static SewageMiniGame _instance = null;
     public static SewageMiniGame Instance { get { return _instance; } }
     private SewageUIManager sewageUIManager;
@@ -28,7 +27,8 @@ public class SewageMiniGame : MonoBehaviour //change to event based
         if (lives <= 0)
         {
             lives = 0;
-            GameOver();
+            this.GameOver();
+            Debug.Log("END");
         }
 
         sewageUIManager.ChangeLifes(lives);
@@ -37,20 +37,9 @@ public class SewageMiniGame : MonoBehaviour //change to event based
     {
         score += 1;
 
-        if(score >= maxScore)
-            GameWon();
+        if (score >= maxScore)
+            this.GameWon();
 
-        sewageUIManager.ChangeScoreText(score,maxScore);
-    }
-    private void GameOver() //change to events
-    {
-        sewageUIManager.ChangeSuccessText(false);
-        isPlaying = false;
-    }
-    private void GameWon()
-    {
-        sewageUIManager.ChangeSuccessText(true);
-        Debug.Log("YOU WON");
-        isPlaying = false;
+        sewageUIManager.ChangeScoreText(score, maxScore);
     }
 }

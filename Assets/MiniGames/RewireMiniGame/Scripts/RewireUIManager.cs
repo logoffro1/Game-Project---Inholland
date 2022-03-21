@@ -12,6 +12,7 @@ public class RewireUIManager : MonoBehaviour
 
     private void WireSpwawner_GameSuccess(bool isSuccess)
     {
+        /*
         successText.SetActive(true);
 
         TextMeshProUGUI text = successText.GetComponent<TextMeshProUGUI>();
@@ -27,5 +28,6 @@ public class RewireUIManager : MonoBehaviour
             text.text = "FAILURE";
             Debug.Log("RewireMinigame: failure");
         }
+        */
     }
 }

@@ -74,6 +74,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 535315073119332184, guid: 4d5355390264da34da189a30a21277c6, type: 3}
   m_PrefabInstance: {fileID: 7358091983451117637}
   m_PrefabAsset: {fileID: 0}
+--- !u!20 &7021362050751649113 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 535315073119620380, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+  m_PrefabInstance: {fileID: 7358091983451117637}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1182487252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +94,8 @@ MonoBehaviour:
   buttonPrefab: {fileID: 1762395108882753389, guid: 1c13f0a93bb4ee74aa21eeb06a90572e, type: 3}
   width: 4
   height: 3
+  cam: {fileID: 7021362050751649113}
+  playerClick: {fileID: 8300000, guid: e1602d9b02a283745a86e9e136dbf2f9, type: 3}
+  wrongPlayerClick: {fileID: 8300000, guid: 341a5cf027bddc14492ccb8bbc663fd4, type: 3}
+  buttonSound: {fileID: 8300000, guid: dd4f5b1bf6e0c324abfb6fdd39326761, type: 3}
+  winSound: {fileID: 8300000, guid: 9d1978455c124274781bced03107a7d7, type: 3}

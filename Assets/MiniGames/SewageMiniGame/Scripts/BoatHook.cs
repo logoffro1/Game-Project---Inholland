@@ -23,7 +23,7 @@ public class BoatHook : MonoBehaviour
     }
     private void Update()
     {
-        if (!SewageMiniGame.Instance.isPlaying) return;
+        if (!SewageMiniGame.Instance.IsPlaying) return;
         if (Input.GetKeyDown(KeyCode.R)) { StartCoroutine(ShootHookDown()); }
     }
     private IEnumerator ShootHookDown()

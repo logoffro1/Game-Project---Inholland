@@ -19,6 +19,8 @@ public class WireSpawner : MonoBehaviour
 
     public event Action<bool> GameSuccess;
 
+    public RewireMiniGame rewireMiniGame;
+
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,8 @@ public class WireSpawner : MonoBehaviour
         List<Vector3> spawnPositions = CreateSpawnPositoin();
 
         InstansiateAllWires(spawnPositions);
+
+        GameSuccess += rewireMiniGame.GameFinish;
     }
 
     private void SetUpGame()
