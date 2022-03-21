@@ -48,7 +48,7 @@ public class SpawnButton : MiniGameBase
             {
                 float spawnY = startY - j * spriteSize.y * offset;
                 Vector3 spawnPos = new Vector3(spawnX, spawnY, transform.position.z);
-                var buttonTemp = Instantiate(buttonPrefab, spawnPos, buttonPrefab.transform.rotation);
+                var buttonTemp = Instantiate(buttonPrefab, spawnPos, buttonPrefab.transform.rotation, transform);
                 if (buttonTemp.TryGetComponent(out Button btn))
                 {
                     btn.onClick += ButtonClicked;

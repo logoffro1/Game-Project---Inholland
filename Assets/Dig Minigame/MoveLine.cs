@@ -9,6 +9,8 @@ public class MoveLine : MonoBehaviour
     double leftLimitX = -0.5f;
     double rightLimitX = 0.5f;
     bool isOnTarget = false;
+
+    public DiggingMiniGame diggingMiniGame;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +24,7 @@ public class MoveLine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isOnTarget)
         {
             gameOver = true;
+            diggingMiniGame.GameFinish(true);
         }
         if (movingRight == false)
         {

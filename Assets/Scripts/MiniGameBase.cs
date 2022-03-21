@@ -6,18 +6,21 @@ using TMPro;
 public class MiniGameBase : MonoBehaviour
 {
 
+    protected int sustainabilityPoints = 10;
+    
     public bool IsPlaying { get; set; } = true;
     public TextMeshProUGUI successText;
 
     protected void GameOver()
     {
-        Debug.Log("GAME OVER");
+        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         ChangeSuccessText(false);
         IsPlaying = false;
     }
     protected void GameWon()
     {
+        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints);
         ChangeSuccessText(true);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
