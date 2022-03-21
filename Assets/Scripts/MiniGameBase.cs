@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using TMPro;
 public class MiniGameBase : MonoBehaviour
 {
@@ -10,20 +7,26 @@ public class MiniGameBase : MonoBehaviour
     
     public bool IsPlaying { get; set; } = true;
     public TextMeshProUGUI successText;
-
-    protected void GameOver()
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    protected void GameOver() //remove the duplicate
     {
         ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         ChangeSuccessText(false);
         IsPlaying = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
-    protected void GameWon()
+    protected void GameWon() //remove the duplicate
     {
         ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints);
         ChangeSuccessText(true);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     private void ChangeSuccessText(bool successful)
     {

@@ -111,7 +111,7 @@ public class SpawnButton : MiniGameBase
     private void SetSequence()
     {
 
-        int sequenceLength = Random.Range(5, 8);
+        int sequenceLength = Random.Range(4, 6);
         for (int i = 0; i < sequenceLength; i++)
         {
             colorSequence.Add(buttons[Random.Range(0, buttons.GetLength(0)), Random.Range(0, buttons.GetLength(1))]);
