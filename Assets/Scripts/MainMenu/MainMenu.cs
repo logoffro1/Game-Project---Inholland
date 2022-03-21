@@ -10,15 +10,17 @@ public class MainMenu : MonoBehaviour
         //TODO: Get save file, load safe file
         //Load lobby scene
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.Instance.LoadScene("GameUKDay");
     }
 
     public void NewGame()
     {
         //TODO: If save file exists, ask if it can be deleted (no --> go back to main menu)
         // Yes --> create new save file, start tutorial
-        
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        LevelManager.Instance.LoadScene("GameUKDay");
     }
 
     public void QuitGame()
