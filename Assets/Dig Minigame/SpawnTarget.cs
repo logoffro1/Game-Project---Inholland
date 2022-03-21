@@ -12,9 +12,4 @@ public class SpawnTarget : MonoBehaviour
         transform.localPosition = new Vector3(rnd, -0.327f, 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
