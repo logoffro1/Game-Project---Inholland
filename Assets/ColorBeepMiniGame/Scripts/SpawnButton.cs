@@ -4,7 +4,7 @@ using UnityEngine;
 
 //spaghetti code
 //dont take examples from this
-public class SpawnButton : MonoBehaviour
+public class SpawnButton : MiniGameBase
 {
     public GameObject buttonPrefab;
     private SpriteRenderer buttonSprite;
@@ -69,6 +69,8 @@ public class SpawnButton : MonoBehaviour
             gameOver = true;
             canSelect = false;
             StartCoroutine(ButtonFlash(button, false));
+
+            this.GameOver();
             return;
         }
         selectedCount++;
@@ -77,6 +79,7 @@ public class SpawnButton : MonoBehaviour
         {
             canSelect = false;
             audioSource.PlayOneShot(winSound);
+            this.GameWon();
         }
         if (canSelect)
             audioSource.PlayOneShot(playerClick);

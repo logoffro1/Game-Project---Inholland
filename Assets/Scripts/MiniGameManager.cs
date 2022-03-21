@@ -36,7 +36,7 @@ public class MiniGameManager : MonoBehaviour
     }
     public IEnumerator StopGame(GameObject go)
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         Destroy(go);
         IsPlaying = false;
         UIManager.Instance.ChangeCanvasShown();
