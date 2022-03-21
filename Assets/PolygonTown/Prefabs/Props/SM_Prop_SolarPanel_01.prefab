@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bac294e6c50ab04db4698cc579b0c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RewireGamePrefab: {fileID: 4278559126353129008, guid: be5ab4bd4390e214ba784a0ac96c901a, type: 3}
 --- !u!65 &3307684436764918830
 BoxCollider:
   m_ObjectHideFlags: 0

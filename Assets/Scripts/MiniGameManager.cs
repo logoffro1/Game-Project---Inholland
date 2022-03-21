@@ -16,6 +16,7 @@ public class MiniGameManager : MonoBehaviour
         else
             _instance = this;
     }
+
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.E))
