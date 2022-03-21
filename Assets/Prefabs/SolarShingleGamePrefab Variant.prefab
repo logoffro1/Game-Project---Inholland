@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 535315073119332184, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Name
-      value: SolarShingleGamePrefab
+      value: SolarShingleGamePrefab Variant
       objectReference: {fileID: 0}
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +54,18 @@ PrefabInstance:
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.18431373
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
