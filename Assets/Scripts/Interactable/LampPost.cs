@@ -8,6 +8,7 @@ public class LampPost : MonoBehaviour, IInteractableObject
     public void DoAction(GameObject player)
     {
         MiniGameManager.Instance.StartGame(rewireGamePrefab);
+        GetComponent<Material>().color = Color.red;
     }
 
     public string GetHoverName() => "Upgrade";
