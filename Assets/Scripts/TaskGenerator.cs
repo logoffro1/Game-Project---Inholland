@@ -11,7 +11,12 @@ public class TaskGenerator : MonoBehaviour
     public MiniGameManager miniGameManager;
 
     private List<GameObject> gameObjectsWithTasks;
-    public Material tmpMaterial;
+
+    //Materials, will remove
+    public Material canSolveMaterial;
+    public Material fixedMaterial;
+    public Material failedMaterial;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +35,7 @@ public class TaskGenerator : MonoBehaviour
         allInteractableObjects.Add("StreetLamp", GameObject.FindGameObjectsWithTag("StreetLamp"));
         allInteractableObjects.Add("ManHole", GameObject.FindGameObjectsWithTag("ManHole"));
         allInteractableObjects.Add("Tree", GameObject.FindGameObjectsWithTag("Tree"));
+        allInteractableObjects.Add("SolarPanel", GameObject.FindGameObjectsWithTag("SolarPanel"));
     }
 
     private void SetUpEvents()
@@ -52,18 +58,22 @@ public class TaskGenerator : MonoBehaviour
             {
                 case "StreetLamp":
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count -1)];
+                    gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
                 case "ManHole":
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count -1)];
+                    gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
                 case "Tree":
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Dig")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count - 1)];
+                    gamePrefab = perfabs[random.Next(perfabs.Count)];
+                    break;
+                case "SolarPanel":
+                    perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
+                    gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
                 default:
-                    gamePrefab = GamePrefabs[random.Next(GamePrefabs.Length -1)];
+                    gamePrefab = GamePrefabs[random.Next(GamePrefabs.Length)];
                     break;
 
             }
@@ -79,7 +89,7 @@ public class TaskGenerator : MonoBehaviour
         component.GamePrefab = gamePrefab;
 
         //Changes the color
-        interactableObject.GetComponent<MeshRenderer>().material = tmpMaterial;
+        interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
     }
 
     private void ChooseAllTasksAtStart()
@@ -89,7 +99,28 @@ public class TaskGenerator : MonoBehaviour
         {
             List<GameObject> allObjects = pair.Value.ToList();
             List<GameObject> allObjectsAdded = new List<GameObject>();
-            for (int i = 0; i < 10; i++)
+
+            int amount = 0;
+            switch(pair.Key)
+            {
+                case "StreetLamp":
+                    amount = 20;
+                    break;
+                case "ManHole":
+                    amount = 10;
+                    break;
+                case "Tree":
+                    amount = 40;
+                    break;
+                case "SolarPanel":
+                    amount = 2;
+                    break;
+                default:
+                    amount = 10;
+                    break;
+            }
+
+            for (int i = 0; i < amount; i++)
             {
                 int index = UnityEngine.Random.Range(0, allObjects.Count - 1);
                 GameObject specificGameObject = allObjects[index];
@@ -104,15 +135,20 @@ public class TaskGenerator : MonoBehaviour
 
     public void MiniGameManager_OnGameOver(InteractableObject interactableObject)
     {
-        //TODO
-        //interactableObject.gameObject.GetComponent<MeshRenderer>().material = tmpMaterial;
-        //Destroy(interactableObject);
+        //TODO: Arbitrary number
+        if (interactableObject.AmountTries >= 3)
+        {
+            interactableObject.gameObject.GetComponent<MeshRenderer>().material = failedMaterial;
+            Destroy(interactableObject);
+        }
+
+        interactableObject.AmountTries++;
     }
 
     public void MiniGameManager_OnGameWon(InteractableObject interactableObject)
     {
         //TODO: Change to better stuff
-        interactableObject.gameObject.GetComponent<MeshRenderer>().material = null;
+        interactableObject.gameObject.GetComponent<MeshRenderer>().material = fixedMaterial;
         Destroy(interactableObject);
     }
 

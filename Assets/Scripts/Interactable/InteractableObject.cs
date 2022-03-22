@@ -7,8 +7,7 @@ public class InteractableObject : MonoBehaviour, IInteractableObject
     public GameObject GamePrefab;
     private string hoverName;
 
-    //private bool isSuccessful = false;
-    //private int amountTries = 0;
+    public int AmountTries = 0;
 
     private void Start()
     {
@@ -37,6 +36,9 @@ public class InteractableObject : MonoBehaviour, IInteractableObject
                 break;
             case "ManHole":
                 hoverName = "Clean";
+                break;
+            case "SolarPanel":
+                hoverName = "Fix";
                 break;
             default:
                 hoverName = "Interact";

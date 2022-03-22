@@ -13,6 +13,7 @@ TagManager:
   - StreetLamp
   - ManHole
   - Tree
+  - SolarPanel
   layers:
   - Default
   - TransparentFX
