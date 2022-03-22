@@ -104,13 +104,13 @@ public class TaskGenerator : MonoBehaviour
             switch(pair.Key)
             {
                 case "StreetLamp":
-                    amount = 20;
+                    amount = 15;
                     break;
                 case "ManHole":
-                    amount = 10;
+                    amount = 8;
                     break;
                 case "Tree":
-                    amount = 40;
+                    amount = 20;
                     break;
                 case "SolarPanel":
                     amount = 2;
@@ -136,7 +136,7 @@ public class TaskGenerator : MonoBehaviour
     public void MiniGameManager_OnGameOver(InteractableObject interactableObject)
     {
         //TODO: Arbitrary number
-        if (interactableObject.AmountTries >= 3)
+        if (interactableObject.AmountTries >= 2)
         {
             interactableObject.gameObject.GetComponent<MeshRenderer>().material = failedMaterial;
             Destroy(interactableObject);
