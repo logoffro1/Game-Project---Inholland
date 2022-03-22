@@ -1083,7 +1083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1144,6 +1144,10 @@ PrefabInstance:
     - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071501301925522771, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
