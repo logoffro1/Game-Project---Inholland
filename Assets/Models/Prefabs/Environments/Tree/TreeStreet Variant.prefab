@@ -53,7 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1887699589583741219, guid: db3b290ae7c549841b09e1e62fb4cc55, type: 3}
       propertyPath: m_Name
-      value: TreeStreet
+      value: TreeStreet Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295781427874479842, guid: db3b290ae7c549841b09e1e62fb4cc55, type: 3}
+      propertyPath: m_TagString
+      value: Tree
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3b290ae7c549841b09e1e62fb4cc55, type: 3}

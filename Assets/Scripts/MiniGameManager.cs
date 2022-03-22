@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,11 @@ public class MiniGameManager : MonoBehaviour
 
     //Todo: remove after implementation
     public GameObject tetrisGamePrefab;
+
+    //TODO: might remove
+    public InteractableObject InteractableObject;
+    public event Action<InteractableObject> OnGameWon;
+    public event Action<InteractableObject> OnGameOver;
 
 
     public bool IsPlaying { get; private set; }
@@ -38,6 +44,7 @@ public class MiniGameManager : MonoBehaviour
         }
 
     }
+
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
@@ -46,11 +53,22 @@ public class MiniGameManager : MonoBehaviour
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
         IsPlaying = true;     
     }
+
     public IEnumerator StopGame(GameObject go)
     {
         yield return new WaitForSeconds(2f);
         Destroy(go);
         IsPlaying = false;
         UIManager.Instance.ChangeCanvasShown();
+    }
+
+    public void GameOver()
+    {
+        OnGameOver?.Invoke(InteractableObject);
+    }
+
+    public void GameWon()
+    {
+        OnGameWon?.Invoke(InteractableObject);
     }
 }

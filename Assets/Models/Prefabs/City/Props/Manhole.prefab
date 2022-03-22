@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3340796568283682207}
   m_Layer: 0
   m_Name: Manhole
-  m_TagString: Untagged
+  m_TagString: ManHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
