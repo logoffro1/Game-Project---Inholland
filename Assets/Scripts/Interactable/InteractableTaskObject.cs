@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableObject : MonoBehaviour, IInteractableObject
+public class InteractableTaskObject : MonoBehaviour
 {
     public GameObject GamePrefab;
     private string hoverName;
@@ -28,16 +28,16 @@ public class InteractableObject : MonoBehaviour, IInteractableObject
 
         switch(tag)
         {
-            case "StreetLamp":
+            case nameof(TaskObjectType.StreetLamp):
                 hoverName = "Upgrade";
                 break;
-            case "Tree":
+            case nameof(TaskObjectType.Tree):
                 hoverName = "Plant";
                 break;
-            case "ManHole":
+            case nameof(TaskObjectType.ManHole):
                 hoverName = "Clean";
                 break;
-            case "SolarPanel":
+            case nameof(TaskObjectType.SolarPanel):
                 hoverName = "Fix";
                 break;
             default:

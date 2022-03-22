@@ -32,10 +32,10 @@ public class TaskGenerator : MonoBehaviour
         gameObjectsWithTasks = new List<GameObject>();
         allInteractableObjects = new Dictionary<string, GameObject[]>();
 
-        allInteractableObjects.Add("StreetLamp", GameObject.FindGameObjectsWithTag("StreetLamp"));
-        allInteractableObjects.Add("ManHole", GameObject.FindGameObjectsWithTag("ManHole"));
-        allInteractableObjects.Add("Tree", GameObject.FindGameObjectsWithTag("Tree"));
-        allInteractableObjects.Add("SolarPanel", GameObject.FindGameObjectsWithTag("SolarPanel"));
+        allInteractableObjects.Add(nameof(TaskObjectType.StreetLamp), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.StreetLamp)));
+        allInteractableObjects.Add(nameof(TaskObjectType.ManHole), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.ManHole)));
+        allInteractableObjects.Add(nameof(TaskObjectType.Tree), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.Tree)));
+        allInteractableObjects.Add(nameof(TaskObjectType.SolarPanel), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.SolarPanel)));
     }
 
     private void SetUpEvents()
@@ -56,19 +56,19 @@ public class TaskGenerator : MonoBehaviour
             //Decided which game to display for each object
             switch (objectType)
             {
-                case "StreetLamp":
+                case nameof(TaskObjectType.StreetLamp):
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
                     gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
-                case "ManHole":
+                case nameof(TaskObjectType.ManHole):
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList();
                     gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
-                case "Tree":
+                case nameof(TaskObjectType.Tree):
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Dig")).ToList();
                     gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
-                case "SolarPanel":
+                case nameof(TaskObjectType.SolarPanel):
                     perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
                     gamePrefab = perfabs[random.Next(perfabs.Count)];
                     break;
@@ -85,7 +85,7 @@ public class TaskGenerator : MonoBehaviour
     private void AddTaskToObject(GameObject interactableObject, GameObject gamePrefab)
     {
         //Adds the script component
-        InteractableObject component = interactableObject.AddComponent<InteractableObject>(); 
+        InteractableTaskObject component = interactableObject.AddComponent<InteractableTaskObject>(); 
         component.GamePrefab = gamePrefab;
 
         //Changes the color
@@ -103,16 +103,16 @@ public class TaskGenerator : MonoBehaviour
             int amount = 0;
             switch(pair.Key)
             {
-                case "StreetLamp":
+                case nameof(TaskObjectType.StreetLamp):
                     amount = 15;
                     break;
-                case "ManHole":
+                case nameof(TaskObjectType.ManHole):
                     amount = 8;
                     break;
-                case "Tree":
+                case nameof(TaskObjectType.Tree):
                     amount = 20;
                     break;
-                case "SolarPanel":
+                case nameof(TaskObjectType.SolarPanel):
                     amount = 2;
                     break;
                 default:
@@ -133,7 +133,7 @@ public class TaskGenerator : MonoBehaviour
         }
     }
 
-    public void MiniGameManager_OnGameOver(InteractableObject interactableObject)
+    public void MiniGameManager_OnGameOver(InteractableTaskObject interactableObject)
     {
         //TODO: Arbitrary number
         if (interactableObject.AmountTries >= 2)
@@ -145,7 +145,7 @@ public class TaskGenerator : MonoBehaviour
         interactableObject.AmountTries++;
     }
 
-    public void MiniGameManager_OnGameWon(InteractableObject interactableObject)
+    public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)
     {
         //TODO: Change to better stuff
         interactableObject.gameObject.GetComponent<MeshRenderer>().material = fixedMaterial;

@@ -12,9 +12,9 @@ public class MiniGameManager : MonoBehaviour
     public GameObject tetrisGamePrefab;
 
     //TODO: might remove
-    public InteractableObject InteractableObject;
-    public event Action<InteractableObject> OnGameWon;
-    public event Action<InteractableObject> OnGameOver;
+    public InteractableTaskObject InteractableObject;
+    public event Action<InteractableTaskObject> OnGameWon;
+    public event Action<InteractableTaskObject> OnGameOver;
 
 
     public bool IsPlaying { get; private set; }

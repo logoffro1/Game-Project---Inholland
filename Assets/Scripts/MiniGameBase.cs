@@ -15,8 +15,8 @@ public class MiniGameBase : MonoBehaviour
         Cursor.visible = true;
     }
 
-    public event Action<InteractableObject> OnGameWon;
-    public event Action<InteractableObject> OnGameOver;
+    public event Action<InteractableTaskObject> OnGameWon;
+    public event Action<InteractableTaskObject> OnGameOver;
 
     protected void GameOver() //remove the duplicate
     {
