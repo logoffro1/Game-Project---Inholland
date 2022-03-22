@@ -6,6 +6,11 @@ public class MiniGameManager : MonoBehaviour
 {
     private static MiniGameManager _instance = null;
     public static MiniGameManager Instance { get { return _instance; } }
+
+    //Todo: remove after implementation
+    public GameObject tetrisGamePrefab;
+
+
     public bool IsPlaying { get; private set; }
     private GameObject miniGame;
     public GameObject miniGameScreen;
@@ -24,6 +29,13 @@ public class MiniGameManager : MonoBehaviour
         //    StartGame();
         //}
 
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            UIManager.Instance.ChangeCanvasShown();
+            miniGame = Instantiate(tetrisGamePrefab, new Vector3(0, 0, 100), tetrisGamePrefab.transform.rotation);
+            IsPlaying = true;
+        }
 
     }
     public void StartGame(GameObject miniGamePrefab)
