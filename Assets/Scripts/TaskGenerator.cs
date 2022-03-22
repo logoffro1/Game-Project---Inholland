@@ -6,7 +6,10 @@ using UnityEngine;
 
 public class TaskGenerator : MonoBehaviour
 {
-    private Dictionary<string, GameObject[]> allInteractableObjects;
+    private Dictionary<TaskObjectType, GameObject[]> allInteractableObjects;
+    private Dictionary<TaskObjectType, List<GameObject>> allGamesToObjects;
+    private Dictionary<TaskObjectType, int> allGamesToAmountSpawn;
+
     public GameObject[] GamePrefabs;
     public MiniGameManager miniGameManager;
 
@@ -21,6 +24,8 @@ public class TaskGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameObjectsWithTasks = new List<GameObject>();
+
         SetUpAllData();
         SetUpEvents();
 
@@ -29,13 +34,49 @@ public class TaskGenerator : MonoBehaviour
 
     private void SetUpAllData()
     {
-        gameObjectsWithTasks = new List<GameObject>();
-        allInteractableObjects = new Dictionary<string, GameObject[]>();
+        SetUpAllInteractableObjects();
+        SetUpAllGamesToObjects();
+        SetUpAllGamesToAmountSpawn();
+    }
 
-        allInteractableObjects.Add(nameof(TaskObjectType.StreetLamp), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.StreetLamp)));
-        allInteractableObjects.Add(nameof(TaskObjectType.ManHole), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.ManHole)));
-        allInteractableObjects.Add(nameof(TaskObjectType.Tree), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.Tree)));
-        allInteractableObjects.Add(nameof(TaskObjectType.SolarPanel), GameObject.FindGameObjectsWithTag(nameof(TaskObjectType.SolarPanel)));
+    private void SetUpAllInteractableObjects()
+    {
+        allInteractableObjects = new Dictionary<TaskObjectType, GameObject[]>();
+
+        foreach(TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
+        {
+            allInteractableObjects.Add(objectType, GameObject.FindGameObjectsWithTag(Enum.GetName(typeof(TaskObjectType), objectType)));
+        }
+    }
+
+    private void SetUpAllGamesToObjects()
+    {
+        allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
+
+        //Manually set which object is linked to which game
+        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
+        allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
+        allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+    }
+
+    private void SetUpAllGamesToAmountSpawn()
+    {
+        allGamesToAmountSpawn = new Dictionary<TaskObjectType, int>();
+
+        //Relative to amount there is
+        foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
+        {
+            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Length/3);
+        }
+
+        //Manual
+        /*
+        allGamesToAmountSpawn.Add(TaskObjectType.StreetLamp, 15);
+        allGamesToAmountSpawn.Add(TaskObjectType.ManHole, 8);
+        allGamesToAmountSpawn.Add(TaskObjectType.Tree, 20);
+        allGamesToAmountSpawn.Add(TaskObjectType.SolarPanel, 2);
+        */
     }
 
     private void SetUpEvents()
@@ -44,40 +85,13 @@ public class TaskGenerator : MonoBehaviour
         miniGameManager.OnGameWon += MiniGameManager_OnGameWon;
     }
 
-    private void AddTasksToObject(List<GameObject> allObjects, string objectType)
+    private void AddTasksToObject(List<GameObject> allObjects, TaskObjectType objectType)
     {
         System.Random random = new System.Random();
 
         foreach(GameObject gameObject in allObjects)
         {
-            List<GameObject> perfabs;
-            GameObject gamePrefab;
-
-            //Decided which game to display for each object
-            switch (objectType)
-            {
-                case nameof(TaskObjectType.StreetLamp):
-                    perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count)];
-                    break;
-                case nameof(TaskObjectType.ManHole):
-                    perfabs = GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count)];
-                    break;
-                case nameof(TaskObjectType.Tree):
-                    perfabs = GamePrefabs.Where(x => x.name.Contains("Dig")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count)];
-                    break;
-                case nameof(TaskObjectType.SolarPanel):
-                    perfabs = GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList();
-                    gamePrefab = perfabs[random.Next(perfabs.Count)];
-                    break;
-                default:
-                    gamePrefab = GamePrefabs[random.Next(GamePrefabs.Length)];
-                    break;
-
-            }
-
+            GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
             AddTaskToObject(gameObject, gamePrefab);
         }
     }
@@ -95,30 +109,12 @@ public class TaskGenerator : MonoBehaviour
     private void ChooseAllTasksAtStart()
     {
         //Chooses at random which object to give a task
-        foreach(KeyValuePair<string, GameObject[]> pair in allInteractableObjects)
+        foreach(KeyValuePair<TaskObjectType, GameObject[]> pair in allInteractableObjects)
         {
             List<GameObject> allObjects = pair.Value.ToList();
             List<GameObject> allObjectsAdded = new List<GameObject>();
 
-            int amount = 0;
-            switch(pair.Key)
-            {
-                case nameof(TaskObjectType.StreetLamp):
-                    amount = 15;
-                    break;
-                case nameof(TaskObjectType.ManHole):
-                    amount = 8;
-                    break;
-                case nameof(TaskObjectType.Tree):
-                    amount = 20;
-                    break;
-                case nameof(TaskObjectType.SolarPanel):
-                    amount = 2;
-                    break;
-                default:
-                    amount = 10;
-                    break;
-            }
+            int amount = allGamesToAmountSpawn[pair.Key];
 
             for (int i = 0; i < amount; i++)
             {
