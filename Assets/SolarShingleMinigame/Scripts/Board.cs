@@ -9,6 +9,7 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(10,16);
+    public int amountOfLinesNeeded { get; private set; }
 
     public RectInt Bounds
     {
@@ -23,6 +24,7 @@ public class Board : MonoBehaviour
     {
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
+        this.amountOfLinesNeeded = 4; //Basic difficulty.
         for(int i =0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -32,14 +34,27 @@ public class Board : MonoBehaviour
     }
     public void SpawnPiece()
     {
-        print(-this.boardSize.y / 2);
+        
 
         int random = Random.Range(0, tetrominoes.Length);
         TetrominoData data = this.tetrominoes[random];
         this.activePiece.Init(this, spawnPosition, data);
-        SetPiece(this.activePiece);
-        print("spawned");
 
+        if (IsValidPosition(this.activePiece, this.spawnPosition))
+        {
+            SetPiece(this.activePiece);
+
+        }
+        else
+        {
+            GameOver();
+        }
+
+
+    }
+    private void GameOver()
+    {
+        this.tilemap.ClearAllTiles();
     }
 
     public void SetPiece(Piece piece)
@@ -47,7 +62,7 @@ public class Board : MonoBehaviour
         for (int i = 0; i < piece.cells.Length; i++)
         {
             Vector3Int tilePosition = piece.cells[i] + piece.position;
-            this.tilemap.SetTile(tilePosition, piece.tetrisData.tile);
+            this.tilemap.SetTile(tilePosition, piece.data.tile);
         }
     }
     public void ClearTile(Piece piece)
@@ -71,6 +86,61 @@ public class Board : MonoBehaviour
             }
 
             if (this.tilemap.HasTile(tilePosition))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void ClearLines()
+    {
+        RectInt bounds = this.Bounds;
+        int row = bounds.yMin;
+       while(row < bounds.yMax)
+        {
+            if(isLineFull(row))
+            {
+                LineClear(row);
+                this.amountOfLinesNeeded--;
+            }
+            else
+            {
+                row++;
+            }
+        }
+    }
+    private void LineClear(int row)
+    {
+        RectInt bounds = this.Bounds;
+        for (int col = bounds.xMin; col < bounds.xMax; col++)
+        {
+            Vector3Int position = new Vector3Int(col, row, 0);
+            this.tilemap.SetTile(position, null);
+        }
+
+        while(row < bounds.yMax)
+        {
+            for (int col = bounds.xMin; col < bounds.xMax; col++)
+            {
+                //Row is +1 because we have to grab the tile above the cleared lines.
+                Vector3Int position = new Vector3Int(col, row+1, 0);
+                TileBase aboveTile = this.tilemap.GetTile(position);
+                position = new Vector3Int(col, row, 0);
+                this.tilemap.SetTile(position, aboveTile);
+            }
+            row++;
+        }
+    }
+
+    private bool isLineFull(int row)
+    {
+        RectInt bounds = this.Bounds;
+
+        for (int col = bounds.xMin; col < bounds.xMax; col++)
+        {
+            Vector3Int position = new Vector3Int(col, row, 0);
+            if (!this.tilemap.HasTile(position))
             {
                 return false;
             }
