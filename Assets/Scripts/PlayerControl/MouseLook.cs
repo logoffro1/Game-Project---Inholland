@@ -11,13 +11,17 @@ public class MouseLook : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(Cursor.lockState);
         Cursor.lockState = CursorLockMode.Locked;
+        Debug.Log(Cursor.lockState);
     }
 
     void Update()
     {
         if (MiniGameManager.Instance.IsPlaying) return;
         LookAround();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            LevelManager.Instance.LoadScene("MainMenu");
     }
     private void LookAround()
     {

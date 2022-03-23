@@ -21,16 +21,14 @@ public class MiniGameManager : MonoBehaviour
         else
             _instance = this;
     }
+
     private void Update()
     {
         //if (Input.GetKeyDown(KeyCode.E))
         //{
         //    StartGame();
         //}
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartCoroutine(StopGame());
-        }
+
 
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -45,13 +43,13 @@ public class MiniGameManager : MonoBehaviour
         if (IsPlaying) return;
 
         UIManager.Instance.ChangeCanvasShown();
-        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 100), miniGamePrefab.transform.rotation);
+        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
         IsPlaying = true;     
     }
-    public IEnumerator StopGame()
+    public IEnumerator StopGame(GameObject go)
     {
-        yield return new WaitForSeconds(.5f);
-        Destroy(miniGame);
+        yield return new WaitForSeconds(2f);
+        Destroy(go);
         IsPlaying = false;
         UIManager.Instance.ChangeCanvasShown();
     }
