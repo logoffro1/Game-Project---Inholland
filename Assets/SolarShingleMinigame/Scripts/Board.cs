@@ -26,7 +26,7 @@ public class Board : MonoBehaviour
     {
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.amountOfLinesNeeded = 1; //Basic difficulty.
+        this.amountOfLinesNeeded = 3; //Basic difficulty.
         for(int i =0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -110,7 +110,6 @@ public class Board : MonoBehaviour
                 if(amountOfLinesNeeded <= 0)
                 {
                     shinglesGame.GameFinish(true);
-
                 }
             }
             else
