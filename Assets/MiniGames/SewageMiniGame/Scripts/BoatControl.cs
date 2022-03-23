@@ -14,7 +14,7 @@ public class BoatControl : MonoBehaviour
     void Update()
     {
         if (!SewageMiniGame.Instance.IsPlaying) return;
-        Drive();
+            Drive();
     }
     private void Drive()
     {
