@@ -123,10 +123,10 @@ public class TaskGenerator : MonoBehaviour
             List<GameObject> allObjectsAdded = new List<GameObject>();
 
             int amount = allGamesToAmountSpawn[pair.Key];
+            int index = UnityEngine.Random.Range(0, allObjects.Count - 1);
 
             for (int i = 0; i < amount; i++)
             {
-                int index = UnityEngine.Random.Range(0, allObjects.Count - 1);
                 GameObject specificGameObject = allObjects[index];
                 gameObjectsWithTasks.Add(specificGameObject);
                 allObjects.RemoveAt(index);
