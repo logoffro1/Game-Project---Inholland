@@ -127,20 +127,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tetrominoes:
   - tetromino: 0
-    tile: {fileID: 11400000, guid: dab8de7f9c403e84a82a524479b219d8, type: 2}
+    tile: {fileID: 11400000, guid: 7e7e001d6c994d84a88dbec05b1b9339, type: 2}
   - tetromino: 1
-    tile: {fileID: 11400000, guid: 92f54f4c21bafe14c9f5108f5ed2a763, type: 2}
+    tile: {fileID: 11400000, guid: 3496b6dc036da0448b1ae104d59cace3, type: 2}
   - tetromino: 2
-    tile: {fileID: 11400000, guid: dbe10164f638d1d40a319bdf4d56b84e, type: 2}
+    tile: {fileID: 11400000, guid: 93e21c1d4cb5b1e499f114bd51484582, type: 2}
   - tetromino: 3
-    tile: {fileID: 11400000, guid: 8e96724183ce0884e96e401ec8179d17, type: 2}
+    tile: {fileID: 11400000, guid: 0d50d71017ea1ed4bb1066bc1ceb9224, type: 2}
   - tetromino: 4
-    tile: {fileID: 11400000, guid: e58a3219b814ebe4691839879cb1e3a5, type: 2}
+    tile: {fileID: 11400000, guid: 56014edade528f440bd76f5b47bc7f71, type: 2}
   - tetromino: 5
-    tile: {fileID: 11400000, guid: aa010fc133a662d44b1f14cd87bb550f, type: 2}
+    tile: {fileID: 11400000, guid: 0319d403e9edf7a42bcfa14de395efee, type: 2}
   - tetromino: 6
-    tile: {fileID: 11400000, guid: b2f7a2048a27cb44f9151e3d5bf1db04, type: 2}
-  spawnPosition: {x: 0, y: 0, z: 0}
+    tile: {fileID: 11400000, guid: d6f81cd375fe3e848a3b489779d697d4, type: 2}
+  spawnPosition: {x: 0, y: 6, z: 0}
   boardSize: {x: 10, y: 16}
 --- !u!114 &6418118427801077488
 MonoBehaviour:
@@ -154,6 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76cce106d2986b24e936913103e8b15e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stepDelay: 1
+  lockDelay: 0.5
 --- !u!1 &6418118427850101290
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +556,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6418118429122144914}
   - component: {fileID: 6418118429122144925}
+  - component: {fileID: 436432364}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -588,6 +591,21 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &436432364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6418118429122144915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5922327b6747a47b4118d961992be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tile: {fileID: 11400000, guid: cb83decdf9be7e848a0fd0e042ffa22d, type: 2}
+  mainBoard: {fileID: 6418118427801077491}
+  trackingPiece: {fileID: 6418118427801077488}
 --- !u!1 &6418118429229246592
 GameObject:
   m_ObjectHideFlags: 0
