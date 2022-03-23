@@ -65,6 +65,7 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        allGamesToObjects.Add(TaskObjectType.RubbishBin, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
     }
 
     private void SetUpAllGamesToAmountSpawn()
@@ -123,10 +124,11 @@ public class TaskGenerator : MonoBehaviour
             List<GameObject> allObjectsAdded = new List<GameObject>();
 
             int amount = allGamesToAmountSpawn[pair.Key];
-            int index = UnityEngine.Random.Range(0, allObjects.Count - 1);
+            
 
             for (int i = 0; i < amount; i++)
             {
+                int index = UnityEngine.Random.Range(0, allObjects.Count);
                 GameObject specificGameObject = allObjects[index];
                 gameObjectsWithTasks.Add(specificGameObject);
                 allObjects.RemoveAt(index);

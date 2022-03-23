@@ -51,6 +51,9 @@ public class InteractableTaskObject : MonoBehaviour
             case nameof(TaskObjectType.SolarPanel):
                 hoverName = "Fix";
                 break;
+            case nameof(TaskObjectType.RubbishBin):
+                hoverName = "Build shingles";
+                break;
             default:
                 hoverName = "Interact";
                 break;

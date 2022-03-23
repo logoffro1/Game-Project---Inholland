@@ -9,6 +9,8 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(7,8);
+
+    public ShinglesMiniGame shinglesGame;
     public int amountOfLinesNeeded { get; private set; }
 
     public RectInt Bounds
@@ -24,7 +26,7 @@ public class Board : MonoBehaviour
     {
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.amountOfLinesNeeded = 4; //Basic difficulty.
+        this.amountOfLinesNeeded = 1; //Basic difficulty.
         for(int i =0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -44,13 +46,12 @@ public class Board : MonoBehaviour
         {
             SetPiece(this.activePiece);
 
-        }else if (this.amountOfLinesNeeded == 0)
+        }else if (this.amountOfLinesNeeded == 0) //win
         {
-            //win
         }
         else
         {
-            GameOver();
+            shinglesGame.GameFinish(false);
         }
 
 
@@ -106,6 +107,11 @@ public class Board : MonoBehaviour
             {
                 LineClear(row);
                 this.amountOfLinesNeeded--;
+                if(amountOfLinesNeeded <= 0)
+                {
+                    shinglesGame.GameFinish(true);
+
+                }
             }
             else
             {
