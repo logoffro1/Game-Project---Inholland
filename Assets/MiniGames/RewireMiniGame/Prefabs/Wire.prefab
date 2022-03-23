@@ -128,7 +128,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.01708448, y: -0.0005968362}
+  m_Offset: {x: -0.024604827, y: 0.018355101}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +139,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.54424644, y: 0.4289305}
+  m_Size: {x: 0.9961547, y: 0.8278194}
   m_EdgeRadius: 0
 --- !u!50 &2712219613457605382
 Rigidbody2D:
@@ -276,7 +276,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0132629275, y: 0.0042690635}
+  m_Offset: {x: -0.017014384, y: -0.010828972}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -287,7 +287,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2654327, y: 1.2193967}
+  m_Size: {x: 1.6496191, y: 1.5203311}
   m_EdgeRadius: 0
 --- !u!1 &3121501723887511378
 GameObject:
@@ -784,12 +784,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.17825913, b: 1, a: 1}
-  veryDarkMultiplier: 6
-  veryDarkPreset: {r: 0.15, g: 0.15, b: 0.15, a: 1}
-  darkMultiplier: 3
-  darkPreset: {r: 0.15, g: 0.15, b: 0.15, a: 1}
-  mediumPreset: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  lightPreset: {r: 0.3, g: 0.3, b: 0.3, a: 1}
 --- !u!114 &4186826964986139245
 MonoBehaviour:
   m_ObjectHideFlags: 0
