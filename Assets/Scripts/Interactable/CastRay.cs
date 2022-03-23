@@ -28,12 +28,14 @@ public class CastRay : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward) * maxObjectDistance, out hit, maxObjectDistance))
         {
             GameObject obj = hit.transform.gameObject; 
-            objectHit = obj.GetComponent<IInteractableObject>() == null ? null : hit.transform.gameObject;
-            if (objectHit != null)
+            objectHit = obj.GetComponent<InteractableTaskObject>() == null ? null : hit.transform.gameObject;
+            InteractableTaskObject interactableTaskObject = objectHit?.GetComponent<InteractableTaskObject>();
+
+            if (objectHit != null && interactableTaskObject != null && interactableTaskObject.IsInteractable)
             {
-                UIManager.Instance.SetHoverText(objectHit.GetComponent<IInteractableObject>().GetHoverName());
+                UIManager.Instance.SetHoverText(interactableTaskObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
-                    objectHit.GetComponent<IInteractableObject>().DoAction(gameObject);
+                    interactableTaskObject.DoAction(gameObject);
 
                 return;
             }         
