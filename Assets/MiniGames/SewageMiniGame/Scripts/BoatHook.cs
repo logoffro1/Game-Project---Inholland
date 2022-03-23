@@ -24,7 +24,7 @@ public class BoatHook : MonoBehaviour
     private void Update()
     {
         if (!SewageMiniGame.Instance.IsPlaying) return;
-        if (Input.GetKeyDown(KeyCode.R)) { StartCoroutine(ShootHookDown()); }
+        if (Input.GetKeyDown(KeyCode.Space)) { StartCoroutine(ShootHookDown()); }
     }
     private IEnumerator ShootHookDown()
     {

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 public class SewageUIManager : MonoBehaviour
 {
     public Image[] lifes;
@@ -14,8 +15,19 @@ public class SewageUIManager : MonoBehaviour
             if (i < lives)
                 lifes[i].enabled = true;
             else
-                lifes[i].enabled = false;
+                StartCoroutine(ChangeLives(lifes[i]));
         }
+    }
+    private IEnumerator ChangeLives(Image life)
+    {
+
+        Animator animator = life.GetComponent<Animator>();
+        animator.SetTrigger("CollectiblePassed");
+
+        yield return new WaitForSeconds(1.5f);
+        life.enabled = false;
+
+
     }
     public void ChangeScoreText(int score, int maxScore)
     {
@@ -24,13 +36,13 @@ public class SewageUIManager : MonoBehaviour
     public void ChangeSuccessText(bool successful)
     {
         successText.enabled = true;
-       if(successful)
+        if (successful)
         {
             successText.color = Color.green;
             successText.text = "SUCCESS";
             return;
         }
-       successText.color = Color.red;
+        successText.color = Color.red;
         successText.text = "FAILURE";
     }
 }
