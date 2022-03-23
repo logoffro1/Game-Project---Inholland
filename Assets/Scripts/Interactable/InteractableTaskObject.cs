@@ -7,7 +7,11 @@ public class InteractableTaskObject : MonoBehaviour
     public GameObject GamePrefab;
     private string hoverName;
 
+    [HideInInspector]
     public int AmountTries = 0;
+
+    [HideInInspector]
+    public bool IsInteractable = true;
 
     private void Start()
     {
@@ -16,8 +20,15 @@ public class InteractableTaskObject : MonoBehaviour
 
     public void DoAction(GameObject player)
     {
-        MiniGameManager.Instance.StartGame(GamePrefab);
-        MiniGameManager.Instance.InteractableObject = this;
+        if (IsInteractable)
+        {
+            MiniGameManager.Instance.StartGame(GamePrefab);
+            MiniGameManager.Instance.InteractableObject = this;
+        }
+        else
+        {
+            hoverName = string.Empty;
+        }
     }
 
     public string GetHoverName() => hoverName;
@@ -45,5 +56,4 @@ public class InteractableTaskObject : MonoBehaviour
                 break;
         }
     }
-
 }

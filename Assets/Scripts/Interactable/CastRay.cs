@@ -29,11 +29,13 @@ public class CastRay : MonoBehaviour
         {
             GameObject obj = hit.transform.gameObject; 
             objectHit = obj.GetComponent<InteractableTaskObject>() == null ? null : hit.transform.gameObject;
-            if (objectHit != null)
+            InteractableTaskObject interactableTaskObject = objectHit?.GetComponent<InteractableTaskObject>();
+
+            if (objectHit != null && interactableTaskObject != null && interactableTaskObject.IsInteractable)
             {
-                UIManager.Instance.SetHoverText(objectHit.GetComponent<InteractableTaskObject>().GetHoverName());
+                UIManager.Instance.SetHoverText(interactableTaskObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
-                    objectHit.GetComponent<InteractableTaskObject>().DoAction(gameObject);
+                    interactableTaskObject.DoAction(gameObject);
 
                 return;
             }         

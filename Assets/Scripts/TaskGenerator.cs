@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TaskGenerator : MonoBehaviour
 {
-    private Dictionary<TaskObjectType, GameObject[]> allInteractableObjects;
+    private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects;
     private Dictionary<TaskObjectType, List<GameObject>> allGamesToObjects;
     private Dictionary<TaskObjectType, int> allGamesToAmountSpawn;
 
@@ -41,11 +41,18 @@ public class TaskGenerator : MonoBehaviour
 
     private void SetUpAllInteractableObjects()
     {
-        allInteractableObjects = new Dictionary<TaskObjectType, GameObject[]>();
+        allInteractableObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
-        foreach(TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
+        //foreach object that has InteractableTaskObject script in it
+        foreach (InteractableTaskObject interactable in FindObjectsOfType<InteractableTaskObject>())
         {
-            allInteractableObjects.Add(objectType, GameObject.FindGameObjectsWithTag(Enum.GetName(typeof(TaskObjectType), objectType)));
+            //Using tags
+            TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactable.gameObject.tag);
+            if (allInteractableObjects.ContainsKey(task))
+            {
+                allInteractableObjects[task].Add(interactable.gameObject);
+            }
+            else allInteractableObjects.Add(task, new List<GameObject>());
         }
     }
 
@@ -67,7 +74,7 @@ public class TaskGenerator : MonoBehaviour
         //Relative to amount there is
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
-            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Length/3);
+            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
         }
 
         //Manual
@@ -98,9 +105,10 @@ public class TaskGenerator : MonoBehaviour
 
     private void AddTaskToObject(GameObject interactableObject, GameObject gamePrefab)
     {
-        //Adds the script component
-        InteractableTaskObject component = interactableObject.AddComponent<InteractableTaskObject>(); 
+        //Enables the script component
+        InteractableTaskObject component = interactableObject.GetComponent<InteractableTaskObject>();
         component.GamePrefab = gamePrefab;
+        component.enabled = true;
 
         //Changes the color
         interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
@@ -109,9 +117,9 @@ public class TaskGenerator : MonoBehaviour
     private void ChooseAllTasksAtStart()
     {
         //Chooses at random which object to give a task
-        foreach(KeyValuePair<TaskObjectType, GameObject[]> pair in allInteractableObjects)
+        foreach(KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
         {
-            List<GameObject> allObjects = pair.Value.ToList();
+            List<GameObject> allObjects = new List<GameObject>(pair.Value);
             List<GameObject> allObjectsAdded = new List<GameObject>();
 
             int amount = allGamesToAmountSpawn[pair.Key];
@@ -129,13 +137,14 @@ public class TaskGenerator : MonoBehaviour
         }
     }
 
+    public event Action OnStopInteraction;
+
     public void MiniGameManager_OnGameOver(InteractableTaskObject interactableObject)
     {
         //TODO: Arbitrary number
         if (interactableObject.AmountTries >= 2)
         {
-            interactableObject.gameObject.GetComponent<MeshRenderer>().material = failedMaterial;
-            Destroy(interactableObject);
+            GameIsOver(interactableObject, failedMaterial);
         }
 
         interactableObject.AmountTries++;
@@ -144,8 +153,14 @@ public class TaskGenerator : MonoBehaviour
     public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)
     {
         //TODO: Change to better stuff
-        interactableObject.gameObject.GetComponent<MeshRenderer>().material = fixedMaterial;
-        Destroy(interactableObject);
+        GameIsOver(interactableObject, fixedMaterial) ;
+    }
+
+    private void GameIsOver(InteractableTaskObject interactableObject, Material material)
+    {
+        interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
+        interactableObject.enabled = false;
+        interactableObject.IsInteractable = false;
     }
 
 
