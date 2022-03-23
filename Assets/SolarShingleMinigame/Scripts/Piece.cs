@@ -40,6 +40,7 @@ public class Piece : MonoBehaviour
     }
     private void Update()
     {
+       
         this.board.ClearTile(this);
         this.lockTime += Time.deltaTime;
 
@@ -75,6 +76,7 @@ public class Piece : MonoBehaviour
 
         this.board.SetPiece(this);
     }
+
     private void Step()
     {
         this.stepTime = Time.time + this.stepDelay;

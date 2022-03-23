@@ -8,7 +8,7 @@ public class Board : MonoBehaviour
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
-    public Vector2Int boardSize = new Vector2Int(10,16);
+    public Vector2Int boardSize = new Vector2Int(7,8);
     public int amountOfLinesNeeded { get; private set; }
 
     public RectInt Bounds
@@ -44,6 +44,9 @@ public class Board : MonoBehaviour
         {
             SetPiece(this.activePiece);
 
+        }else if (this.amountOfLinesNeeded == 0)
+        {
+            //win
         }
         else
         {
@@ -151,11 +154,5 @@ public class Board : MonoBehaviour
     {
         SpawnPiece();
     }
-    void Update()
-    {
-
-    }
-  
-
    
 }
