@@ -46,7 +46,7 @@ public class InteractableTaskStatusModels : MonoBehaviour
 
     public void ChangeModel(TaskStatus status)
     {
-        GameObject gamePrefab = transform.GetChild(0).gameObject.GetComponent<InteractableTaskObject>().GamePrefab;
+        GameObject gamePrefab = transform.GetChild(0).gameObject?.GetComponent<InteractableTaskObject>()?.GamePrefab;
 
         //Destroys old model
         Destroy(transform.GetChild(0).gameObject);

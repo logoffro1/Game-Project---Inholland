@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &346186900752621559
+--- !u!1 &1928883611837980
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1118642625305412941}
-  - component: {fileID: 4047025358896073448}
-  - component: {fileID: 2291517845272493602}
-  - component: {fileID: 1479847016786437051}
-  - component: {fileID: -2402671577540831979}
+  - component: {fileID: 4187834345423590}
+  - component: {fileID: 33563278680611102}
+  - component: {fileID: 23687773866774576}
+  - component: {fileID: 64872444070982798}
+  - component: {fileID: 7552135268923549031}
   m_Layer: 0
-  m_Name: Lantern_01 1
-  m_TagString: StreetLamp
+  m_Name: Dirt
+  m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1118642625305412941
+--- !u!4 &4187834345423590
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346186900752621559}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 1928883611837980}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4047025358896073448
+--- !u!33 &33563278680611102
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346186900752621559}
-  m_Mesh: {fileID: 7489722816522579885, guid: 18da855eadd39424f9dbb166f0767d34, type: 3}
---- !u!23 &2291517845272493602
+  m_GameObject: {fileID: 1928883611837980}
+  m_Mesh: {fileID: 4300000, guid: b3bca7a433b7a9549af0b0b486f29472, type: 3}
+--- !u!23 &23687773866774576
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346186900752621559}
+  m_GameObject: {fileID: 1928883611837980}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -61,8 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e6411e5990ca90946a33d31012303ade, type: 2}
-  - {fileID: 2100000, guid: fbef9312c8625044d9a671421a4ad005, type: 2}
+  - {fileID: 2100000, guid: fdf18c58b725a2f469593ece1786d307, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -74,7 +73,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -84,27 +83,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &1479847016786437051
-CapsuleCollider:
+--- !u!64 &64872444070982798
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346186900752621559}
+  m_GameObject: {fileID: 1928883611837980}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.42299676
-  m_Height: 5.813203
-  m_Direction: 1
-  m_Center: {x: 0, y: 2.9066014, z: -0.00000023841858}
---- !u!114 &-2402671577540831979
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: b3bca7a433b7a9549af0b0b486f29472, type: 3}
+--- !u!114 &7552135268923549031
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346186900752621559}
+  m_GameObject: {fileID: 1928883611837980}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
@@ -114,3 +113,5 @@ MonoBehaviour:
   AmountTries: 0
   IsInteractable: 1
   CurrentModel: {fileID: 0}
+  interactableTaskStatusModels: {fileID: 0}
+  Status: 0

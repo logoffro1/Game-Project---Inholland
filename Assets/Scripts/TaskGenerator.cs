@@ -113,7 +113,7 @@ public class TaskGenerator : MonoBehaviour
         component.enabled = true;
 
         //Changes the color
-        interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
+        //interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
     }
 
     private void ChooseAllTasksAtStart()
@@ -162,7 +162,7 @@ public class TaskGenerator : MonoBehaviour
 
     private void GameIsOver(InteractableTaskObject interactableObject, Material material)
     {
-        interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
+        //interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
         interactableObject.enabled = false;
         interactableObject.IsInteractable = false;
     }

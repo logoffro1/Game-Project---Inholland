@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1118642625305412941}
   - component: {fileID: 4070487318096318193}
   m_Layer: 0
-  m_Name: StreetLamp
-  m_TagString: StreetLamp
+  m_Name: InteractableStreetLamp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
