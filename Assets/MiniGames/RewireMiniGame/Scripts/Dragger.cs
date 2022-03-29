@@ -49,16 +49,16 @@ public class Dragger : MonoBehaviour
             var collidedObject = inCollisionWith.transform.GetComponent<RectTransform>();
             var endPosition = collidedObject.transform.position;
             GetComponent<RectTransform>().position = endPosition;
-        }
 
-        //Changing states, and possibily ending the game
-        spawner.OneIsFinished();
+            //Changing states, and possibily ending the game
+            spawner.OneIsFinished();
+        }
 
         if (connectedCorrect)
         {
             spawner.OneIsSuccessFul();
         }
-        
+
         if (!connectedCorrect && inCollisionWith != null)
         {
             spawner.OneFailed();
