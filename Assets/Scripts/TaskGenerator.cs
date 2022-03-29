@@ -61,7 +61,8 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //Manually set which object is linked to which game
-        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("ColorBeep")).ToList());
+        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
@@ -75,7 +76,7 @@ public class TaskGenerator : MonoBehaviour
         //Relative to amount there is
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
-            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
+            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count);
         }
 
         //Manual
@@ -146,7 +147,8 @@ public class TaskGenerator : MonoBehaviour
         //TODO: Arbitrary number
         if (interactableObject.AmountTries >= 2)
         {
-            GameIsOver(interactableObject, failedMaterial);
+            //GameIsOver(interactableObject, failedMaterial);
+            interactableObject.ChangeModel(TaskStatus.Fail);
         }
 
         interactableObject.AmountTries++;
@@ -155,7 +157,9 @@ public class TaskGenerator : MonoBehaviour
     public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)
     {
         //TODO: Change to better stuff
-        GameIsOver(interactableObject, fixedMaterial) ;
+        //GameIsOver(interactableObject, fixedMaterial);
+        interactableObject.ChangeModel(TaskStatus.Success);
+
     }
 
     private void GameIsOver(InteractableTaskObject interactableObject, Material material)

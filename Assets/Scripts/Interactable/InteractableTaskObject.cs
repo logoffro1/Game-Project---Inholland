@@ -13,9 +13,24 @@ public class InteractableTaskObject : MonoBehaviour
     [HideInInspector]
     public bool IsInteractable = true;
 
+    [HideInInspector]
+    public GameObject CurrentModel;
+
+    [HideInInspector]
+    public InteractableTaskStatusModels interactableTaskStatusModels;
+
+    public TaskStatus Status;
+
     private void Start()
     {
         DetermineObject();
+        interactableTaskStatusModels = gameObject.GetComponentInParent<InteractableTaskStatusModels>();
+    }
+
+    public void ChangeModel(TaskStatus status)
+    {
+        interactableTaskStatusModels.ChangeModel(status);
+        Status = status;
     }
 
     public void DoAction(GameObject player)
@@ -24,6 +39,12 @@ public class InteractableTaskObject : MonoBehaviour
         {
             MiniGameManager.Instance.StartGame(GamePrefab);
             MiniGameManager.Instance.InteractableObject = this;
+
+            //TODO: Change until after game is finished?
+            if (Status != TaskStatus.Touched)
+            {
+                ChangeModel(TaskStatus.Touched);
+            }
         }
         else
         {
@@ -59,4 +80,6 @@ public class InteractableTaskObject : MonoBehaviour
                 break;
         }
     }
+
+
 }
