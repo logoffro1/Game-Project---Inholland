@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 547074688224682575}
   - component: {fileID: 2338334463167927941}
   - component: {fileID: 3340796568283682207}
+  - component: {fileID: 6030366054519069242}
   m_Layer: 0
   m_Name: Manhole
-  m_TagString: Untagged
+  m_TagString: ManHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -95,3 +96,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1770384, y: 1.1770383, z: 0.16470908}
   m_Center: {x: 0, y: 0, z: 0.08235454}
+--- !u!114 &6030366054519069242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4283929015661770576}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GamePrefab: {fileID: 0}
+  AmountTries: 0

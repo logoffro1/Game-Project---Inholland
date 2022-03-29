@@ -6,13 +6,18 @@ public class Collectible : MonoBehaviour
     private float speed = .35f;
     private float rotationSpeed;
     bool attached = false;
-
-    private GameObject go;
+    public AudioClip passedClip; //if the collectible goes out of bounds
     public LayerMask boatMask;
+    private AudioSource audioSource;
+
+    private bool isDestroyed = false;
     private void Awake()
     {
+        
         onCollect += Collect;
         rotationSpeed = UnityEngine.Random.Range(5f, 30f); 
+        audioSource = GetComponent<AudioSource>();
+
     }
     void Update()
     {
@@ -45,9 +50,11 @@ public class Collectible : MonoBehaviour
         Destroy(gameObject, 0.2f);
     }
     private void OutOfBounds()
-    {
-        SewageMiniGame.Instance.DecreaseLives();
+    {   if (isDestroyed) return;
 
-        Destroy(gameObject);
+        isDestroyed = true;
+        SewageMiniGame.Instance.DecreaseLives();
+        audioSource.PlayOneShot(passedClip);
+        Destroy(gameObject,0.5f);
     }
 }

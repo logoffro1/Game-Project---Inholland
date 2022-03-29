@@ -28,7 +28,6 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
         {
             lives = 0;
             this.GameOver();
-            Debug.Log("END");
         }
 
         sewageUIManager.ChangeLifes(lives);
