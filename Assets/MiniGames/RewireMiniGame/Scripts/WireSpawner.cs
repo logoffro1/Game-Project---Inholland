@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -64,12 +65,18 @@ public class WireSpawner : MonoBehaviour
     private void InstansiateAllWires(List<Vector3> spawnPositions)
     {
         List<Vector3> spawnPositionsEndPoint = new List<Vector3>(spawnPositions);
+        List<Color> allColors = colors.ToList();
 
         for (int i = 0; i < amountWires; i++)
         {
             int posIndex = UnityEngine.Random.Range(0, spawnPositions.Count);
-            wires.Add(SpawnWire(i, spawnPositions[posIndex]));
+            int colorIndex = UnityEngine.Random.Range(0, allColors.Count);
+            Color color = allColors[colorIndex];
+
+            wires.Add(SpawnWire(color, spawnPositions[posIndex]));
+
             spawnPositions.RemoveAt(posIndex);
+            allColors.RemoveAt(colorIndex);
         }
 
         MoveEndWirePart(spawnPositionsEndPoint);
@@ -124,10 +131,10 @@ public class WireSpawner : MonoBehaviour
         GameSuccess?.Invoke(false);
     }
 
-    private GameObject SpawnWire(int colorIndex, Vector3 spawnPos)
+    private GameObject SpawnWire(Color color, Vector3 spawnPos)
     {
         GameObject wire = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
-        wire.GetComponent<Wire>().color = colors[colorIndex];
+        wire.GetComponent<Wire>().color = color;
 
         return wire;
     }
