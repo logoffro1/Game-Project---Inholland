@@ -12,38 +12,36 @@ public class InteractableTaskStatusModels : MonoBehaviour
     private void InstantiateModel(TaskStatus status, GameObject gamePrefab)
     {
         GameObject modelPrefab = UntouchedPrefabModel;
-        bool isStillInteractable = false;
 
         switch (status)
         {
             case TaskStatus.Success:
                 modelPrefab = SuccessPrefabModel;
-                isStillInteractable = false;
                 break;
             case TaskStatus.Fail:
                 modelPrefab = FailPrefabModel;
-                isStillInteractable = false;
                 break;
             case TaskStatus.Touched:
                 modelPrefab = TouchedPrefabModel;
-                isStillInteractable = true;
                 break;
             case TaskStatus.Untouched:
                 modelPrefab = UntouchedPrefabModel;
-                isStillInteractable = true;
                 break;
         }
 
 
         GameObject gameObject = Instantiate(modelPrefab, transform.position, transform.rotation, transform);
 
-        //Gets all necessary info
-        InteractableTaskObject interactable = gameObject.GetComponent<InteractableTaskObject>();
-        interactable.enabled = isStillInteractable;
-        interactable.IsInteractable = isStillInteractable;
-        interactable.Status = status;
-
-        if (isStillInteractable) interactable.GamePrefab = gamePrefab;
+        //If Touched or faUntouchedil, should add all of these things
+        if (status == TaskStatus.Touched || status == TaskStatus.Untouched)
+        {
+            //Gets all necessary info
+            InteractableTaskObject interactable = gameObject.GetComponent<InteractableTaskObject>();
+            interactable.enabled = true;
+            interactable.IsInteractable = true;
+            interactable.Status = status;
+            interactable.GamePrefab = gamePrefab;
+        }
     }
 
     public void ChangeModel(TaskStatus status)
