@@ -150,8 +150,6 @@ public class TaskGenerator : MonoBehaviour
             //GameIsOver(interactableObject, failedMaterial);
             interactableObject.ChangeModel(TaskStatus.Fail);
         }
-
-        interactableObject.AmountTries++;
     }
 
     public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)

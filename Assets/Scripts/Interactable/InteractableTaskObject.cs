@@ -45,6 +45,8 @@ public class InteractableTaskObject : MonoBehaviour
             {
                 ChangeModel(TaskStatus.Touched);
             }
+
+            AmountTries++;
         }
         else
         {
