@@ -12,7 +12,6 @@ public class Wire : MonoBehaviour
 
     void Start()
     {
-        //Get the first child (wire -> child)
         foreach(Transform child in transform)
         {
             if (child.TryGetComponent(out SpriteRenderer childSprite))
@@ -27,32 +26,12 @@ public class Wire : MonoBehaviour
                     {
                         tmpColor = (tmpColor / darkMultiplier) + darkPreset;
                     }
-                    else if (childSprite.CompareTag("WireTop"))
+                    else if (childSprite.CompareTag("WireTop") || childSprite.CompareTag("WireEnd"))
                     {
                         tmpColor = tmpColor + mediumPreset;
                     }
-
                     tmpColor.a = 1;
                     childSprite.color = tmpColor;
-                }
-            }
-            else
-            {
-                //Get the second child (wire -> child -> child)
-                foreach (Transform childOfChild in child)
-                {
-                    Color tmpColor = color;
-
-                    if (childOfChild.TryGetComponent(out SpriteRenderer childSpriteOfChildSprite))
-                    {
-                        if (childSpriteOfChildSprite.CompareTag("WireEnd"))
-                        {
-                            tmpColor = tmpColor + mediumPreset;
-                        }
-
-                        tmpColor.a = 1;
-                        childSpriteOfChildSprite.color = tmpColor;
-                    }
                 }
             }
         }

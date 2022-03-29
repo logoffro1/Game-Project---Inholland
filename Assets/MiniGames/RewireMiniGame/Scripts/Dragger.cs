@@ -43,7 +43,7 @@ public class Dragger : MonoBehaviour
         if (inCollisionWith != null && inCollisionWith.CompareTag("WireBackgroundPoint"))
         {
             //Getting if they have the same parent, thus saying they are matching
-            connectedCorrect = transform.parent.parent == inCollisionWith.transform.parent;
+            connectedCorrect = transform.parent == inCollisionWith.transform.parent;
 
             //Locking in spot that they dropped on, for the endWire
             var collidedObject = inCollisionWith.transform.GetComponent<RectTransform>();

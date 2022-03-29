@@ -84,7 +84,7 @@ public class WireSpawner : MonoBehaviour
             Vector3 spawnPos = spawnPositionsEndPoint[posIndex];
             spawnPos.x = spawnX;
 
-            wire.transform.Find("EndWire").transform.position = spawnPos;
+            wire.transform.Find("EndForeground").transform.position = spawnPos;
             wire.transform.Find("EndBackground").transform.position = spawnPos;
             spawnPositionsEndPoint.RemoveAt(posIndex);
 
