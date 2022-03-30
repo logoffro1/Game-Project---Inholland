@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: BricksSmallYellow_WS_Stripes_02
-  m_Shader: {fileID: -6465566751694194690, guid: edec194e3c46f5941b08771a08f0ad83,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: edec194e3c46f5941b08771a08f0ad83, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -312,3 +311,4 @@ Material:
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

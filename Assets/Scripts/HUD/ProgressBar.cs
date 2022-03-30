@@ -5,40 +5,54 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     private Slider slider;
+    public Gradient gradient;
+    public Image fill;
 
+
+    private static ProgressBar _instance;
+    public static ProgressBar Instance { get { return _instance; } }
+
+
+    private void Start()
+    {
+        slider = gameObject.GetComponent<Slider>();
+        SliderInit();
+    }
 
     private void Awake()
     {
-        slider = gameObject.GetComponent<Slider>();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
+    private void SliderInit()
+    {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        slider.value = 75f;
+        slider.value = 5f;
+        fill.color = gradient.Evaluate(0.1f);
     }
 
     private void Update()
     {
         //This should be deleted. Only for testing purposes.
         if (Input.GetKeyDown(KeyCode.Z))
-            DecreasePollution(5f);
+            ChangeSustainibility(5f);
         if (Input.GetKeyDown(KeyCode.X))
-            IncreasePollution(5f);
+            ChangeSustainibility(-5f);
+       
     }
 
-    public void IncreasePollution (float pollutionChange)
+    public void ChangeSustainibility (float sustainabilityChange)
     {
-        if (slider.value + pollutionChange > 100f)
-            slider.value = slider.maxValue;
-        else
-            slider.value = (slider.value + pollutionChange);
+        slider.value += sustainabilityChange;
+        fill.color = gradient.Evaluate(slider.normalizedValue);
     }
-
-    public void DecreasePollution (float pollutionChange)
-    {
-        if(slider.value-pollutionChange < 0)
-            slider.value = slider.minValue;
-        else
-        slider.value = (slider.value - pollutionChange);
-    }
-
-    
+   
 }
