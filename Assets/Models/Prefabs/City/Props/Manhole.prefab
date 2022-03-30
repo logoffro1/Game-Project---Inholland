@@ -110,3 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GamePrefab: {fileID: 0}
   AmountTries: 0
+  IsInteractable: 1
+  CurrentModel: {fileID: 0}
+  Status: 0

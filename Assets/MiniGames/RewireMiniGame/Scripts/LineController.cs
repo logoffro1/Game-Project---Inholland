@@ -12,6 +12,10 @@ public class LineController : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+
+        lineRenderer.sortingLayerID = spriteRenderer.sortingLayerID;
+        lineRenderer.sortingOrder = spriteRenderer.sortingOrder;
     }
 
     public void SetUpLine(Transform[] points)
