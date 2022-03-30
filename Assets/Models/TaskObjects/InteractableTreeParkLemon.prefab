@@ -9,12 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4106154111572154}
-  - component: {fileID: 33690692819433854}
-  - component: {fileID: 23730455990321952}
-  - component: {fileID: 64893090625760670}
-  - component: {fileID: 64809617709439560}
+  - component: {fileID: 1225524911856435252}
   m_Layer: 0
-  m_Name: SM_Env_Tree_Lemon_01
+  m_Name: InteractableTreeParkLemon
   m_TagString: Tree
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,25 +27,76 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6336054713543932554}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &33690692819433854
+--- !u!114 &1225524911856435252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850301125167232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe10e6d9d88f064cbd3f43147f9ede0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UntouchedPrefabModel: {fileID: 1928883611837980, guid: c4e65878eac45bc43b91b769dbea1607, type: 3}
+  TouchedPrefabModel: {fileID: 1023276319236942, guid: d1649de77548037448a063795c47d0f2, type: 3}
+  SuccessPrefabModel: {fileID: 1850301125167232, guid: 930434af57d788c44af9fcfb7d3c5885, type: 3}
+  FailPrefabModel: {fileID: 1084815455863994, guid: d60da709e5f015e418d44de6938a139b, type: 3}
+--- !u!1 &6191049559244511358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6336054713543932554}
+  - component: {fileID: 2551654942853589213}
+  - component: {fileID: 2081129298083687661}
+  - component: {fileID: 1588297094972387158}
+  - component: {fileID: 9092120673050419320}
+  m_Layer: 0
+  m_Name: SM_Env_Tree_Lemon_01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6336054713543932554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6191049559244511358}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4106154111572154}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2551654942853589213
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850301125167232}
+  m_GameObject: {fileID: 6191049559244511358}
   m_Mesh: {fileID: 4300000, guid: 00a0a68eb3a20a1439945081453e5da3, type: 3}
---- !u!23 &23730455990321952
+--- !u!23 &2081129298083687661
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850301125167232}
+  m_GameObject: {fileID: 6191049559244511358}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -83,13 +131,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64893090625760670
+--- !u!64 &1588297094972387158
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850301125167232}
+  m_GameObject: {fileID: 6191049559244511358}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -97,13 +145,13 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43603779930009816, guid: db021e55dc0788543b23555a04099959, type: 2}
---- !u!64 &64809617709439560
+--- !u!64 &9092120673050419320
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850301125167232}
+  m_GameObject: {fileID: 6191049559244511358}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1

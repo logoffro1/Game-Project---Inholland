@@ -44,15 +44,19 @@ public class TaskGenerator : MonoBehaviour
         allInteractableObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //foreach object that has InteractableTaskObject script in it
-        foreach (InteractableTaskObject interactable in FindObjectsOfType<InteractableTaskObject>())
+    
+        foreach (InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>())
         {
             //Using tags
-            TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactable.gameObject.tag);
+            TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactableContainers.gameObject.tag);
             if (allInteractableObjects.ContainsKey(task))
             {
-                allInteractableObjects[task].Add(interactable.gameObject);
+                allInteractableObjects[task].Add(interactableContainers.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
+
+            //Default is that nothing hasto be done //THIS IS WHERE THE NULL POINTER OCCURS
+            //interactable.ChangeModel(TaskStatus.Success);
         }
     }
 
@@ -64,8 +68,7 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
-        allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
-        allGamesToObjects.Add(TaskObjectType.RubbishBin, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
+        allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
     }
 
     private void SetUpAllGamesToAmountSpawn()
@@ -75,7 +78,8 @@ public class TaskGenerator : MonoBehaviour
         //Relative to amount there is
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
-            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
+            if (allInteractableObjects.ContainsKey(objectType))
+                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
         }
 
         //Manual
@@ -99,40 +103,55 @@ public class TaskGenerator : MonoBehaviour
 
         foreach(GameObject gameObject in allObjects)
         {
+            //Get random game prefab for a game
             GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
+            //Creating a fully functional interactable task object
             AddTaskToObject(gameObject, gamePrefab);
         }
     }
 
-    private void AddTaskToObject(GameObject interactableObject, GameObject gamePrefab)
+    private void AddTaskToObject(GameObject interactableContainers, GameObject gamePrefab)
     {
         //Enables the script component
-        InteractableTaskObject component = interactableObject.GetComponent<InteractableTaskObject>();
-        component.GamePrefab = gamePrefab;
-        component.enabled = true;
+        //Get the InteractableTaskObject from the container
+        //InteractableTaskObject component = interactableContainers.GetComponentInChildren<InteractableTaskObject>();
+
+        //Making it so that players can interact with it
+        GameObject newTaskObject = interactableContainers.GetComponent<InteractableTaskStatusModels>().ChangeModel(TaskStatus.Untouched);
+        newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
+        newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
 
         //Changes the color
-        interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
+        foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
+        {
+            mesh.material = canSolveMaterial;
+        }
+
     }
 
     private void ChooseAllTasksAtStart()
     {
         //Chooses at random which object to give a task
+        //Goes through each tag (eg. first tree, then manhole, then streetlamp...)
         foreach(KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
         {
+            //Initializing
             List<GameObject> allObjects = new List<GameObject>(pair.Value);
             List<GameObject> allObjectsAdded = new List<GameObject>();
-
             int amount = allGamesToAmountSpawn[pair.Key];
-            
 
             for (int i = 0; i < amount; i++)
             {
+                //Random int
                 int index = UnityEngine.Random.Range(0, allObjects.Count);
-                GameObject specificGameObject = allObjects[index];
-                gameObjectsWithTasks.Add(specificGameObject);
+
+                //Get a random task from list
+                GameObject oneTaskObject = allObjects[index];
+                gameObjectsWithTasks.Add(oneTaskObject);
+
+                //For logic
                 allObjects.RemoveAt(index);
-                allObjectsAdded.Add(specificGameObject);
+                allObjectsAdded.Add(oneTaskObject);
             }
 
             AddTasksToObject(allObjectsAdded, pair.Key);
@@ -146,21 +165,22 @@ public class TaskGenerator : MonoBehaviour
         //TODO: Arbitrary number
         if (interactableObject.AmountTries >= 2)
         {
-            GameIsOver(interactableObject, failedMaterial);
+            //GameIsOver(interactableObject, failedMaterial);
+            interactableObject.ChangeModel(TaskStatus.Fail);
         }
-
-        interactableObject.AmountTries++;
     }
 
     public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)
     {
         //TODO: Change to better stuff
-        GameIsOver(interactableObject, fixedMaterial) ;
+        //GameIsOver(interactableObject, fixedMaterial);
+        interactableObject.ChangeModel(TaskStatus.Success);
+
     }
 
     private void GameIsOver(InteractableTaskObject interactableObject, Material material)
     {
-        interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
+        //interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
         interactableObject.enabled = false;
         interactableObject.IsInteractable = false;
     }
