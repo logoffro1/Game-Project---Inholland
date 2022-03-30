@@ -37,11 +37,6 @@ public class WireSpawner : MonoBehaviour
 
     private void SetUpGame()
     {
-        //Centralizing cursor and making it appear
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
         //Setting starts states
         amountFinished = 0;
         amountCorrect = 0;
