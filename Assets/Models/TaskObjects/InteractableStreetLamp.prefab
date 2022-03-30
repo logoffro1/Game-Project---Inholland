@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe10e6d9d88f064cbd3f43147f9ede0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UntouchedPrefabModel: {fileID: 346186900752621559, guid: a1a10012ff04e21448ea1675404c6034, type: 3}
+  UntouchedPrefabModel: {fileID: 1366542412097928, guid: 98b3be7212af6224fab301a49a9f28e3, type: 3}
   TouchedPrefabModel: {fileID: 346186900752621559, guid: b9118dfb7fe596943b4c4772e561df0f, type: 3}
   SuccessPrefabModel: {fileID: 5553110939071078385, guid: 5ccea228519388344adad9a777e0413f, type: 3}
   FailPrefabModel: {fileID: 1980401566668410335, guid: 4bcff0371ca92fd428258353afe77b3f, type: 3}

@@ -53,6 +53,9 @@ public class TaskGenerator : MonoBehaviour
                 allInteractableObjects[task].Add(interactable.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
+
+            //Default is that nothing hasto be done //THIS IS WHERE THE NULL POINTER OCCURS
+            //interactable.ChangeModel(TaskStatus.Success);
         }
     }
 
@@ -100,7 +103,9 @@ public class TaskGenerator : MonoBehaviour
 
         foreach(GameObject gameObject in allObjects)
         {
+            //Get random game prefab for a game
             GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
+            //Creating a fully functional interactable task object
             AddTaskToObject(gameObject, gamePrefab);
         }
     }
@@ -109,11 +114,18 @@ public class TaskGenerator : MonoBehaviour
     {
         //Enables the script component
         InteractableTaskObject component = interactableObject.GetComponent<InteractableTaskObject>();
+
+        //Making it so that players can interact with it
+        component.ChangeModel(TaskStatus.Untouched);
         component.GamePrefab = gamePrefab;
         component.enabled = true;
 
         //Changes the color
-        //interactableObject.GetComponent<MeshRenderer>().material = canSolveMaterial;
+        if (interactableObject.TryGetComponent(out MeshRenderer mesh))
+        {
+            mesh.material = canSolveMaterial;
+        }
+
     }
 
     private void ChooseAllTasksAtStart()
@@ -121,20 +133,25 @@ public class TaskGenerator : MonoBehaviour
         //Chooses at random which object to give a task
         foreach(KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
         {
+            //Initializing
             List<GameObject> allObjects = new List<GameObject>(pair.Value);
             List<GameObject> allObjectsAdded = new List<GameObject>();
-
             int amount = allGamesToAmountSpawn[pair.Key];
-            
 
             for (int i = 0; i < amount; i++)
             {
+                //Random int
                 int index = UnityEngine.Random.Range(0, allObjects.Count);
-                GameObject specificGameObject = allObjects[index];
-                gameObjectsWithTasks.Add(specificGameObject);
+
+                //Get a random task from list
+                GameObject oneTaskObject = allObjects[index];
+                gameObjectsWithTasks.Add(oneTaskObject);
+
+                //For logic
                 allObjects.RemoveAt(index);
-                allObjectsAdded.Add(specificGameObject);
+                allObjectsAdded.Add(oneTaskObject);
             }
+
 
             AddTasksToObject(allObjectsAdded, pair.Key);
         }

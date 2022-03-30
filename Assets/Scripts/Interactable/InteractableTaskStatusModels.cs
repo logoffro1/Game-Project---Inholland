@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class InteractableTaskStatusModels : MonoBehaviour
 {
+
+    // This class is in the container
+
     public GameObject UntouchedPrefabModel;
     public GameObject TouchedPrefabModel;
     public GameObject SuccessPrefabModel;
     public GameObject FailPrefabModel;
 
-    private void InstantiateModel(TaskStatus status, GameObject gamePrefab)
+    private GameObject InstantiateModel(TaskStatus status, GameObject child)
     {
         GameObject modelPrefab = UntouchedPrefabModel;
 
@@ -29,7 +32,7 @@ public class InteractableTaskStatusModels : MonoBehaviour
                 break;
         }
 
-
+        //Put the interactable object in this container (become child of gameobject of this place)
         GameObject gameObject = Instantiate(modelPrefab, transform.position, transform.rotation, transform);
 
         //If Touched or faUntouchedil, should add all of these things
@@ -40,18 +43,24 @@ public class InteractableTaskStatusModels : MonoBehaviour
             interactable.enabled = true;
             interactable.IsInteractable = true;
             interactable.Status = status;
-            interactable.GamePrefab = gamePrefab;
+
+            if(child.TryGetComponent(out InteractableTaskObject interactableTaskObject))
+            {
+                interactable.GamePrefab = interactableTaskObject.GamePrefab;
+            }
         }
+
+        return gameObject;
     }
 
-    public void ChangeModel(TaskStatus status)
+    public GameObject ChangeModel(TaskStatus status)
     {
-        GameObject gamePrefab = transform.GetChild(0).gameObject?.GetComponent<InteractableTaskObject>()?.GamePrefab;
+        GameObject child = transform.GetChild(0).gameObject;
 
         //Destroys old model
-        Destroy(transform.GetChild(0).gameObject);
+        Destroy(child);
 
         //Instaiates new model
-        InstantiateModel(status, gamePrefab);
+        return InstantiateModel(status, child);
     }
 }

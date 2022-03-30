@@ -1,9 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableTaskObject : MonoBehaviour
 {
+
+    //This class is in the interactable object in the container
+
     public GameObject GamePrefab;
     private string hoverName;
 
@@ -17,21 +21,47 @@ public class InteractableTaskObject : MonoBehaviour
     public GameObject CurrentModel;
 
     [HideInInspector]
-    public InteractableTaskStatusModels interactableTaskStatusModels;
+    private InteractableTaskStatusModels interactableTaskStatusModels;
 
     public TaskStatus Status;
 
     private void Start()
     {
         DetermineObject();
-        interactableTaskStatusModels = gameObject.GetComponentInParent<InteractableTaskStatusModels>();
+        SetInteractableTaskStatusModels();
     }
 
-    public void ChangeModel(TaskStatus status)
+    private void SetInteractableTaskStatusModels()
     {
-        interactableTaskStatusModels.ChangeModel(status);
-        Status = status;
+        if (gameObject.TryGetComponent(out InteractableTaskStatusModels childStatusModels))
+        {
+            interactableTaskStatusModels = childStatusModels;
+        }
+        else if (gameObject.transform.parent.gameObject.TryGetComponent(out InteractableTaskStatusModels statusModels))
+        {
+            interactableTaskStatusModels = statusModels;
+        }
+        else if (gameObject.transform.parent.gameObject.TryGetComponent(out InteractableTaskStatusModels parentstatusModels))
+        {
+            interactableTaskStatusModels = parentstatusModels;
+        }
+        else if (gameObject.transform.parent.parent.gameObject.TryGetComponent(out InteractableTaskStatusModels grandParentStatusModels))
+        {
+            interactableTaskStatusModels = grandParentStatusModels;
+        }
     }
+
+
+
+    public GameObject ChangeModel(TaskStatus status)
+    {
+        if (interactableTaskStatusModels == null) SetInteractableTaskStatusModels();
+        Status = status;
+
+        return interactableTaskStatusModels.ChangeModel(status);
+    }
+
+
 
     public void DoAction(GameObject player)
     {
