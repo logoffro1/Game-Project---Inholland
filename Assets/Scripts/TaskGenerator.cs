@@ -44,13 +44,14 @@ public class TaskGenerator : MonoBehaviour
         allInteractableObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //foreach object that has InteractableTaskObject script in it
-        foreach (InteractableTaskObject interactable in FindObjectsOfType<InteractableTaskObject>())
+    
+        foreach (InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>())
         {
             //Using tags
-            TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactable.gameObject.tag);
+            TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactableContainers.gameObject.tag);
             if (allInteractableObjects.ContainsKey(task))
             {
-                allInteractableObjects[task].Add(interactable.gameObject);
+                allInteractableObjects[task].Add(interactableContainers.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
 
@@ -79,7 +80,8 @@ public class TaskGenerator : MonoBehaviour
         //Relative to amount there is
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
-            allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count);
+            if (allInteractableObjects.ContainsKey(objectType))
+                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
         }
 
         //Manual
@@ -110,18 +112,19 @@ public class TaskGenerator : MonoBehaviour
         }
     }
 
-    private void AddTaskToObject(GameObject interactableObject, GameObject gamePrefab)
+    private void AddTaskToObject(GameObject interactableContainers, GameObject gamePrefab)
     {
         //Enables the script component
-        InteractableTaskObject component = interactableObject.GetComponent<InteractableTaskObject>();
+        //Get the InteractableTaskObject from the container
+        //InteractableTaskObject component = interactableContainers.GetComponentInChildren<InteractableTaskObject>();
 
         //Making it so that players can interact with it
-        component.ChangeModel(TaskStatus.Untouched);
-        component.GamePrefab = gamePrefab;
-        component.enabled = true;
+        GameObject newTaskObject = interactableContainers.GetComponent<InteractableTaskStatusModels>().ChangeModel(TaskStatus.Untouched);
+        newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
+        newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
 
         //Changes the color
-        if (interactableObject.TryGetComponent(out MeshRenderer mesh))
+        foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
         {
             mesh.material = canSolveMaterial;
         }
@@ -131,6 +134,7 @@ public class TaskGenerator : MonoBehaviour
     private void ChooseAllTasksAtStart()
     {
         //Chooses at random which object to give a task
+        //Goes through each tag (eg. first tree, then manhole, then streetlamp...)
         foreach(KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
         {
             //Initializing
@@ -151,7 +155,6 @@ public class TaskGenerator : MonoBehaviour
                 allObjects.RemoveAt(index);
                 allObjectsAdded.Add(oneTaskObject);
             }
-
 
             AddTasksToObject(allObjectsAdded, pair.Key);
         }

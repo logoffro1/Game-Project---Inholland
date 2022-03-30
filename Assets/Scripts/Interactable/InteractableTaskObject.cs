@@ -56,8 +56,6 @@ public class InteractableTaskObject : MonoBehaviour
     public GameObject ChangeModel(TaskStatus status)
     {
         if (interactableTaskStatusModels == null) SetInteractableTaskStatusModels();
-        Status = status;
-
         return interactableTaskStatusModels.ChangeModel(status);
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,9 +41,16 @@ public class InteractableTaskStatusModels : MonoBehaviour
         {
             //Gets all necessary info
             InteractableTaskObject interactable = gameObject.GetComponent<InteractableTaskObject>();
-            interactable.enabled = true;
-            interactable.IsInteractable = true;
-            interactable.Status = status;
+
+            try
+            {
+                interactable.enabled = true;
+                interactable.IsInteractable = true;
+                interactable.Status = status;
+            }catch(Exception e)
+            {
+                Debug.Log(e.Message);
+            }
 
             if(child.TryGetComponent(out InteractableTaskObject interactableTaskObject))
             {

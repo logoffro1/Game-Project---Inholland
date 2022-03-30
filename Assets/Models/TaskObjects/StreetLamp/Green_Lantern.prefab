@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7562625735920802635}
   m_Layer: 0
   m_Name: Green_Lantern
-  m_TagString: StreetLamp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,3 +114,4 @@ MonoBehaviour:
   AmountTries: 0
   IsInteractable: 1
   CurrentModel: {fileID: 0}
+  Status: 0
