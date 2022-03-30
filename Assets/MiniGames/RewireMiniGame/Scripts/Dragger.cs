@@ -43,22 +43,22 @@ public class Dragger : MonoBehaviour
         if (inCollisionWith != null && inCollisionWith.CompareTag("WireBackgroundPoint"))
         {
             //Getting if they have the same parent, thus saying they are matching
-            connectedCorrect = transform.parent.parent == inCollisionWith.transform.parent;
+            connectedCorrect = transform.parent == inCollisionWith.transform.parent;
 
             //Locking in spot that they dropped on, for the endWire
             var collidedObject = inCollisionWith.transform.GetComponent<RectTransform>();
             var endPosition = collidedObject.transform.position;
             GetComponent<RectTransform>().position = endPosition;
-        }
 
-        //Changing states, and possibily ending the game
-        spawner.OneIsFinished();
+            //Changing states, and possibily ending the game
+            spawner.OneIsFinished();
+        }
 
         if (connectedCorrect)
         {
             spawner.OneIsSuccessFul();
         }
-        
+
         if (!connectedCorrect && inCollisionWith != null)
         {
             spawner.OneFailed();
