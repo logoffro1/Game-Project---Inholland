@@ -18,7 +18,7 @@ struct Attributes {
 
 		float _Thickness;
 		float4 _Color;
-
+		float _DepthOffset;
 
 		VertexOutput Vertex(Attributes input){
 			VertexOutput output = (VertexOutput)0;
@@ -29,6 +29,14 @@ struct Attributes {
 			float3 posOS = input.positionOS.xyz + normalOS * _Thickness;
 
 			output.positionCS = GetVertexPositionInputs(posOS).positionCS;
+
+			float depthOffset = _DepthOffset;
+
+			#ifdef UNITY_REVERSED_Z
+			depthOffset = -depthOffset;
+			#endif
+			output.positionCS.z += depthOffset;
+
 
 			return output;
 			}
