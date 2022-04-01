@@ -4,9 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
+
+    [SerializeField] private Text _SliderText;
     private Slider slider;
     public Gradient gradient;
     public Image fill;
+    private float sliderThreshhold;
 
 
     private static ProgressBar _instance;
@@ -15,6 +18,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
+       
         slider = gameObject.GetComponent<Slider>();
         SliderInit();
     }
@@ -35,8 +39,10 @@ public class ProgressBar : MonoBehaviour
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        slider.value = 5f;
+        sliderThreshhold = 40f;
+        slider.value = sliderThreshhold;
         fill.color = gradient.Evaluate(0.1f);
+        _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
     private void Update()
@@ -46,13 +52,39 @@ public class ProgressBar : MonoBehaviour
             ChangeSustainibility(5f);
         if (Input.GetKeyDown(KeyCode.X))
             ChangeSustainibility(-5f);
+
+        decreaseSustainibilityPerSecond();
        
     }
 
-    public void ChangeSustainibility (float sustainabilityChange)
+    private void updateProgressPercent()
     {
+        slider.onValueChanged.AddListener((v) => {
+            _SliderText.text = v.ToString("0.00") + "%";
+
+        });
+    }
+
+    private void decreaseSustainibilityPerSecond()
+    {
+        if (slider.value > sliderThreshhold)
+        {
+            ChangeSustainibility(-0.001f);
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    public void ChangeSustainibility(float sustainabilityChange)
+    {
+
         slider.value += sustainabilityChange;
         fill.color = gradient.Evaluate(slider.normalizedValue);
+        updateProgressPercent();
+
     }
-   
+
 }
