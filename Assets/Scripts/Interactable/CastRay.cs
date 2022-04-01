@@ -3,7 +3,7 @@ using UnityEngine;
 public class CastRay : MonoBehaviour
 {
     [SerializeField]
-    private float maxObjectDistance = 3f;
+    private float maxObjectDistance = 4f;
 
     private static CastRay _instance = null;
     public static CastRay Instance { get { return _instance; } }
