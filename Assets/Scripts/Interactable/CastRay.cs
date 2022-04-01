@@ -3,10 +3,11 @@ using UnityEngine;
 public class CastRay : MonoBehaviour
 {
     [SerializeField]
-    private float maxObjectDistance = 3f;
+    private float maxObjectDistance = 5f;
 
     private static CastRay _instance = null;
     public static CastRay Instance { get { return _instance; } }
+    private GameObject previousObject;
     private GameObject objectHit;
     private void Awake()
     {
@@ -29,17 +30,37 @@ public class CastRay : MonoBehaviour
         {
             GameObject obj = hit.transform.gameObject; 
             objectHit = obj.GetComponent<InteractableTaskObject>() == null ? null : hit.transform.gameObject;
+
             InteractableTaskObject interactableTaskObject = objectHit?.GetComponent<InteractableTaskObject>();
 
             if (objectHit != null && interactableTaskObject != null && interactableTaskObject.IsInteractable)
             {
-                UIManager.Instance.SetHoverText(interactableTaskObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableTaskObject.DoAction(gameObject);
 
+                if (objectHit == previousObject) return;
+                if (objectHit.layer != 8) //outlined
+                    objectHit.layer = 8;
+
+                if (objectHit != null)
+                {
+                    previousObject = objectHit;
+                }
+                UIManager.Instance.SetHoverText(interactableTaskObject.GetHoverName());
+
                 return;
-            }         
+            }
+
+
+
+
         }
+        if (previousObject != null)
+        {
+            previousObject.layer = 0;
+            previousObject = null;
+        }
+
         UIManager.Instance.SetHoverText(null);
     }
 }

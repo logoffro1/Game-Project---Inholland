@@ -18,7 +18,7 @@ GameObject:
   m_TagString: RubbishBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &5069729740522947915
 Transform:
@@ -112,6 +112,8 @@ MonoBehaviour:
   GamePrefab: {fileID: 0}
   AmountTries: 0
   IsInteractable: 1
+  CurrentModel: {fileID: 0}
+  Status: 0
 --- !u!1001 &6248714991135693707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +168,10 @@ PrefabInstance:
     - target: {fileID: 927658429034552514, guid: 4ca6922de2b3e114096c4db2f41b8727, type: 3}
       propertyPath: m_Name
       value: Rubbish_Bin_Lid
+      objectReference: {fileID: 0}
+    - target: {fileID: 927658429034552514, guid: 4ca6922de2b3e114096c4db2f41b8727, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ca6922de2b3e114096c4db2f41b8727, type: 3}
