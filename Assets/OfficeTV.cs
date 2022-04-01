@@ -8,7 +8,7 @@ public class OfficeTV : InteractableObject
 
     private void Start()
     {
-        hoverName = "Open";
+        hoverName = "Interact";
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
     }
