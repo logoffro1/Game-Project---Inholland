@@ -9,16 +9,28 @@ public class MouseLook : MonoBehaviour
     [SerializeField]
     private Transform player;
 
+    public bool canRotate { get; set; } = true;
+
     void Start()
     {
-        Debug.Log(Cursor.lockState);
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log(Cursor.lockState);
+        canRotate = true;
     }
 
     void Update()
     {
-        if (MiniGameManager.Instance != null && MiniGameManager.Instance.IsPlaying) return;
+        if (MiniGameManager.Instance != null) {
+
+            if (MiniGameManager.Instance.IsPlaying)
+            {
+                canRotate = false;
+            }
+            else
+            {
+                canRotate = true;
+            }
+        } 
+        if (!canRotate) return;
         LookAround();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -26,7 +38,7 @@ public class MouseLook : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-           
+
     }
     private void LookAround()
     {
