@@ -7,5 +7,5 @@ public abstract class InteractableObject : MonoBehaviour
 
     public abstract void DoAction(GameObject player);
     public string GetHoverName() => hoverName;
-    public bool IsInteractable;
+    public bool IsInteractable = true;
 }
