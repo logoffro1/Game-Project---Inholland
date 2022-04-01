@@ -10,7 +10,10 @@ public class Trash : InteractableObject
     }
     public override void DoAction(GameObject player)
     {
-        Debug.Log("Picked up");
-        Destroy(gameObject);
+        if(player.transform.parent.TryGetComponent(out TrashBag bag)){
+            bag.AddTrash(this);
+            Destroy(gameObject);
+        }
+
     }
 }
