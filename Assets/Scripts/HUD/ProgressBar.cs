@@ -6,6 +6,7 @@ public class ProgressBar : MonoBehaviour
 {
 
     [SerializeField] private Text _SliderText;
+
     private Slider slider;
     public Gradient gradient;
     public Image fill;
@@ -47,29 +48,23 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        //This should be deleted. Only for testing purposes.
-        if (Input.GetKeyDown(KeyCode.Z))
-            ChangeSustainibility(5f);
-        if (Input.GetKeyDown(KeyCode.X))
-            ChangeSustainibility(-5f);
-
-        decreaseSustainibilityPerSecond();
-       
+        decreaseSustainibilityPerSecond(-0.0005f);
     }
 
     private void updateProgressPercent()
     {
         slider.onValueChanged.AddListener((v) => {
             _SliderText.text = v.ToString("0.00") + "%";
-
         });
     }
 
-    private void decreaseSustainibilityPerSecond()
+    private void decreaseSustainibilityPerSecond(float sustainibilityValue)
     {
         if (slider.value > sliderThreshhold)
         {
-            ChangeSustainibility(-0.001f);
+            slider.value += sustainibilityValue;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+
         }
         else
         {
@@ -78,13 +73,31 @@ public class ProgressBar : MonoBehaviour
 
     }
 
+    private IEnumerator ApplySliderAnimation(float target)
+    {
+        yield return new WaitForSeconds(2);
+
+        float current = slider.value;
+        float t = 0.0f;
+        float elapsedTime = 0.0f;
+        float waitTime = 1f;
+        while (elapsedTime<waitTime)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = Mathf.Lerp(slider.value, target,elapsedTime/waitTime);
+            t += 0.5f * elapsedTime;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+            yield return null;
+            
+            
+        }
+
+    }
+   
     public void ChangeSustainibility(float sustainabilityChange)
     {
-
-        slider.value += sustainabilityChange;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange));
         updateProgressPercent();
-
     }
 
 }
