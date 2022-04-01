@@ -21,16 +21,20 @@ public class UIManager : MonoBehaviour
             _instance = this;
 
         canvas = GetComponent<Canvas>();
+
     }
 
     private void Start()
     {
         TimerCountdown timerCountdown = GetComponent<TimerCountdown>();
-        timerCountdown.OnCountdownEnd += TimerCountdown_OnCountdownEnd;
-        timerCountdown.OnSecondChange += TimerCountdown_OnSecondChange;
+        if(TryGetComponent<TimerCountdown>(out timerCountdown)){
+            timerCountdown.OnCountdownEnd += TimerCountdown_OnCountdownEnd;
+            timerCountdown.OnSecondChange += TimerCountdown_OnSecondChange;
 
-        //Setting the start of the countdown
-        countDownText.text = timerCountdown.CountdownString();
+            //Setting the start of the countdown
+            countDownText.text = timerCountdown.CountdownString();
+        }
+
     }
 
     public void SetHoverText(string text)

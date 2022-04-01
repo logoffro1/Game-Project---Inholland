@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
         //Load lobby scene
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("GameUKDay");
+        LevelManager.Instance.LoadScene("Office");
     }
 
     public void NewGame()
@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
         // Yes --> create new save file, start tutorial
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("GameUKDay");
+        LevelManager.Instance.LoadScene("Office");
     }
 
     public void QuitGame()
