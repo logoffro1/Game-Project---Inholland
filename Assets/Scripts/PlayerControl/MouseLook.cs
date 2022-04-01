@@ -18,7 +18,7 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameManager.Instance.IsPlaying) return;
+        if (MiniGameManager.Instance != null && MiniGameManager.Instance.IsPlaying) return;
         LookAround();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
