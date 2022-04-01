@@ -8,7 +8,7 @@ public class CastRay : MonoBehaviour
     private static CastRay _instance = null;
     public static CastRay Instance { get { return _instance; } }
     private GameObject objectHit;
-
+    private GameObject previousObject;
 
     private void Awake()
     {
@@ -39,9 +39,23 @@ public class CastRay : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableObject.DoAction(gameObject);
 
+                if (objectHit == previousObject) return;
+                if (objectHit.layer != 8) //outlined
+                    objectHit.layer = 8;
+
+                if (objectHit != null)
+                {
+                    previousObject = objectHit;
+                }
                 return;
             }         
+        }
+        if (previousObject != null)
+        {
+            previousObject.layer = 0;
+            previousObject = null;
         }
         UIManager.Instance.SetHoverText(null);
     }
 }
+
