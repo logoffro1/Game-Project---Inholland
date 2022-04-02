@@ -7,10 +7,10 @@ public class ProgressBar : MonoBehaviour
 
     [SerializeField] private Text _SliderText;
 
-    private Slider slider;
-    public Gradient gradient;
-    public Image fill;
-    private float sliderThreshhold;
+    [SerializeField] private Slider slider;
+    [SerializeField] private  Gradient gradient;
+    [SerializeField] private  Image fill;
+    [SerializeField] private float sliderThreshhold;
 
 
     private static ProgressBar _instance;
@@ -48,17 +48,17 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        decreaseSustainibilityPerSecond(-0.0005f);
+        DecreaseSustainibilityPerSecond(-0.0005f);
     }
 
-    private void updateProgressPercent()
+    private void UpdateProgressPercent()
     {
         slider.onValueChanged.AddListener((v) => {
             _SliderText.text = v.ToString("0.00") + "%";
         });
     }
 
-    private void decreaseSustainibilityPerSecond(float sustainibilityValue)
+    private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
     {
         if (slider.value > sliderThreshhold)
         {
@@ -66,11 +66,6 @@ public class ProgressBar : MonoBehaviour
             fill.color = gradient.Evaluate(slider.normalizedValue);
 
         }
-        else
-        {
-            return;
-        }
-
     }
 
     private IEnumerator ApplySliderAnimation(float target)
@@ -97,7 +92,7 @@ public class ProgressBar : MonoBehaviour
     public void ChangeSustainibility(float sustainabilityChange)
     {
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange));
-        updateProgressPercent();
+        UpdateProgressPercent();
     }
 
 }
