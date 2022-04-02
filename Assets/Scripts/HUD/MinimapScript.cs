@@ -37,7 +37,7 @@ public class MinimapScript : MonoBehaviour
             Vector3 taskVector = new Vector3(obj.gameObject.transform.position.x, obj.gameObject.transform.position.y + 20, obj.gameObject.transform.position.z);
             GameObject prefab = Instantiate(imagePrefab,taskVector,imagePrefab.transform.localRotation,minimap.transform);
             allPrefabLocations.Add(prefab);
-
+            
         }
     }
 
