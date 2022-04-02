@@ -8,13 +8,27 @@ using UnityEngine.UI;
 
 public class TimerCountdown : MonoBehaviour
 {
-    private int secondsLeft = 5 * 60;
+    private static int secondsMax = 5 * 60;
+    public static int SecondsMax { 
+        private set
+        {
+            secondsMax = value;
+        }
+        
+        get
+        {
+            return secondsMax;
+        }
+    }
 
-    public event Action<string> OnSecondChange;
+    private int secondsLeft;
+
+    public event Action<int> OnSecondChange;
     public event EventHandler OnCountdownEnd;
 
     void Start()
     {
+        secondsLeft = secondsMax;
         StartCoroutine(TimerTake());
         
     }
@@ -25,16 +39,9 @@ public class TimerCountdown : MonoBehaviour
         { 
             yield return new WaitForSeconds(1);
             secondsLeft -= 1;
-            OnSecondChange?.Invoke(CountdownString());
+            OnSecondChange?.Invoke(secondsLeft);
         }
 
         OnCountdownEnd?.Invoke(this, EventArgs.Empty);        
     }
-
-    public string CountdownString()
-    {
-        TimeSpan time = TimeSpan.FromSeconds(secondsLeft);
-        return time.ToString(@"mm\:ss");
-    }
-
 }

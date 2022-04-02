@@ -3,19 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractableTaskObject : MonoBehaviour
+public class InteractableTaskObject : InteractableObject
 {
 
     //This class is in the interactable object in the container
 
     public GameObject GamePrefab;
-    private string hoverName;
+
 
     [HideInInspector]
     public int AmountTries = 0;
 
-    [HideInInspector]
-    public bool IsInteractable = true;
 
     [HideInInspector]
     public GameObject CurrentModel;
@@ -61,7 +59,7 @@ public class InteractableTaskObject : MonoBehaviour
 
 
 
-    public void DoAction(GameObject player)
+    public override void DoAction(GameObject player)
     {
         if (IsInteractable)
         {
@@ -81,8 +79,6 @@ public class InteractableTaskObject : MonoBehaviour
             hoverName = string.Empty;
         }
     }
-
-    public string GetHoverName() => hoverName;
 
     private void DetermineObject()
     {
