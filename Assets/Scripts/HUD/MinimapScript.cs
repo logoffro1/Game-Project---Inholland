@@ -37,7 +37,7 @@ public class MinimapScript : MonoBehaviour
         {
             if (obj.enabled)
             {
-                Vector3 taskVector = new Vector3(obj.gameObject.transform.position.x, obj.gameObject.transform.position.y + 20, obj.gameObject.transform.position.z);
+                Vector3 taskVector = new Vector3(obj.transform.position.x, obj.transform.position.y + 20, obj.transform.position.z);
                 GameObject prefab = Instantiate(imagePrefab, taskVector, imagePrefab.transform.localRotation, minimap.transform);
                 allPrefabLocations.Add(prefab);
             }            
@@ -56,21 +56,22 @@ public class MinimapScript : MonoBehaviour
     {
         foreach(GameObject prefab in allPrefabLocations)
         {
-            if(new Vector3(prefab.transform.position.x, prefab.transform.position.y, prefab.transform.position.z) == vector)
+            Debug.Log($" incoming object : {vector.x} ,{vector.y} , {vector.z}  and  Prefab :{prefab.transform.position.x} {prefab.transform.position.y} {prefab.transform.position.z} ");
+
+            if (new Vector3(((int)prefab.transform.position.x), ((int)prefab.transform.position.y), ((int)prefab.transform.position.z)) == new Vector3(((int)vector.x),((int)vector.y),((int)vector.z)))
             {
+
                 return prefab;
             }
         }
         return null;
     }
 
-    public void DeleteIcon(Vector3 vector)
+    public void DeleteIcon(GameObject obj)
     {
-        clearAllIcons();
-        allPrefabLocations.Remove(GetPrefabByVector(vector));
-        updateIcons();
+        Destroy(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y+20,obj.transform.position.z)));
     }
-
+/*
     private void clearAllIcons() { 
         foreach(GameObject go in allPrefabLocations)
         {
@@ -83,6 +84,6 @@ public class MinimapScript : MonoBehaviour
         {
             Instantiate(go);
         }
-    }
+    }*/
 }
     

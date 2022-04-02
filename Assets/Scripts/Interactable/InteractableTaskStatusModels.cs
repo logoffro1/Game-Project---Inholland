@@ -75,7 +75,7 @@ public class InteractableTaskStatusModels : MonoBehaviour
         if (status == TaskStatus.Success || status == TaskStatus.Fail)
         {
             MinimapScript ms = GameObject.FindObjectOfType<MinimapScript>();
-            ms.DeleteIcon(new Vector3(newModel.transform.position.x, newModel.transform.position.y + 20, newModel.transform.position.z));
+            ms.DeleteIcon(newModel);
         }
 
         return newModel;
