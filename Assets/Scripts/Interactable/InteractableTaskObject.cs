@@ -9,7 +9,7 @@ public class InteractableTaskObject : InteractableObject
     //This class is in the interactable object in the container
 
     public GameObject GamePrefab;
-
+    LocalizationAsset local = new LocalizationAsset();
 
     [HideInInspector]
     public int AmountTries = 0;
@@ -80,10 +80,9 @@ public class InteractableTaskObject : InteractableObject
         }
     }
 
-    private void DetermineObject()
+   private void DetermineObject()
     {
         string tag = gameObject.tag;
-
         switch(tag)
         {
             case nameof(TaskObjectType.StreetLamp):
@@ -106,6 +105,4 @@ public class InteractableTaskObject : InteractableObject
                 break;
         }
     }
-
-
 }

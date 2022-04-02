@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: uiText Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: uiText
+  m_TableCollectionNameGuidString: da94c565f8ff38849b53db7b3e21e305
+  m_Entries:
+  - m_Id: 67661500416
+    m_Key: interact_prompt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3058921672704
+    m_Key: days_over_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5379613298688
+    m_Key: continue_text
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5675852795904
+    m_Key: new_game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5776025358336
+    m_Key: achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858380517376
+    m_Key: settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5881587601408
+    m_Key: credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5901707677696
+    m_Key: quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7170589495296
+    m_Key: start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7188545310720
+    m_Key: coming_soon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7648731762688
+    m_Key: choose_a_level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7893314211840
+    m_Key: alkmaar_city_centre_description
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1648918088788
