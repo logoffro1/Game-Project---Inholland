@@ -35,10 +35,12 @@ public class MinimapScript : MonoBehaviour
     {
         foreach(InteractableTaskObject obj in allInteractableObjects)
         {
-            Vector3 taskVector = new Vector3(obj.gameObject.transform.position.x, obj.gameObject.transform.position.y + 20, obj.gameObject.transform.position.z);
-            GameObject prefab = Instantiate(imagePrefab,taskVector,imagePrefab.transform.localRotation,minimap.transform);
-            allPrefabLocations.Add(prefab);
-            
+            if (obj.enabled)
+            {
+                Vector3 taskVector = new Vector3(obj.gameObject.transform.position.x, obj.gameObject.transform.position.y + 20, obj.gameObject.transform.position.z);
+                GameObject prefab = Instantiate(imagePrefab, taskVector, imagePrefab.transform.localRotation, minimap.transform);
+                allPrefabLocations.Add(prefab);
+            }            
         }
     }
 
@@ -62,7 +64,7 @@ public class MinimapScript : MonoBehaviour
         return null;
     }
 
-    public  void DeleteIcon(Vector3 vector)
+    public void DeleteIcon(Vector3 vector)
     {
         clearAllIcons();
         allPrefabLocations.Remove(GetPrefabByVector(vector));
