@@ -4,9 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
-    private Slider slider;
-    public Gradient gradient;
-    public Image fill;
+
+    [SerializeField] private Text _SliderText;
+
+    [SerializeField] private Slider slider;
+    [SerializeField] private  Gradient gradient;
+    [SerializeField] private  Image fill;
+    [SerializeField] private float sliderThreshhold;
 
 
     private static ProgressBar _instance;
@@ -15,6 +19,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Start()
     {
+       
         slider = gameObject.GetComponent<Slider>();
         SliderInit();
     }
@@ -35,24 +40,59 @@ public class ProgressBar : MonoBehaviour
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        slider.value = 5f;
+        sliderThreshhold = 40f;
+        slider.value = sliderThreshhold;
         fill.color = gradient.Evaluate(0.1f);
+        _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
     private void Update()
     {
-        //This should be deleted. Only for testing purposes.
-        if (Input.GetKeyDown(KeyCode.Z))
-            ChangeSustainibility(5f);
-        if (Input.GetKeyDown(KeyCode.X))
-            ChangeSustainibility(-5f);
-       
+        DecreaseSustainibilityPerSecond(-0.0005f);
     }
 
-    public void ChangeSustainibility (float sustainabilityChange)
+    private void UpdateProgressPercent()
     {
-        slider.value += sustainabilityChange;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        slider.onValueChanged.AddListener((v) => {
+            _SliderText.text = v.ToString("0.00") + "%";
+        });
+    }
+
+    private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
+    {
+        if (slider.value > sliderThreshhold)
+        {
+            slider.value += sustainibilityValue;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+
+        }
+    }
+
+    private IEnumerator ApplySliderAnimation(float target)
+    {
+        yield return new WaitForSeconds(2);
+
+        float current = slider.value;
+        float t = 0.0f;
+        float elapsedTime = 0.0f;
+        float waitTime = 1f;
+        while (elapsedTime<waitTime)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = Mathf.Lerp(slider.value, target,elapsedTime/waitTime);
+            t += 0.5f * elapsedTime;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+            yield return null;
+            
+            
+        }
+
     }
    
+    public void ChangeSustainibility(float sustainabilityChange)
+    {
+        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange));
+        UpdateProgressPercent();
+    }
+
 }
