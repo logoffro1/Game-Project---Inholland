@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TaskGenerator : MonoBehaviour
 {
-    private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects;
+    private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects { get; set; }
     private Dictionary<TaskObjectType, List<GameObject>> allGamesToObjects;
     private Dictionary<TaskObjectType, int> allGamesToAmountSpawn;
 
