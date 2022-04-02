@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
 
     private void ChangeColor(int seconds)
     {
-        if (seconds < TimerCountdown.SecondsMax / 3)
+        if (seconds < 60)
         {
             if (IsColorChangeNeeded(CountdownEndColor))
             {
@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
                 countDownText.gameObject.GetComponentInChildren<RawImage>().color = CountdownEndColor;
             }
         }
-        else if (seconds < (TimerCountdown.SecondsMax / 3) * 2)
+        else if (seconds < 120)
         {
             if (IsColorChangeNeeded(CountdownMiddleColor))
             {
