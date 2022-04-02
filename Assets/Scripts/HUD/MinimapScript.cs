@@ -13,6 +13,7 @@ public class MinimapScript : MonoBehaviour
     public Transform player;
     public GameObject imagePrefab;
     public GameObject minimap;
+    //This class still needs implementation for deleting the icons.
     //InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>()
     private void Start()
     {
