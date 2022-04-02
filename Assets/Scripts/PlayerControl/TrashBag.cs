@@ -45,6 +45,7 @@ public class TrashBag : MonoBehaviour
             items.RemoveAt(0);
             Debug.Log(items.Count);
             UIManager.Instance.SetTrashText(items.Count, bagCapacity);
+            ProgressBar.Instance.ChangeSustainibility(0.5f);
             yield return new WaitForSeconds(0.15f);
         }
     }

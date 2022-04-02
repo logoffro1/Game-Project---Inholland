@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1094941242}
   - component: {fileID: 1094941237}
   - component: {fileID: -8857155841871406635}
+  - component: {fileID: -1301412041125703837}
   m_Layer: 0
   m_Name: SM_Prop_Cup_Red_01
   m_TagString: Untagged
@@ -92,10 +93,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2306861188673538982}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16364151, y: 0.21768038, z: 0.16364135}
+  m_Size: {x: 0.35, y: 0.24, z: 0.35}
   m_Center: {x: 0.0000003837049, y: 0.10884019, z: 0.0000006109476}
 --- !u!114 &1094941237
 MonoBehaviour:
@@ -126,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-1301412041125703837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2306861188673538982}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.16364151, y: 0.21768038, z: 0.16364135}
+  m_Center: {x: 0.0000003837049, y: 0.10884019, z: 0.0000006109476}

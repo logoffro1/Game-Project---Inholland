@@ -18,14 +18,14 @@ public class TrashSpawner : MonoBehaviour
     {
         while(amount < limit)
         {
-            Vector3 spawnPos = new Vector3(Random.Range(180f, -40f), 0.5f, Random.Range(100f, -60f));
+            Vector3 spawnPos = new Vector3(Random.Range(180f, -40f), 0.4f, Random.Range(100f, -60f));
 
             if (DetectCollisions(spawnPos) > 0)
                 continue;
 
             GameObject trash = trashList[Random.Range(0, trashList.Length)];
             Instantiate(trash, spawnPos, trash.transform.rotation, transform);
-            yield return new WaitForSeconds(0.001f);
+            yield return null;
             amount++;
         }
     }

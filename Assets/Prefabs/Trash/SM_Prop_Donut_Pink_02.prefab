@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1904661754}
   - component: {fileID: 1904661749}
   - component: {fileID: 4504025174635186185}
+  - component: {fileID: -6831226354080437762}
   m_Layer: 0
   m_Name: SM_Prop_Donut_Pink_02
   m_TagString: Untagged
@@ -92,10 +93,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4648148961432418617}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.21789268, y: 0.06818764, z: 0.21026793}
+  m_Size: {x: 0.3, y: 0.2, z: 0.3}
   m_Center: {x: -0.000000037252903, y: 0.03409382, z: -0.0038125627}
 --- !u!114 &1904661749
 MonoBehaviour:
@@ -126,3 +127,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-6831226354080437762
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4648148961432418617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21789268, y: 0.06818764, z: 0.21026793}
+  m_Center: {x: -0.000000037252903, y: 0.03409382, z: -0.0038125627}
