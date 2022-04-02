@@ -12,7 +12,6 @@ public class Trash : InteractableObject
     {
         if (player.transform.parent.TryGetComponent(out TrashBag bag))
         {
-            if (!bag.CanCollect()) return;
 
             bag.AddTrash(this);
         }

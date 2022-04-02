@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-
+using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
+    public TextMeshProUGUI trashText;
     public TextMeshProUGUI countDownText;
     public GameObject endMissionText;
 
+    public Image trashFillImage;
     private static UIManager _instance = null;
     public static UIManager Instance { get { return _instance; } }
     private Canvas canvas;
@@ -45,6 +47,17 @@ public class UIManager : MonoBehaviour
             return;
         }
         hoverText.text = $"(E) {text}";
+    }
+    public void SetTrashText(int currentAmount, int limit)
+    {
+        trashText.text = $"{currentAmount} / {limit}";
+        trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
+        Debug.Log(((float)currentAmount / (float)limit));
+    }
+    public void BagFullAnim()
+    {
+        Animator anim = trashText.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("BagFull");
     }
     public void ChangeCanvasShown()
     {

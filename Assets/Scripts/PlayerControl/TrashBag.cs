@@ -15,7 +15,14 @@ public class TrashBag : MonoBehaviour
 
 
     public void AddTrash(Trash trash)
-    {  
+    {
+        if (!CanCollect())
+        {
+            UIManager.Instance.BagFullAnim();
+            return;
+
+        }
+
         trash.gameObject.SetActive(false);
         items.Add(trash);
         if(items.Count >= bagCapacity / 2)
@@ -25,12 +32,21 @@ public class TrashBag : MonoBehaviour
                 BreakBag();
             }
         }
-
-        Debug.Log($"Items in bag: {items.Count}");
+        UIManager.Instance.SetTrashText(items.Count, bagCapacity);
     }
-    private void EmptyBag()
+    public void EmptyBag()
     {
-        items = new List<Trash>();
+        StartCoroutine(StartEmptyBag());
+    }
+    private IEnumerator StartEmptyBag()
+    {
+        while(items.Count > 0)
+        {
+            items.RemoveAt(0);
+            Debug.Log(items.Count);
+            UIManager.Instance.SetTrashText(items.Count, bagCapacity);
+            yield return new WaitForSeconds(0.15f);
+        }
     }
     private void BreakBag()
     {
@@ -41,6 +57,7 @@ public class TrashBag : MonoBehaviour
             trashGO.transform.position = transform.position + transform.forward;
         }
         items = new List<Trash>();
+
     }
     public bool CanCollect() => items.Count < bagCapacity;
 }
