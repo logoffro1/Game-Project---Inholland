@@ -15,7 +15,6 @@ public class Trash : InteractableObject
             if (!bag.CanCollect()) return;
 
             bag.AddTrash(this);
-            Destroy(gameObject);
         }
 
     }
