@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lantern_01
       objectReference: {fileID: 0}
+    - target: {fileID: 346186900752621559, guid: a1a10012ff04e21448ea1675404c6034, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1118642625305412941, guid: a1a10012ff04e21448ea1675404c6034, type: 3}
       propertyPath: m_RootOrder
       value: 0

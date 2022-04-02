@@ -16,14 +16,30 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     private bool isGrounded;
 
+    public bool canMove { get; set; } = true;
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        canMove = true;
     }
 
     void Update()
     {
-        if (MiniGameManager.Instance.IsPlaying) return;
+        if (MiniGameManager.Instance != null)
+        {
+
+            if (MiniGameManager.Instance.IsPlaying)
+            {
+                canMove = false;
+            }
+            else
+            {
+                canMove = true;
+            }
+        }
+
+        if (!canMove) return;
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement();
