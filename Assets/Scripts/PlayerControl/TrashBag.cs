@@ -39,14 +39,16 @@ public class TrashBag : MonoBehaviour
     }
     private IEnumerator StartEmptyBag()
     {
+        int count = items.Count;
         while(items.Count > 0)
         {
             items.RemoveAt(0);
             Debug.Log(items.Count);
             UIManager.Instance.SetTrashText(items.Count, bagCapacity);
-            ProgressBar.Instance.ChangeSustainibility(0.5f);
             yield return new WaitForSeconds(0.15f);
         }
+        ProgressBar.Instance.ChangeSustainibility(0.5f * count);
+
     }
     private void BreakBag()
     {

@@ -70,7 +70,6 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator ApplySliderAnimation(float target)
     {
-        yield return new WaitForSeconds(2);
 
         float current = slider.value;
         float t = 0.0f;
