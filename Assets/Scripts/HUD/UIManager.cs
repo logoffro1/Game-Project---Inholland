@@ -8,9 +8,11 @@ using System;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
+    public TextMeshProUGUI trashText;
     public TextMeshProUGUI countDownText;
     public GameObject endMissionText;
 
+    public Image trashFillImage;
     //For the countdown
     public Color CountdownBeginningColor;
     public Color CountdownMiddleColor;
@@ -42,10 +44,7 @@ public class UIManager : MonoBehaviour
         }
 
     }
-    public void BagFullAnim()
-    {
 
-    }
     public void SetHoverText(string text)
     {
         if (text == null)
@@ -58,6 +57,10 @@ public class UIManager : MonoBehaviour
     public void ChangeCanvasShown()
     {
         canvas.enabled = !canvas.enabled;
+    }
+    public void BagFullAnim()
+    {
+
     }
     public void SetTrashText(int current, int limit)
     {
