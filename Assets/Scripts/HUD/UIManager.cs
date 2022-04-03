@@ -58,13 +58,16 @@ public class UIManager : MonoBehaviour
     {
         canvas.enabled = !canvas.enabled;
     }
+    public void SetTrashText(int currentAmount, int limit)
+    {
+        trashText.text = $"{currentAmount} / {limit}";
+        trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
+        Debug.Log(((float)currentAmount / (float)limit));
+    }
     public void BagFullAnim()
     {
-
-    }
-    public void SetTrashText(int current, int limit)
-    {
-
+        Animator anim = trashText.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("BagFull");
     }
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {

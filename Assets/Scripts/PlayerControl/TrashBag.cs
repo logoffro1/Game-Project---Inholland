@@ -7,7 +7,6 @@ public class TrashBag : MonoBehaviour
     private List<Trash> items;
     private int bagCapacity = 15;
 
-    // Start is called before the first frame update
     void Start()
     {
         items = new List<Trash>();
@@ -22,7 +21,7 @@ public class TrashBag : MonoBehaviour
             return;
 
         }
-
+     
         trash.gameObject.SetActive(false);
         items.Add(trash);
         if(items.Count >= bagCapacity / 2)
