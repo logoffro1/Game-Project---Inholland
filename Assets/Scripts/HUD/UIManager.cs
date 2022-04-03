@@ -42,7 +42,10 @@ public class UIManager : MonoBehaviour
         }
 
     }
+    public void BagFullAnim()
+    {
 
+    }
     public void SetHoverText(string text)
     {
         if (text == null)
@@ -56,7 +59,10 @@ public class UIManager : MonoBehaviour
     {
         canvas.enabled = !canvas.enabled;
     }
+    public void SetTrashText(int current, int limit)
+    {
 
+    }
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
         endMissionText.SetActive(true);
