@@ -20,7 +20,7 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: Interact
+    m_Localized: '{hoverText}'
     m_Metadata:
       m_Items:
       - id: 0

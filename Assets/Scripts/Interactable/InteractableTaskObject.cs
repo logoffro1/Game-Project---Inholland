@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class InteractableTaskObject : InteractableObject
 {
 
     //This class is in the interactable object in the container
 
     public GameObject GamePrefab;
-    LocalizationAsset local = new LocalizationAsset();
 
     [HideInInspector]
     public int AmountTries = 0;

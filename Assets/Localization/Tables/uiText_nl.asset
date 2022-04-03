@@ -16,12 +16,14 @@ MonoBehaviour:
     m_Code: nl
   m_SharedData: {fileID: 11400000, guid: da94c565f8ff38849b53db7b3e21e305, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: Interactie
+    m_Localized: '{hoverText}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 3058921672704
     m_Localized: Dag is voorbij!
     m_Metadata:
@@ -81,3 +83,7 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0090f0c00f000000
