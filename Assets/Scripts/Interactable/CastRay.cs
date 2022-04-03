@@ -35,6 +35,11 @@ public class CastRay : MonoBehaviour
 
             if (objectHit != null && interactableObject != null && interactableObject.IsInteractable)
             {
+                if (previousObject != null)
+                {
+                    previousObject.layer = 0;
+                    previousObject = null;
+                }
                 UIManager.Instance.SetHoverText(interactableObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableObject.DoAction(gameObject);
@@ -43,9 +48,11 @@ public class CastRay : MonoBehaviour
                 if (objectHit.layer != 8) //outlined
                     objectHit.layer = 8;
 
+
                 if (objectHit != null)
                 {
                     previousObject = objectHit;
+              
                 }
                 return;
             }         
