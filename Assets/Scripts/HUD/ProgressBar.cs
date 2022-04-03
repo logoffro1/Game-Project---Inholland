@@ -40,7 +40,7 @@ public class ProgressBar : MonoBehaviour
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        sliderThreshhold = 40f;
+        sliderThreshhold = 20f;
         slider.value = sliderThreshhold;
         fill.color = gradient.Evaluate(0.1f);
         _SliderText.text = slider.value.ToString("0.00") + "%";
@@ -48,7 +48,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        DecreaseSustainibilityPerSecond(-0.0005f);
+        DecreaseSustainibilityPerSecond(-0.01f);//-0.0005f);
     }
 
     private void UpdateProgressPercent()
@@ -92,6 +92,11 @@ public class ProgressBar : MonoBehaviour
     {
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange));
         UpdateProgressPercent();
+    }
+
+    public float GetSlideValue()
+    {
+        return slider.value;
     }
 
 }
