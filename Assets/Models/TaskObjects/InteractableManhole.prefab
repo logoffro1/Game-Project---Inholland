@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe10e6d9d88f064cbd3f43147f9ede0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UntouchedPrefabModel: {fileID: 4283929015661770576, guid: 4b17c8d8ecef006459a64b6b8e3f5416, type: 3}
-  TouchedPrefabModel: {fileID: 4283929015661770576, guid: 258c6bbfd3f0d984bbdf7a7f0102293e, type: 3}
+  UntouchedPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
+  TouchedPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
   SuccessPrefabModel: {fileID: 4283929015661770576, guid: 490c3ac5812cf64438d68e24d0ab5dad, type: 3}
-  FailPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
+  FailPrefabModel: {fileID: 4283929015661770576, guid: 4b17c8d8ecef006459a64b6b8e3f5416, type: 3}
 --- !u!1 &8452408516375684791
 GameObject:
   m_ObjectHideFlags: 0
