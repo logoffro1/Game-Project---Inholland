@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 64273142190292636}
   m_Layer: 0
   m_Name: Tree_Peach
-  m_TagString: Tree
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

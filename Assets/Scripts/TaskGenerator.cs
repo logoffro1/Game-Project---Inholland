@@ -122,10 +122,10 @@ public class TaskGenerator : MonoBehaviour
         newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
 
         //Changes the color
-        foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
+        /*foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
         {
             mesh.material = canSolveMaterial;
-        }
+        }*/
 
     }
 
