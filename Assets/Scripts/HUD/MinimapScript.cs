@@ -55,10 +55,11 @@ public class MinimapScript : MonoBehaviour
     private GameObject GetPrefabByVector(Vector3 vector)
     {
         foreach(GameObject prefab in allPrefabLocations)
-        {
-            Debug.Log($" incoming object : {vector.x} ,{vector.y} , {vector.z}  and  Prefab :{prefab.transform.position.x} {prefab.transform.position.y} {prefab.transform.position.z} ");
+        {             
+            if (prefab.gameObject.transform.position.x.ToString("F2")==vector.x.ToString("F2") &&
+                prefab.gameObject.transform.position.y.ToString("F2") == vector.y.ToString("F2")&&
+                prefab.gameObject.transform.position.z.ToString("F2") == vector.z.ToString("F2"))
 
-            if (new Vector3(((int)prefab.transform.position.x), ((int)prefab.transform.position.y), ((int)prefab.transform.position.z)) == new Vector3(((int)vector.x),((int)vector.y),((int)vector.z)))
             {
 
                 return prefab;
@@ -70,20 +71,8 @@ public class MinimapScript : MonoBehaviour
     public void DeleteIcon(GameObject obj)
     {
         Destroy(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y+20,obj.transform.position.z)));
+        allPrefabLocations.Remove(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y + 20, obj.transform.position.z)));
+
     }
-/*
-    private void clearAllIcons() { 
-        foreach(GameObject go in allPrefabLocations)
-        {
-            Destroy(go);
-        }   
-    }
-    private void updateIcons()
-    {
-        foreach (GameObject go in allPrefabLocations)
-        {
-            Instantiate(go);
-        }
-    }*/
 }
     
