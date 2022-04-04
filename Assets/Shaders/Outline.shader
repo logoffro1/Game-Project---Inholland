@@ -14,7 +14,7 @@ Shader "Outlines/HoverOutline"
         {
                Name "Outline"
 
-                Cull Front
+              
         // Blend SrcAlpha One TRANSPARENCY
        //  ZTest LEqual
 
