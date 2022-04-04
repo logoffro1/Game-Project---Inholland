@@ -40,8 +40,8 @@ public class ProgressBar : MonoBehaviour
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        sliderThreshhold = 40f;
-        slider.value = sliderThreshhold;
+        sliderThreshhold = 20f;
+        slider.value = 40f;
         fill.color = gradient.Evaluate(0.1f);
         _SliderText.text = slider.value.ToString("0.00") + "%";
     }
@@ -49,6 +49,7 @@ public class ProgressBar : MonoBehaviour
     private void Update()
     {
         DecreaseSustainibilityPerSecond(-0.0005f);
+        UpdateProgressPercent();
     }
 
     private void UpdateProgressPercent()
@@ -68,10 +69,12 @@ public class ProgressBar : MonoBehaviour
         }
     }
 
-    private IEnumerator ApplySliderAnimation(float target)
+    private IEnumerator ApplySliderAnimation(float target,bool isMiniGame)
     {
-
-        float current = slider.value;
+        if (isMiniGame)
+        {
+            yield return new WaitForSeconds(2.5f);
+        }  
         float t = 0.0f;
         float elapsedTime = 0.0f;
         float waitTime = 1f;
@@ -85,13 +88,19 @@ public class ProgressBar : MonoBehaviour
             
             
         }
-
     }
    
-    public void ChangeSustainibility(float sustainabilityChange)
-    {
-        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange));
+    public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
+    {  
+        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange,isMiniGame));
         UpdateProgressPercent();
     }
+
+    public float GetSlideValue()
+    {
+        return slider.value;
+    }
+
+
 
 }
