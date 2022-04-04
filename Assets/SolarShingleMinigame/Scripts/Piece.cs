@@ -40,10 +40,18 @@ public class Piece : MonoBehaviour
     }
     private void Update()
     {
-       
+        if (board.isGameOver)
+        {
+            return;
+        }
         this.board.ClearTile(this);
         this.lockTime += Time.deltaTime;
+        handlePieceMovement();
+        this.board.SetPiece(this);
+    }
 
+    private void handlePieceMovement()
+    {
         if (Input.GetKeyDown(KeyCode.E))
         {
             Rotate(1);
@@ -61,7 +69,8 @@ public class Piece : MonoBehaviour
             Move(Vector2Int.right);
         }
 
-        if (Input.GetKeyDown(KeyCode.S)){
+        if (Input.GetKeyDown(KeyCode.S))
+        {
             Move(Vector2Int.down);
         }
 
@@ -73,8 +82,6 @@ public class Piece : MonoBehaviour
         {
             Step();
         }
-
-        this.board.SetPiece(this);
     }
 
     private void Step()
