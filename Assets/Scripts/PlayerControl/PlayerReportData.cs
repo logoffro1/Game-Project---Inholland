@@ -22,7 +22,7 @@ public class PlayerReportData : MonoBehaviour
 
     private Vector3 previousLocation;
 
-    private Vector3 startPosition;
+    public Vector3 startPosition;
    
     //SewageMiniGame
     //ColorBeepMiniGame

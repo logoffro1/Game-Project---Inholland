@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,7 @@ public class EndOfDayReport : MonoBehaviour
     {
         //This is temporary. Multiplayer implementation will change it.
         playerReportData = FindObjectOfType<PlayerReportData>();
-        DistanceTraveled.text += $"{playerReportData.totalDistance.ToString("F2")} meters";
+        DistanceTraveled.text += $"{(playerReportData.totalDistance-(Math.Abs(playerReportData.startPosition.x))).ToString("F2")} meters";
         //Will be changed in the future. Just for display purposes
         PlayerName.text += "Jim Morrison";
         int playNr;
