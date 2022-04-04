@@ -47,7 +47,7 @@ public class TrashBag : MonoBehaviour
             UIManager.Instance.SetTrashText(items.Count, bagCapacity);
             yield return new WaitForSeconds(0.15f);
         }
-        ProgressBar.Instance.ChangeSustainibility(0.5f * count);
+        ProgressBar.Instance.ChangeSustainibility(0.5f * count,false);
 
     }
     private void BreakBag()
