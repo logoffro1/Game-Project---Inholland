@@ -25,7 +25,7 @@ public class EndOfDayReport : MonoBehaviour
         MostPlayedMinigame.text +=$"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)}/{playNr} times.";
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
-        SliderValue.text += $"";
+        SliderValue.text += $"{ProgressBar.Instance.GetSlideValue()}%";
         
     }
 
