@@ -26,7 +26,7 @@ public class MiniGameBase : MonoBehaviour
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints);
+        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints,true);
     }
     protected void GameWon() //remove the duplicate
     {
@@ -36,7 +36,7 @@ public class MiniGameBase : MonoBehaviour
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints);
+        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints,true);
     }
     private void ChangeSuccessText(bool successful)
     {
