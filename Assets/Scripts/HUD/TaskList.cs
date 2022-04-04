@@ -35,7 +35,7 @@ public class TaskList : MonoBehaviour
         Debug.Log("Total tasks: " + totalObjects);
         AssignTasks();
         taskListText = GetComponent<TextMeshProUGUI>();
-        MiniGameManager.Instance.OnGameWon += OnTaskWon;
+        //MiniGameManager.Instance.OnGameWon += OnTaskWon;
         UpdateText();
     }
 
@@ -64,7 +64,7 @@ public class TaskList : MonoBehaviour
                 {
                     treeCounter++;
                 }
-                if (task.transform.CompareTag("StreetLamp"))
+                if (task.tag == "StreetLamp")
                 {
                     lampCounter++;
                 }
@@ -104,6 +104,34 @@ public class TaskList : MonoBehaviour
         taskListText.text = string.Join("\n", list);
     }
 
+    public void TaskWon(InteractableTaskStatusModels task)
+    {
+        //if conditions below need to check what task is being completed, as task.tag is already destroyed when checking after the task completes
+        Debug.Log("Task finished");
+
+        if (Enum.TryParse(task.tag, out TaskObjectType objectType) && taskObjectTypes.ContainsKey(objectType))
+        {
+            if (task.tag == "SolarPanel")
+            {
+                taskObjectTypes[TaskObjectType.SolarPanel][0]++;
+            }
+            if (task.tag == "ManHole")
+            {
+                taskObjectTypes[TaskObjectType.ManHole][0]++;
+            }
+            if (task.tag == "Tree")
+            {
+                taskObjectTypes[TaskObjectType.Tree][0]++;
+            }
+            if (task.tag == "StreetLamp")
+            {
+                taskObjectTypes[TaskObjectType.StreetLamp][0]++;
+            }
+            UpdateText();
+        }
+    }
+
+    /*
     private void OnTaskWon(InteractableTaskObject task)
     {
         //if conditions below need to check what task is being completed, as task.tag is already destroyed when checking after the task completes
@@ -126,5 +154,6 @@ public class TaskList : MonoBehaviour
         }
         UpdateText();
     }
+    */
 
 }
