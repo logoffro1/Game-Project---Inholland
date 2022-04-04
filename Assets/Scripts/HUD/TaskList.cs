@@ -7,11 +7,17 @@ using TMPro;
 
 public class TaskList : MonoBehaviour
 {
+    bool IsMinimumRequirementMet { get => taskObjectTypes.Values.Any(value => value[0] == value[1]); }
+    bool IsTaskListComplete { get => taskObjectTypes.Values.All(value => value[0] == value[1]); }
+
+    bool bonusSusPointsAwarded = false;
     int solarCounter = 0;
     int treeCounter = 0;
     int lampCounter = 0;
     int sewerCounter = 0;
     int totalObjects = 0;
+    int bonusSusPoints = 5;
+
     List<InteractableTaskStatusModels> tasks = new List<InteractableTaskStatusModels>();
     List<InteractableTaskStatusModels> allTasks = new List<InteractableTaskStatusModels>();
     Dictionary<TaskObjectType,int[]> taskObjectTypes = new Dictionary<TaskObjectType,int[]>();
@@ -42,7 +48,10 @@ public class TaskList : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (IsTaskListComplete)
+        {
+            Debug.Log("Minimum requirement and task list is complete");
+        }
     }
 
     List<InteractableTaskStatusModels> FindObjects()
@@ -128,6 +137,11 @@ public class TaskList : MonoBehaviour
                 taskObjectTypes[TaskObjectType.StreetLamp][0]++;
             }
             UpdateText();
+            if (IsTaskListComplete && !bonusSusPointsAwarded)
+            {
+                ProgressBar.Instance.ChangeSustainibility(bonusSusPoints);
+                bonusSusPointsAwarded = true;
+            }
         }
     }
 
