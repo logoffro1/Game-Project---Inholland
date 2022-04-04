@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class VisualPollution : MonoBehaviour
@@ -10,9 +11,13 @@ public class VisualPollution : MonoBehaviour
     public GameObject DustParticlesPrefab;
 
     public Gradient pollutionGradient;
+    public Color staticColor;
 
     private ParticleSystem particleSystem;
-    private int startingMaxParticles;
+    private int startingMaxParticles = 50000;
+
+    private List<MeshRenderer> waters;
+    public Gradient waterGradient;
 
 
     private void Awake()
@@ -32,6 +37,7 @@ public class VisualPollution : MonoBehaviour
         Instantiate(DustParticlesPrefab);
         StartingVisuals();
         SetDustParticles();
+        SetCanal();
     }
 
     private void StartingVisuals()
@@ -49,6 +55,7 @@ public class VisualPollution : MonoBehaviour
 
         UpdateFog(sustainabilityPercentage);
         UpdateDustParticles(sustainabilityPercentage);
+        UpdateCanalColor(sustainabilityPercentage);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -61,9 +68,7 @@ public class VisualPollution : MonoBehaviour
     private void SetDustParticles()
     {
         particleSystem = DustParticlesPrefab.GetComponent<ParticleSystem>();
-
-        ParticleSystem.MainModule settings = particleSystem.main;
-        startingMaxParticles = settings.maxParticles;
+        UpdateDustParticles(20);
     }
 
     private void UpdateDustParticles(float sustainabilityPercentage)
@@ -72,14 +77,34 @@ public class VisualPollution : MonoBehaviour
 
         ParticleSystem.MainModule settings = particleSystem.main;
         var emission = particleSystem.emission;
+        var colorOverLifetime = particleSystem.colorOverLifetime;
 
         //Changing fequencu
-        settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/2));
-        emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/2);
+        //settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/2));
+        //emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/2);
+
+        //particleSystem.Emit((int)(100f - sustainabilityPercentage) * 100); 
 
         //Changing color
-        Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
-        color.a = (100f - sustainabilityPercentage) / (100 + 50);
-        settings.startColor = color;
+        //Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
+        //color.a = (100f - sustainabilityPercentage) / (100 + 150);
+
+        //settings.startColor = staticColor;
+        //colorOverLifetime.color = staticColor;
+    }
+
+    private void SetCanal()
+    {
+        waters = GameObject.FindGameObjectWithTag("Water").GetComponentsInChildren<MeshRenderer>().ToList();
+    }
+
+    private void UpdateCanalColor(float sustainabilityPercentage)
+    {
+        Color color = waterGradient.Evaluate(sustainabilityPercentage / 100);
+        color.a = 1;
+        foreach(MeshRenderer water in waters)
+        {
+            water.material.color = color;
+        }
     }
 }
