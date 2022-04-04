@@ -58,7 +58,7 @@ public class VisualPollution : MonoBehaviour
         if (sustainabilityPercentage > 99) sustainabilityPercentage = 99;
 
         UpdateFog(sustainabilityPercentage);
-        UpdateDustParticles(sustainabilityPercentage);
+        //UpdateDustParticles(sustainabilityPercentage);
         UpdateCanalColor(sustainabilityPercentage);
         UpdateAnimals(sustainabilityPercentage);
     }
@@ -85,17 +85,17 @@ public class VisualPollution : MonoBehaviour
         var colorOverLifetime = particleSystem.colorOverLifetime;
 
         //Changing fequencu
-        //settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/2));
-        //emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/2);
+        settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/4));
+        emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/4);
 
         //particleSystem.Emit((int)(100f - sustainabilityPercentage) * 100); 
 
         //Changing color
-        //Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
-        //color.a = (100f - sustainabilityPercentage) / (100 + 150);
+        Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
+        color.a = (100f - sustainabilityPercentage) / (100 + 150);
 
-        //settings.startColor = staticColor;
-        //colorOverLifetime.color = staticColor;
+        settings.startColor = color;
+        colorOverLifetime.color = color;
     }
 
     private void SetCanal()

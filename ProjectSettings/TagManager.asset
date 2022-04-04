@@ -16,6 +16,7 @@ TagManager:
   - SolarPanel
   - RubbishBin
   - Water
+  - Animal
   layers:
   - Default
   - TransparentFX
