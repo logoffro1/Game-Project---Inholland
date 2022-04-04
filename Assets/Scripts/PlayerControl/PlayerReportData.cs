@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerReportData : MonoBehaviour
 {
@@ -9,28 +10,29 @@ public class PlayerReportData : MonoBehaviour
 
     //Value of the progress bar when the day is over.
     public float FinalProgress { get; private set; }
-    [SerializeField] private float distanceTravelled;
-
-    //Number of the tasks the player successfully did.
+ 
     public Dictionary<string, int> NrOfTasksSuccess { get; private set; }
 
-
-    //Number of tasks the player failed.
     public Dictionary<string, int> NrOfTasksFail { get; private set; }
 
     public Dictionary<string, int> PlayedMinigames { get; private set; }
 
 
-    public float totalDistance = 0;
+    [SerializeField] public float totalDistance { get; private set; }
+
     private Vector3 previousLocation;
+
+    private Vector3 startPosition;
    
+
     void Start()
     {
         PlayedMinigames = new Dictionary<string, int>();
-        FinalProgress = 0;
         NrOfTasksSuccess = new Dictionary<string, int>();
         NrOfTasksFail = new Dictionary<string, int>();
+        FinalProgress = 0;
         totalDistance = 0;
+        startPosition = gameObject.transform.position;
     }
     void FixedUpdate()
     {
@@ -38,10 +40,44 @@ public class PlayerReportData : MonoBehaviour
     }
     void MeasureDistance()
     {
-        
         totalDistance += Vector3.Distance(gameObject.transform.position, previousLocation);
         previousLocation = gameObject.transform.position;
         Debug.Log($"{totalDistance} is the current distance travelled");
+    }
+
+    public int GetTheSuccessfulMinigameNumber()
+    {
+        int totalNumber = 0;
+        foreach(KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+    public int GetTheFailedMinigameNumber()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksFail)
+        {
+            totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+
+    public string GetTheMostPlayedMiniGameName(out int numberPlayed)
+    {
+        string mostPlayedMinigame = "";
+        int topPlayNumber = int.MinValue;
+        foreach (KeyValuePair<string, int> entry in PlayedMinigames)
+        {
+            if (entry.Value > topPlayNumber)
+            {
+                topPlayNumber = entry.Value;
+                mostPlayedMinigame = entry.Key;
+            }
+        }
+        numberPlayed = topPlayNumber;
+        return mostPlayedMinigame;
     }
 
     public void AddWonGames(GameObject minigamePrefab)
