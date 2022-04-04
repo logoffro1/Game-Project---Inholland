@@ -29,6 +29,8 @@ public class EndOfDayReport : MonoBehaviour
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
         TotalTasknumber.text += $"{playerReportData.GetTotalTaskNumber()}";
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
