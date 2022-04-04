@@ -7,6 +7,8 @@ public class VisualPollution : MonoBehaviour
     private static VisualPollution _instance;
     public static VisualPollution Instance { get { return _instance; } }
 
+    public GameObject DustParticlesPrefab;
+
     public Gradient pollutionGradient;
 
     private ParticleSystem particleSystem;
@@ -27,6 +29,7 @@ public class VisualPollution : MonoBehaviour
 
     private void Start()
     {
+        Instantiate(DustParticlesPrefab);
         StartingVisuals();
         SetDustParticles();
     }
