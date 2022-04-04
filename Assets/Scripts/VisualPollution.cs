@@ -9,6 +9,9 @@ public class VisualPollution : MonoBehaviour
 
     public Gradient pollutionGradient;
 
+    private ParticleSystem particleSystem;
+    private int startingMaxParticles;
+
 
     private void Awake()
     {
@@ -20,8 +23,12 @@ public class VisualPollution : MonoBehaviour
         {
             _instance = this;
         }
+    }
 
+    private void Start()
+    {
         StartingVisuals();
+        SetDustParticles();
     }
 
     private void StartingVisuals()
@@ -34,10 +41,42 @@ public class VisualPollution : MonoBehaviour
 
     public void UpdateVisualPollution(float sustainabilityPercentage)
     {
-        //0 == no sustainability, 100 == complete
-        if (sustainabilityPercentage >= 100f) sustainabilityPercentage = 99.8f;
-        
-        RenderSettings.fogColor = pollutionGradient.Evaluate(sustainabilityPercentage/100);
-        RenderSettings.fogDensity = ((100f - sustainabilityPercentage) / (sustainabilityPercentage * 30));
+        if (sustainabilityPercentage < 1) sustainabilityPercentage = 1;
+        if (sustainabilityPercentage > 99) sustainabilityPercentage = 99;
+
+        UpdateFog(sustainabilityPercentage);
+        UpdateDustParticles(sustainabilityPercentage);
+    }
+
+    private void UpdateFog(float sustainabilityPercentage)
+    {
+        Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
+        RenderSettings.fogColor = color;
+        RenderSettings.fogDensity = 0.02f * ((100f - sustainabilityPercentage) / 100); 
+    }
+
+    private void SetDustParticles()
+    {
+        particleSystem = FindObjectOfType<ParticleSystem>();
+
+        ParticleSystem.MainModule settings = particleSystem.main;
+        startingMaxParticles = settings.maxParticles;
+    }
+
+    private void UpdateDustParticles(float sustainabilityPercentage)
+    {
+        //eg. sustainabilityPercentage == 100
+
+        ParticleSystem.MainModule settings = particleSystem.main;
+        var emission = particleSystem.emission;
+
+        //Changing fequencu
+        settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/3));
+        emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/3);
+
+        //Changing color
+        Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
+        color.a = (100f - sustainabilityPercentage) / (100 + 20);
+        settings.startColor = color;
     }
 }
