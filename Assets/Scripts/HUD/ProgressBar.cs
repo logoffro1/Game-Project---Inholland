@@ -40,15 +40,15 @@ public class ProgressBar : MonoBehaviour
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        sliderThreshhold = 20f;
-        slider.value = 40f;
+        sliderThreshhold = 0f;
+        slider.value = 95f;
         fill.color = gradient.Evaluate(0.1f);
         _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
     private void Update()
     {
-        DecreaseSustainibilityPerSecond(-0.0005f);
+        DecreaseSustainibilityPerSecond(-0.1f);
         UpdateProgressPercent();
     }
 

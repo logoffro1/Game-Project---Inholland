@@ -60,7 +60,7 @@ public class VisualPollution : MonoBehaviour
 
     private void SetDustParticles()
     {
-        particleSystem = FindObjectOfType<ParticleSystem>();
+        particleSystem = DustParticlesPrefab.GetComponent<ParticleSystem>();
 
         ParticleSystem.MainModule settings = particleSystem.main;
         startingMaxParticles = settings.maxParticles;
@@ -74,12 +74,12 @@ public class VisualPollution : MonoBehaviour
         var emission = particleSystem.emission;
 
         //Changing fequencu
-        settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/3));
-        emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/3);
+        settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/2));
+        emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/2);
 
         //Changing color
         Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
-        color.a = (100f - sustainabilityPercentage) / (100 + 20);
+        color.a = (100f - sustainabilityPercentage) / (100 + 50);
         settings.startColor = color;
     }
 }
