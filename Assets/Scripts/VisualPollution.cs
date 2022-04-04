@@ -19,6 +19,9 @@ public class VisualPollution : MonoBehaviour
     private List<MeshRenderer> waters;
     public Gradient waterGradient;
 
+    private List<GameObject> allAnimals;
+    private List<GameObject> disabledAnimals;
+
 
     private void Awake()
     {
@@ -38,6 +41,7 @@ public class VisualPollution : MonoBehaviour
         StartingVisuals();
         SetDustParticles();
         SetCanal();
+        SetAnimals();
     }
 
     private void StartingVisuals()
@@ -56,6 +60,7 @@ public class VisualPollution : MonoBehaviour
         UpdateFog(sustainabilityPercentage);
         UpdateDustParticles(sustainabilityPercentage);
         UpdateCanalColor(sustainabilityPercentage);
+        UpdateAnimals(sustainabilityPercentage);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -107,4 +112,73 @@ public class VisualPollution : MonoBehaviour
             water.material.color = color;
         }
     }
+
+    private void SetAnimals()
+    {
+        allAnimals = new List<GameObject>();
+
+        foreach (Transform child in GameObject.FindGameObjectWithTag("Animal").transform)
+        {
+            allAnimals.Add(child.gameObject);
+        }
+
+        //Randomsize it
+        int n = allAnimals.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            GameObject value = allAnimals[k];
+            allAnimals[k] = allAnimals[n];
+            allAnimals[n] = value;
+        }
+
+        disabledAnimals = new List<GameObject>(allAnimals);
+    }
+
+    private void UpdateAnimals(float sustainabilityPercentage)
+    {
+        if (sustainabilityPercentage >= 95)
+        {
+            ActivateAnimal(100);
+        }
+        else if (sustainabilityPercentage >= 90)
+        {
+            ActivateAnimal(80);
+        }
+        else if (sustainabilityPercentage >= 80)
+        {
+            ActivateAnimal(60);
+        }
+        else if(sustainabilityPercentage >= 70)
+        {
+            ActivateAnimal(40);
+
+        }
+        else if (sustainabilityPercentage >= 60)
+        {
+            ActivateAnimal(20);
+        }
+        else
+        {
+            ActivateAnimal(0);
+        }
+    }
+
+    private void ActivateAnimal(float percentage)
+    {
+        int limit = (int) (allAnimals.Count * (percentage / 100));
+
+        //activate
+        for (int i = 0; i < limit; i++)
+        {
+            allAnimals[i].gameObject.SetActive(true);
+        }
+
+        //deactivtae
+        for (int i = limit; i < allAnimals.Count; i++)
+        {
+            allAnimals[i].gameObject.SetActive(false);
+        }
+     }
 }
