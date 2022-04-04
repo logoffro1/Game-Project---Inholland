@@ -121,7 +121,7 @@ public class TaskGenerator : MonoBehaviour
         newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
         newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
 
-        //Changes the color
+        //Changes the color TODO: REMOVE 
         foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
         {
             mesh.material = canSolveMaterial;

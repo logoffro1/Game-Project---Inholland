@@ -8,9 +8,11 @@ using System;
 public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
+    public TextMeshProUGUI trashText;
     public TextMeshProUGUI countDownText;
     public GameObject endMissionText;
 
+    public Image trashFillImage;
     //For the countdown
     public Color CountdownBeginningColor;
     public Color CountdownMiddleColor;
@@ -56,7 +58,17 @@ public class UIManager : MonoBehaviour
     {
         canvas.enabled = !canvas.enabled;
     }
-
+    public void SetTrashText(int currentAmount, int limit)
+    {
+        trashText.text = $"{currentAmount} / {limit}";
+        trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
+        Debug.Log(((float)currentAmount / (float)limit));
+    }
+    public void BagFullAnim()
+    {
+        Animator anim = trashText.gameObject.GetComponent<Animator>();
+        anim.SetTrigger("BagFull");
+    }
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
         endMissionText.SetActive(true);

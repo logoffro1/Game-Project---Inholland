@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Active: 1
   settings:
     passTag: Outlines
-    Event: 300
+    Event: 250
     filterSettings:
       RenderQueueType: 0
       LayerMask:

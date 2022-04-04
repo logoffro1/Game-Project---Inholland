@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 33956128779007266}
   - component: {fileID: 23620953591091578}
   - component: {fileID: 64358704309006592}
-  - component: {fileID: 6052679567564490297}
   m_Layer: 0
   m_Name: Tree_Stump
   m_TagString: Untagged
@@ -97,20 +96,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43773356697938436, guid: a960cfcf00f08054d91281cd5787e95d, type: 2}
---- !u!114 &6052679567564490297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084815455863994}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GamePrefab: {fileID: 0}
-  AmountTries: 0
-  IsInteractable: 1
-  CurrentModel: {fileID: 0}
-  Status: 0
