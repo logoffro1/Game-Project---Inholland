@@ -30,18 +30,7 @@ public class MiniGameManager : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    StartGame();
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            UIManager.Instance.ChangeCanvasShown();
-            miniGame = Instantiate(tetrisGamePrefab, new Vector3(0, 0, 100), tetrisGamePrefab.transform.rotation);
-            IsPlaying = true;
-        }
+     
 
     }
 
