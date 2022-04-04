@@ -11,6 +11,8 @@ public class EndOfDayReport : MonoBehaviour
     public Text Success;
     public Text Fail;
     public Text SliderValue;
+    public Text TotalTasknumber;
+
 
     private PlayerReportData playerReportData;
     
@@ -22,11 +24,11 @@ public class EndOfDayReport : MonoBehaviour
         //Will be changed in the future. Just for display purposes
         PlayerName.text += "Jim Morrison";
         int playNr;
-        MostPlayedMinigame.text +=$"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)}/{playNr} times.";
+        MostPlayedMinigame.text +=$"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)} / {playNr} times.";
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
-        SliderValue.text += $"{ProgressBar.Instance.GetSlideValue()}%";
-        
+        SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
+        TotalTasknumber.text += $"{playerReportData.GetTotalTaskNumber()}";
     }
 
     // Update is called once per frame

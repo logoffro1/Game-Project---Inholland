@@ -24,7 +24,11 @@ public class PlayerReportData : MonoBehaviour
 
     private Vector3 startPosition;
    
-
+    //SewageMiniGame
+    //ColorBeepMiniGame
+    //DigTime Variant
+    //SolarShingleGamePrefab
+    //RewireMiniGame
     void Start()
     {
         PlayedMinigames = new Dictionary<string, int>();
@@ -48,7 +52,7 @@ public class PlayerReportData : MonoBehaviour
     public int GetTheSuccessfulMinigameNumber()
     {
         int totalNumber = 0;
-        foreach(KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
         {
             totalNumber += entry.Value;
         }
@@ -58,6 +62,16 @@ public class PlayerReportData : MonoBehaviour
     {
         int totalNumber = 0;
         foreach (KeyValuePair<string, int> entry in NrOfTasksFail)
+        {
+            totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+
+    public int GetTotalTaskNumber()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in PlayedMinigames)
         {
             totalNumber += entry.Value;
         }
@@ -77,7 +91,7 @@ public class PlayerReportData : MonoBehaviour
             }
         }
         numberPlayed = topPlayNumber;
-        return mostPlayedMinigame;
+        return returnPrefabTaskName(mostPlayedMinigame);
     }
 
     public void AddWonGames(GameObject minigamePrefab)
@@ -110,6 +124,34 @@ public class PlayerReportData : MonoBehaviour
             //This log should be deleted before merge.
             Debug.Log($"{minigamePrefab.name} added  current loses: {NrOfTasksFail[minigamePrefab.name]}");
         }
+    }
+
+    private string returnPrefabTaskName(string prefabname)
+    {
+        string value = "";
+        switch (prefabname)
+        {
+            case "SewageMiniGame":
+                value= "Cleaning Sewage";
+                break;
+
+            case "RewireMiniGame":
+                value= "Rewiring Street lamp";
+                break;
+            case "SolarShingleGamePrefab":
+                value= "Setting up solar panel";
+                break;
+            case "DigTime Variant":
+                value= "Planting trees";
+                break;
+            case "ColorBeepMiniGame Variant":
+                value = "Converting street lamp to solar lamp";
+                break;
+            default:
+                value = prefabname;
+                break;
+        }
+        return value;
     }
 
     public void AddPlayedGames(GameObject minigamePrefab)
