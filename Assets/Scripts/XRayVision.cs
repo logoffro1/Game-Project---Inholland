@@ -7,11 +7,11 @@ public class XRayVision : MonoBehaviour
 {
     [SerializeField] private RenderObjects normalRenderer;
     [SerializeField] private RenderObjects xrayRenderer;
-
+    private Volume xrayVolume;
     // Start is called before the first frame update
     void Start()
     {
-
+        xrayVolume = GetComponent<Volume>();
     }
 
     // Update is called once per frame
@@ -26,6 +26,7 @@ public class XRayVision : MonoBehaviour
     {
         normalRenderer.SetActive(!normalRenderer.isActive);
         xrayRenderer.SetActive(!xrayRenderer.isActive);
+        xrayVolume.enabled = xrayRenderer.isActive;
         foreach (InteractableTaskObject obj in GameObject.FindObjectsOfType<InteractableTaskObject>())
         {
             if (xrayRenderer.isActive)

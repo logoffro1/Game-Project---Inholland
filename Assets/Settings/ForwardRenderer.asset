@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: xrayRendering
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: xrayRendering
     Event: 1000
@@ -25,20 +25,20 @@ MonoBehaviour:
     overrideMaterial: {fileID: 2100000, guid: 860fa464b18a7404db1baa0d11e726b4, type: 2}
     overrideMaterialPassIndex: 0
     overrideDepthState: 0
-    depthCompareFunction: 4
+    depthCompareFunction: 2
     enableWrite: 1
     stencilSettings:
       overrideStencilState: 0
-      stencilReference: 0
+      stencilReference: 10
       stencilCompareFunction: 8
-      passOperation: 0
-      failOperation: 0
-      zFailOperation: 0
+      passOperation: 4
+      failOperation: 4
+      zFailOperation: 4
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
-      offset: {x: 0, y: 0, z: 0, w: 0}
-      cameraFieldOfView: 60
+      offset: {x: 11.12, y: 0, z: 0, w: 1}
+      cameraFieldOfView: 70
 --- !u!114 &-2726062073748862871
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: Outlines
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   settings:
     passTag: Outlines
     Event: 300
