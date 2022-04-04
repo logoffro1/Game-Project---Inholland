@@ -72,7 +72,6 @@ public class MinimapScript : MonoBehaviour
     {
         Destroy(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y+20,obj.transform.position.z)));
         allPrefabLocations.Remove(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y + 20, obj.transform.position.z)));
-
     }
 }
     
