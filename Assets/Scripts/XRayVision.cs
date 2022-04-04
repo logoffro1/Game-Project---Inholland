@@ -49,10 +49,12 @@ public class XRayVision : MonoBehaviour
         vg.intensity.value = 1f;
         dof.active = true;
         dof.focusDistance.value = 1;
+      //  vg.center.value = new Vector2(0.5f, -0.1f);
 
         while (true)
         {
             vg.intensity.value -= 0.01f;
+           // vg.center.value = new Vector2(0.5f, vg.center.value.y + 0.01f);
             dof.focusDistance.value += 0.1f;
             if (vg.intensity.value <= 0.3f) break;
             yield return new WaitForSeconds(0.01f);
