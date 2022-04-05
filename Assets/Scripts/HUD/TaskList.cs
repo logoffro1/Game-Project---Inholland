@@ -139,7 +139,7 @@ public class TaskList : MonoBehaviour
             UpdateText();
             if (IsTaskListComplete && !bonusSusPointsAwarded)
             {
-                ProgressBar.Instance.ChangeSustainibility(bonusSusPoints);
+                ProgressBar.Instance.ChangeSustainibility(bonusSusPoints, true);
                 bonusSusPointsAwarded = true;
             }
         }

@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 4047025358896073448}
   - component: {fileID: 2291517845272493602}
   - component: {fileID: 1479847016786437051}
+  - component: {fileID: 7562625735920802635}
   m_Layer: 0
-  m_Name: LanternRed
-  m_TagString: Untagged
+  m_Name: Green_Lantern
+  m_TagString: StreetLamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1118642625305412941
 Transform:
@@ -60,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d62479c36a82634bbac0ec4c1839c0a, type: 2}
+  - {fileID: 2100000, guid: e6411e5990ca90946a33d31012303ade, type: 2}
   - {fileID: 2100000, guid: fbef9312c8625044d9a671421a4ad005, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -97,3 +98,20 @@ CapsuleCollider:
   m_Height: 5.813203
   m_Direction: 1
   m_Center: {x: 0, y: 2.9066014, z: -0.00000023841858}
+--- !u!114 &7562625735920802635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346186900752621559}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsInteractable: 1
+  GamePrefab: {fileID: 0}
+  AmountTries: 0
+  CurrentModel: {fileID: 0}
+  Status: 0

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7944738143581866693}
   - component: {fileID: 4846541130229602881}
   m_Layer: 0
-  m_Name: SolarPanelRed
+  m_Name: BaseSolarPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3d62479c36a82634bbac0ec4c1839c0a, type: 2}
+  - {fileID: 2100000, guid: 28646867ddcf90a4989276acd313ea43, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

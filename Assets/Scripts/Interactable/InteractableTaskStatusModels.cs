@@ -76,6 +76,14 @@ public class InteractableTaskStatusModels : MonoBehaviour
         }
 
         //Instaiates new model
-        return InstantiateModel(status, child);
+        GameObject newModel = InstantiateModel(status, child);
+
+        if (status == TaskStatus.Success || status == TaskStatus.Fail)
+        {
+            MinimapScript ms = GameObject.FindObjectOfType<MinimapScript>();
+            ms.DeleteIcon(newModel);
+        }
+
+        return newModel;
     }
 }
