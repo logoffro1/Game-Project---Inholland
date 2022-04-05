@@ -13,6 +13,8 @@ public class EndOfDayReport : MonoBehaviour
     public Text Fail;
     public Text SliderValue;
     public Text TotalTasknumber;
+    public Text DayCondition;
+    public Text timeBonus;
 
 
     private PlayerReportData playerReportData;
@@ -21,7 +23,8 @@ public class EndOfDayReport : MonoBehaviour
     {
         //This is temporary. Multiplayer implementation will change it.
         playerReportData = FindObjectOfType<PlayerReportData>();
-        DistanceTraveled.text += $"  {(playerReportData.totalDistance-(Math.Abs(playerReportData.startPosition.x))).ToString("F2")} meters";
+        string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
+        DistanceTraveled.text += $"  {distance} meters";
         //Will be changed in the future. Just for display purposes
         PlayerName.text += "  Jim Morrison";
         int playNr;
@@ -30,8 +33,24 @@ public class EndOfDayReport : MonoBehaviour
         Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
         TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
+        DayCondition.text += $" Day is {getWinLoseCondition()} ";
+        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
+        timeBonus.text += $"  is {remainingTime} seconds remaining ";
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        
+    }
+
+    private string getWinLoseCondition()
+    {
+        if (ProgressBar.Instance.GetSlideValue() >= 80)
+        {
+            return "successfully finished.";
+        }
+        else
+        {
+            return "failed";
+        }
     }
 
 }
