@@ -17,7 +17,17 @@ public class CastRay : MonoBehaviour
         else
             _instance = this;
     }
-
+    private void Start()
+    {
+        SetXrayRenderDistance();
+    }
+    private void SetXrayRenderDistance()
+    {
+        Camera cam = GetComponent<Camera>();
+        float[] distances = new float[32];
+        distances[8] = 60;
+        cam.layerCullDistances = distances;
+    }
     void Update()
     {
         GetObjectHit();
