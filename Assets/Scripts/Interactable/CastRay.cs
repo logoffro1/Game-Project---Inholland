@@ -30,6 +30,7 @@ public class CastRay : MonoBehaviour
     }
     void Update()
     {
+        ChangeRayDistance();
         GetObjectHit();
     }
     private void GetObjectHit() //THIS IS TEMP CODE / IMPROVE LATER
@@ -73,6 +74,13 @@ public class CastRay : MonoBehaviour
             previousObject = null;
         }
         UIManager.Instance.SetHoverText(null);
+    }
+    private void ChangeRayDistance()
+    {
+        if (transform.localRotation.eulerAngles.x >= 270f && transform.localRotation.eulerAngles.x <= 325f)
+            maxObjectDistance = 20f;
+        else
+            maxObjectDistance = 4f;
     }
 }
 
