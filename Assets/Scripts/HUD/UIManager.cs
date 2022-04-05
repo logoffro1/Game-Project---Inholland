@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI trashText;
     public TextMeshProUGUI countDownText;
     public GameObject endMissionText;
+    public GameObject endOfTheDayReportPrefab;
+    
 
     public Image trashFillImage;
     //For the countdown
@@ -72,6 +74,7 @@ public class UIManager : MonoBehaviour
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
         endMissionText.SetActive(true);
+        Instantiate(endOfTheDayReportPrefab);
         //TODO: wait few seconds
         //TODO: switch to end of report scene
     }

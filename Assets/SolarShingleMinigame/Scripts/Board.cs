@@ -13,6 +13,8 @@ public class Board : MonoBehaviour
     public ShinglesMiniGame shinglesGame;
     public int amountOfLinesNeeded { get; private set; }
 
+    public bool isGameOver = false;
+
     public RectInt Bounds
     {
         get
@@ -35,23 +37,19 @@ public class Board : MonoBehaviour
 
     }
     public void SpawnPiece()
-    {
-        
-
+    {        
         int random = Random.Range(0, tetrominoes.Length);
         TetrominoData data = this.tetrominoes[random];
         this.activePiece.Init(this, spawnPosition, data);
 
-        if (IsValidPosition(this.activePiece, this.spawnPosition))
+        if (!IsValidPosition(this.activePiece, this.spawnPosition))
         {
-            SetPiece(this.activePiece);
-
-        }else if (this.amountOfLinesNeeded == 0) //win
-        {
+            isGameOver = true;
+            shinglesGame.GameFinish(false);
         }
         else
         {
-            shinglesGame.GameFinish(false);
+            SetPiece(this.activePiece);
         }
 
 
@@ -109,6 +107,7 @@ public class Board : MonoBehaviour
                 this.amountOfLinesNeeded--;
                 if(amountOfLinesNeeded <= 0)
                 {
+                    isGameOver = true;
                     shinglesGame.GameFinish(true);
                 }
             }

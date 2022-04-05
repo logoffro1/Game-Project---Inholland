@@ -8,6 +8,8 @@ public class MiniGameManager : MonoBehaviour
     private static MiniGameManager _instance = null;
     public static MiniGameManager Instance { get { return _instance; } }
 
+    public PlayerReportData PlayerData { get; private set; }
+
     //Todo: remove after implementation
     public GameObject tetrisGamePrefab;
 
@@ -28,27 +30,16 @@ public class MiniGameManager : MonoBehaviour
             _instance = this;
     }
 
-    private void Update()
+    private void Start()
     {
-        //if (Input.GetKeyDown(KeyCode.E))
-        //{
-        //    StartGame();
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.V))
-        {
-            UIManager.Instance.ChangeCanvasShown();
-            miniGame = Instantiate(tetrisGamePrefab, new Vector3(0, 0, 100), tetrisGamePrefab.transform.rotation);
-            IsPlaying = true;
-        }
-
+        PlayerData = FindObjectOfType<PlayerReportData>();
     }
 
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
 
+        PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
         IsPlaying = true;     
@@ -64,11 +55,13 @@ public class MiniGameManager : MonoBehaviour
 
     public void GameOver()
     {
+        PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
     }
 
     public void GameWon()
     {
+        PlayerData.AddWonGames(InteractableObject.GamePrefab);
         OnGameWon?.Invoke(InteractableObject);
     }
 }
