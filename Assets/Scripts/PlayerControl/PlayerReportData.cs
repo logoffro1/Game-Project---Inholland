@@ -81,7 +81,7 @@ public class PlayerReportData : MonoBehaviour
     public string GetTheMostPlayedMiniGameName(out int numberPlayed)
     {
         string mostPlayedMinigame = "";
-        int topPlayNumber = int.MinValue;
+        int topPlayNumber = 0;
         foreach (KeyValuePair<string, int> entry in PlayedMinigames)
         {
             if (entry.Value > topPlayNumber)
@@ -148,7 +148,7 @@ public class PlayerReportData : MonoBehaviour
                 value = "Converting street lamp to solar lamp";
                 break;
             default:
-                value = prefabname;
+                value = "None";
                 break;
         }
         return value;

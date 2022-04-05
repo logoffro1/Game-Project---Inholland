@@ -35,12 +35,6 @@ public class MiniGameManager : MonoBehaviour
         PlayerData = FindObjectOfType<PlayerReportData>();
     }
 
-    private void Update()
-    {
-     
-
-    }
-
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
