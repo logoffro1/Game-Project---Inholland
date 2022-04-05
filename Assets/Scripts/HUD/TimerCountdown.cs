@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -22,7 +23,15 @@ public class TimerCountdown : MonoBehaviour
     }
 
     private int secondsLeft;
-    private int startCountDownLeft = 5;
+
+    public int StartCountDownLeft
+    {
+        get { return startCountDownLeft; }
+        private set { startCountDownLeft = value; }
+    }
+
+    private int startCountDownLeft = 10;
+    private SwitchCameras switchCameras;
 
     public event Action<int> OnSecondChange;
     public event Action<string> OnStartCountdownChange;
@@ -31,6 +40,8 @@ public class TimerCountdown : MonoBehaviour
     void Start()
     {
         secondsLeft = secondsMax;
+        //switchCameras = FindObjectOfType<SwitchCameras>();
+
         MiniGameManager.Instance.FreezeScreen(true);
         StartCoroutine(StartCountDown());
         
@@ -46,6 +57,9 @@ public class TimerCountdown : MonoBehaviour
             if (startCountDownLeft <= 0)
             {
                 OnStartCountdownChange?.Invoke("Go!");
+
+                yield return new WaitForSeconds(1);
+
                 StartCoroutine(TimerTake());
                 yield break;
             }

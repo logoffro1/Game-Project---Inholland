@@ -87,7 +87,8 @@ public class UIManager : MonoBehaviour
     {
         if (!countDownText.gameObject.activeSelf) countDownText.gameObject.SetActive(true);
         if (startCountDownText.enabled) startCountDownText.enabled = false;
-        if (goalText.isActiveAndEnabled) Destroy(goalText);
+        if (goalText.isActiveAndEnabled) gameObject.SetActive(false);
+        //if (FindObjectOfType<SwitchCameras>() != null) FindObjectOfType<SwitchCameras>().DestroyAllRelated();
 
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);
