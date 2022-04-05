@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
+
 
 public class VisualPollution : MonoBehaviour
 {
@@ -20,8 +23,8 @@ public class VisualPollution : MonoBehaviour
     public Gradient waterGradient;
 
     private List<GameObject> allAnimals;
-    private List<GameObject> disabledAnimals;
 
+    private ColorAdjustments colorAdjustments;
 
     private void Awake()
     {
@@ -67,7 +70,7 @@ public class VisualPollution : MonoBehaviour
     {
         Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
         RenderSettings.fogColor = color;
-        RenderSettings.fogDensity = 0.02f * ((100f - sustainabilityPercentage) / 100); 
+        RenderSettings.fogDensity = 0.012f * ((100f - sustainabilityPercentage) / 100); 
     }
 
     private void SetDustParticles()
@@ -132,8 +135,6 @@ public class VisualPollution : MonoBehaviour
             allAnimals[k] = allAnimals[n];
             allAnimals[n] = value;
         }
-
-        disabledAnimals = new List<GameObject>(allAnimals);
     }
 
     private void UpdateAnimals(float sustainabilityPercentage)
@@ -181,4 +182,43 @@ public class VisualPollution : MonoBehaviour
             allAnimals[i].gameObject.SetActive(false);
         }
      }
+
+    private void SetPostProcessing()
+    {
+        if (gameObject.GetComponent<Volume>().profile.TryGet(out ColorAdjustments colorA))
+        {
+            colorAdjustments = colorA;
+        }
+
+    }
+
+    public void UpdatePostProcessing(float sustainabilityPercentage)
+    {
+        float percentage = sustainabilityPercentage / 100;
+
+        if (colorAdjustments != null)
+        {
+            if (percentage <= 0.5)
+            {
+                sustainabilityPercentage += -1;
+            }
+
+            //post exposure -1 1 -> dif == 2
+            colorAdjustments.postExposure.SetValue(new VolumeParameter<float>() { value = GetPostProcessingValue(-1, 1, sustainabilityPercentage) });
+
+            //contrast 5 15
+            colorAdjustments.contrast.SetValue(new VolumeParameter<float>() { value = GetPostProcessingValue(5, 15, sustainabilityPercentage) });
+
+            //saturation -12, 30
+            colorAdjustments.saturation.SetValue(new VolumeParameter<float>() { value = GetPostProcessingValue(-12, 30, sustainabilityPercentage) });
+        }
+    }
+
+    private float GetPostProcessingValue(float lowestPoint, float highestPoint, float sustainabilityPercentage)
+    {
+        float difference = Mathf.Abs(highestPoint - lowestPoint);
+        float midPoint = lowestPoint + difference;
+
+        return midPoint + (difference * (sustainabilityPercentage / 100));
+    }
 }

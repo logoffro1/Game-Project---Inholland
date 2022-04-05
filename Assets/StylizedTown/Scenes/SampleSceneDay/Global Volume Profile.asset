@@ -356,11 +356,11 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 50
+    m_Value: 90
     min: 0
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 100
     min: 0
   gaussianMaxRadius:
     m_OverrideState: 1
