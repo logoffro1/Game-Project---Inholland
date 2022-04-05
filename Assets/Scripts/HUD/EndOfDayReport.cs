@@ -25,7 +25,7 @@ public class EndOfDayReport : MonoBehaviour
         //Will be changed in the future. Just for display purposes
         PlayerName.text += "  Jim Morrison";
         int playNr;
-        MostPlayedMinigame.text +=$"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} / {playNr} times.";
+        MostPlayedMinigame.text +=$"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)}: {playNr}";
         Success.text += $"  {playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
