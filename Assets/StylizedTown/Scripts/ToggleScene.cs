@@ -23,7 +23,7 @@ public class ToggleScene : MonoBehaviour {
         {
             //LoadRewire
             Debug.Log("Enter was pressed");
-            SceneManager.LoadScene("Rewire");
+           // SceneManager.LoadScene("Rewire");
             Debug.Log("Rewire should be appearing somewhere...");
         }
     }
