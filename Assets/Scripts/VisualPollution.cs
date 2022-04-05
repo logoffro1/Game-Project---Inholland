@@ -45,6 +45,7 @@ public class VisualPollution : MonoBehaviour
         SetDustParticles();
         SetCanal();
         SetAnimals();
+        SetPostProcessing();
     }
 
     private void StartingVisuals()
@@ -64,6 +65,7 @@ public class VisualPollution : MonoBehaviour
         //UpdateDustParticles(sustainabilityPercentage);
         UpdateCanalColor(sustainabilityPercentage);
         UpdateAnimals(sustainabilityPercentage);
+        UpdatePostProcessing(sustainabilityPercentage);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -76,7 +78,7 @@ public class VisualPollution : MonoBehaviour
     private void SetDustParticles()
     {
         particleSystem = DustParticlesPrefab.GetComponent<ParticleSystem>();
-        UpdateDustParticles(20);
+        UpdateDustParticles(ProgressBar.Instance.GetSlideValue());
     }
 
     private void UpdateDustParticles(float sustainabilityPercentage)
@@ -104,6 +106,7 @@ public class VisualPollution : MonoBehaviour
     private void SetCanal()
     {
         waters = GameObject.FindGameObjectWithTag("Water").GetComponentsInChildren<MeshRenderer>().ToList();
+        UpdateCanalColor(ProgressBar.Instance.GetSlideValue());
     }
 
     private void UpdateCanalColor(float sustainabilityPercentage)
@@ -135,6 +138,8 @@ public class VisualPollution : MonoBehaviour
             allAnimals[k] = allAnimals[n];
             allAnimals[n] = value;
         }
+
+        UpdateAnimals(ProgressBar.Instance.GetSlideValue());
     }
 
     private void UpdateAnimals(float sustainabilityPercentage)
@@ -185,11 +190,12 @@ public class VisualPollution : MonoBehaviour
 
     private void SetPostProcessing()
     {
-        if (gameObject.GetComponent<Volume>().profile.TryGet(out ColorAdjustments colorA))
+        if (FindObjectOfType<Volume>().profile.TryGet(out ColorAdjustments colorA))
         {
             colorAdjustments = colorA;
         }
 
+        UpdatePostProcessing(ProgressBar.Instance.GetSlideValue());
     }
 
     public void UpdatePostProcessing(float sustainabilityPercentage)
@@ -216,9 +222,9 @@ public class VisualPollution : MonoBehaviour
 
     private float GetPostProcessingValue(float lowestPoint, float highestPoint, float sustainabilityPercentage)
     {
-        float difference = Mathf.Abs(highestPoint - lowestPoint);
-        float midPoint = lowestPoint + difference;
+        float halfDifference = Mathf.Abs(highestPoint - lowestPoint)/2;
+        float midPoint = lowestPoint + halfDifference;
 
-        return midPoint + (difference * (sustainabilityPercentage / 100));
+        return midPoint + (halfDifference * (sustainabilityPercentage / 100));
     }
 }
