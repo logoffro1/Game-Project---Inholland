@@ -141,19 +141,25 @@ public class TaskList : MonoBehaviour
         {
             if (task.tag == "SolarPanel")
             {
-                taskObjectTypes[TaskObjectType.SolarPanel][0]++;
+
+                if (taskObjectTypes[TaskObjectType.SolarPanel][0]+1 <= taskObjectTypes[TaskObjectType.SolarPanel][1])
+                    taskObjectTypes[TaskObjectType.SolarPanel][0]++;
             }
             if (task.tag == "ManHole")
             {
-                taskObjectTypes[TaskObjectType.ManHole][0]++;
+                if (taskObjectTypes[TaskObjectType.ManHole][0] + 1 <= taskObjectTypes[TaskObjectType.ManHole][1])
+                    taskObjectTypes[TaskObjectType.ManHole][0]++;
+
             }
             if (task.tag == "Tree")
             {
-                taskObjectTypes[TaskObjectType.Tree][0]++;
+                if (taskObjectTypes[TaskObjectType.Tree][0] + 1 <= taskObjectTypes[TaskObjectType.Tree][1])
+                    taskObjectTypes[TaskObjectType.Tree][0]++;
             }
             if (task.tag == "StreetLamp")
             {
-                taskObjectTypes[TaskObjectType.StreetLamp][0]++;
+                if (taskObjectTypes[TaskObjectType.StreetLamp][0] + 1 <= taskObjectTypes[TaskObjectType.StreetLamp][1])
+                    taskObjectTypes[TaskObjectType.StreetLamp][0]++;
             }
             UpdateText();
             if (IsTaskListComplete && !bonusSusPointsAwarded)
