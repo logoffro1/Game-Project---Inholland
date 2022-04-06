@@ -12,15 +12,17 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private  Image fill;
     [SerializeField] private float sliderThreshhold;
 
+    public bool isGameOngoing;
+
 
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
 
 
     private void Start()
-    {
-       
+    {      
         slider = gameObject.GetComponent<Slider>();
+        isGameOngoing = true;
         SliderInit();
     }
 
@@ -35,6 +37,10 @@ public class ProgressBar : MonoBehaviour
             _instance = this;
         }
     }
+    public float GetSliderMaxValue()
+    {
+        return slider.maxValue;
+    }
 
     private void SliderInit()
     {
@@ -48,7 +54,10 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        DecreaseSustainibilityPerSecond(-0.0005f);
+        if(isGameOngoing)
+        {
+            DecreaseSustainibilityPerSecond(-0.0005f);
+        }
         UpdateProgressPercent();
     }
 
