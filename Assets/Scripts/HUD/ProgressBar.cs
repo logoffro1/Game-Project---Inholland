@@ -4,18 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
-    private Slider slider;
-    public Gradient gradient;
-    public Image fill;
+
+    [SerializeField] private Text _SliderText;
+
+    [SerializeField] private Slider slider;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Image fill;
+    [SerializeField] private float sliderThreshhold;
+
+    public bool isGameOngoing;
 
 
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
 
-
+    private bool inCoroutine = false;
     private void Start()
     {
         slider = gameObject.GetComponent<Slider>();
+        isGameOngoing = true;
         SliderInit();
     }
 
@@ -30,29 +37,82 @@ public class ProgressBar : MonoBehaviour
             _instance = this;
         }
     }
+    public float GetSliderMaxValue()
+    {
+        return slider.maxValue;
+    }
 
     private void SliderInit()
     {
         slider.maxValue = 100f;
         slider.minValue = 0f;
-        slider.value = 5f;
+        sliderThreshhold = 20f;
+        slider.value = 40f;
         fill.color = gradient.Evaluate(0.1f);
+        _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
     private void Update()
     {
-        //This should be deleted. Only for testing purposes.
-        if (Input.GetKeyDown(KeyCode.Z))
-            ChangeSustainibility(5f);
-        if (Input.GetKeyDown(KeyCode.X))
-            ChangeSustainibility(-5f);
-       
+        if (isGameOngoing)
+        {
+            DecreaseSustainibilityPerSecond(-0.0005f);
+        }
     }
 
-    public void ChangeSustainibility (float sustainabilityChange)
+    private void UpdateProgressPercent()
     {
-        slider.value += sustainabilityChange;
-        fill.color = gradient.Evaluate(slider.normalizedValue);
+        _SliderText.text = slider.value.ToString("0.00") + "%";
     }
-   
+
+    private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
+    {
+        if (inCoroutine) return;
+        if (slider.value > sliderThreshhold)
+        {
+            slider.value += sustainibilityValue;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+
+        }
+        UpdateProgressPercent();
+    }
+
+    private IEnumerator ApplySliderAnimation(float target, bool isMiniGame)
+    {
+        inCoroutine = true;
+        if (isMiniGame)
+        {
+            yield return new WaitForSeconds(2.5f);
+        }
+        float t = 0.0f;
+        float elapsedTime = 0.0f;
+        float waitTime = 1f;
+        while (elapsedTime < waitTime)
+        {
+            elapsedTime += Time.deltaTime;
+            slider.value = Mathf.Lerp(slider.value, target, elapsedTime / waitTime);
+            t += 0.5f * elapsedTime;
+            fill.color = gradient.Evaluate(slider.normalizedValue);
+            UpdateProgressPercent();
+            yield return null;
+
+        }
+        inCoroutine = false;
+    }
+
+    public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
+    {
+        /*        slider.value += sustainabilityChange;
+                fill.color = gradient.Evaluate(slider.normalizedValue);*/
+        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
+        UpdateProgressPercent();
+    }
+
+    public float GetSlideValue()
+    {
+        return slider.value;
+    }
+
+
+
 }

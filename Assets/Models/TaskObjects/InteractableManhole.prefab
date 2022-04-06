@@ -15,7 +15,7 @@ GameObject:
   m_TagString: ManHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 126
   m_IsActive: 1
 --- !u!4 &3474599759995629034
 Transform:
@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe10e6d9d88f064cbd3f43147f9ede0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UntouchedPrefabModel: {fileID: 4283929015661770576, guid: 4b17c8d8ecef006459a64b6b8e3f5416, type: 3}
-  TouchedPrefabModel: {fileID: 4283929015661770576, guid: 258c6bbfd3f0d984bbdf7a7f0102293e, type: 3}
+  UntouchedPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
+  TouchedPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
   SuccessPrefabModel: {fileID: 4283929015661770576, guid: 490c3ac5812cf64438d68e24d0ab5dad, type: 3}
-  FailPrefabModel: {fileID: 4283929015661770576, guid: 476af143fd5109645b63c776fed0e8ec, type: 3}
+  FailPrefabModel: {fileID: 4283929015661770576, guid: 4b17c8d8ecef006459a64b6b8e3f5416, type: 3}
 --- !u!1 &8452408516375684791
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +60,6 @@ GameObject:
   - component: {fileID: 3036311387110085747}
   - component: {fileID: 6076244408872363156}
   - component: {fileID: 356537221433403479}
-  - component: {fileID: 1000023075819515996}
   m_Layer: 0
   m_Name: Manhole
   m_TagString: ManHole
@@ -144,20 +143,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1770384, y: 1.1770383, z: 0.16470908}
   m_Center: {x: 0, y: 0, z: 0.08235454}
---- !u!114 &1000023075819515996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8452408516375684791}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GamePrefab: {fileID: 0}
-  AmountTries: 0
-  IsInteractable: 1
-  CurrentModel: {fileID: 0}
-  Status: 0

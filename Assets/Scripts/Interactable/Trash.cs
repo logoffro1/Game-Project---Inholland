@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
+public class Trash : InteractableObject
+{
+    private void Start()
+    {
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+
+        if (localCode == "en")
+            hoverName = "Trash";
+        else if (localCode == "nl")
+            hoverName = "Afval";
+    }
+    private void Update()
+    {
+        if (transform.position.y < -50)
+            Destroy(gameObject);
+    }
+    public override void DoAction(GameObject player)
+    {
+        if (player.transform.parent.TryGetComponent(out TrashBag bag))
+        {
+            bag.AddTrash(this);
+        }
+
+    }
+}

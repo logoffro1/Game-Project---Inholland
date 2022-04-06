@@ -2,20 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
-public class InteractableTaskObject : MonoBehaviour
+public class InteractableTaskObject : InteractableObject
 {
 
     //This class is in the interactable object in the container
 
     public GameObject GamePrefab;
-    private string hoverName;
 
     [HideInInspector]
     public int AmountTries = 0;
 
-    [HideInInspector]
-    public bool IsInteractable = true;
 
     [HideInInspector]
     public GameObject CurrentModel;
@@ -61,7 +60,7 @@ public class InteractableTaskObject : MonoBehaviour
 
 
 
-    public void DoAction(GameObject player)
+    public override void DoAction(GameObject player)
     {
         if (IsInteractable)
         {
@@ -82,34 +81,50 @@ public class InteractableTaskObject : MonoBehaviour
         }
     }
 
-    public string GetHoverName() => hoverName;
-
     private void DetermineObject()
     {
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
         string tag = gameObject.tag;
-
-        switch(tag)
+        if (localCode == "en")
+        {
+            switch (tag)
+            {
+                case nameof(TaskObjectType.StreetLamp):
+                    hoverName = "Upgrade";
+                    break;
+                case nameof(TaskObjectType.Tree):
+                    hoverName = "Plant";
+                    break;
+                case nameof(TaskObjectType.ManHole):
+                    hoverName = "Clean";
+                    break;
+                case nameof(TaskObjectType.SolarPanel):
+                    hoverName = "Build solar panel";
+                    break;
+                default:
+                    hoverName = "Interact";
+                    break;
+            }
+            return;
+        }
+        switch (tag)
         {
             case nameof(TaskObjectType.StreetLamp):
                 hoverName = "Upgrade";
                 break;
             case nameof(TaskObjectType.Tree):
-                hoverName = "Plant";
+                hoverName = "Boom planten";
                 break;
             case nameof(TaskObjectType.ManHole):
-                hoverName = "Clean";
+                hoverName = "Schoon";
                 break;
             case nameof(TaskObjectType.SolarPanel):
-                hoverName = "Fix";
-                break;
-            case nameof(TaskObjectType.RubbishBin):
-                hoverName = "Build shingles";
+                hoverName = "Zonnepaneel bouwen";
                 break;
             default:
-                hoverName = "Interact";
+                hoverName = "Interactie";
                 break;
         }
     }
-
-
 }
