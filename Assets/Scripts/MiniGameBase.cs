@@ -2,6 +2,9 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.Threading;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
+
 public class MiniGameBase : MonoBehaviour
 {
 
@@ -71,15 +74,33 @@ public class MiniGameBase : MonoBehaviour
     }
     private void ChangeSuccessText(bool successful)
     {
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
         successText.enabled = true;
         if (successful)
         {
             successText.color = Color.green;
-            successText.text = "SUCCESS";
+            if (localCode == "en")
+            {
+                successText.text = "SUCCESS";
+            }
+            else if (localCode == "nl")
+            {
+                successText.text = "SUCCESS";
+            }           
             return;
         }
+
         successText.color = Color.red;
-        successText.text = "FAILURE";
+        if (localCode == "en")
+        {
+            successText.text = "FAILURE";
+        }
+        else if (localCode == "nl")
+        {
+            successText.text = "MISLUKKING";
+        }
+        
     }
 }
 

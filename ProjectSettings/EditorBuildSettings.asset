@@ -29,4 +29,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Rewire.unity
     guid: c47b14335b033394eb3b044ad4722371
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 5ce032eab93d0ad4aad254bb63c9c931, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: 1ef6013b010cb9a4e9f6c4f1c2c601bb, type: 2}

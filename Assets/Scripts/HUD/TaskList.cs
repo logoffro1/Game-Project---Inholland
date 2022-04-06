@@ -4,6 +4,8 @@ using UnityEngine;
 using System.Linq;
 using System;
 using TMPro;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class TaskList : MonoBehaviour
 {
@@ -21,18 +23,35 @@ public class TaskList : MonoBehaviour
     List<InteractableTaskStatusModels> tasks = new List<InteractableTaskStatusModels>();
     List<InteractableTaskStatusModels> allTasks = new List<InteractableTaskStatusModels>();
     Dictionary<TaskObjectType,int[]> taskObjectTypes = new Dictionary<TaskObjectType,int[]>();
-    Dictionary<TaskObjectType, string> taskStrings = new Dictionary<TaskObjectType,string>()
-    {
-        { TaskObjectType.Tree, "Plant Trees" },
-        { TaskObjectType.SolarPanel, "Upgrade solar panel" },
-        { TaskObjectType.StreetLamp, "Upgrade street lamp" },
-        { TaskObjectType.ManHole, "Clean sewers" }
-    };
+    Dictionary<TaskObjectType, string> taskStrings;
     private TextMeshProUGUI taskListText;
 
     // Start is called before the first frame update
     void Start()
     {
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+        if (localCode == "en")
+        {
+            taskStrings = new Dictionary<TaskObjectType, string>()
+             {
+        { TaskObjectType.Tree, "Plant Trees" },
+        { TaskObjectType.SolarPanel, "Set up solar panel" },
+        { TaskObjectType.StreetLamp, "Upgrade street lamp" },
+        { TaskObjectType.ManHole, "Clean sewers" }
+         };
+        }
+        else if (localCode == "nl")
+        {
+            taskStrings = new Dictionary<TaskObjectType, string>()
+             {
+        { TaskObjectType.Tree, "Bomen planten" },
+        { TaskObjectType.SolarPanel, "Zonnepaneel opzetten" },
+        { TaskObjectType.StreetLamp, "Straatlantaarn upgraden" },
+        { TaskObjectType.ManHole, "Schone riolen" }
+         };
+        }
+        
         FindObjects();
         Debug.Log("Shingles: "+ solarCounter);
         Debug.Log("Manhole: " + sewerCounter);
@@ -45,7 +64,7 @@ public class TaskList : MonoBehaviour
         UpdateText();
     }
 
-    // Update is called once per frame
+ /*   // Update is called once per frame
     void Update()
     {
         if (IsTaskListComplete)
@@ -53,7 +72,7 @@ public class TaskList : MonoBehaviour
             Debug.Log("Minimum requirement and task list is complete");
         }
     }
-
+*/
     List<InteractableTaskStatusModels> FindObjects()
     {
         List<InteractableTaskStatusModels> list = new List<InteractableTaskStatusModels>();
