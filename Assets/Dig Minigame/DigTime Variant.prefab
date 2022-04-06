@@ -376,7 +376,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 150
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 535315073119332185, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -458,9 +458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &5071139949497133216 stripped
+--- !u!1 &7433934659410218347 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 5014664259943890809, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7268036113774713522, guid: 4d5355390264da34da189a30a21277c6, type: 3}
   m_PrefabInstance: {fileID: 285948313358620633}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &6165266079989088706 stripped
@@ -488,4 +488,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successText: {fileID: 1153135874355663379}
   descriptionText: {fileID: 6165266079989088706}
-  infoCanvas: {fileID: 5071139949497133216}
+  infoCanvas: {fileID: 7433934659410218347}

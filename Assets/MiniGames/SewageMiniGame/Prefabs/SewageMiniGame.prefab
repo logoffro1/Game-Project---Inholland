@@ -5829,7 +5829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successText: {fileID: 1402655260}
   descriptionText: {fileID: 2149331149054622801}
-  infoCanvas: {fileID: 9153825974792070645}
+  infoCanvas: {fileID: 340637394202117958}
 --- !u!1 &8619247169513039307
 GameObject:
   m_ObjectHideFlags: 0
@@ -6829,14 +6829,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
---- !u!1 &9153825974792070645 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7887383838465762787, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
-  m_PrefabInstance: {fileID: 1332346367251644438}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4724878679484939091 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6048147203809426245, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
+  m_PrefabInstance: {fileID: 1332346367251644438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &340637394202117958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1641384020592871248, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
   m_PrefabInstance: {fileID: 1332346367251644438}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &2149331149054622801 stripped
