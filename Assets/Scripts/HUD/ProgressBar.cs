@@ -18,7 +18,7 @@ public class ProgressBar : MonoBehaviour
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
 
-
+    private bool inCoroutine = false;
     private void Start()
     {      
         slider = gameObject.GetComponent<Slider>();
@@ -70,6 +70,7 @@ public class ProgressBar : MonoBehaviour
 
     private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
     {
+        if (inCoroutine) return;
         if (slider.value > sliderThreshhold)
         {
             slider.value += sustainibilityValue;
@@ -80,6 +81,7 @@ public class ProgressBar : MonoBehaviour
 
     private IEnumerator ApplySliderAnimation(float target,bool isMiniGame)
     {
+        inCoroutine = true;
         if (isMiniGame)
         {
             yield return new WaitForSeconds(2.5f);
@@ -97,6 +99,7 @@ public class ProgressBar : MonoBehaviour
             
             
         }
+        inCoroutine = false;
     }
    
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
