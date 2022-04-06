@@ -8,6 +8,8 @@ public class CharacterWobble : MonoBehaviour
     TMP_Text textMesh;
     float originalFontSize;
 
+    public float speedMultiplier = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +20,7 @@ public class CharacterWobble : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textMesh.fontSize = originalFontSize * Beat(Time.time);
+        textMesh.fontSize = originalFontSize * Beat(Time.time * speedMultiplier);
     }
 
     float Beat(float time)

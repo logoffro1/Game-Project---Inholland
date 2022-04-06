@@ -64,4 +64,10 @@ public class MiniGameManager : MonoBehaviour
         PlayerData.AddWonGames(InteractableObject.GamePrefab);
         OnGameWon?.Invoke(InteractableObject);
     }
+
+    public void FreezeScreen(bool wantToFreeze)
+    {
+        UIManager.Instance.ChangeCanvasShown();
+        IsPlaying = wantToFreeze;
+    }
 }
