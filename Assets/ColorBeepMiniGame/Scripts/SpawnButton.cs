@@ -30,6 +30,8 @@ public class SpawnButton : MiniGameBase
         colorSequence = new List<GameObject>();
         audioSource = GetComponent<AudioSource>();
 
+        description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
+
         InitButtons();
         SetSequence();
 

@@ -20,6 +20,7 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
     private void Start()
     {
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
+        description = "Collect all the trash!\n\nKEYS\nA,D - Move left/right\nSPACE - Shoot hook down";
     }
     public void DecreaseLives()
     {

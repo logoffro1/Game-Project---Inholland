@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ShinglesMiniGame : MiniGameBase
 {
+    private void Start()
+    {
 
-public void GameFinish(bool succesful)
+        description = "Build two rows to complete the solar panel!\n\nKEYS\nA,D - Move left / right\nS - Drop\nQ,E - Rotate left / right";
+    }
+    public void GameFinish(bool succesful)
     {
         
         if (succesful)
@@ -13,4 +17,5 @@ public void GameFinish(bool succesful)
         else
             this.GameOver();
     }
+
 }
