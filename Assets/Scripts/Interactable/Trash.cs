@@ -1,12 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class Trash : InteractableObject
 {
     private void Start()
     {
-        hoverName = "Trash";
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+
+        if (localCode == "en")
+            hoverName = "Trash";
+        else if (localCode == "nl")
+            hoverName = "Afval";
     }
     private void Update()
     {

@@ -34,7 +34,7 @@ public class XRayVision : MonoBehaviour
         foreach (InteractableTaskObject obj in GameObject.FindObjectsOfType<InteractableTaskObject>())
         {
             if (xrayRenderer.isActive)
-                obj.gameObject.layer = 8;
+                obj.gameObject.layer = 11;
             else
                 obj.gameObject.layer = 0;
         }

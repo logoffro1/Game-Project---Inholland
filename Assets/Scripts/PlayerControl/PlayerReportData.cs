@@ -46,7 +46,7 @@ public class PlayerReportData : MonoBehaviour
     {
         totalDistance += Vector3.Distance(gameObject.transform.position, previousLocation);
         previousLocation = gameObject.transform.position;
-        Debug.Log($"{totalDistance} is the current distance travelled");
+/*        Debug.Log($"{totalDistance} is the current distance travelled");*/
     }
 
     public int GetTheSuccessfulMinigameNumber()
@@ -126,13 +126,13 @@ public class PlayerReportData : MonoBehaviour
         }
     }
 
-    private string returnPrefabTaskName(string prefabname)
+    public string returnPrefabTaskName(string prefabname)
     {
         string value = "";
         switch (prefabname)
         {
             case "SewageMiniGame":
-                value= "Cleaning Sewage";
+                value= "Clean sewers";
                 break;
 
             case "RewireMiniGame":
@@ -142,7 +142,7 @@ public class PlayerReportData : MonoBehaviour
                 value= "Setting up solar panel";
                 break;
             case "DigTime Variant":
-                value= "Planting trees";
+                value= "Plant trees";
                 break;
             case "ColorBeepMiniGame Variant":
                 value = "Converting street lamp to solar lamp";
@@ -153,6 +153,8 @@ public class PlayerReportData : MonoBehaviour
         }
         return value;
     }
+     
+  
 
     public void AddPlayedGames(GameObject minigamePrefab)
     {

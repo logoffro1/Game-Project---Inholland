@@ -11,8 +11,8 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     public Texture2D handIcon;
 
     private string mapName = "Alkmaar City Center";
-    private string mapDescription = "Pro/Cons of playing the map";
-    private string objectives = "Here we write what we have to do/ point of the game etc";
+    private string mapDescription = "Explore the beautiful city of Alkmaar";
+    private string objectives = "Clean the city and bring the sustainability above 80%!";
     private void Start()
     {
         SetDescription();

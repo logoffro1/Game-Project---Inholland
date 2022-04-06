@@ -10,6 +10,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI hoverText;
     public TextMeshProUGUI trashText;
     public TextMeshProUGUI countDownText;
+    public TextMeshProUGUI startCountDownText;
+    public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
     
@@ -40,21 +42,24 @@ public class UIManager : MonoBehaviour
         if(TryGetComponent<TimerCountdown>(out timerCountdown)){
             timerCountdown.OnCountdownEnd += TimerCountdown_OnCountdownEnd;
             timerCountdown.OnSecondChange += TimerCountdown_OnSecondChange;
+            timerCountdown.OnStartCountdownChange += TimerCountdown_OnStartCountdownChange;
 
             //Setting the start of the countdown
             countDownText.text = CountdownString(TimerCountdown.SecondsMax);
+            countDownText.gameObject.SetActive(false);
         }
 
     }
 
     public void SetHoverText(string text)
     {
-        if (text == null)
+        if(text == null)
         {
             hoverText.text = "";
             return;
         }
         hoverText.text = $"(E) {text}";
+       // hoverText.enabled = isHovered;
     }
     public void ChangeCanvasShown()
     {
@@ -73,14 +78,27 @@ public class UIManager : MonoBehaviour
     }
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
-        endMissionText.SetActive(true);
+        //Time ended so the progress bar animations has to stop.
+        ProgressBar.Instance.isGameOngoing = false;
         Instantiate(endOfTheDayReportPrefab);
-        //TODO: wait few seconds
-        //TODO: switch to end of report scene
     }
+
+    private bool FirstSecondPassed = false;
 
     private void TimerCountdown_OnSecondChange(int countDown)
     {
+        if (!FirstSecondPassed)
+        {
+            countDownText.gameObject.SetActive(true);
+            startCountDownText.enabled = false;
+            goalText.enabled = false;
+            FirstSecondPassed = true;
+        }
+
+        if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
+        {
+            Instantiate(endOfTheDayReportPrefab);
+        }
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);
     }
@@ -89,6 +107,11 @@ public class UIManager : MonoBehaviour
     {
         TimeSpan time = TimeSpan.FromSeconds(secondsLeft);
         return time.ToString(@"mm\:ss");
+    }
+
+    private void TimerCountdown_OnStartCountdownChange(string countDown)
+    {
+        startCountDownText.text = countDown;
     }
 
     private void ChangeColor(int seconds)

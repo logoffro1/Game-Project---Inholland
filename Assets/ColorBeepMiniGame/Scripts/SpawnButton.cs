@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 //spaghetti code
 //dont take examples from this
@@ -29,6 +31,17 @@ public class SpawnButton : MiniGameBase
         buttonSprite = buttonPrefab.GetComponent<SpriteRenderer>();
         colorSequence = new List<GameObject>();
         audioSource = GetComponent<AudioSource>();
+
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+        if (localCode == "en")
+        {
+            description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
+        }
+        else if (localCode == "nl")
+        {
+            description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
+        }
 
         InitButtons();
         SetSequence();
@@ -60,6 +73,7 @@ public class SpawnButton : MiniGameBase
 
     private void ButtonClicked(GameObject button)
     {
+        if (Time.timeScale == 0) return;
         if (!canSelect || gameOver) return;
         Debug.Log(gameOver);
         selectedSprites.Add(button);

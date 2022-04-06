@@ -68,6 +68,12 @@ public class InteractableTaskStatusModels : MonoBehaviour
         //Destroys old model
         Destroy(child);
 
+        //TODO: EDIT
+        if (status == TaskStatus.Success)
+        {
+            TaskList taskList = FindObjectOfType<TaskList>();
+            taskList.TaskWon(this);
+        }
 
         //Instaiates new model
         GameObject newModel = InstantiateModel(status, child);

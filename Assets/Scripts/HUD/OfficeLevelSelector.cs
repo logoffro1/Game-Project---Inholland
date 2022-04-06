@@ -16,11 +16,13 @@ public class OfficeLevelSelector : MonoBehaviour
         if (show)
         {
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
 
         }
         else
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             GameObject.FindObjectOfType<MouseLook>().canRotate = true;
             GameObject.FindObjectOfType<PlayerMovement>().canMove = true;
             UIManager.Instance.ChangeCanvasShown();

@@ -1,0 +1,178 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: uiText_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: da94c565f8ff38849b53db7b3e21e305, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 67661500416
+    m_Localized: '{hoverText}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 3058921672704
+    m_Localized: Day's over!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5379613298688
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5675852795904
+    m_Localized: New game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5776025358336
+    m_Localized: Achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858380517376
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5881587601408
+    m_Localized: Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5901707677696
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7170589495296
+    m_Localized: Start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7188545310720
+    m_Localized: Coming Soon!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7648731762688
+    m_Localized: Choose a level
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7893314211840
+    m_Localized: 'Map: Alkmaar City Center
+
+
+
+      Description: Pro/Cons of playing
+      the map
+
+      Objective: Here we write what we have to do/ point of the game
+      etc
+
+
+
+      Times played: 0
+
+      Best score: 0'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1355809124835328
+    m_Localized: (E) Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1362783803596800
+    m_Localized: 'Agent name : {playerName}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1362907405541376
+    m_Localized: 'Sustainibility progress:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363087433457664
+    m_Localized: 'Total number of tasks attempted: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363206815932416
+    m_Localized: 'Successful Tasks: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363352815460352
+    m_Localized: 'Most attempted task:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363505563623424
+    m_Localized: 'Failed tasks :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363743871393792
+    m_Localized: 'Travelled distance: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363827040247808
+    m_Localized: 'Bonus Time:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363918203445248
+    m_Localized: 'Day Result:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1364105252626432
+    m_Localized: REPORT OF THE DAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1367895653539840
+    m_Localized: Return lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397286622257152
+    m_Localized: '{bonusTimeRemaining}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399800843264000
+    m_Localized: '{mostAttemptedTask}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399924306796544
+    m_Localized: '{winconditionDay}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1478127297814528
+    m_Localized: INFO (PAUSED)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1478634343030784
+    m_Localized: Hold H for help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Localized: 'W,A,S,D - Move
+
+      X - Activate xray goggles
+
+      E - Interact'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Localized: Loading...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1521383484043264
+    m_Localized: Get the sustainability bar to 80%
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0090f0c00f00000000e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
