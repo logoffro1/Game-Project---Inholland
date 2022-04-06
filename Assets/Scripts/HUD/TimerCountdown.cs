@@ -57,6 +57,8 @@ public class TimerCountdown : MonoBehaviour
             yield return new WaitForSeconds(1);
             secondsLeft -= 1;
             OnSecondChange?.Invoke(secondsLeft);
+
+            VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());
         }
 
         OnCountdownEnd?.Invoke(this, EventArgs.Empty);        
