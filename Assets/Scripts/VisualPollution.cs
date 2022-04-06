@@ -71,7 +71,7 @@ public class VisualPollution : MonoBehaviour
         UpdateCanalColor(sustainabilityPercentage);
         UpdateAnimals(sustainabilityPercentage, allAnimals);
         UpdatePostProcessing(sustainabilityPercentage);
-        UpdateAnimals(sustainabilityPercentage, allPeople);
+       // UpdateAnimals(sustainabilityPercentage, allPeople);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -189,7 +189,7 @@ public class VisualPollution : MonoBehaviour
             animals[i].gameObject.SetActive(true);
         }
 
-        //deactivtae
+        //deactivate
         for (int i = limit; i < allAnimals.Count; i++)
         {
             animals[i].gameObject.SetActive(false);
@@ -256,6 +256,6 @@ public class VisualPollution : MonoBehaviour
             allPeople[n] = value;
         }
 
-        UpdateAnimals(ProgressBar.Instance.GetSlideValue(), allPeople);
+      //  UpdateAnimals(ProgressBar.Instance.GetSlideValue(), allPeople);
     }
 }
