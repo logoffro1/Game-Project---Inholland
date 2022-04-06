@@ -166,6 +166,10 @@ MonoBehaviour:
     m_Localized: Loading...
     m_Metadata:
       m_Items: []
+  - m_Id: 1521383484043264
+    m_Localized: Get the sustainability bar to 80%
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

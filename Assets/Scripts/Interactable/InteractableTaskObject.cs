@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class InteractableTaskObject : InteractableObject
 {
@@ -80,25 +81,49 @@ public class InteractableTaskObject : InteractableObject
         }
     }
 
-   private void DetermineObject()
+    private void DetermineObject()
     {
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
         string tag = gameObject.tag;
-        switch(tag)
+        if (localCode == "en")
+        {
+            switch (tag)
+            {
+                case nameof(TaskObjectType.StreetLamp):
+                    hoverName = "Upgrade";
+                    break;
+                case nameof(TaskObjectType.Tree):
+                    hoverName = "Plant";
+                    break;
+                case nameof(TaskObjectType.ManHole):
+                    hoverName = "Clean";
+                    break;
+                case nameof(TaskObjectType.SolarPanel):
+                    hoverName = "Build solar panel";
+                    break;
+                default:
+                    hoverName = "Interact";
+                    break;
+            }
+            return;
+        }
+        switch (tag)
         {
             case nameof(TaskObjectType.StreetLamp):
                 hoverName = "Upgrade";
                 break;
             case nameof(TaskObjectType.Tree):
-                hoverName = "Plant";
+                hoverName = "Boom planten";
                 break;
             case nameof(TaskObjectType.ManHole):
-                hoverName = "Clean";
+                hoverName = "Schoon";
                 break;
             case nameof(TaskObjectType.SolarPanel):
-                hoverName = "Fix";
+                hoverName = "Zonnepaneel bouwen";
                 break;
             default:
-                hoverName = "Interact";
+                hoverName = "Interactie";
                 break;
         }
     }

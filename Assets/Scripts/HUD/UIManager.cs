@@ -51,9 +51,15 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void SetHoverText(bool isHovered)
+    public void SetHoverText(string text)
     {
-        hoverText.enabled = isHovered;
+        if(text == null)
+        {
+            hoverText.text = "";
+            return;
+        }
+        hoverText.text = $"(E) {text}";
+       // hoverText.enabled = isHovered;
     }
     public void ChangeCanvasShown()
     {

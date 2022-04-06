@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1479847016786437051}
   - component: {fileID: 7562625735920802635}
   m_Layer: 0
-  m_Name: Green_Lantern
+  m_Name: LanternUntouched
   m_TagString: StreetLamp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

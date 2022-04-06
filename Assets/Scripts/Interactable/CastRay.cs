@@ -53,7 +53,7 @@ public class CastRay : MonoBehaviour
                     previousObject.layer = 0;
                     previousObject = null;
                 }
-                UIManager.Instance.SetHoverText(true);
+                UIManager.Instance.SetHoverText(interactableObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableObject.DoAction(gameObject);
 
@@ -75,7 +75,7 @@ public class CastRay : MonoBehaviour
             previousObject.layer = 0;
             previousObject = null;
         }
-        UIManager.Instance.SetHoverText(false);
+        UIManager.Instance.SetHoverText(null);
     }
     private void ChangeRayDistance()
     {

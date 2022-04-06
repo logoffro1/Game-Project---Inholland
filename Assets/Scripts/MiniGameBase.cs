@@ -30,7 +30,7 @@ public class MiniGameBase : MonoBehaviour
         {
             ShowInfo(true);
         }
-        if(Input.GetKeyUp(KeyCode.H))
+        if (Input.GetKeyUp(KeyCode.H))
         {
             ShowInfo(false);
         }
@@ -60,7 +60,7 @@ public class MiniGameBase : MonoBehaviour
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints,true);
+        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints, true);
     }
     protected void GameWon() //remove the duplicate
     {
@@ -70,7 +70,7 @@ public class MiniGameBase : MonoBehaviour
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints,true);
+        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints, true);
     }
     private void ChangeSuccessText(bool successful)
     {
@@ -80,14 +80,8 @@ public class MiniGameBase : MonoBehaviour
         if (successful)
         {
             successText.color = Color.green;
-            if (localCode == "en")
-            {
-                successText.text = "SUCCESS";
-            }
-            else if (localCode == "nl")
-            {
-                successText.text = "SUCCESS";
-            }           
+            successText.text = "SUCCESS";
+
             return;
         }
 
@@ -100,7 +94,7 @@ public class MiniGameBase : MonoBehaviour
         {
             successText.text = "MISLUKKING";
         }
-        
+
     }
 }
 
