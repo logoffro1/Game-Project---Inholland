@@ -7,6 +7,5 @@ public enum TaskObjectType
     StreetLamp,
     Tree,
     ManHole,
-    SolarPanel,
-    RubbishBin
+    SolarPanel
 }

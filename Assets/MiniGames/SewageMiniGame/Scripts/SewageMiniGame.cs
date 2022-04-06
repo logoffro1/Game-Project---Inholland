@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class SewageMiniGame : MiniGameBase //remove the singleton
 {
@@ -20,6 +22,16 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
     private void Start()
     {
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+        if (localCode == "en")
+        {
+            description = "Collect all the trash!\n\nKEYS\nA,D - Move left/right\nSPACE - Shoot hook down";
+
+        }else if (localCode == "nl")
+        {
+            description = "Verzamel al het afval!\n\nToetsen\nA,D - Ga naar links / Rechtsaf\nSPACE - Haak los";
+        }
     }
     public void DecreaseLives()
     {

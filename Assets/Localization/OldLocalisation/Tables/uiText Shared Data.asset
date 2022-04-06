@@ -123,12 +123,20 @@ MonoBehaviour:
     m_Key: reportResult.winCondition
     m_Metadata:
       m_Items: []
-  - m_Id: 1426028627288064
-    m_Key: 
+  - m_Id: 1478127297814528
+    m_Key: Hintbox.infopaused
     m_Metadata:
       m_Items: []
-  - m_Id: 1455917466005504
-    m_Key: New Entry
+  - m_Id: 1478634343030784
+    m_Key: Hintbox.help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Key: KeyBindings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Key: LoadingScreen
     m_Metadata:
       m_Items: []
   m_Metadata:

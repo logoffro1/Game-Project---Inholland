@@ -146,6 +146,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 1478127297814528
+    m_Localized: INFO (PAUSED)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1478634343030784
+    m_Localized: Hold H for help
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Localized: 'W,A,S,D - Move
+
+      X - Activate xray goggles
+
+      E - Interact'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Localized: Loading...
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

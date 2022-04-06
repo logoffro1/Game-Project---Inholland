@@ -25,7 +25,7 @@ public class EndOfDayReport : MonoBehaviour
     
     void Start()
     {
-        DynamicTranslator.Instance.translateEndOfTheDayVariables();
+        /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
         playerReportData = FindObjectOfType<PlayerReportData>();
@@ -55,7 +55,6 @@ public class EndOfDayReport : MonoBehaviour
             Debug.Log(getWinLoseConditionInDutch());
             MostPlayedMinigame.text = $"{returnPrefabTaskNameInDutch(playerReportData.GetTheMostPlayedMiniGameName(out playNr)).ToString()} : {playNr} keer.";
             timeBonus.text += $"{remainingTime} seconden resterend";
-
         }
 
 

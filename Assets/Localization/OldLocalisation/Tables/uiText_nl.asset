@@ -145,6 +145,26 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - id: 0
+  - m_Id: 1478127297814528
+    m_Localized: INFO (GEPAUZEERD)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1478634343030784
+    m_Localized: Houd H vast voor hulp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Localized: 'W,A,S,D - Beweging
+
+      X - X ray activeren
+
+      E - Interactie '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Localized: Het laden...
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
