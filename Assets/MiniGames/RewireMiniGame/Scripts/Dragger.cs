@@ -24,11 +24,13 @@ public class Dragger : MonoBehaviour
 
     private void OnMouseDrag()
     {
+        if (Time.timeScale == 0) return;
         transform.position = GetMousePos();
     }
 
     private Vector3 GetMousePos()
     {
+        
         //Getting position of the mouse
         var mousePos = Input.mousePosition;
         var distance = Math.Abs(_cam.transform.position.z - transform.position.z);
