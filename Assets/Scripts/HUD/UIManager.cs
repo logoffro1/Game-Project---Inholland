@@ -73,14 +73,17 @@ public class UIManager : MonoBehaviour
     }
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
-        endMissionText.SetActive(true);
+        //Time ended so the progress bar animations has to stop.
+        ProgressBar.Instance.isGameOngoing = false;
         Instantiate(endOfTheDayReportPrefab);
-        //TODO: wait few seconds
-        //TODO: switch to end of report scene
     }
 
     private void TimerCountdown_OnSecondChange(int countDown)
     {
+        if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
+        {
+            Instantiate(endOfTheDayReportPrefab);
+        }
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);
     }
