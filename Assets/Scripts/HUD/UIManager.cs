@@ -83,12 +83,17 @@ public class UIManager : MonoBehaviour
         //TODO: switch to end of report scene
     }
 
+    private bool FirstSecondPassed = false;
+
     private void TimerCountdown_OnSecondChange(int countDown)
     {
-        if (!countDownText.gameObject.activeSelf) countDownText.gameObject.SetActive(true);
-        if (startCountDownText.enabled) startCountDownText.enabled = false;
-        if (goalText.isActiveAndEnabled) gameObject.SetActive(false);
-        //if (FindObjectOfType<SwitchCameras>() != null) FindObjectOfType<SwitchCameras>().DestroyAllRelated();
+        if (!FirstSecondPassed)
+        {
+            countDownText.gameObject.SetActive(true);
+            startCountDownText.enabled = false;
+            goalText.enabled = false;
+            FirstSecondPassed = true;
+        }
 
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);
