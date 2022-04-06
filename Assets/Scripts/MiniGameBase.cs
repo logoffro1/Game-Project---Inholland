@@ -35,11 +35,17 @@ public class MiniGameBase : MonoBehaviour
     private void ShowInfo(bool show)
     {
         if (infoCanvas.activeSelf == show) return;
-
+        CursorLockMode mode = Cursor.lockState;
+        bool cursorVisible = Cursor.visible;
         if (show)
+        {
+
             Time.timeScale = 0f;
+        }
         else
+        {
             Time.timeScale = 1f;
+        }
         descriptionText.text = description;
         infoCanvas.SetActive(show);
     }

@@ -62,6 +62,7 @@ public class SpawnButton : MiniGameBase
 
     private void ButtonClicked(GameObject button)
     {
+        if (Time.timeScale == 0) return;
         if (!canSelect || gameOver) return;
         Debug.Log(gameOver);
         selectedSprites.Add(button);
