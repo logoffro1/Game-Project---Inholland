@@ -9,6 +9,8 @@ public class MoveLine : MonoBehaviour
     double leftLimitX = -0.5f;
     double rightLimitX = 0.5f;
     bool isOnTarget = false;
+    int lives = 3;
+    public GameObject heart;
 
     public DiggingMiniGame diggingMiniGame;
     // Start is called before the first frame update
@@ -21,10 +23,25 @@ public class MoveLine : MonoBehaviour
     void Update()
     {
         if (gameOver) { return; }
-        if (Input.GetKeyDown(KeyCode.Space) && isOnTarget)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            gameOver = true;
-            diggingMiniGame.GameFinish(true);
+            if (isOnTarget)
+            {
+                gameOver = true;
+                diggingMiniGame.GameFinish(true);
+            }
+            else
+            {
+                lives--;
+                heart = GameObject.Find("Lives");
+                Destroy(heart);
+                
+                if (lives == 0)
+                {
+                    gameOver = true;
+                    diggingMiniGame.GameFinish(false);
+                }
+            }
         }
         if (movingRight == false)
         {
