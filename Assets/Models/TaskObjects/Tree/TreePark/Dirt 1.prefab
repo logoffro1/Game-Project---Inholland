@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80c477e80f2b17a4a92bc7b8591b45e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsInteractable: 1
   GamePrefab: {fileID: 0}
   AmountTries: 0
-  IsInteractable: 1
   CurrentModel: {fileID: 0}
   Status: 0

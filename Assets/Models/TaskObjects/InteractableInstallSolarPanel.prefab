@@ -28,7 +28,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4904739862959299590}
+  - {fileID: 5527644602325703531}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +48,7 @@ MonoBehaviour:
   TouchedPrefabModel: {fileID: 7972441755423083195, guid: d8bdc75584f8571448494e4b75baad13, type: 3}
   SuccessPrefabModel: {fileID: 7972441755423083195, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
   FailPrefabModel: {fileID: 7972441755423083195, guid: 2d93fb26f6e3e0149890660d476054cd, type: 3}
---- !u!1001 &3073053322987292717
+--- !u!1001 &2450710429490761536
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -57,7 +57,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7972441755423083195, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
       propertyPath: m_Name
-      value: SolarPanel
+      value: BaseSolarPanel
       objectReference: {fileID: 0}
     - target: {fileID: 7977158465600541739, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
       propertyPath: m_RootOrder
@@ -103,10 +103,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7972811711417827588, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
+    - {fileID: 1992704808223943441, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
---- !u!4 &4904739862959299590 stripped
+--- !u!4 &5527644602325703531 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7977158465600541739, guid: 3bbb7b6b3d5d62b4196cc5a74a54d822, type: 3}
-  m_PrefabInstance: {fileID: 3073053322987292717}
+  m_PrefabInstance: {fileID: 2450710429490761536}
   m_PrefabAsset: {fileID: 0}

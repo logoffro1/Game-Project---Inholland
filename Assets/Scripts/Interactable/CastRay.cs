@@ -17,9 +17,20 @@ public class CastRay : MonoBehaviour
         else
             _instance = this;
     }
-
+    private void Start()
+    {
+        SetXrayRenderDistance();
+    }
+    private void SetXrayRenderDistance()
+    {
+        Camera cam = GetComponent<Camera>();
+        float[] distances = new float[32];
+        distances[11] = 60;
+        cam.layerCullDistances = distances;
+    }
     void Update()
     {
+        ChangeRayDistance();
         GetObjectHit();
     }
     private void GetObjectHit() //THIS IS TEMP CODE / IMPROVE LATER
@@ -35,6 +46,13 @@ public class CastRay : MonoBehaviour
 
             if (objectHit != null && interactableObject != null && interactableObject.IsInteractable)
             {
+                if (objectHit.layer == 11) return; //xray layer
+
+                if (previousObject != null)
+                {
+                    previousObject.layer = 0;
+                    previousObject = null;
+                }
                 UIManager.Instance.SetHoverText(interactableObject.GetHoverName());
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableObject.DoAction(gameObject);
@@ -43,9 +61,11 @@ public class CastRay : MonoBehaviour
                 if (objectHit.layer != 8) //outlined
                     objectHit.layer = 8;
 
+
                 if (objectHit != null)
                 {
                     previousObject = objectHit;
+              
                 }
                 return;
             }         
@@ -56,6 +76,13 @@ public class CastRay : MonoBehaviour
             previousObject = null;
         }
         UIManager.Instance.SetHoverText(null);
+    }
+    private void ChangeRayDistance()
+    {
+        if (transform.localRotation.eulerAngles.x >= 270f && transform.localRotation.eulerAngles.x <= 325f)
+            maxObjectDistance = 20f;
+        else
+            maxObjectDistance = 4f;
     }
 }
 

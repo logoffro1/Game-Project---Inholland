@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TaskGenerator : MonoBehaviour
 {
-    private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects;
+    private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects { get; set; }
     private Dictionary<TaskObjectType, List<GameObject>> allGamesToObjects;
     private Dictionary<TaskObjectType, int> allGamesToAmountSpawn;
 
@@ -121,11 +121,11 @@ public class TaskGenerator : MonoBehaviour
         newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
         newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
 
-        //Changes the color
-        foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
+        //Changes the color TODO: REMOVE 
+        /*foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
         {
             mesh.material = canSolveMaterial;
-        }
+        }*/
 
     }
 

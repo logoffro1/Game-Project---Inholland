@@ -4,8 +4,6 @@ Shader "Outlines/HoverOutline"
     {
         _Thickness("Thickness", float) = 1
         _Color("Color", Color) = (1,1,1,1)
-         _Glow ("Intensity", Range(0, 10)) = 1
-         _DepthOffset("Depth offset", Range(-1,1)) = 0
     }
     SubShader
     {
@@ -14,7 +12,7 @@ Shader "Outlines/HoverOutline"
         {
                Name "Outline"
 
-                Cull Front
+              Cull Front
         // Blend SrcAlpha One TRANSPARENCY
        //  ZTest LEqual
 

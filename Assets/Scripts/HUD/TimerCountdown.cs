@@ -8,13 +8,40 @@ using UnityEngine.UI;
 
 public class TimerCountdown : MonoBehaviour
 {
-    private int secondsLeft = 5 * 60;
+    private static int secondsMax = 5*60;
 
-    public event Action<string> OnSecondChange;
+    private static TimerCountdown _instance;
+    public static TimerCountdown Instance { get { return _instance; } }
+    public static int SecondsMax { 
+        private set
+        {
+            secondsMax = value;
+        }
+        
+        get
+        {
+            return secondsMax;
+        }
+    }
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+    private int secondsLeft;
+
+    public event Action<int> OnSecondChange;
     public event EventHandler OnCountdownEnd;
 
     void Start()
     {
+        secondsLeft = secondsMax;
         StartCoroutine(TimerTake());
         
     }
@@ -22,19 +49,20 @@ public class TimerCountdown : MonoBehaviour
     private IEnumerator TimerTake()
     {
         while (secondsLeft > 0)
-        { 
+        {
+            if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
+            {
+                break;
+            }
             yield return new WaitForSeconds(1);
             secondsLeft -= 1;
-            OnSecondChange?.Invoke(CountdownString());
+            OnSecondChange?.Invoke(secondsLeft);
         }
 
         OnCountdownEnd?.Invoke(this, EventArgs.Empty);        
     }
-
-    public string CountdownString()
+    public int GetRemainingTime()
     {
-        TimeSpan time = TimeSpan.FromSeconds(secondsLeft);
-        return time.ToString(@"mm\:ss");
+        return secondsLeft;
     }
-
 }

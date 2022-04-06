@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System;
-
+using System.Threading;
 public class MiniGameBase : MonoBehaviour
 {
 
@@ -22,21 +22,21 @@ public class MiniGameBase : MonoBehaviour
     {
         MiniGameManager.Instance.GameOver();
 
-        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints,true);
     }
     protected void GameWon() //remove the duplicate
     {
         MiniGameManager.Instance.GameWon();
 
-        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints);
         ChangeSuccessText(true);
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
+        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints,true);
     }
     private void ChangeSuccessText(bool successful)
     {
