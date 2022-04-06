@@ -14,7 +14,6 @@ public class VisualPollution : MonoBehaviour
     public GameObject DustParticlesPrefab;
 
     public Gradient pollutionGradient;
-    public Color staticColor;
 
     private ParticleSystem particleSystem;
     private int startingMaxParticles = 50000;
@@ -22,6 +21,7 @@ public class VisualPollution : MonoBehaviour
     private List<MeshRenderer> waters;
     public Gradient waterGradient;
 
+    public GameObject animals;
     private List<GameObject> allAnimals;
 
     private ColorAdjustments colorAdjustments;
@@ -64,7 +64,7 @@ public class VisualPollution : MonoBehaviour
         UpdateFog(sustainabilityPercentage);
         //UpdateDustParticles(sustainabilityPercentage);
         UpdateCanalColor(sustainabilityPercentage);
-        UpdateAnimals(sustainabilityPercentage);
+        UpdateAnimals(sustainabilityPercentage, allAnimals);
         UpdatePostProcessing(sustainabilityPercentage);
     }
 
@@ -72,7 +72,9 @@ public class VisualPollution : MonoBehaviour
     {
         Color color = pollutionGradient.Evaluate(sustainabilityPercentage / 100);
         RenderSettings.fogColor = color;
-        RenderSettings.fogDensity = 0.012f * ((100f - sustainabilityPercentage) / 100); 
+
+        float fogDensity = ((100f - sustainabilityPercentage) / 100); // 0 -> 0.5 -> 1
+        RenderSettings.fogDensity = 0.01f * ((100f - sustainabilityPercentage) / 100); 
     }
 
     private void SetDustParticles()
@@ -123,7 +125,7 @@ public class VisualPollution : MonoBehaviour
     {
         allAnimals = new List<GameObject>();
 
-        foreach (Transform child in GameObject.FindGameObjectWithTag("Animal").transform)
+        foreach (Transform child in animals.transform)
         {
             allAnimals.Add(child.gameObject);
         }
@@ -139,52 +141,52 @@ public class VisualPollution : MonoBehaviour
             allAnimals[n] = value;
         }
 
-        UpdateAnimals(ProgressBar.Instance.GetSlideValue());
+        UpdateAnimals(ProgressBar.Instance.GetSlideValue(), allAnimals);
     }
 
-    private void UpdateAnimals(float sustainabilityPercentage)
+    private void UpdateAnimals(float sustainabilityPercentage, List<GameObject> animals)
     {
         if (sustainabilityPercentage >= 95)
         {
-            ActivateAnimal(100);
+            ActivateAnimal(100, animals);
         }
         else if (sustainabilityPercentage >= 90)
         {
-            ActivateAnimal(80);
+            ActivateAnimal(80, animals);
         }
         else if (sustainabilityPercentage >= 80)
         {
-            ActivateAnimal(60);
+            ActivateAnimal(60, animals);
         }
         else if(sustainabilityPercentage >= 70)
         {
-            ActivateAnimal(40);
+            ActivateAnimal(40, animals);
 
         }
         else if (sustainabilityPercentage >= 60)
         {
-            ActivateAnimal(20);
+            ActivateAnimal(20, animals);
         }
         else
         {
-            ActivateAnimal(0);
+            ActivateAnimal(0, animals);
         }
     }
 
-    private void ActivateAnimal(float percentage)
+    private void ActivateAnimal(float percentage, List<GameObject> animals)
     {
-        int limit = (int) (allAnimals.Count * (percentage / 100));
+        int limit = (int) (animals.Count * (percentage / 100));
 
         //activate
         for (int i = 0; i < limit; i++)
         {
-            allAnimals[i].gameObject.SetActive(true);
+            animals[i].gameObject.SetActive(true);
         }
 
         //deactivtae
         for (int i = limit; i < allAnimals.Count; i++)
         {
-            allAnimals[i].gameObject.SetActive(false);
+            animals[i].gameObject.SetActive(false);
         }
      }
 
