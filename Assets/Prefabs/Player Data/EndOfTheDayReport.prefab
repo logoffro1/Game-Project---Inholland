@@ -557,7 +557,6 @@ GameObject:
   - component: {fileID: 6544015725770772183}
   - component: {fileID: 2377776774688154647}
   - component: {fileID: 234301259}
-  - component: {fileID: 1028372694019920516}
   m_Layer: 5
   m_Name: Time bonusResult
   m_TagString: Untagged
@@ -633,7 +632,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950375624542205329}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
@@ -671,22 +670,7 @@ MonoBehaviour:
     00000000:
       type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
-        m_Value: {fileID: 1028372694019920516}
---- !u!114 &1028372694019920516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 950375624542205329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7438cf38a59f1a5419929adf5f03177b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mostAttemptedTask: test
-  bonusTimeRemaining: test
-  winconditionDay: test
+        m_Value: {fileID: 0}
 --- !u!1 &1801753834664979557
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,7 +1273,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 1362783803596800
+      m_KeyId: 1455917466005504
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1886,7 +1870,6 @@ GameObject:
   - component: {fileID: 6035450223632421821}
   - component: {fileID: 6883706013725144646}
   - component: {fileID: 234301263}
-  - component: {fileID: 12951015237827034}
   m_Layer: 5
   m_Name: Day resultValue
   m_TagString: Untagged
@@ -1962,7 +1945,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2613658305273519249}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
@@ -2000,22 +1983,7 @@ MonoBehaviour:
     00000000:
       type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
       data:
-        m_Value: {fileID: 12951015237827034}
---- !u!114 &12951015237827034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2613658305273519249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7438cf38a59f1a5419929adf5f03177b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mostAttemptedTask: test
-  bonusTimeRemaining: test
-  winconditionDay: test
+        m_Value: {fileID: 0}
 --- !u!1 &2731970724688720185
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,7 +2182,7 @@ GameObject:
   - component: {fileID: 59656694207669292}
   - component: {fileID: 9138914245549140666}
   - component: {fileID: 234301258}
-  - component: {fileID: 1021024953745157967}
+  - component: {fileID: 5781093752825771513}
   m_Layer: 5
   m_Name: Most attempted taskResult
   m_TagString: Untagged
@@ -2290,7 +2258,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360245343804996792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
@@ -2303,10 +2271,7 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables:
-    - name: mostAttemptedTask
-      variable:
-        id: 0
+    m_LocalVariables: []
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
@@ -2325,25 +2290,36 @@ MonoBehaviour:
         m_CallState: 2
   references:
     version: 1
-    00000000:
-      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
-      data:
-        m_Value: {fileID: 1021024953745157967}
---- !u!114 &1021024953745157967
+--- !u!114 &5781093752825771513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4360245343804996792}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7438cf38a59f1a5419929adf5f03177b, type: 3}
+  m_Script: {fileID: 11500000, guid: 76a82f2e30b7d9e4fbb4eb36527e74dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mostAttemptedTask: test
-  bonusTimeRemaining: test
-  winconditionDay: test
+  myString:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 1399800843264000
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables:
+    - name: mostAttemptedTask
+      variable:
+        id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: ObjectVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
+      data:
+        m_Value: {fileID: 0}
 --- !u!1 &6569118060163963529
 GameObject:
   m_ObjectHideFlags: 0
