@@ -97,6 +97,7 @@ public class UIManager : MonoBehaviour
 
         if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
         {
+            ProgressBar.Instance.isGameOngoing = false;
             Instantiate(endOfTheDayReportPrefab);
         }
         countDownText.text = CountdownString(countDown);
