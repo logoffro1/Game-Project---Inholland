@@ -26,6 +26,10 @@ public class VisualPollution : MonoBehaviour
 
     private ColorAdjustments colorAdjustments;
 
+    public GameObject people;
+    private List<GameObject> allPeople;
+
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -46,6 +50,7 @@ public class VisualPollution : MonoBehaviour
         SetCanal();
         SetAnimals();
         SetPostProcessing();
+        SetPeople();
     }
 
     private void StartingVisuals()
@@ -66,6 +71,7 @@ public class VisualPollution : MonoBehaviour
         UpdateCanalColor(sustainabilityPercentage);
         UpdateAnimals(sustainabilityPercentage, allAnimals);
         UpdatePostProcessing(sustainabilityPercentage);
+       // UpdateAnimals(sustainabilityPercentage, allPeople);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -183,7 +189,7 @@ public class VisualPollution : MonoBehaviour
             animals[i].gameObject.SetActive(true);
         }
 
-        //deactivtae
+        //deactivate
         for (int i = limit; i < allAnimals.Count; i++)
         {
             animals[i].gameObject.SetActive(false);
@@ -228,5 +234,28 @@ public class VisualPollution : MonoBehaviour
         float midPoint = lowestPoint + halfDifference;
 
         return midPoint + (halfDifference * (sustainabilityPercentage / 100));
+    }
+
+    private void SetPeople()
+    {
+        allPeople = new List<GameObject>();
+
+        foreach (Transform child in people.transform)
+        {
+            allPeople.Add(child.gameObject);
+        }
+
+        //Randomsize it
+        int n = allPeople.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            GameObject value = allPeople[k];
+            allPeople[k] = allPeople[n];
+            allPeople[n] = value;
+        }
+
+      //  UpdateAnimals(ProgressBar.Instance.GetSlideValue(), allPeople);
     }
 }

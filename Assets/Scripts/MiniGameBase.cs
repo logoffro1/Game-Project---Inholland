@@ -8,7 +8,7 @@ using UnityEngine.Localization.Settings;
 public class MiniGameBase : MonoBehaviour
 {
 
-    protected int sustainabilityPoints = 10;
+    protected int sustainabilityPoints = 5;
 
     protected string description;
 
