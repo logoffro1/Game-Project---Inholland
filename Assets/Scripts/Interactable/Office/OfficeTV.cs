@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.Localization.Settings;
 
 public class OfficeTV : InteractableObject
 {
@@ -8,7 +10,16 @@ public class OfficeTV : InteractableObject
 
     private void Start()
     {
-        hoverName = "Interact";
+        Locale loc = LocalizationSettings.SelectedLocale;
+        LocaleIdentifier localCode = loc.Identifier;
+        if (localCode=="en")
+        {
+            hoverName = "Interact";
+
+        }else if (localCode == "nl")
+        {
+            hoverName = "Interactie";
+        }
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
     }

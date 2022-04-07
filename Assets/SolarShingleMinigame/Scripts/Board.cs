@@ -8,7 +8,7 @@ public class Board : MonoBehaviour
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
-    public Vector2Int boardSize = new Vector2Int(7,8);
+    public Vector2Int boardSize = new Vector2Int(7, 8);
 
     public ShinglesMiniGame shinglesGame;
     public int amountOfLinesNeeded { get; private set; }
@@ -19,7 +19,7 @@ public class Board : MonoBehaviour
     {
         get
         {
-            Vector2Int position = new Vector2Int(-this.boardSize.x / 2 ,-this.boardSize.y / 2);
+            Vector2Int position = new Vector2Int(-this.boardSize.x / 2, -this.boardSize.y / 2);
             return new RectInt(position, this.boardSize);
         }
     }
@@ -29,7 +29,7 @@ public class Board : MonoBehaviour
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
         this.amountOfLinesNeeded = 3; //Basic difficulty.
-        for(int i =0; i < this.tetrominoes.Length; i++)
+        for (int i = 0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
         }
@@ -37,7 +37,9 @@ public class Board : MonoBehaviour
 
     }
     public void SpawnPiece()
-    {        
+
+    {
+        if (isGameOver) return;
         int random = Random.Range(0, tetrominoes.Length);
         TetrominoData data = this.tetrominoes[random];
         this.activePiece.Init(this, spawnPosition, data);
@@ -79,7 +81,7 @@ public class Board : MonoBehaviour
     public bool IsValidPosition(Piece piece, Vector3Int position)
     {
         RectInt bounds = this.Bounds;
-        for(int i = 0; i < piece.cells.Length; i++)
+        for (int i = 0; i < piece.cells.Length; i++)
         {
             Vector3Int tilePosition = piece.cells[i] + position;
             if (!bounds.Contains((Vector2Int)tilePosition))
@@ -99,13 +101,13 @@ public class Board : MonoBehaviour
     {
         RectInt bounds = this.Bounds;
         int row = bounds.yMin;
-       while(row < bounds.yMax)
+        while (row < bounds.yMax)
         {
-            if(isLineFull(row))
+            if (isLineFull(row))
             {
                 LineClear(row);
                 this.amountOfLinesNeeded--;
-                if(amountOfLinesNeeded <= 0)
+                if (amountOfLinesNeeded <= 0)
                 {
                     isGameOver = true;
                     shinglesGame.GameFinish(true);
@@ -126,12 +128,12 @@ public class Board : MonoBehaviour
             this.tilemap.SetTile(position, null);
         }
 
-        while(row < bounds.yMax)
+        while (row < bounds.yMax)
         {
             for (int col = bounds.xMin; col < bounds.xMax; col++)
             {
                 //Row is +1 because we have to grab the tile above the cleared lines.
-                Vector3Int position = new Vector3Int(col, row+1, 0);
+                Vector3Int position = new Vector3Int(col, row + 1, 0);
                 TileBase aboveTile = this.tilemap.GetTile(position);
                 position = new Vector3Int(col, row, 0);
                 this.tilemap.SetTile(position, aboveTile);
@@ -158,5 +160,5 @@ public class Board : MonoBehaviour
     {
         SpawnPiece();
     }
-   
+
 }

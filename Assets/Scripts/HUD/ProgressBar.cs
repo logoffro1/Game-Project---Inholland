@@ -8,8 +8,8 @@ public class ProgressBar : MonoBehaviour
     [SerializeField] private Text _SliderText;
 
     [SerializeField] private Slider slider;
-    [SerializeField] private  Gradient gradient;
-    [SerializeField] private  Image fill;
+    [SerializeField] private Gradient gradient;
+    [SerializeField] private Image fill;
     [SerializeField] private float sliderThreshhold;
 
     public bool isGameOngoing;
@@ -20,7 +20,7 @@ public class ProgressBar : MonoBehaviour
 
     private bool inCoroutine = false;
     private void Start()
-    {      
+    {
         slider = gameObject.GetComponent<Slider>();
         isGameOngoing = true;
         SliderInit();
@@ -54,18 +54,15 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
-        if(isGameOngoing)
+        if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(-0.0005f);
         }
-        UpdateProgressPercent();
     }
 
     private void UpdateProgressPercent()
     {
-        slider.onValueChanged.AddListener((v) => {
-            _SliderText.text = v.ToString("0.00") + "%";
-        });
+        _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
     private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
@@ -77,34 +74,37 @@ public class ProgressBar : MonoBehaviour
             fill.color = gradient.Evaluate(slider.normalizedValue);
 
         }
+        UpdateProgressPercent();
     }
 
-    private IEnumerator ApplySliderAnimation(float target,bool isMiniGame)
+    private IEnumerator ApplySliderAnimation(float target, bool isMiniGame)
     {
         inCoroutine = true;
         if (isMiniGame)
         {
             yield return new WaitForSeconds(2.5f);
-        }  
+        }
         float t = 0.0f;
         float elapsedTime = 0.0f;
         float waitTime = 1f;
-        while (elapsedTime<waitTime)
+        while (elapsedTime < waitTime)
         {
             elapsedTime += Time.deltaTime;
-            slider.value = Mathf.Lerp(slider.value, target,elapsedTime/waitTime);
+            slider.value = Mathf.Lerp(slider.value, target, elapsedTime / waitTime);
             t += 0.5f * elapsedTime;
             fill.color = gradient.Evaluate(slider.normalizedValue);
+            UpdateProgressPercent();
             yield return null;
-            
-            
+
         }
         inCoroutine = false;
     }
-   
+
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
-    {  
-        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange,isMiniGame));
+    {
+        /*        slider.value += sustainabilityChange;
+                fill.color = gradient.Evaluate(slider.normalizedValue);*/
+        StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
         UpdateProgressPercent();
     }
 
