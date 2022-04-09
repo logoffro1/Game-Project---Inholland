@@ -10,31 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Localization-Locales
+  m_Name: Localization-String-Tables-Romanian (ro)
   m_EditorClassIdentifier: 
-  m_GroupName: Localization-Locales
+  m_GroupName: Localization-String-Tables-Romanian (ro)
   m_Data:
     m_SerializedData: []
-  m_GUID: 10dc53ad95011054591ab1cb4f5d03b2
+  m_GUID: cc319dffdade93b4bb97b33b8d2214e3
   m_SerializeEntries:
-  - m_GUID: 698c828d17cfb2d4eb3f3377a552e358
-    m_Address: English (en)
+  - m_GUID: e27371f5413ee6e4799a99ed7de242d7
+    m_Address: uiText_ro
     m_ReadOnly: 1
     m_SerializedLabels:
-    - Locale
-  - m_GUID: 611776eb368c8c84f932b575ad9c927d
-    m_Address: Dutch (nl)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
-  - m_GUID: bceb3b885a1e0274fafa0b669cc2624f
-    m_Address: Romanian (ro)
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale
+    - Locale-ro
+    - Preload
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 01c3dba90c1226f40a4234f107e2bc2a, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 308ea9eb41b04e649b3499aac03c9a7c, type: 2}
-    - {fileID: 11400000, guid: b414d96d5631bab458560f70cddf57d1, type: 2}
+    - {fileID: 11400000, guid: be731d6e838f4894c8a0de6a362b31b2, type: 2}
+    - {fileID: 11400000, guid: d214e4b969418b740af16990722c33c0, type: 2}

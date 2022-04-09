@@ -81,15 +81,11 @@ MonoBehaviour:
       Best score: 0'
     m_Metadata:
       m_Items: []
-  - m_Id: 1355809124835328
-    m_Localized: (E) Interact
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Localized: 'Agent name : {playerName}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 1
   - m_Id: 1362907405541376
     m_Localized: 'Sustainibility progress:'
     m_Metadata:
@@ -144,7 +140,7 @@ MonoBehaviour:
     m_Localized: '{winconditionDay}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 2
   - m_Id: 1478127297814528
     m_Localized: INFO (PAUSED)
     m_Metadata:
@@ -172,6 +168,14 @@ MonoBehaviour:
   references:
     version: 1
     00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000001:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000002:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
         m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
