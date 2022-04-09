@@ -10,7 +10,7 @@ public class Trash : InteractableObject
     {
 
             hoverName = "Trash";
-
+        SetLocalizedString();
     }
     private void Update()
     {

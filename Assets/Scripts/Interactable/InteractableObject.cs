@@ -15,8 +15,7 @@ public abstract class InteractableObject : MonoBehaviour
     public bool IsInteractable = true;
 
     //localized string
-    [SerializeField] protected LocalizeStringEvent localizedStringEvent;
-
+    public LocalizeStringEvent localizedStringEvent;
     [SerializeField] protected LocalizedString localizedString;
 
     protected void SetLocalizedString()

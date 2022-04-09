@@ -164,6 +164,10 @@ MonoBehaviour:
     m_Localized: Haal de lat voor duurzaamheid op 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Afval
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

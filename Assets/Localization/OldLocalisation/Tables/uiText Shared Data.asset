@@ -139,6 +139,10 @@ MonoBehaviour:
     m_Key: GoalText
     m_Metadata:
       m_Items: []
+  - m_Id: 2385090661462016
+    m_Key: "trashText\t"
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
