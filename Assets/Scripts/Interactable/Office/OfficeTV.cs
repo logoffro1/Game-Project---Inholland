@@ -12,21 +12,14 @@ public class OfficeTV : InteractableObject
 
     [SerializeField] private RenderObjects normalRenderer;
 
-    //localized string
-    public LocalizeStringEvent localizedStringEvent;
+
     private void Start()
     {
-        localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
-        hoverName = localizedStringEvent.StringReference.GetLocalizedString();
-
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
+        SetLocalizedString();
     }
 
-    void OnStringChanged(string s)
-    {
-        hoverName = localizedStringEvent.StringReference.GetLocalizedString();
-    }
     public override void DoAction(GameObject player)
     {
         officeLevels.ShowPanel(true);
