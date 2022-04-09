@@ -20,10 +20,9 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: '{hoverText}'
+    m_Localized: interact
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 3058921672704
     m_Localized: Day's over!
     m_Metadata:
@@ -175,4 +174,4 @@ MonoBehaviour:
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0090f0c00f00000000e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400

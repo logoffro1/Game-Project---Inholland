@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.Localization.Settings;
 
 public class MainMenu : MonoBehaviour
 {
@@ -22,7 +24,10 @@ public class MainMenu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         LevelManager.Instance.LoadScene("Office");
     }
-
+    public void OnLanguageChange(TMP_Dropdown dropdown)
+    {
+        LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[dropdown.value];
+    }
     public void QuitGame()
     {
         Debug.Log("Quit!");
