@@ -179,5 +179,32 @@ MonoBehaviour:
     m_Localized: Curata canale
     m_Metadata:
       m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: "S\u0103pa\u021Bi o groap\u0103 pentru copac!\nElibereaz\u0103 lopata
+      la momentul potrivit\n\nTASTE\nSPA\u021AIU - Elibereaz\u0103 lopata"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: "Repeta\u021Bi secven\u021Ba afi\u0219at\u0103!\n\nDup\u0103 terminarea
+      secven\u021Bei, face\u021Bi clic pe butoane \xEEn aceea\u0219i ordine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: "Str\xE2nge\u021Bi tot gunoiul!\n\nTASTE\nA,D - Deplasa\u021Bi la
+      st\xE2nga/dreapta\nSPA\u021AIU - Trage cu c\xE2rligul \xEEn jos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: "Potrivi\u021Bi firele dup\u0103 culoare!\n\nFace\u021Bi clic pe
+      firul din partea st\xE2ng\u0103\nTrage pentru a muta\nElibera\u021Bi clic pentru
+      a v\u0103 conecta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: "Construi\u021Bi dou\u0103 r\xE2nduri pentru a finaliza panoul solar!\n\nTASTE\nA,D
+      - Deplasa\u021Bi la st\xE2nga/dreapta\nS - Drop\nSPA\u021AIU - Hard Drop\nQ,E
+      - Roti\u021Bi st\xE2nga/dreapta"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1

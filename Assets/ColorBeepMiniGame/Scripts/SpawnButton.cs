@@ -33,10 +33,10 @@ public class SpawnButton : MiniGameBase
         audioSource = GetComponent<AudioSource>();
 
 
-            description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
+        // description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
 
-            //description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
-       
+        //description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
+        SetLocalizedString();
 
         InitButtons();
         SetSequence();

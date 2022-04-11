@@ -9,8 +9,8 @@ public class RewireMiniGame : MiniGameBase
     private void Start()
     {
 
-        description = "Match the wires by color!\n\nClick on the wire on the left side\nDrag to move\nRelease click to connect";
-
+        // description = "Match the wires by color!\n\nClick on the wire on the left side\nDrag to move\nRelease click to connect";
+        SetLocalizedString();
 
         //   description = "Match de draden op kleur!\n\nKlik op de draad aan de linkerkant\nSleep om te bewegen\nLaat de klik los om verbinding te maken ";
 

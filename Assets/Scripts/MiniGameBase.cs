@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Components;
 
 public class MiniGameBase : MonoBehaviour
 {
@@ -16,6 +17,37 @@ public class MiniGameBase : MonoBehaviour
     public TextMeshProUGUI successText;
     public TextMeshProUGUI descriptionText;
     public GameObject infoCanvas;
+
+
+    //localized string
+    [SerializeField] protected LocalizeStringEvent localizedStringEvent;
+    [SerializeField] protected LocalizedString localizedString;
+
+    private LocalizationSettings locSettings;
+    public async void SetLocalizedString()
+    {
+        try
+        {
+            var handle = LocalizationSettings.InitializationOperation;
+            await handle.Task;
+            locSettings = handle.Result;
+
+            this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
+
+            this.localizedStringEvent.StringReference = localizedString;
+            this.localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
+
+        }
+        catch (Exception ex) //it gets here if localizedString is not set
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
+    protected virtual void OnStringChanged(string s)
+    {
+        if (locSettings == null) return;
+        this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
+    }
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;

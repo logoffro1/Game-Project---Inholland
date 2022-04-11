@@ -179,6 +179,26 @@ MonoBehaviour:
     m_Key: taskListSewers
     m_Metadata:
       m_Items: []
+  - m_Id: 3068775396159488
+    m_Key: hintDigGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Key: hintColorBeep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Key: hintSewageGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Key: hintRewireGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Key: hintSolarPanelsGame
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -9,11 +9,11 @@ public class DiggingMiniGame : MiniGameBase
     private void Start()
     {
 
+        SetLocalizedString();
+        // description = "Dig a hole for the tree!\nRelease the shovel at the right moment\n\nKEYS\nSPACE - Release shovel";
 
-            description = "Dig a hole for the tree!\nRelease the shovel at the right moment\n\nKEYS\nSPACE - Release shovel";
+        //description = "Graaf een gat voor de boom!\nLaat de schop op het juiste moment los\n\nKEYS\nSPACE - Schop loslaten";
 
-            //description = "Graaf een gat voor de boom!\nLaat de schop op het juiste moment los\n\nKEYS\nSPACE - Schop loslaten";
-        
     }
     public void GameFinish(bool success)
     {

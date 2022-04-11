@@ -204,6 +204,67 @@ MonoBehaviour:
     m_Localized: Schone riolen
     m_Metadata:
       m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: 'Graaf een gat voor de boom!
+
+      Laat de schop op het juiste
+      moment los
+
+
+      KEYS
+
+      SPACE - Schop loslaten'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: 'Herhaal de getoonde volgorde!
+
+
+      Nadat de reeks voorbij is,
+      klikt u in dezelfde volgorde op de knoppen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: 'Verzamel al het afval!
+
+
+      TOETSEN
+
+      A,D - Naar links/rechts
+      bewegen
+
+      SPACE - Schiet haak naar beneden'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: 'Match de draden op kleur!
+
+
+      Klik op de draad aan de linkerkant
+
+      Sleep
+      om te bewegen
+
+      Laat de klik los om verbinding te maken'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: 'Bouw twee rijen om het zonnepaneel te voltooien!
+
+
+      TOETSEN
+
+      A,D
+      - Naar links / rechts bewegen
+
+      S - Drop
+
+      SPACE - Harde val
+
+      Q,E
+      - Links/rechts draaien'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

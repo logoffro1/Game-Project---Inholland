@@ -337,6 +337,18 @@ MonoBehaviour:
   successText: {fileID: 8607497813594481715}
   descriptionText: {fileID: 6570330215494645004}
   infoCanvas: {fileID: 4775885059660320283}
+  localizedStringEvent: {fileID: 5380884621486825119}
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 3072020915040256
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!1 &6418118427801077494
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +425,7 @@ MonoBehaviour:
   spawnPosition: {x: 0, y: 2, z: 0}
   boardSize: {x: 7, y: 8}
   shinglesGame: {fileID: 3543852027590442417}
+  isGameOver: 0
 --- !u!114 &6418118427801077488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,5 +1210,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5380884621486825119 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2174317454011094996, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
+  m_PrefabInstance: {fileID: 6088871341385501003}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

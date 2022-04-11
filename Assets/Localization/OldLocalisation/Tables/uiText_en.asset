@@ -205,6 +205,67 @@ MonoBehaviour:
     m_Localized: Clean sewers
     m_Metadata:
       m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: 'Dig a hole for the tree!
+
+      Release the shovel at the right
+      moment
+
+
+      KEYS
+
+      SPACE - Release shovel'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: 'Repeat the shown sequence!
+
+
+      After the sequence is over,
+      click on the buttons in the same order'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: 'Collect all the trash!
+
+
+      KEYS
+
+      A,D - Move left/right
+
+      SPACE
+      - Shoot hook down'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: 'Match the wires by color!
+
+
+      Click on the wire on the left
+      side
+
+      Drag to move
+
+      Release click to connect'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: 'Build two rows to complete the solar panel!
+
+
+      KEYS
+
+      A,D
+      - Move left / right
+
+      S - Drop
+
+      SPACE - Hard Drop
+
+      Q,E - Rotate
+      left / right'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
