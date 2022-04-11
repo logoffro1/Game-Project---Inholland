@@ -47,10 +47,10 @@ public class XRayVision : MonoBehaviour
             batteryLevel -= Time.deltaTime * drainRate;
             batteryFullImage.fillAmount = (batteryLevel / 100) - 0.1f;
             Debug.Log(batteryLevel / 100);
-            if(batteryLevel <= 45 && !flashing)
+            if (batteryLevel <= 45 && !flashing)
             {
-                if(batteryLevel > 0)
-                  StartCoroutine(FlashBattery());
+                if (batteryLevel > 0)
+                    StartCoroutine(FlashBattery());
             }
             if (batteryLevel <= 0)
             {
@@ -60,20 +60,20 @@ public class XRayVision : MonoBehaviour
             }
         }
     }
-  private IEnumerator FlashBattery()
+    private IEnumerator FlashBattery()
     {
-        
+
         flashing = true;
         float alpha = 255;
         float GB = 255;
-        while (alpha>=100)
+        while (alpha >= 100)
         {
             batteryFullImage.color = new Color32(255, (byte)GB, (byte)GB, (byte)alpha--);
             GB--;
             Debug.Log(batteryFullImage.color.a);
             yield return null;
         }
-        while(alpha < 255)
+        while (alpha < 255)
         {
             batteryFullImage.color = new Color32(255, (byte)GB, (byte)GB, (byte)alpha++);
             GB++;
@@ -87,12 +87,15 @@ public class XRayVision : MonoBehaviour
         if (batteryLevel <= 0 && !xrayVolume.enabled) return;
         normalRenderer.SetActive(!normalRenderer.isActive);
         xrayRenderer.SetActive(!xrayRenderer.isActive);
-        xrayVolume.enabled = xrayRenderer.isActive;
-        canvas.enabled = xrayVolume.enabled;
+        canvas.enabled = xrayRenderer.isActive;
+
         UIManager.Instance.ChangeCanvasShown();
 
         if (xrayRenderer.isActive)
-            StartCoroutine(AnimateVignette());
+            StartCoroutine(AnimateVignette(1f, 0.3f));
+        else
+            StartCoroutine(AnimateVignette(0.3f, 1f));
+
         foreach (InteractableTaskObject obj in GameObject.FindObjectsOfType<InteractableTaskObject>())
         {
             if (xrayRenderer.isActive)
@@ -103,25 +106,37 @@ public class XRayVision : MonoBehaviour
 
     }
 
-    private IEnumerator AnimateVignette()
+    private IEnumerator AnimateVignette(float start, float target)
     {
+        xrayVolume.enabled = true;
+
         Vignette vg;
         DepthOfField dof;
         xrayVolume.profile.TryGet(out vg);
         xrayVolume.profile.TryGet(out dof);
-        vg.intensity.value = 1f;
+        vg.intensity.value = start;
         dof.active = true;
-        dof.focusDistance.value = 1;
+        dof.focusDistance.value = start;
         //  vg.center.value = new Vector2(0.5f, -0.1f);
 
         while (true)
         {
-            vg.intensity.value -= 0.01f;
-            // vg.center.value = new Vector2(0.5f, vg.center.value.y + 0.01f);
-            dof.focusDistance.value += 0.1f;
-            if (vg.intensity.value <= 0.3f) break;
+            if (target < start)
+            {
+                vg.intensity.value -= 0.01f;
+                dof.focusDistance.value += 0.1f;
+                if (vg.intensity.value <= target) break;
+            }
+            else
+            {
+                vg.intensity.value += 0.022f;
+                if (vg.intensity.value >= target) break;
+            }
+
             yield return new WaitForSeconds(0.01f);
         }
         dof.active = false;
+        if (!xrayRenderer.isActive)
+            xrayVolume.enabled = false;
     }
 }
