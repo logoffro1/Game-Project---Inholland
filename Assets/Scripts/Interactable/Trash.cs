@@ -6,6 +6,10 @@ using UnityEngine.Localization.Settings;
 
 public class Trash : InteractableObject
 {
+    private void Awake()
+    {
+        hoverName = "Trash";
+    }
     private void Update()
     {
         if (transform.position.y < -50)

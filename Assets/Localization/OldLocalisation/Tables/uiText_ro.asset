@@ -16,7 +16,8 @@ MonoBehaviour:
     m_Code: ro
   m_SharedData: {fileID: 11400000, guid: da94c565f8ff38849b53db7b3e21e305, type: 2}
   m_Metadata:
-    m_Items: []
+    m_Items:
+    - id: 0
   m_TableData:
   - m_Id: 5675852795904
     m_Localized: Joc nou
@@ -65,7 +66,8 @@ MonoBehaviour:
   - m_Id: 1362783803596800
     m_Localized: 'Numele agentului : {playerName}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 1362907405541376
     m_Localized: "Progresul sustenabilit\u0103\u021Bii:"
     m_Metadata:
@@ -117,7 +119,8 @@ MonoBehaviour:
   - m_Id: 1399924306796544
     m_Localized: '{winconditionDay}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 1478127297814528
     m_Localized: "INFO (PAUZ\u0102)"
     m_Metadata:
@@ -216,3 +219,7 @@ MonoBehaviour:
       m_Items: []
   references:
     version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0044739f90400
