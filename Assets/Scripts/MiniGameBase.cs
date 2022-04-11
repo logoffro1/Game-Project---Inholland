@@ -20,8 +20,11 @@ public class MiniGameBase : MonoBehaviour
 
 
     //localized string
-    [SerializeField] protected LocalizeStringEvent localizedStringEvent;
-    [SerializeField] protected LocalizedString localizedString;
+    [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
+    [SerializeField] protected LocalizedString localizedStringHint;
+
+    [SerializeField] protected LocalizeStringEvent localizedStringEventResult;
+    [SerializeField] protected LocalizedString[] resultLocalizedString;
 
     private LocalizationSettings locSettings;
     public async void SetLocalizedString()
@@ -32,10 +35,10 @@ public class MiniGameBase : MonoBehaviour
             await handle.Task;
             locSettings = handle.Result;
 
-            this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
+            this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
 
-            this.localizedStringEvent.StringReference = localizedString;
-            this.localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
+            this.localizedStringEventDescription.StringReference = localizedStringHint;
+            this.localizedStringEventDescription.OnUpdateString.AddListener(OnStringChanged);
 
         }
         catch (Exception ex) //it gets here if localizedString is not set
@@ -46,7 +49,7 @@ public class MiniGameBase : MonoBehaviour
     protected virtual void OnStringChanged(string s)
     {
         if (locSettings == null) return;
-        this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
+        this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
     }
     private void Awake()
     {
@@ -106,21 +109,25 @@ public class MiniGameBase : MonoBehaviour
     }
     private void ChangeSuccessText(bool successful)
     {
-
+        LocalizedString locStr;
         successText.enabled = true;
         if (successful)
         {
             successText.color = Color.green;
-            successText.text = "SUCCESS";
 
-            return;
+            locStr = resultLocalizedString[0];
+
         }
-
+        else
+        {
         successText.color = Color.red;
 
-            successText.text = "FAILURE";
+        locStr = resultLocalizedString[1];
+        }
 
+        localizedStringEventResult.StringReference = locStr;
 
+       successText.text = locSettings.GetStringDatabase().GetLocalizedString(locStr.TableReference, locStr.TableEntryReference);
     }
 }
 
