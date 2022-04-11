@@ -13,7 +13,7 @@ public class WireSpawner : MonoBehaviour
 
     //The ranges of where the wires can spawn
     private float spawnX = 100;
-    private float spawnYRange = 100;
+    private float spawnYRange = 110;
 
     //Change amount of wires that spawn
     public int amountWires = 1;
