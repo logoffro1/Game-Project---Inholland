@@ -9,18 +9,31 @@ public class WireSpawner : MonoBehaviour
 {
     public GameObject wirePrefab;
     public Color[] colors;
+
+    //The ranges of where the wires can spawn
     private float spawnX = 100;
     private float spawnYRange = 100;
+
+    //Change amount of wires that spawn
     public int amountWires = 1;
 
-    public int amountFinished;
-    public int amountCorrect;
-
+    private int amountFinished;
+    private int amountCorrect;
     private List<GameObject> wires;
 
+    [HideInInspector]
+    public RewireMiniGame rewireMiniGame;
+
+    //Audio
+    [HideInInspector]
+    public AudioSource audioSource;
+    public AudioClip clickAudio;
+    public AudioClip successAudio;
+    public AudioClip failAudio;
+
+    //Events
     public event Action<bool> GameSuccess;
 
-    public RewireMiniGame rewireMiniGame;
 
 
     // Start is called before the first frame update
@@ -29,6 +42,7 @@ public class WireSpawner : MonoBehaviour
         SetUpGame();
 
         List<Vector3> spawnPositions = CreateSpawnPositoin();
+        audioSource = GetComponent<AudioSource>();
 
         InstansiateAllWires(spawnPositions);
 
@@ -112,17 +126,24 @@ public class WireSpawner : MonoBehaviour
         {
             if (amountCorrect >= amountWires)
             {
+                audioSource.PlayOneShot(successAudio);
                 GameSuccess?.Invoke(true);
             }
             else
             {
+                audioSource.PlayOneShot(failAudio);
                 GameSuccess?.Invoke(false);
             }
+        }
+        else
+        {
+            audioSource.PlayOneShot(clickAudio);
         }
     }
 
     public void OneFailed()
     {
+        audioSource.PlayOneShot(failAudio);
         GameSuccess?.Invoke(false);
     }
 
