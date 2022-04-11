@@ -59,6 +59,7 @@ public class Dragger : MonoBehaviour
         if (connectedCorrect)
         {
             spawner.OneIsSuccessFul();
+            Instantiate(spawner.explosionParticleEffect, inCollisionWith.transform.position, spawner.explosionParticleEffect.transform.rotation, spawner.explosionParticleEffect.transform);
         }
 
         if (!connectedCorrect && inCollisionWith != null)

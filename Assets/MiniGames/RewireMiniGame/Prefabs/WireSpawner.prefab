@@ -56,6 +56,7 @@ MonoBehaviour:
   - {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   - {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   - {r: 0.4339623, g: 0.35085988, b: 0.16171236, a: 1}
+  explosionParticleEffect: {fileID: 1022970526871509993, guid: 18a7a8806851a1043a0284947c60a813, type: 3}
   amountWires: 5
   rewireMiniGame: {fileID: 0}
   audioSource: {fileID: 0}

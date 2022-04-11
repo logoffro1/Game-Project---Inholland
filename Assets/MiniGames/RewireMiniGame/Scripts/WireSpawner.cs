@@ -9,6 +9,7 @@ public class WireSpawner : MonoBehaviour
 {
     public GameObject wirePrefab;
     public Color[] colors;
+    public GameObject explosionParticleEffect;
 
     //The ranges of where the wires can spawn
     private float spawnX = 100;
@@ -33,8 +34,6 @@ public class WireSpawner : MonoBehaviour
 
     //Events
     public event Action<bool> GameSuccess;
-
-
 
     // Start is called before the first frame update
     void Start()
