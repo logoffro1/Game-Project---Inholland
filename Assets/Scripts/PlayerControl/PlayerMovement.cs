@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private Transform groundCheck;
     public LayerMask groundMask;
-    private bool isGrounded;
+    public bool IsGrounded { get; private set; }
 
     public bool canMove { get; set; } = true;
     void Start()
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!canMove) return;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        IsGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement();
         Fall();
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Fall()
     {
-        if (isGrounded && velocity.y < 0f)
+        if (IsGrounded && velocity.y < 0f)
             velocity.y = -2f;
 
         velocity.y += gravity * Time.deltaTime;
