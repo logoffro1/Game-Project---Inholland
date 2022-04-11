@@ -65,17 +65,18 @@ public class XRayVision : MonoBehaviour
         
         flashing = true;
         float alpha = 255;
+        float GB = 255;
         while (alpha>=100)
         {
-            batteryFullImage.color = new Color32(255, 255, 255, (byte)alpha--);
-            
+            batteryFullImage.color = new Color32(255, (byte)GB, (byte)GB, (byte)alpha--);
+            GB--;
             Debug.Log(batteryFullImage.color.a);
             yield return null;
         }
         while(alpha < 255)
         {
-            batteryFullImage.color = new Color32(255, 255, 255, (byte)alpha++);
-
+            batteryFullImage.color = new Color32(255, (byte)GB, (byte)GB, (byte)alpha++);
+            GB++;
             yield return null;
         }
         yield return new WaitForSeconds(0.5f);

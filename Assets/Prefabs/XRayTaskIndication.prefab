@@ -30,8 +30,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 977218313}
   - {fileID: 4166676843269194963}
+  - {fileID: 977218313}
   m_Father: {fileID: 3130265459390099834}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,7 +131,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41324803}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -206,7 +206,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 41324803}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -298,6 +298,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalRenderer: {fileID: -2726062073748862871, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   xrayRenderer: {fileID: -5929669759103771485, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
+  canvas: {fileID: 0}
+  batteryFullImage: {fileID: 0}
   drainRate: 10
 --- !u!114 &3130265459390099835
 MonoBehaviour:
