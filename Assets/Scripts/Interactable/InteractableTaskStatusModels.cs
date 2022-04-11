@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class InteractableTaskStatusModels : MonoBehaviour
 {
@@ -41,7 +42,7 @@ public class InteractableTaskStatusModels : MonoBehaviour
         {
             //Gets all necessary info
             InteractableTaskObject interactable = gameObject.GetComponent<InteractableTaskObject>();
-
+            interactable.SetLocalizedString(GameObject.Find("HoverText").GetComponent<LocalizeStringEvent>());
             try
             {
                 interactable.enabled = true;
