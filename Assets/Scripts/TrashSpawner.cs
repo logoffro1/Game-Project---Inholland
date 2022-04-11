@@ -24,9 +24,9 @@ public class TrashSpawner : MonoBehaviour
                 continue;
 
             GameObject trash = trashList[Random.Range(0, trashList.Length)];
-            Trash trashScript = trash.GetComponent<Trash>();
-            trashScript.localizedStringEvent = this.localizedStringEvent;
-            Instantiate(trash, spawnPos, trash.transform.rotation, transform);
+            
+            GameObject spawnedTrash = Instantiate(trash, spawnPos, trash.transform.rotation, transform);
+            spawnedTrash.GetComponent<Trash>().SetLocalizedString(localizedStringEvent);
             yield return null;
             amount++;
         }

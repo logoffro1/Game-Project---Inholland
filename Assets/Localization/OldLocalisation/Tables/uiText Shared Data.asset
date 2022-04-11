@@ -143,6 +143,42 @@ MonoBehaviour:
     m_Key: "trashText\t"
     m_Metadata:
       m_Items: []
+  - m_Id: 3039102146588672
+    m_Key: plantText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Key: upgradeText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Key: cleanText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Key: buildSolarPanelText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Key: "emptyTrashText\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Key: taskListPlantTrees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Key: taskListSolarPanels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Key: taskListStreetLamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Key: taskListSewers
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

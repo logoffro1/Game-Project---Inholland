@@ -8,10 +8,7 @@ public class Dumpster : InteractableObject
 {
     private void Start()
     {
-
-
-            hoverName = "Empty Trash Bag";
-
+        SetLocalizedString(this.localizedStringEvent);
     }
     public override void DoAction(GameObject player)
     {

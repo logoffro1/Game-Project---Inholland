@@ -10,6 +10,7 @@ public class OfficeTV : InteractableObject
 {
     private OfficeLevelSelector officeLevels;
 
+    [SerializeField] private LocalizeStringEvent localizeStringEvent;
     [SerializeField] private RenderObjects normalRenderer;
 
 
@@ -17,7 +18,7 @@ public class OfficeTV : InteractableObject
     {
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
-        SetLocalizedString();
+        SetLocalizedString(localizeStringEvent);
     }
 
     public override void DoAction(GameObject player)

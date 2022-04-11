@@ -15,19 +15,34 @@ public abstract class InteractableObject : MonoBehaviour
     public bool IsInteractable = true;
 
     //localized string
-    public LocalizeStringEvent localizedStringEvent;
+    [SerializeField] protected LocalizeStringEvent localizedStringEvent;
     [SerializeField] protected LocalizedString localizedString;
 
-    protected void SetLocalizedString()
+    private LocalizationSettings locSettings;
+    public async void SetLocalizedString(LocalizeStringEvent localizedStringEvent)
     {
-        this.hoverName = LocalizationSettings.StringDatabase.GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
-        
-        this.localizedStringEvent.StringReference = localizedString;
-        this.localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
+        try
+        {
+            var handle = LocalizationSettings.InitializationOperation;
+            await handle.Task;
+            locSettings = handle.Result;
+
+            this.localizedStringEvent = localizedStringEvent;
+            this.hoverName = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
+
+            this.localizedStringEvent.StringReference = localizedString;
+            this.localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
+
+        }
+        catch (Exception ex) //it gets here if localizedString is not set
+        {
+            Debug.Log(ex.ToString());
+        }
     }
-    
+
     protected virtual void OnStringChanged(string s)
     {
-        hoverName = localizedStringEvent.StringReference.GetLocalizedString();
+        if (locSettings == null) return;
+        this.hoverName = locSettings.GetStringDatabase().GetLocalizedString(localizedString.TableReference, localizedString.TableEntryReference);
     }
 }

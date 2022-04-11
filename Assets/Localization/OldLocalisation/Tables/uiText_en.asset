@@ -169,6 +169,42 @@ MonoBehaviour:
     m_Localized: Trash
     m_Metadata:
       m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Plant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Clean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Build solar panel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Empty trash bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Plant Trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Set up solar panel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Upgrade street lamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Clean sewers
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

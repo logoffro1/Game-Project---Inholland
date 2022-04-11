@@ -143,5 +143,41 @@ MonoBehaviour:
     m_Localized: Gunoi
     m_Metadata:
       m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Planteaza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Curata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Construieste panou solar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Arunca gunoiul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Planteaza copaci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Construieste panou solar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Upgrade felinar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Curata canale
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
