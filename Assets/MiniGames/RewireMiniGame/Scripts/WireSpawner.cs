@@ -62,9 +62,39 @@ public class WireSpawner : MonoBehaviour
         List<Vector3> spawnPositions = new List<Vector3>();
 
         //Determining spawn positions according to how many wires will spawn, and the x & y coords
-        for (int i = 1; i <= amountWires; i++)
+        int tmpAmount = amountWires - 1;
+        if (tmpAmount <= 0) tmpAmount = 1;
+
+        float median = 0;
+
+        for (int i = 0; i <= tmpAmount; i++)
         {
-            spawnPositions.Add(new Vector3(0, (spawnYRange / amountWires) * i, 0));
+            float positionY = (transform.position.y + (spawnYRange / tmpAmount) * i) * (amountWires * 0.1f);
+            spawnPositions.Add(new Vector3(0, positionY, 0));
+            median += positionY;
+        }
+
+        float middle;
+
+        //if even
+        if (spawnPositions.Count % 2 == 0)
+        {
+            middle = (spawnPositions[spawnPositions.Count / 2].y + spawnPositions[(spawnPositions.Count / 2) -1].y)/2;
+        }
+        else
+        {
+            //odd
+            middle = spawnPositions[Mathf.CeilToInt(spawnPositions.Count / 2f)].y;
+
+        }
+
+        middle -= 60;
+
+        for (int i = 0; i <= tmpAmount; i++)
+        {
+            Vector3 currentPos = spawnPositions[i];
+            currentPos.y -= middle;
+            spawnPositions[i] = currentPos;
         }
 
         return spawnPositions;
