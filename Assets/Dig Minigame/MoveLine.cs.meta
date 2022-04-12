@@ -3,7 +3,13 @@ guid: b8fe8cec1edff7e48969181dc7e58419
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - heart: {instanceID: 0}
+  - heartLoss: {instanceID: 0}
+  - success: {instanceID: 0}
+  - fail: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - diggingMiniGame: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

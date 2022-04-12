@@ -11,6 +11,9 @@ public class MoveLine : MonoBehaviour
     bool isOnTarget = false;
     int lives = 3;
     public GameObject heart;
+    public AudioClip heartLoss;
+    public AudioClip success;
+    public AudioSource audioSource;
 
     public DiggingMiniGame diggingMiniGame;
     // Start is called before the first frame update
@@ -27,6 +30,7 @@ public class MoveLine : MonoBehaviour
         {
             if (isOnTarget)
             {
+                audioSource.PlayOneShot(success);
                 gameOver = true;
                 diggingMiniGame.GameFinish(true);
             }
@@ -35,6 +39,7 @@ public class MoveLine : MonoBehaviour
                 lives--;
                 heart = GameObject.Find("Lives");
                 Destroy(heart);
+                audioSource.PlayOneShot(heartLoss);
                 
                 if (lives == 0)
                 {
