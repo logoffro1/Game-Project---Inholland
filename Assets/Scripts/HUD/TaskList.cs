@@ -149,7 +149,8 @@ public class TaskList : MonoBehaviour
         {
             list.Add($"{taskStrings[kvp.Key]} ({kvp.Value[0]}/{kvp.Value[1]})");
         }
-        taskListText.text = string.Join("\n", list);
+        if(list.Count > 0)
+             taskListText.text = string.Join("\n", list);
     }
 
     public void TaskWon(InteractableTaskStatusModels task)
