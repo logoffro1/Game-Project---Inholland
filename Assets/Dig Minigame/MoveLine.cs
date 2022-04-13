@@ -10,6 +10,9 @@ public class MoveLine : MonoBehaviour
     double rightLimitX = 0.5f;
     bool isOnTarget = false;
     int lives = 3;
+    int timesDug;
+    public Sprite[] spriteArray;
+    public SpriteRenderer spriteRenderer;
     public GameObject heart;
     public AudioClip heartLoss;
     public AudioClip success;
@@ -19,6 +22,8 @@ public class MoveLine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        timesDug = 0;
         gameOver = false;
     }
 
@@ -31,8 +36,15 @@ public class MoveLine : MonoBehaviour
             if (isOnTarget)
             {
                 audioSource.PlayOneShot(success);
-                gameOver = true;
-                diggingMiniGame.GameFinish(true);
+                timesDug++;
+                spriteRenderer.sprite = spriteArray[timesDug];
+                spriteRenderer.sortingOrder = 3;
+                if (timesDug == 3)
+                {
+                    audioSource.PlayOneShot(success);
+                    gameOver = true;
+                    diggingMiniGame.GameFinish(true);
+                }
             }
             else
             {
@@ -54,7 +66,7 @@ public class MoveLine : MonoBehaviour
             if (transform.localPosition.x <= leftLimitX)
             {
                 movingRight = true;
-                Debug.Log(movingRight);
+                //Debug.Log(movingRight);
             }
         }
         else
@@ -70,14 +82,19 @@ public class MoveLine : MonoBehaviour
     }
    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Enter");
+        //Debug.Log("Enter");
         isOnTarget = true;
     }
 
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Exit");
+        //Debug.Log("Exit");
         isOnTarget = false;
+    }
+
+    void ChangeSprite(int placeinArray)
+    {
+        spriteRenderer.sprite = spriteArray[placeinArray];
     }
 }
