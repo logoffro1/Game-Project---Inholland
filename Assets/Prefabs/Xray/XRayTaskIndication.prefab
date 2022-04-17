@@ -47,7 +47,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41324802}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -210,8 +210,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -41.287964, y: -46.71901}
-  m_SizeDelta: {x: 71.0311, y: 29.2544}
+  m_AnchoredPosition: {x: -40.463898, y: -46.549316}
+  m_SizeDelta: {x: 71.8552, y: 29.5938}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &3727931644564169555
 CanvasRenderer:
@@ -241,12 +241,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 7482667652216324306, guid: d257f2d8173b7724c86412fd15f32056, type: 3}
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 1
+  m_FillAmount: 0
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -300,7 +300,6 @@ MonoBehaviour:
   xrayRenderer: {fileID: -5929669759103771485, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   canvas: {fileID: 41324806}
   batteryFullImage: {fileID: 7802969521003165865}
-  drainRate: 3
 --- !u!114 &3130265459390099835
 MonoBehaviour:
   m_ObjectHideFlags: 0
