@@ -8,6 +8,7 @@ public class XRayVision : MonoBehaviour
 {
     [SerializeField] private RenderObjects normalRenderer;
     [SerializeField] private RenderObjects xrayRenderer;
+    [SerializeField] private RenderObjects trashRenderer;
     private Volume xrayVolume;
 
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class XRayVision : MonoBehaviour
 
         normalRenderer.SetActive(true);
         xrayRenderer.SetActive(false);
+        trashRenderer.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class XRayVision : MonoBehaviour
     {
         normalRenderer.SetActive(!normalRenderer.isActive);
         xrayRenderer.SetActive(!xrayRenderer.isActive);
+        trashRenderer.SetActive(!trashRenderer.isActive);
         xrayVolume.enabled = xrayRenderer.isActive;
         if (xrayRenderer.isActive)
             StartCoroutine(AnimateVignette());
@@ -40,6 +43,20 @@ public class XRayVision : MonoBehaviour
                 obj.gameObject.layer = 11;
             else
                 obj.gameObject.layer = 0;
+        }
+        foreach(Trash trash in GameObject.FindObjectsOfType<Trash>())
+        {
+            if (xrayRenderer.isActive)
+                trash.gameObject.layer = 12;
+            else
+                trash.gameObject.layer = 0;
+        }
+        foreach(Dumpster dumpster in GameObject.FindObjectsOfType<Dumpster>())
+        {
+            if (xrayRenderer.isActive)
+                dumpster.gameObject.layer = 12;
+            else
+                dumpster.gameObject.layer = 0;
         }
 
     }

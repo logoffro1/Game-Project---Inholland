@@ -26,6 +26,7 @@ public class CastRay : MonoBehaviour
         Camera cam = GetComponent<Camera>();
         float[] distances = new float[32];
         distances[11] = 60;
+        distances[12] = 30;
         cam.layerCullDistances = distances;
     }
     void Update()
@@ -46,7 +47,7 @@ public class CastRay : MonoBehaviour
 
             if (objectHit != null && interactableObject != null && interactableObject.IsInteractable)
             {
-                if (objectHit.layer == 11) return; //xray layer
+                if (objectHit.layer == 11 || objectHit.layer == 12) return; //xray layer
 
                 if (previousObject != null)
                 {
