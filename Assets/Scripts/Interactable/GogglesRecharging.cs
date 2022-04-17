@@ -71,7 +71,6 @@ public class GogglesRecharging : InteractableObject
     }
     private void ChangeStatus(RechargingStates status)
     {
-        Debug.Log(status.ToString());
         if (status == currentStatus) return;
         currentStatus = status;
         switch (status)
