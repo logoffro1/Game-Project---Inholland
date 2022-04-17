@@ -46,7 +46,6 @@ public class XrayGoggles : InteractableObject
         if (Input.GetKeyDown(KeyCode.X))
             Activate();
 
-        Debug.Log($"{BatteryLevel.ToString("0.0")} Active: {isActive} Equipped: {IsEquipped} Charging: {IsCharging}");
         DrainBattery();
         ChargeBattery();
     }
