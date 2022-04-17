@@ -13,10 +13,6 @@ public class XRayVision : MonoBehaviour
     [SerializeField] private Image batteryFullImage;
     private Volume xrayVolume;
 
-    private bool drainOverTime = true;
-    [SerializeField] private float drainRate = 1f;
-    private float batteryLevel = 100f;
-
     private bool flashing = false;
     // Start is called before the first frame update
     void Start()
@@ -30,36 +26,24 @@ public class XRayVision : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
+
+
+
+    }
+    public void BatteryChanged(float batteryLevel)
+    {
+        batteryFullImage.fillAmount = (batteryLevel / 100) - 0.1f;
+        if (batteryLevel <= 35 && !flashing)
+        {
+            if (batteryLevel > 0)
+                StartCoroutine(FlashBattery());
+        }
+        if (batteryLevel <= 0)
         {
             ActivateVision();
         }
-        if (xrayVolume.enabled)
-        {
-            DrainBattery();
-        }
+    }
 
-    }
-    private void DrainBattery()
-    {
-        if (drainOverTime)
-        {
-            batteryLevel -= Time.deltaTime * drainRate;
-            batteryFullImage.fillAmount = (batteryLevel / 100) - 0.1f;
-            Debug.Log(batteryLevel / 100);
-            if (batteryLevel <= 45 && !flashing)
-            {
-                if (batteryLevel > 0)
-                    StartCoroutine(FlashBattery());
-            }
-            if (batteryLevel <= 0)
-            {
-                batteryLevel = 0;
-                drainOverTime = false;
-                ActivateVision();
-            }
-        }
-    }
     private IEnumerator FlashBattery()
     {
 
@@ -82,9 +66,9 @@ public class XRayVision : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         flashing = false;
     }
-    private void ActivateVision()
+    public void ActivateVision()
     {
-        if (batteryLevel <= 0 && !xrayVolume.enabled) return;
+
         normalRenderer.SetActive(!normalRenderer.isActive);
         xrayRenderer.SetActive(!xrayRenderer.isActive);
         canvas.enabled = xrayRenderer.isActive;
