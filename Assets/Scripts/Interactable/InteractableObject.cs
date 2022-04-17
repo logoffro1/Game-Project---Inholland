@@ -32,7 +32,7 @@ public abstract class InteractableObject : MonoBehaviour
 
             this.localizedStringEvent.StringReference = localizedString;
             this.localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
-
+                
         }
         catch (Exception ex) //it gets here if localizedString is not set
         {

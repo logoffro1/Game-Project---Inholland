@@ -22,9 +22,12 @@ public class EndOfDayReport : MonoBehaviour
 
 
     private PlayerReportData playerReportData;
-    
+    private bool dayFailed = false;
+    private string lang = "en";
     void Start()
     {
+        GetLanguage();
+        dayFailed = getWinLoseCondition();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
@@ -33,31 +36,28 @@ public class EndOfDayReport : MonoBehaviour
         DistanceTraveled.text += $"  {distance} m";
 
         int playNr;
-        
+
         Success.text += $"  {playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
         TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
-       
-        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
- 
 
-            MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
-            timeBonus.text += $"  {remainingTime} seconds remaining ";
-            DayCondition.text += $"{getWinLoseCondition()} ";
-        /*
-            DayCondition.text = $"{getWinLoseConditionInDutch().ToString()}";
-            Debug.Log(getWinLoseConditionInDutch());
-            MostPlayedMinigame.text = $"{returnPrefabTaskNameInDutch(playerReportData.GetTheMostPlayedMiniGameName(out playNr)).ToString()} : {playNr} keer.";
-            timeBonus.text += $"{remainingTime} seconden resterend";
-        */
-
+        MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
+        timeBonus.text += getSecondsRemainingText();
+        DayCondition.text += $"{getWinLoseText()} ";
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
-    }
 
+    }
+    private async void GetLanguage()
+    {
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        LocalizationSettings locSettings = handle.Result;
+
+        lang = locSettings.GetSelectedLocale().Identifier.Code;
+    }
 
     private string returnPrefabTaskNameInDutch(string prefabname)
     {
@@ -86,32 +86,60 @@ public class EndOfDayReport : MonoBehaviour
         }
         return value;
     }
-
-    private string getWinLoseConditionInDutch()
+    private string getSecondsRemainingText()
     {
-        if (ProgressBar.Instance.GetSlideValue() >= 80)
+        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
+        switch (lang)
         {
-            return " Dag is succesvol afgesloten.";
+            case "en":
+                return $"  {remainingTime} seconds remaining ";
+            case "nl":
+                return $"  {remainingTime} seconden resterend ";
+            case "ro":
+                return $"  {remainingTime} secunde ramase ";
+            default:
+                return $"  {remainingTime} seconds remaining ";
         }
-        else
+    }
+    private string getWinLoseText()
+    {
+
+        if (!dayFailed)
         {
-            return "Dag is mislukt";
+            switch (lang)
+            {
+                case "en":
+                    return "Day is sucessfully finished";
+                case "nl":
+                    return "Dag is succesvol afgesloten";
+                case "ro":
+                    return "Ziua a fost reusita";
+                default:
+                    return "Day successful";
+            }
+        }
+        switch (lang)
+        {
+            case "en":
+                return "Day failed";
+            case "nl":
+                return "Dag is mislukt";
+            case "ro":
+                return "Ziua a fost esuata";
+
+            default:
+                return "Day failed.";
         }
     }
 
-    private string getWinLoseCondition()
+
+    private bool getWinLoseCondition()
     {
-        if (ProgressBar.Instance.GetSlideValue() >= 80)
-        {
-            return " Day is successfully finished.";
-        }
-        else
-        {
-            return "Day is failed";
-        }
+        return !(ProgressBar.Instance.GetSlideValue() >= 80f);
+
     }
 
-   
+
 
 
 }

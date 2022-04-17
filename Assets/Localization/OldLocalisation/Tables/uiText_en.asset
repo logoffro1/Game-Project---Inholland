@@ -63,24 +63,6 @@ MonoBehaviour:
     m_Localized: Choose a level
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Localized: 'Map: Alkmaar City Center
-
-
-
-      Description: Pro/Cons of playing
-      the map
-
-      Objective: Here we write what we have to do/ point of the game
-      etc
-
-
-
-      Times played: 0
-
-      Best score: 0'
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Localized: 'Agent name : {playerName}'
     m_Metadata:
@@ -272,6 +254,17 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3074801633734656
     m_Localized: Failure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: 'Map: Alkmaar City Center
+
+
+      Description: Explore the beautiful
+      city of Alkmaar
+
+      Objective: Clean the city and bring the sustainability
+      above 80%!'
     m_Metadata:
       m_Items: []
   references:

@@ -111,11 +111,13 @@ MonoBehaviour:
   - m_Id: 1397286622257152
     m_Localized: '{bonusTimeRemaining}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 1399800843264000
     m_Localized: '{mostAttemptedTask}'
     m_Metadata:
-      m_Items: []
+      m_Items:
+      - id: 0
   - m_Id: 1399924306796544
     m_Localized: '{winconditionDay}'
     m_Metadata:
@@ -217,9 +219,15 @@ MonoBehaviour:
     m_Localized: "E\u0219ec"
     m_Metadata:
       m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: "Harta: Centrul ora\u0219ului Alkmaar\n\nDescriere: Explora\u021Bi
+      frumosul ora\u0219 Alkmaar\nObiectiv: Cur\u0103\u021Ba\u021Bi ora\u0219ul \u0219i
+      aduce\u021Bi sustenabilitatea peste 80%!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e084d471d7040000e0044739f90400
+        m_Entries: 00e084d471d7040000e0044739f9040000e0c424d3f6040000e004881cf90400

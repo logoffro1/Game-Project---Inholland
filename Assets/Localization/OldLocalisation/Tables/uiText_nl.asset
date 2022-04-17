@@ -63,23 +63,6 @@ MonoBehaviour:
     m_Localized: Kies een niveau
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Localized: 'Plattegrond: Alkmaar Centrum
-
-
-      Beschrijving: Pro/Cons van
-      het spelen van de kaart
-
-      Doelstelling: Hier schrijven we wat we moeten
-      doen / punt van het spel etc
-
-
-      Aantal keren gespeeld: 0
-
-      Beste
-      score: 0'
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Localized: 'Naam werknemer : {playerName}'
     m_Metadata:
@@ -271,6 +254,17 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 3074801633734656
     m_Localized: Mislukking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: 'Plattegrond: Alkmaar Centrum
+
+
+      Beschrijving: Ontdek de prachtige
+      stad Alkmaar
+
+      Doelstelling: Maak de stad schoon en breng de duurzaamheid
+      boven de 80%!'
     m_Metadata:
       m_Items: []
   references:
