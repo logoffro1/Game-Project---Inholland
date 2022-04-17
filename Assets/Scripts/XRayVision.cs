@@ -23,22 +23,15 @@ public class XRayVision : MonoBehaviour
         xrayRenderer.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-    }
     public void BatteryChanged(float batteryLevel)
     {
         batteryFullImage.fillAmount = (batteryLevel / 100) - 0.1f;
         if (batteryLevel <= 35 && !flashing)
         {
-            if (batteryLevel > 0)
+            if (batteryLevel > 0 && xrayVolume.enabled)
                 StartCoroutine(FlashBattery());
         }
-        if (batteryLevel <= 0)
+        if (batteryLevel <= 0 && xrayVolume.enabled)
         {
             ActivateVision();
         }
@@ -54,7 +47,6 @@ public class XRayVision : MonoBehaviour
         {
             batteryFullImage.color = new Color32(255, (byte)GB, (byte)GB, (byte)alpha--);
             GB--;
-            Debug.Log(batteryFullImage.color.a);
             yield return null;
         }
         while (alpha < 255)
@@ -76,9 +68,9 @@ public class XRayVision : MonoBehaviour
         UIManager.Instance.ChangeCanvasShown();
 
         if (xrayRenderer.isActive)
-            StartCoroutine(AnimateVignette(1f, 0.3f));
+            StartCoroutine(AnimateVignette(1f, 0.4f));
         else
-            StartCoroutine(AnimateVignette(0.3f, 1f));
+            StartCoroutine(AnimateVignette(1f, 1f));
 
         foreach (InteractableTaskObject obj in GameObject.FindObjectsOfType<InteractableTaskObject>())
         {

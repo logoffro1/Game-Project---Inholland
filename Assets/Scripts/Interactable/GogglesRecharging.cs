@@ -22,7 +22,7 @@ public class GogglesRecharging : InteractableObject
     // Update is called once per frame
     void Update()
     {
-       if(goggles != null)
+        if (goggles != null)
         {
             hoverName = $"Recharging ({goggles.BatteryLevel.ToString("0.0")}%)";
         }
@@ -40,24 +40,19 @@ public class GogglesRecharging : InteractableObject
             if (goggles != null)
             {
                 goggles.IsEquipped = false;
+                goggles.IsCharging = true;
+
             }
         }
-
         else
         {
-            if (goggles != null)
-            {
-                if (!goggles.IsEquipped)
-                {
-                    goggles.IsCharging = false;
-                    goggles.IsEquipped = true;
-                }
-            }
+
+            goggles.IsCharging = false;
+            goggles.IsEquipped = true;
             goggles = null;
 
         }
 
-        ChangeStatus(GetStatus());
     }
     private RechargingStates GetStatus()
     {
@@ -81,7 +76,6 @@ public class GogglesRecharging : InteractableObject
             case RechargingStates.Charging:
                 statusLight.enabled = true;
                 statusLight.color = Color.red;
-                goggles.IsCharging = true;
                 break;
             case RechargingStates.Full:
                 statusLight.enabled = true;

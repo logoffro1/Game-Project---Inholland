@@ -11,7 +11,7 @@ public class XrayGoggles : InteractableObject
     [SerializeField] private float drainRate = 1f;
     [SerializeField] private float chargeRate = 2f;
     public float BatteryLevel { get; private set; } = 100f;
-    
+
     public bool IsEquipped { get; set; } = false;
     private bool isActive = false;
     public bool IsCharging { get; set; } = false;
@@ -25,12 +25,12 @@ public class XrayGoggles : InteractableObject
         GetComponent<MeshRenderer>().enabled = false;
         foreach (MeshRenderer m in gameObject.GetComponentsInChildren<MeshRenderer>())
             m.enabled = false;
-        foreach(BoxCollider b in GetComponents<BoxCollider>())
+        foreach (BoxCollider b in GetComponents<BoxCollider>())
         {
             b.enabled = false;
         }
 
-        
+
     }
 
     // Start is called before the first frame update
@@ -46,13 +46,14 @@ public class XrayGoggles : InteractableObject
         if (Input.GetKeyDown(KeyCode.X))
             Activate();
 
+        Debug.Log($"{BatteryLevel.ToString("0.0")} Active: {isActive} Equipped: {IsEquipped} Charging: {IsCharging}");
         DrainBattery();
         ChargeBattery();
     }
     private void Activate()
     {
 
-        if (xrayVision == null || !IsEquipped || BatteryLevel<=0f) return;
+        if (xrayVision == null || !IsEquipped || BatteryLevel <= 0f) return;
         isActive = !isActive;
         drainOverTime = isActive;
 
@@ -60,6 +61,8 @@ public class XrayGoggles : InteractableObject
     }
     private void DrainBattery()
     {
+        if (BatteryLevel > 0)
+            drainOverTime = true;
         if (drainOverTime && isActive)
         {
             BatteryLevel -= Time.deltaTime * drainRate;
@@ -67,6 +70,7 @@ public class XrayGoggles : InteractableObject
             if (BatteryLevel <= 0)
             {
                 BatteryLevel = 0;
+                isActive = false;
                 drainOverTime = false;
             }
             OnBatteryLevelChange(BatteryLevel);
