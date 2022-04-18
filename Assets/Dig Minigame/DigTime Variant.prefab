@@ -22,15 +22,15 @@ PrefabInstance:
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: cb0f83554755cbf4297c0bb2b3ea9d0e, type: 3}
+      objectReference: {fileID: 21300000, guid: ac0011e2b2495814fa4183cc0db406e5, type: 3}
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 4ca0229d1aae81a41a0f2a6128698c4f, type: 3}
+      objectReference: {fileID: 21300000, guid: 1dfc9d0bb5bfab542b1ff4d53e6a76f4, type: 3}
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 4ca0229d1aae81a41a0f2a6128698c4f, type: 3}
+      objectReference: {fileID: 21300000, guid: 30c2e44204a16274c82ce3f85e93c7df, type: 3}
     - target: {fileID: 1181145338, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Color.a
       value: 1
