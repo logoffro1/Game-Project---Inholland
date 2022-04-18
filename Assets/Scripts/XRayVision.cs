@@ -25,15 +25,11 @@ public class XRayVision : MonoBehaviour
 
     public void BatteryChanged(float batteryLevel)
     {
-        batteryFullImage.fillAmount = (batteryLevel / 100) - 0.1f;
+        batteryFullImage.fillAmount = (batteryLevel / 100);
         if (batteryLevel <= 35 && !flashing)
         {
             if (batteryLevel > 0 && xrayVolume.enabled)
                 StartCoroutine(FlashBattery());
-        }
-        if (batteryLevel <= 0 && xrayVolume.enabled)
-        {
-            ActivateVision();
         }
     }
 

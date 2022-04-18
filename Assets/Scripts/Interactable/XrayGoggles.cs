@@ -10,6 +10,9 @@ public class XrayGoggles : InteractableObject
     private bool drainOverTime = false;
     [SerializeField] private float drainRate = 1f;
     [SerializeField] private float chargeRate = 2f;
+    [SerializeField] private AudioClip xrayOn;
+    [SerializeField] private AudioClip xrayOff;
+    private AudioSource audioSource;
     public float BatteryLevel { get; private set; } = 100f;
 
     public bool IsEquipped { get; set; } = false;
@@ -38,6 +41,8 @@ public class XrayGoggles : InteractableObject
     {
         hoverName = "XRay Goggles";
         OnBatteryLevelChange += xrayVision.BatteryChanged;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,12 +56,16 @@ public class XrayGoggles : InteractableObject
     }
     private void Activate()
     {
-
-        if (xrayVision == null || !IsEquipped || BatteryLevel <= 0f) return;
+        if (xrayVision == null || !IsEquipped) return;
+        if (!isActive && BatteryLevel <= 0) return;
         isActive = !isActive;
         drainOverTime = isActive;
-
         xrayVision.ActivateVision();
+
+        if (isActive)
+            audioSource.PlayOneShot(xrayOn);
+        else
+            audioSource.PlayOneShot(xrayOff);
     }
     private void DrainBattery()
     {
@@ -65,14 +74,18 @@ public class XrayGoggles : InteractableObject
         if (drainOverTime && isActive)
         {
             BatteryLevel -= Time.deltaTime * drainRate;
+            OnBatteryLevelChange(BatteryLevel);
 
             if (BatteryLevel <= 0)
             {
                 BatteryLevel = 0;
-                isActive = false;
                 drainOverTime = false;
+                if (isActive)
+                {
+                    Activate();
+                }
             }
-            OnBatteryLevelChange(BatteryLevel);
+
         }
     }
     private void ChargeBattery()
