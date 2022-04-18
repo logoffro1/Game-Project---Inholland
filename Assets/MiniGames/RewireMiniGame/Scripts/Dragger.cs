@@ -8,10 +8,12 @@ public class Dragger : MonoBehaviour
 {
     private Camera _cam;
     private WireSpawner spawner;
+    private Vector3 originalPosition;
 
     private void Start()
     {
         spawner = FindObjectOfType<WireSpawner>();
+        originalPosition = transform.position;
     }
 
     private void Awake()
@@ -64,6 +66,11 @@ public class Dragger : MonoBehaviour
             {
                 spawner.OneFailed();
             }
+        }
+        else
+        {
+            //snaps back to original pos if placed on no colliders
+            transform.position = originalPosition;
         }
     }
 }
