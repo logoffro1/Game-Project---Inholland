@@ -17,6 +17,7 @@ public class EndOfDayReport : MonoBehaviour
     public Text TotalTasknumber;
     public Text DayCondition;
     public Text timeBonus;
+    private PlayFabManager playFabManager;
 
 
 
@@ -25,6 +26,9 @@ public class EndOfDayReport : MonoBehaviour
     
     void Start()
     {
+       
+
+        playFabManager = FindObjectOfType<PlayFabManager>();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
@@ -40,7 +44,8 @@ public class EndOfDayReport : MonoBehaviour
         TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
        
         int remainingTime = TimerCountdown.Instance.GetRemainingTime();
- 
+
+        
 
             MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
             timeBonus.text += $"  {remainingTime} seconds remaining ";
@@ -52,7 +57,18 @@ public class EndOfDayReport : MonoBehaviour
             timeBonus.text += $"{remainingTime} seconden resterend";
         */
 
-
+        playFabManager.SendLeaderBoard(playerReportData.GetTheSuccessfulMinigameNumber());
+        playFabManager.SendEndOfTheDayReportData(new Dictionary<string, string>
+        {
+            { "DistanceTravelled" , DistanceTraveled.text},
+            { "PlayerName", "John"},
+            { "SuccessfulMissions", Success.text},
+            { "FailedMissions",Fail.text},
+            { "SustainibilityLevel",SliderValue.text},
+            { "TotalNumberOfMinigames",TotalTasknumber.text},
+            { "Time Remaining",TimerCountdown.Instance.GetRemainingTime().ToString()},
+        }
+        );
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         
