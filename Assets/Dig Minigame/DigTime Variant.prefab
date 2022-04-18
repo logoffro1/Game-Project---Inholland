@@ -22,11 +22,11 @@ PrefabInstance:
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: ac0011e2b2495814fa4183cc0db406e5, type: 3}
+      objectReference: {fileID: 21300000, guid: 8583040186057cd4180174e9ad65976e, type: 3}
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 1dfc9d0bb5bfab542b1ff4d53e6a76f4, type: 3}
+      objectReference: {fileID: 21300000, guid: a7a5e24c40409064f893b1d97d4d5b00, type: 3}
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[3]
       value: 
