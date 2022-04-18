@@ -169,6 +169,49 @@ MonoBehaviour:
     m_Localized: Haal de lat voor duurzaamheid op 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 5741884654784512
+    m_Localized: 'U bent agent van POCITYF in de gemeente Alkmaar. Het is jouw taak
+      om de stad duurzamer te maken dan ze al is door bestaande groenvoorzieningen
+      op te waarderen of door nieuwe apparatuur te plaatsen die Alkmaar groener maakt.
+
+
+      De
+      bedieningselementen zijn linksonder in het scherm te zien.
+
+      De minimap
+      is linksboven in het scherm te zien.
+
+      De takenlijst is rechtsboven in
+      het scherm te zien.
+
+      De duurzaamheid van de stad Alkmaar zie je bovenaan
+      in het midden van je scherm.
+
+      Als je tijdens een minigame niet zeker
+      weet wat je moet doen, druk je op H om het helpmenu te openen. Hierdoor wordt
+      de minigame gepauzeerd en heb je tijd om de instructies te lezen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5741991416598528
+    m_Localized: HOE TE SPELEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742053764927488
+    m_Localized: HERVAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742118940217344
+    m_Localized: TERUG NAAR KANTOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742186560786432
+    m_Localized: HOOFDMENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742210191495168
+    m_Localized: SPEL VERLATEN
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

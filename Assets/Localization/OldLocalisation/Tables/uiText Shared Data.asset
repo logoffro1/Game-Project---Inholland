@@ -143,6 +143,30 @@ MonoBehaviour:
     m_Key: GoalText
     m_Metadata:
       m_Items: []
+  - m_Id: 5741884654784512
+    m_Key: HowToPlayDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5741991416598528
+    m_Key: HowToPlayBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742053764927488
+    m_Key: ResumeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742118940217344
+    m_Key: ReturnToOfficeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742186560786432
+    m_Key: ReturnToMainMenuBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742210191495168
+    m_Key: ExitGameBtn
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

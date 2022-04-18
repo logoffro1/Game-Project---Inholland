@@ -28,6 +28,7 @@ public class PauseMenu : MonoBehaviour
         {
             if (isPaused)
             {
+                CloseHowToPlay();
                 Resume();
             }
             else

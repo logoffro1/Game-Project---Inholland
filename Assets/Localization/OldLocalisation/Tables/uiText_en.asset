@@ -170,6 +170,49 @@ MonoBehaviour:
     m_Localized: Get the sustainability bar to 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 5741884654784512
+    m_Localized: 'You are an agent of POCITYF in the City of Alkmaar. Your job is
+      to make the city more sustainable than it already is by upgrading existing
+      green options or by installing new equipment that will make Alkmaar more green.
+
+
+      The
+      controls can be seen at the bottom left of the screen.
+
+      The minimap can
+      be seen at the top left of the screen.
+
+      The task list can be seen on
+      the top right of the screen.
+
+      The sustainability of the city of Alkmaar
+      can be seen in the middle of your screen at the top.
+
+      During any minigame,
+      if you are unsure what to do, press H to open the help menu. This will pause
+      the minigame and will give you time to read the instructions.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5741991416598528
+    m_Localized: HOW TO PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742053764927488
+    m_Localized: RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742118940217344
+    m_Localized: RETURN TO OFFICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742186560786432
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5742210191495168
+    m_Localized: EXIT GAME
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
