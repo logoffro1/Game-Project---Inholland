@@ -183,4 +183,18 @@ public class WireSpawner : MonoBehaviour
 
         return wire;
     }
+
+    public void InstantiateExplosion(Vector3 position, Color color)
+    {
+        //var lightenFactor = 5f;
+
+        var main = explosionParticleEffect.GetComponent<ParticleSystem>().main;
+        //color.r += lightenFactor;
+        //color.g += lightenFactor;
+        //color.b += lightenFactor;
+
+        main.startColor = color;
+
+        Instantiate(explosionParticleEffect, position, explosionParticleEffect.transform.rotation);
+    }
 }

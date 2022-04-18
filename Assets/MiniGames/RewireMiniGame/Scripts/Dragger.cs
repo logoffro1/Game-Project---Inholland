@@ -60,7 +60,7 @@ public class Dragger : MonoBehaviour
             if (collider != null)
             {
                 spawner.OneIsSuccessFul();
-                Instantiate(spawner.explosionParticleEffect, collider.transform.position, spawner.explosionParticleEffect.transform.rotation);
+                spawner.InstantiateExplosion(collider.transform.position, transform.GetComponentInParent<Wire>().color);
             }
             else
             {
