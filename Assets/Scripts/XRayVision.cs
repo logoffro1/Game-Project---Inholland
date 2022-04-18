@@ -14,6 +14,9 @@ public class XRayVision : MonoBehaviour
     void Start()
     {
         xrayVolume = GetComponent<Volume>();
+
+        normalRenderer.SetActive(true);
+        xrayRenderer.SetActive(false);
     }
 
     // Update is called once per frame

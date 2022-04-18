@@ -74,8 +74,7 @@ public class MiniGameBase : MonoBehaviour
     }
     private void ChangeSuccessText(bool successful)
     {
-        Locale loc = LocalizationSettings.SelectedLocale;
-        LocaleIdentifier localCode = loc.Identifier;
+
         successText.enabled = true;
         if (successful)
         {
@@ -86,14 +85,9 @@ public class MiniGameBase : MonoBehaviour
         }
 
         successText.color = Color.red;
-        if (localCode == "en")
-        {
+
             successText.text = "FAILURE";
-        }
-        else if (localCode == "nl")
-        {
-            successText.text = "MISLUKKING";
-        }
+
 
     }
 }

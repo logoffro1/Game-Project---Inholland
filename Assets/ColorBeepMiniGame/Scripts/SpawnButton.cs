@@ -32,16 +32,11 @@ public class SpawnButton : MiniGameBase
         colorSequence = new List<GameObject>();
         audioSource = GetComponent<AudioSource>();
 
-        Locale loc = LocalizationSettings.SelectedLocale;
-        LocaleIdentifier localCode = loc.Identifier;
-        if (localCode == "en")
-        {
+
             description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
-        }
-        else if (localCode == "nl")
-        {
-            description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
-        }
+
+            //description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
+       
 
         InitButtons();
         SetSequence();

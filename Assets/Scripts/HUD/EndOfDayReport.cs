@@ -41,21 +41,16 @@ public class EndOfDayReport : MonoBehaviour
        
         int remainingTime = TimerCountdown.Instance.GetRemainingTime();
  
-        Locale loc = LocalizationSettings.SelectedLocale;
-        LocaleIdentifier localCode = loc.Identifier;
-        if (localCode == "en")
-        {
+
             MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
             timeBonus.text += $"  {remainingTime} seconds remaining ";
             DayCondition.text += $"{getWinLoseCondition()} ";
-
-        }
-        else if (localCode == "nl") {
+        /*
             DayCondition.text = $"{getWinLoseConditionInDutch().ToString()}";
             Debug.Log(getWinLoseConditionInDutch());
             MostPlayedMinigame.text = $"{returnPrefabTaskNameInDutch(playerReportData.GetTheMostPlayedMiniGameName(out playNr)).ToString()} : {playNr} keer.";
             timeBonus.text += $"{remainingTime} seconden resterend";
-        }
+        */
 
 
         Cursor.lockState = CursorLockMode.None;

@@ -83,11 +83,9 @@ public class InteractableTaskObject : InteractableObject
 
     private void DetermineObject()
     {
-        Locale loc = LocalizationSettings.SelectedLocale;
-        LocaleIdentifier localCode = loc.Identifier;
+
         string tag = gameObject.tag;
-        if (localCode == "en")
-        {
+
             switch (tag)
             {
                 case nameof(TaskObjectType.StreetLamp):
@@ -107,24 +105,6 @@ public class InteractableTaskObject : InteractableObject
                     break;
             }
             return;
-        }
-        switch (tag)
-        {
-            case nameof(TaskObjectType.StreetLamp):
-                hoverName = "Upgrade";
-                break;
-            case nameof(TaskObjectType.Tree):
-                hoverName = "Boom planten";
-                break;
-            case nameof(TaskObjectType.ManHole):
-                hoverName = "Schoon";
-                break;
-            case nameof(TaskObjectType.SolarPanel):
-                hoverName = "Zonnepaneel bouwen";
-                break;
-            default:
-                hoverName = "Interactie";
-                break;
-        }
+      
     }
 }

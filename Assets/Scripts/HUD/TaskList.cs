@@ -29,10 +29,7 @@ public class TaskList : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Locale loc = LocalizationSettings.SelectedLocale;
-        LocaleIdentifier localCode = loc.Identifier;
-        if (localCode == "en")
-        {
+
             taskStrings = new Dictionary<TaskObjectType, string>()
              {
         { TaskObjectType.Tree, "Plant Trees" },
@@ -40,17 +37,7 @@ public class TaskList : MonoBehaviour
         { TaskObjectType.StreetLamp, "Upgrade street lamp" },
         { TaskObjectType.ManHole, "Clean sewers" }
          };
-        }
-        else if (localCode == "nl")
-        {
-            taskStrings = new Dictionary<TaskObjectType, string>()
-             {
-        { TaskObjectType.Tree, "Bomen planten" },
-        { TaskObjectType.SolarPanel, "Zonnepaneel opzetten" },
-        { TaskObjectType.StreetLamp, "Straatlantaarn upgraden" },
-        { TaskObjectType.ManHole, "Schone riolen" }
-         };
-        }
+
         
         FindObjects();
         Debug.Log("Shingles: "+ solarCounter);
