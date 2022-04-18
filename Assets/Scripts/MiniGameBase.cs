@@ -5,7 +5,7 @@ using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-public class MiniGameBase : MonoBehaviour
+public abstract class MiniGameBase : MonoBehaviour
 {
 
     protected int sustainabilityPoints = 5;
@@ -16,6 +16,8 @@ public class MiniGameBase : MonoBehaviour
     public TextMeshProUGUI successText;
     public TextMeshProUGUI descriptionText;
     public GameObject infoCanvas;
+    protected float level;
+
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
@@ -87,7 +89,20 @@ public class MiniGameBase : MonoBehaviour
         successText.color = Color.red;
 
             successText.text = "FAILURE";
+    }
 
+    public void SetLevel()
+    {
+        float secondsPercentage = ((float)TimerCountdown.SecondsMax - TimerCountdown.SecondsLeft) / 100f;
+        float level = (secondsPercentage + ProgressBar.Instance.GetSlideValue()) / 2; //max 100
+        this.level = level;
+        CoordinateLevel();
+    }
+
+    //abstract methods
+    public abstract void CoordinateLevel();
+    public virtual void GameFinish(bool success)
+    {
 
     }
 }

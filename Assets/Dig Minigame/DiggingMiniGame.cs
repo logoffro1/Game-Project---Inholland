@@ -15,9 +15,14 @@ public class DiggingMiniGame : MiniGameBase
             //description = "Graaf een gat voor de boom!\nLaat de schop op het juiste moment los\n\nKEYS\nSPACE - Schop loslaten";
         
     }
-    public void GameFinish(bool success)
+    public override void GameFinish(bool success)
     {
         if (success) GameWon();
         else GameOver();
+    }
+
+    public override void CoordinateLevel()
+    {
+        throw new System.NotImplementedException();
     }
 }
