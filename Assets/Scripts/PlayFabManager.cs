@@ -11,6 +11,7 @@ public  class PlayFabManager : MonoBehaviour
     void Start()
     {
         Login();
+        /*PlayFabSettings.staticPlayer;*/
     }
 
   void Login()
@@ -57,13 +58,14 @@ public  class PlayFabManager : MonoBehaviour
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardSent, OnError);
     }
 
-    public void SendEndOfTheDayReportData(Dictionary<string, string> data)
+    public void WriteCustomPlayerEvent(string eventName,Dictionary<string,object> playerData)
     {
-    var request = new UpdateUserDataRequest
-    {
-        Data = data
-    };
-    PlayFabClientAPI.UpdateUserData(request, OnEndOfReportSent, OnError);
+        PlayFabClientAPI.WritePlayerEvent(new WriteClientPlayerEventRequest
+        {
+            EventName = eventName,
+            Body = playerData
+        }, (e) => Debug.Log("Event Successfully recorded"),
+        (error) => Debug.Log(error.GenerateErrorReport()));
 }
 
     public void GetUserData()
