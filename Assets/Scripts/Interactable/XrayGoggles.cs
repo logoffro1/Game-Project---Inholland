@@ -58,7 +58,9 @@ public class XrayGoggles : InteractableObject
     {
         if (xrayVision == null || !IsEquipped) return;
         if (!isActive && BatteryLevel <= 0) return;
+        CastRay.Instance.CanInteract = isActive;
         isActive = !isActive;
+
         drainOverTime = isActive;
         xrayVision.ActivateVision();
 
