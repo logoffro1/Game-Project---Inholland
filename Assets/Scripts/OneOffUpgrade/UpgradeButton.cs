@@ -1,24 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using TMPro;
 
-public class UpgradeButton : MonoBehaviour 
+public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private OneOffUpgradesEnum upgrade;
-    public OneOffUpgradesEnum Upgrade { get { return upgrade; } set { upgrade = value; Text = upgrade.ToString();  } }
+    public OneOffUpgradesEnum Upgrade { get { return upgrade; } set { upgrade = value; } }
 
     private UpgradeUI ui;
     private Player player;
     private UpgradeManager manager;
 
-    public string Text;
-
+    //
+    private TextMeshProUGUI description;
     private void Start()
     {
         ui = GetComponentInParent<UpgradeUI>();
         player = FindObjectOfType<Player>();
         manager = FindObjectOfType<UpgradeManager>();
-        Text = upgrade.ToString();
+        description = gameObject.GetComponentInParent<UpgradeUI>().upgradeDescriptionText;
     }
 
     public void ClickButton()
@@ -40,5 +42,13 @@ public class UpgradeButton : MonoBehaviour
         manager.UpgradeSessionFInished();
     }
 
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        description.text = player.GetUpgrade(upgrade).Description;
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        description.text = "You can choose any upgrade to help you out on your mission!";
+    }
 }

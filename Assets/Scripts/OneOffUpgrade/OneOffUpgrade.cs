@@ -19,7 +19,7 @@ public class OneOffUpgrade : MonoBehaviour
     public int Level { get { return level; } private set { level = value; } }
 
     private Action levelUpFunction;
-    private int maxLevel = 10;
+    private int maxLevel = 8;
     public int MaxLevel { get { return maxLevel; } private set { maxLevel = value; } }
 
     //For optimizing purposed
@@ -66,7 +66,7 @@ public class OneOffUpgrade : MonoBehaviour
                 break;
             case OneOffUpgradesEnum.MinigameDifficultyDecrease:
                 levelUpFunction = MinigameDifficultyDecreaseLevelUp;
-                title = "Minigames' difficulty level decrease";
+                title = "Minigames' difficulty decrease";
                 description = "All minigames will get easier, and you'll earn the same amount of points!";
                 break;
             case OneOffUpgradesEnum.MinigamePointsIncrease:
