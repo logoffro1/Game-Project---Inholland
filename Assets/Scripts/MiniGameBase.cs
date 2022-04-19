@@ -8,9 +8,9 @@ using UnityEngine.Localization.Settings;
 
 public class MiniGameBase : MonoBehaviour
 {
-
-    protected int sustainabilityPoints = 5;
-    public int SustainabilityPoints { get { return sustainabilityPoints; } set { sustainabilityPoints = value; } }
+    protected int startingSustainabilityPoints = 5;
+    public int StartingSustainabilityPoints { get { return startingSustainabilityPoints; } protected set { startingSustainabilityPoints = value; } }
+    public int SustainabilityPoints { get { return startingSustainabilityPoints + (int)pointsOffset; } }
 
     protected string description;
     public bool IsPlaying { get; set; } = true;
@@ -24,14 +24,13 @@ public class MiniGameBase : MonoBehaviour
     public float Level { get { return level;  } private set { level = value; } }
     [Range(0.0f, 100.0f)]
     private float levelOffset;
-    public float LevelOffset { get { return levelOffset; } set { levelOffset = value; } }
+    private float pointsOffset;
 
 
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //LevelOffset += FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == )
     }
 
     public event Action<InteractableTaskObject> OnGameWon;
@@ -72,7 +71,7 @@ public class MiniGameBase : MonoBehaviour
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints, true);
+        ProgressBar.Instance.ChangeSustainibility(-SustainabilityPoints, true);
     }
     protected void GameWon() //remove the duplicate
     {
@@ -82,7 +81,7 @@ public class MiniGameBase : MonoBehaviour
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints, true);
+        ProgressBar.Instance.ChangeSustainibility(SustainabilityPoints, true);
     }
     private void ChangeSuccessText(bool successful)
     {
@@ -113,13 +112,28 @@ public class MiniGameBase : MonoBehaviour
         float maxLevel = 90f;
         float relativeLevel = (maxLevel - minLevel) * level / 100 + 30f;
 
-        relativeLevel += LevelOffset;
+        UpdateLevelOffset();
+        UpdatePointOffset();
+        relativeLevel += levelOffset;
 
         if (relativeLevel > 100) relativeLevel = 100;
         if (relativeLevel < 0) relativeLevel = 0;
         this.Level = relativeLevel;
         CoordinateLevel();
     }
+
+    private void UpdateLevelOffset()
+    {
+        OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigameDifficultyDecrease).FirstOrDefault();
+        levelOffset += upgrade.LevelOffSet;
+    }
+
+    private void UpdatePointOffset()
+    {
+        OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigamePointsIncrease).FirstOrDefault();
+        pointsOffset += upgrade.PointsOffSet;
+    }
+
 
     public virtual void CoordinateLevel() { }
     public virtual void GameFinish(bool success) { }

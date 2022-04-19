@@ -5,7 +5,7 @@ using UnityEngine;
 public class UpgradeButton : MonoBehaviour 
 {
     private OneOffUpgradesEnum upgrade;
-    public OneOffUpgradesEnum Upgrade { get { return upgrade; } set { upgrade = value; } }
+    public OneOffUpgradesEnum Upgrade { get { return upgrade; } set { upgrade = value; Text = upgrade.ToString();  } }
 
     private UpgradeUI ui;
     private Player player;

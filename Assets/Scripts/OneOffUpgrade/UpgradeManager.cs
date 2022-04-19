@@ -10,7 +10,7 @@ public class UpgradeManager : MonoBehaviour
     private bool canvasIsOn;
 
     //occurences
-    private float occurenceAmount = 10f;
+    private float occurenceAmount = 30f;
     private float amountTilNextOccurence;
     private float amountOfLastOccurence;
 
@@ -37,6 +37,7 @@ public class UpgradeManager : MonoBehaviour
 
         if (secondsPassed + sustainValue > amountTilNextOccurence && !canvasIsOn)
         {
+            StartCoroutine(WaitUntilGameIsOver());
             canvasIsOn = true;
             amountOfLastOccurence = secondsPassed + sustainValue;
             amountTilNextOccurence = amountOfLastOccurence + occurenceAmount;
@@ -52,6 +53,17 @@ public class UpgradeManager : MonoBehaviour
         canvasIsOn = false;
         amountOfLastOccurence = secondsPassed + sustainValue;
         amountTilNextOccurence = amountOfLastOccurence + occurenceAmount;
+    }
+
+    private IEnumerator WaitUntilGameIsOver()
+    {
+        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
+        while(manager.IsPlaying)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield return null;
     }
 
 }

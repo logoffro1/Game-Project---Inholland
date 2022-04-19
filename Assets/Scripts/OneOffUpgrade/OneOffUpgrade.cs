@@ -19,13 +19,18 @@ public class OneOffUpgrade : MonoBehaviour
     public int Level { get { return level; } private set { level = value; } }
 
     private Action levelUpFunction;
-    private int maxLevel = 1;
+    private int maxLevel = 10;
     public int MaxLevel { get { return maxLevel; } private set { maxLevel = value; } }
 
     //For optimizing purposed
     private Player player;
     private PlayerMovement playerMovement;
     private MiniGameBase miniGameBase;
+
+
+    //fields
+    public float LevelOffSet { get; set; }
+    public float PointsOffSet { get; set; }
 
     private void Start()
     {
@@ -34,6 +39,9 @@ public class OneOffUpgrade : MonoBehaviour
 
         playerMovement = player.gameObject.GetComponent<PlayerMovement>();
         miniGameBase = FindObjectOfType<MiniGameBase>();
+
+        LevelOffSet = 0f;
+        PointsOffSet = 0f;
     }
 
     public OneOffUpgrade() 
@@ -95,7 +103,7 @@ public class OneOffUpgrade : MonoBehaviour
 
     public void SpeedLevelUp()
     {
-        float amountIncrement = 5f;
+        float amountIncrement = 2f;
         if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
         playerMovement.Speed += amountIncrement;
     }
@@ -103,19 +111,14 @@ public class OneOffUpgrade : MonoBehaviour
 
     public void MinigameDifficultyDecreaseLevelUp()
     {
-        float amountIncrement = -5f;
-        if (miniGameBase == null) miniGameBase = FindObjectOfType<MiniGameBase>();
-
-        //miniGameBase.LevelOffset += amountIncrement;
+        float amountIncrement = -2f;
+        LevelOffSet += amountIncrement;
     }
 
     public void MinigamePointsIncreaseLevelUp()
     {
-        int amountIncrement = 5;
-        if (miniGameBase == null) miniGameBase = FindObjectOfType<MiniGameBase>();
-
-        miniGameBase.SustainabilityPoints += amountIncrement;
-
+        float amountIncrement = 1f;
+        PointsOffSet += amountIncrement;
     }
 
     public static List<OneOffUpgrade> SetUpList()
@@ -137,8 +140,5 @@ public enum OneOffUpgradesEnum
 {
     Speed,
     MinigameDifficultyDecrease,
-    MinigamePointsIncrease,
-    /*AddLotsToTimer,
-    AddEachMiniGameSuccessTimer,
-    ExtraLifeInMiniGame*/
+    MinigamePointsIncrease
 }
