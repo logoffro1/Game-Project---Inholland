@@ -9,19 +9,31 @@ public class WireSpawner : MonoBehaviour
 {
     public GameObject wirePrefab;
     public Color[] colors;
+    public GameObject explosionParticleEffect;
+
+    //The ranges of where the wires can spawn
     private float spawnX = 100;
-    private float spawnYRange = 100;
+    private float spawnYRange = 110;
+
+    //Change amount of wires that spawn
     public int amountWires = 1;
 
-    public int amountFinished;
-    public int amountCorrect;
-
+    private int amountFinished;
+    private int amountCorrect;
     private List<GameObject> wires;
 
-    public event Action<bool> GameSuccess;
-
+    [HideInInspector]
     public RewireMiniGame rewireMiniGame;
 
+    //Audio
+    [HideInInspector]
+    public AudioSource audioSource;
+    public AudioClip clickAudio;
+    public AudioClip successAudio;
+    public AudioClip failAudio;
+
+    //Events
+    public event Action<bool> GameSuccess;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +41,7 @@ public class WireSpawner : MonoBehaviour
         SetUpGame();
 
         List<Vector3> spawnPositions = CreateSpawnPositoin();
+        audioSource = GetComponent<AudioSource>();
 
         InstansiateAllWires(spawnPositions);
 
@@ -49,9 +62,39 @@ public class WireSpawner : MonoBehaviour
         List<Vector3> spawnPositions = new List<Vector3>();
 
         //Determining spawn positions according to how many wires will spawn, and the x & y coords
-        for (int i = 1; i <= amountWires; i++)
+        int tmpAmount = amountWires - 1;
+        if (tmpAmount <= 0) tmpAmount = 1;
+
+        float median = 0;
+
+        for (int i = 0; i <= tmpAmount; i++)
         {
-            spawnPositions.Add(new Vector3(0, (spawnYRange / amountWires) * i, 0));
+            float positionY = (transform.position.y + (spawnYRange / tmpAmount) * i) * (amountWires * 0.1f);
+            spawnPositions.Add(new Vector3(0, positionY, 0));
+            median += positionY;
+        }
+
+        float middle;
+
+        //if even
+        if (spawnPositions.Count % 2 == 0)
+        {
+            middle = (spawnPositions[spawnPositions.Count / 2].y + spawnPositions[(spawnPositions.Count / 2) -1].y)/2;
+        }
+        else
+        {
+            //odd
+            middle = spawnPositions[Mathf.CeilToInt(spawnPositions.Count / 2f)].y;
+
+        }
+
+        middle -= 60;
+
+        for (int i = 0; i <= tmpAmount; i++)
+        {
+            Vector3 currentPos = spawnPositions[i];
+            currentPos.y -= middle;
+            spawnPositions[i] = currentPos;
         }
 
         return spawnPositions;
@@ -112,17 +155,24 @@ public class WireSpawner : MonoBehaviour
         {
             if (amountCorrect >= amountWires)
             {
+                audioSource.PlayOneShot(successAudio);
                 GameSuccess?.Invoke(true);
             }
             else
             {
+                audioSource.PlayOneShot(failAudio);
                 GameSuccess?.Invoke(false);
             }
+        }
+        else
+        {
+            audioSource.PlayOneShot(clickAudio);
         }
     }
 
     public void OneFailed()
     {
+        audioSource.PlayOneShot(failAudio);
         GameSuccess?.Invoke(false);
     }
 
@@ -132,5 +182,19 @@ public class WireSpawner : MonoBehaviour
         wire.GetComponent<Wire>().color = color;
 
         return wire;
+    }
+
+    public void InstantiateExplosion(Vector3 position, Color color)
+    {
+        //var lightenFactor = 5f;
+
+        var main = explosionParticleEffect.GetComponent<ParticleSystem>().main;
+        //color.r += lightenFactor;
+        //color.g += lightenFactor;
+        //color.b += lightenFactor;
+
+        main.startColor = color;
+
+        Instantiate(explosionParticleEffect, position, explosionParticleEffect.transform.rotation);
     }
 }
