@@ -23,6 +23,8 @@ public class DiggingMiniGame : MiniGameBase
 
     public override void CoordinateLevel()
     {
-        throw new System.NotImplementedException();
+        MoveLine moveline = gameObject.transform.Find("WholeBar").GetComponentInChildren<MoveLine>();
+        moveline.Speed = moveline.StartingSpeed * (this.Level / 50);
     }
+
 }
