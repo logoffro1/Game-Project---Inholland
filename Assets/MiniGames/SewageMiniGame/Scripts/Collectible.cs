@@ -3,7 +3,10 @@ using System;
 public class Collectible : MonoBehaviour
 {
     public Action onCollect = delegate { };
-    private float speed = .35f;
+    private float originalSpeed = .35f;
+    public float OriginalSpeed { get { return originalSpeed; } set { originalSpeed = value; } }
+    private float speed;
+    public float Speed { get { return speed; } set { speed = value; } }
     private float rotationSpeed;
     bool attached = false;
     public AudioClip passedClip; //if the collectible goes out of bounds
@@ -17,6 +20,7 @@ public class Collectible : MonoBehaviour
         onCollect += Collect;
         rotationSpeed = UnityEngine.Random.Range(5f, 30f); 
         audioSource = GetComponent<AudioSource>();
+        speed = originalSpeed;
 
     }
     void Update()
