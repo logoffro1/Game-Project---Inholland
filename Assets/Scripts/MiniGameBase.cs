@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Linq;
 using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 
-public abstract class MiniGameBase : MonoBehaviour
+public class MiniGameBase : MonoBehaviour
 {
 
     protected int sustainabilityPoints = 5;
@@ -30,6 +31,7 @@ public abstract class MiniGameBase : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        //LevelOffset += FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == )
     }
 
     public event Action<InteractableTaskObject> OnGameWon;
@@ -119,11 +121,7 @@ public abstract class MiniGameBase : MonoBehaviour
         CoordinateLevel();
     }
 
-    //abstract methods
-    public abstract void CoordinateLevel();
-    public virtual void GameFinish(bool success)
-    {
-
-    }
+    public virtual void CoordinateLevel() { }
+    public virtual void GameFinish(bool success) { }
 }
 
