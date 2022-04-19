@@ -85,6 +85,9 @@ public class EndOfDayReport : MonoBehaviour
         playFabManager.WriteCustomPlayerEvent("Remaining_time_after_the_game", new Dictionary<string, object> {
             { "RemainingTime" ,TimerCountdown.Instance.GetRemainingTime().ToString() }
         });
+        playFabManager.WriteCustomPlayerEvent("Number_of_trash_pieces_disposed", new Dictionary<string, object> {
+            { "nrOfTrashDisposed" ,playerReportData.nrOfTrashDisposed }
+        });
 
         /*  playFabManager.SendEndOfTheDayReportData(new Dictionary<string, string>
           {

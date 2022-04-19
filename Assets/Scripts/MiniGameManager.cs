@@ -13,6 +13,8 @@ public class MiniGameManager : MonoBehaviour
     //Todo: remove after implementation
     public GameObject tetrisGamePrefab;
 
+    private PlayFabManager playFabManager;
+
     //TODO: might remove
     public InteractableTaskObject InteractableObject;
     public event Action<InteractableTaskObject> OnGameWon;
@@ -20,6 +22,7 @@ public class MiniGameManager : MonoBehaviour
 
 
     public bool IsPlaying { get; private set; }
+    int miniGameTime;
     private GameObject miniGame;
     public GameObject miniGameScreen;
     private void Awake()
@@ -32,13 +35,14 @@ public class MiniGameManager : MonoBehaviour
 
     private void Start()
     {
+        playFabManager = FindObjectOfType<PlayFabManager>();
         PlayerData = FindObjectOfType<PlayerReportData>();
     }
 
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
-
+        miniGameTime = TimerCountdown.Instance.GetRemainingTime();
         PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
@@ -47,6 +51,12 @@ public class MiniGameManager : MonoBehaviour
 
     public IEnumerator StopGame(GameObject go)
     {
+        miniGameTime -= TimerCountdown.Instance.GetRemainingTime();
+        //personalize this later to make it for each mini game.
+        playFabManager.WriteCustomPlayerEvent("Minigame_Task_Completion_Seconds", new Dictionary<string, object>
+        {
+            { miniGame.gameObject.name,miniGameTime}
+        });
         yield return new WaitForSeconds(2f);
         Destroy(go);
         IsPlaying = false;
@@ -55,6 +65,7 @@ public class MiniGameManager : MonoBehaviour
 
     public void GameOver()
     {
+        
         PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
     }
