@@ -19,7 +19,7 @@ public abstract class MiniGameBase : MonoBehaviour
     //Level 
     [Range(0.0f, 100.0f)]
     private float level;
-    protected float Level { get { return level;  } private set { level = value; } }
+    public float Level { get { return level;  } private set { level = value; } }
     [Range(0.0f, 100.0f)]
     private float levelOffset;
     public float LevelOffset { get { return levelOffset; } private set { levelOffset = value; } }
@@ -119,10 +119,7 @@ public abstract class MiniGameBase : MonoBehaviour
     }
 
     //abstract methods
-    public abstract void CoordinateLevel();
-    public virtual void GameFinish(bool success)
-    {
-
-    }
+    public virtual void CoordinateLevel() { }
+    public virtual void GameFinish(bool success) { }
 }
 

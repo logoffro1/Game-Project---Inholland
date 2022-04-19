@@ -149,9 +149,4 @@ public class SpawnButton : MiniGameBase
         yield return new WaitForSeconds(0.5f);
         sprite.color = Color.white;
     }
-
-    public override void CoordinateLevel()
-    {
-        throw new System.NotImplementedException();
-    }
 }

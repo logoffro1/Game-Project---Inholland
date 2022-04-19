@@ -23,9 +23,4 @@ public class ShinglesMiniGame : MiniGameBase
         else
             this.GameOver();
     }
-
-    public override void CoordinateLevel()
-    {
-        throw new System.NotImplementedException();
-    }
 }

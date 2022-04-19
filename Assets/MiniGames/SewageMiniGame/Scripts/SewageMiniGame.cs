@@ -48,9 +48,4 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
 
         sewageUIManager.ChangeScoreText(score, maxScore);
     }
-
-    public override void CoordinateLevel()
-    {
-        throw new System.NotImplementedException();
-    }
 }
