@@ -60,6 +60,7 @@ public class EndOfDayReport : MonoBehaviour
       
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0f;
         
     }
 

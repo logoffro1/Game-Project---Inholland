@@ -53,7 +53,7 @@ public class MiniGameManager : MonoBehaviour
     {
         miniGameTime -= TimerCountdown.Instance.GetRemainingTime();
         //personalize this later to make it for each mini game.
-        playFabManager.WriteCustomPlayerEvent("Minigame_Task_Completion_Seconds", new Dictionary<string, object>
+        playFabManager.WriteCustomPlayerEvent($"{playFabManager.returnPrefabTaskName(this.InteractableObject.GamePrefab.name.ToString())}_FinishedInSeconds", new Dictionary<string, object>
         {
             { miniGame.gameObject.name,miniGameTime}
         });

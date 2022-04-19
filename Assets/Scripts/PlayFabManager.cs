@@ -82,4 +82,34 @@ public  class PlayFabManager : MonoBehaviour
     {
         Debug.Log("Data sent from end of day report");
     }
+
+    //This code is an abomination. It has to be eradicated from the face of the earth. It will be gone by beta.
+    public string returnPrefabTaskName(string prefabname)
+    {
+        string value = "";
+        switch (prefabname)
+        {
+            case "SewageMiniGame":
+                value = "Clean_sewers";
+                break;
+
+            case "RewireMiniGame":
+                value = "Rewiring_Game";
+                break;
+            case "SolarShingleGamePrefab Variant 1":
+                value = "Building_Solar_Panel";
+                break;
+            case "DigTime Variant":
+                value = "Digging_Game";
+                break;
+            case "ColorBeepMiniGame Variant":
+                value = "Color_Beep_Game";
+                break;
+            default:
+                value = "None";
+                break;
+        }
+        return value;
+    }
+
 }
