@@ -11,12 +11,19 @@ public abstract class MiniGameBase : MonoBehaviour
     protected int sustainabilityPoints = 5;
 
     protected string description;
-
     public bool IsPlaying { get; set; } = true;
     public TextMeshProUGUI successText;
     public TextMeshProUGUI descriptionText;
     public GameObject infoCanvas;
-    protected float level;
+
+    //Level 
+    [Range(0.0f, 100.0f)]
+    private float level;
+    protected float Level { get { return level;  } private set { level = value; } }
+    [Range(0.0f, 100.0f)]
+    private float levelOffset;
+    public float LevelOffset { get { return levelOffset; } private set { levelOffset = value; } }
+
 
     private void Awake()
     {
@@ -93,9 +100,21 @@ public abstract class MiniGameBase : MonoBehaviour
 
     public void SetLevel()
     {
+        //Level is 90% determined by the sustainability bar, and 10% deterined by time
+        float timeRatio = 0.1f;
+        float sustainRatio = 0.9f;
         float secondsPercentage = ((float)TimerCountdown.SecondsMax - TimerCountdown.SecondsLeft) / 100f;
-        float level = (secondsPercentage + ProgressBar.Instance.GetSlideValue()) / 2; //max 100
-        this.level = level;
+        float level = (secondsPercentage * timeRatio) + (ProgressBar.Instance.GetSlideValue() * sustainRatio); 
+
+        float minLevel = 20f; //20%
+        float maxLevel = 90f;
+        float relativeLevel = (maxLevel - minLevel) * level / 100 + 30f;
+
+        relativeLevel += LevelOffset;
+
+        if (relativeLevel > 100) relativeLevel = 100;
+        if (relativeLevel < 0) relativeLevel = 0;
+        this.Level = relativeLevel;
         CoordinateLevel();
     }
 

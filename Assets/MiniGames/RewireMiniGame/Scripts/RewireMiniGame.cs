@@ -23,7 +23,7 @@ public class RewireMiniGame : MiniGameBase
 
     public override void CoordinateLevel()
     {
-        int level = Mathf.RoundToInt(this.level / 10);
+        int level = Mathf.RoundToInt(this.Level / 10);
         GetComponentInChildren<WireSpawner>().amountWires = level;
     }
 }

@@ -51,45 +51,6 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
 
     public override void CoordinateLevel()
     {
-        float level = this.level;
-        foreach(Collectible collectible in FindObjectsOfType<Collectible>()) //level == 10, (og * 9), level == 90, (og * 1)
-        {
-            collectible.Speed = collectible.OriginalSpeed * 1000;
-        }
-
-        switch (true)
-        {
-            case var value when level > 90:
-                lives = 1;
-                break;
-            case var value when level > 80:
-                lives = 3;
-                break;
-            case var value when level > 70:
-                lives = 4;
-                break;
-            case var value when level > 60:
-                lives = 5;
-                break;
-            case var value when level > 40:
-                lives = 6;
-                break;
-            case var value when level > 30:
-                lives = 7;
-                break;
-            case var value when level > 20:
-                lives = 8;
-                break;
-            case var value when level > 10:
-                lives = 9;
-                break;
-            case var value when level <  10:
-                lives = 10;
-                break;
-            default:
-                break;
-
-
-        }
+        throw new System.NotImplementedException();
     }
 }
