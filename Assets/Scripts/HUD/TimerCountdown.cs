@@ -38,7 +38,7 @@ public class TimerCountdown : MonoBehaviour
     public int SecondsLeft
     {
         get { return secondsLeft; }
-        private set { secondsLeft = value; }
+        set { secondsLeft = value; }
     }
 
     public int StartCountDownLeft

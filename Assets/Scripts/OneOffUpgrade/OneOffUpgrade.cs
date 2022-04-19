@@ -31,6 +31,7 @@ public class OneOffUpgrade : MonoBehaviour
     //fields
     public float LevelOffSet { get; set; }
     public float PointsOffSet { get; set; }
+    public int TimeAddAfterMiniGame { get; set; }
 
     private void Start()
     {
@@ -73,23 +74,11 @@ public class OneOffUpgrade : MonoBehaviour
                 title = "Minigames' points increase";
                 description = "Get more points when you successfully complete a minigame!";
                 break;
-                /*
-            case OneOffUpgradesEnum.AddLotsToTimer:
-                levelUpFunction = SpeedLevelUp;
-                title = "AddLotsToTimer";
-                description = "?!";
+            case OneOffUpgradesEnum.AddedTimeAfterMinigame:
+                levelUpFunction = AddedTimeAfterMinigameLevelUp;
+                title = "Added time after minigame success";
+                description = "You get some time if you finish a minigame successfully!";
                 break;
-            case OneOffUpgradesEnum.AddEachMiniGameSuccessTimer:
-                levelUpFunction = SpeedLevelUp;
-                title = "AddEachMiniGameSuccessTimer";
-                description = "?!";
-                break;
-            case OneOffUpgradesEnum.ExtraLifeInMiniGame:
-                levelUpFunction = SpeedLevelUp;
-                title = "ExtraLifeInMiniGame";
-                description = "?!";
-                break;
-                */
             default:
                 break;
         }
@@ -103,7 +92,7 @@ public class OneOffUpgrade : MonoBehaviour
 
     public void SpeedLevelUp()
     {
-        float amountIncrement = 2f;
+        float amountIncrement = 0.5f;
         if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
         playerMovement.Speed += amountIncrement;
     }
@@ -119,6 +108,12 @@ public class OneOffUpgrade : MonoBehaviour
     {
         float amountIncrement = 1f;
         PointsOffSet += amountIncrement;
+    }
+
+    public void AddedTimeAfterMinigameLevelUp()
+    {
+        int amountIncrement = 2;
+        TimeAddAfterMiniGame += amountIncrement;
     }
 
     public static List<OneOffUpgrade> SetUpList()
@@ -140,5 +135,6 @@ public enum OneOffUpgradesEnum
 {
     Speed,
     MinigameDifficultyDecrease,
-    MinigamePointsIncrease
+    MinigamePointsIncrease,
+    AddedTimeAfterMinigame
 }

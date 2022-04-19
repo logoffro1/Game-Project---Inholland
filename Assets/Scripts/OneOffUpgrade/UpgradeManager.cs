@@ -34,10 +34,10 @@ public class UpgradeManager : MonoBehaviour
 
         int secondsPassed = TimerCountdown.Instance.SecondsMax - countDown;
         float sustainValue = ProgressBar.Instance.GetSlideValue();
+        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
 
-        if (secondsPassed + sustainValue > amountTilNextOccurence && !canvasIsOn)
+        if (secondsPassed + sustainValue > amountTilNextOccurence && !canvasIsOn && !manager.IsPlaying)
         {
-            StartCoroutine(WaitUntilGameIsOver());
             canvasIsOn = true;
             amountOfLastOccurence = secondsPassed + sustainValue;
             amountTilNextOccurence = amountOfLastOccurence + occurenceAmount;
@@ -54,16 +54,4 @@ public class UpgradeManager : MonoBehaviour
         amountOfLastOccurence = secondsPassed + sustainValue;
         amountTilNextOccurence = amountOfLastOccurence + occurenceAmount;
     }
-
-    private IEnumerator WaitUntilGameIsOver()
-    {
-        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
-        while(manager.IsPlaying)
-        {
-            yield return new WaitForSeconds(1f);
-        }
-
-        yield return null;
-    }
-
 }

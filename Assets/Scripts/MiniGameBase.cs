@@ -82,6 +82,7 @@ public class MiniGameBase : MonoBehaviour
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
         ProgressBar.Instance.ChangeSustainibility(SustainabilityPoints, true);
+        TimerCountdown.Instance.SecondsLeft += GetAddedTime();
     }
     private void ChangeSuccessText(bool successful)
     {
@@ -132,6 +133,11 @@ public class MiniGameBase : MonoBehaviour
     {
         OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigamePointsIncrease).FirstOrDefault();
         pointsOffset += upgrade.PointsOffSet;
+    }
+
+    private int GetAddedTime()
+    {
+        return FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame;
     }
 
 
