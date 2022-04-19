@@ -9,6 +9,7 @@ public abstract class MiniGameBase : MonoBehaviour
 {
 
     protected int sustainabilityPoints = 5;
+    public int SustainabilityPoints { get { return sustainabilityPoints; } set { sustainabilityPoints = value; } }
 
     protected string description;
     public bool IsPlaying { get; set; } = true;
@@ -22,7 +23,7 @@ public abstract class MiniGameBase : MonoBehaviour
     protected float Level { get { return level;  } private set { level = value; } }
     [Range(0.0f, 100.0f)]
     private float levelOffset;
-    public float LevelOffset { get { return levelOffset; } private set { levelOffset = value; } }
+    public float LevelOffset { get { return levelOffset; } set { levelOffset = value; } }
 
 
     private void Awake()
@@ -103,7 +104,7 @@ public abstract class MiniGameBase : MonoBehaviour
         //Level is 90% determined by the sustainability bar, and 10% deterined by time
         float timeRatio = 0.1f;
         float sustainRatio = 0.9f;
-        float secondsPercentage = ((float)TimerCountdown.SecondsMax - TimerCountdown.SecondsLeft) / 100f;
+        float secondsPercentage = ((float)TimerCountdown.Instance.SecondsMax - TimerCountdown.Instance.SecondsLeft) / 100f;
         float level = (secondsPercentage * timeRatio) + (ProgressBar.Instance.GetSlideValue() * sustainRatio); 
 
         float minLevel = 20f; //20%

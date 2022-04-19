@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
+    public float Speed { get { return speed;  } set { speed = value; } }
     [SerializeField]
     private float gravity = -9.81f;
     private float groundDistance = 0.4f;  

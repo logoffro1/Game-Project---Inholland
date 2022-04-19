@@ -113,6 +113,11 @@ public class ProgressBar : MonoBehaviour
         return slider.value;
     }
 
+    public void SetSlideValue(float value)
+    {
+        slider.value = value;
+    }
+
 
 
 }
