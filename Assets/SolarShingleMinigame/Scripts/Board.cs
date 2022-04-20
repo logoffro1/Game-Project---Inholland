@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
+using TMPro;
 public class Board : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
@@ -11,9 +11,10 @@ public class Board : MonoBehaviour
     public Vector2Int boardSize = new Vector2Int(7, 8);
     public AudioSource audioSource;
     public AudioClip lineClear;
+    public TextMeshProUGUI amountText;
 
     public ShinglesMiniGame shinglesGame;
-    public int amountOfLinesNeeded { get; private set; }
+    public int amountOfLinesNeeded { get;  set; }
 
     public bool isGameOver = false;
 
@@ -31,7 +32,6 @@ public class Board : MonoBehaviour
         this.audioSource = GetComponent<AudioSource>();
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.amountOfLinesNeeded = 3; //Basic difficulty.
         for (int i = 0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -51,6 +51,7 @@ public class Board : MonoBehaviour
         {
             isGameOver = true;
             shinglesGame.GameFinish(false);
+            amountText.text = "0";
         }
         else
         {
@@ -111,6 +112,7 @@ public class Board : MonoBehaviour
             {
                 LineClear(row);
                 this.amountOfLinesNeeded--;
+                this.amountText.text = $"{amountOfLinesNeeded}";
                 if (amountOfLinesNeeded <= 0)
                 {
                     isGameOver = true;
