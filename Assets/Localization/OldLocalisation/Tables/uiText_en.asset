@@ -73,7 +73,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1363087433457664
-    m_Localized: 'Total number of tasks attempted: '
+    m_Localized: 'Amount of tasks attempted: '
     m_Metadata:
       m_Items: []
   - m_Id: 1363206815932416
