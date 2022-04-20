@@ -267,6 +267,22 @@ MonoBehaviour:
       above 80%!'
     m_Metadata:
       m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Today's income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: Recharge Goggles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: XRay Goggles
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

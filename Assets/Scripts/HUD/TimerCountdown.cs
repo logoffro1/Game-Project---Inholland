@@ -8,10 +8,12 @@ using UnityEngine.Assertions;
 
 public class TimerCountdown : MonoBehaviour
 {
-    private static int secondsMax = 5 * 60;
+    private static int secondsMax = 5;
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
+
+
     public static int SecondsMax { 
         private set
         {

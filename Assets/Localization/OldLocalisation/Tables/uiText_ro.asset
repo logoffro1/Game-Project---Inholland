@@ -225,6 +225,22 @@ MonoBehaviour:
       aduce\u021Bi sustenabilitatea peste 80%!"
     m_Metadata:
       m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Locatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Venitul de azi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: "Re\xEEnc\u0103rca\u021Bi ochelarii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: Ochelari XRay
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

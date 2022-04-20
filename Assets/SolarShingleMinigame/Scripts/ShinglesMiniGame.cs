@@ -12,20 +12,21 @@ public class ShinglesMiniGame : MiniGameBase
     private Board board;
     private void Start()
     {
-            audioSource = GetComponent<AudioSource>();
-            description = "Build rows to complete the solar panel!\nKEYS\nA,D-Move left / right\nS-Drop\nSPACE-Hard Drop\nQ,E-Rotate left /right";
+        audioSource = GetComponent<AudioSource>();
+        // description = "Build rows to complete the solar panel!\nKEYS\nA,D-Move left / right\nS-Drop\nSPACE-Hard Drop\nQ,E-Rotate left /right";
+        SetLocalizedString();
 
+        //  description = "Bouw twee rijen om het zonnepaneel te voltooien!\n\nKEYS\nA,D - Ga naar links / Rechtsaf\nS - Val\nSPACE - Harde val\nQ,E - Draai naar links / Rechtsaf";
 
-          //  description = "Bouw twee rijen om het zonnepaneel te voltooien!\n\nKEYS\nA,D - Ga naar links / Rechtsaf\nS - Val\nSPACE - Harde val\nQ,E - Draai naar links / Rechtsaf";
-     
     }
 
     //abstract methods
-    public override void CoordinateLevel() {
+    public override void CoordinateLevel()
+    {
         Debug.Log(((int)this.Level / 14));
         board = gameObject.GetComponentInChildren<Board>();
         board.amountOfLinesNeeded = ((int)this.Level / 14);
-          board.amountText.text = $"{board.amountOfLinesNeeded}";
+        board.amountText.text = $"{board.amountOfLinesNeeded}";
         board.imageFillMaxValue = board.amountOfLinesNeeded;
 
     }

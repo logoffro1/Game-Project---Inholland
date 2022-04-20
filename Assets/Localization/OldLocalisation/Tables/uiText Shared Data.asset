@@ -207,8 +207,24 @@ MonoBehaviour:
     m_Key: alkmaarLevelDescription
     m_Metadata:
       m_Items: []
-  - m_Id: 5323275150438400
-    m_Key: 
+  - m_Id: 6550175411744768
+    m_Key: txtLocation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521600
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Key: txtIncome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Key: "txtRechargeGoggles\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Key: txtXrayGoggles
     m_Metadata:
       m_Items: []
   m_Metadata:

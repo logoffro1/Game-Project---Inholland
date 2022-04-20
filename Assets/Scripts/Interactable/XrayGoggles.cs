@@ -40,6 +40,7 @@ public class XrayGoggles : InteractableObject
     void Start()
     {
         hoverName = "XRay Goggles";
+        SetLocalizedString(this.localizedStringEvent);
         OnBatteryLevelChange += xrayVision.BatteryChanged;
 
         audioSource = GetComponent<AudioSource>();

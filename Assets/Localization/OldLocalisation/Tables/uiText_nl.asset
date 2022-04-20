@@ -267,6 +267,22 @@ MonoBehaviour:
       boven de 80%!'
     m_Metadata:
       m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Plaats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Het inkomen van vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: Bril opladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: "R\xF6ntgenbril"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

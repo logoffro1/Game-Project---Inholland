@@ -13,10 +13,7 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     private string mapName = "Alkmaar City Center";
     private string mapDescription = "Explore the beautiful city of Alkmaar";
     private string objectives = "Clean the city and bring the sustainability above 80%!";
-    private void Start()
-    {
-        SetDescription();
-    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         Cursor.SetCursor(handIcon,Vector2.zero,CursorMode.Auto);
