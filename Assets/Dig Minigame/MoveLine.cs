@@ -10,7 +10,13 @@ public class MoveLine : MonoBehaviour
     double rightLimitX = 0.5f;
     bool isOnTarget = false;
     int lives = 3;
+    int timesDug;
+    public Sprite[] spriteArray;
+    public SpriteRenderer spriteRenderer;
     public GameObject heart;
+    public AudioClip heartLoss;
+    public AudioClip success;
+    public AudioSource audioSource;
 
     public DiggingMiniGame diggingMiniGame;
     // Start is called before the first frame update
@@ -23,6 +29,8 @@ public class MoveLine : MonoBehaviour
     public float Speed { get { return speed; } set { speed = value; } }
     void Start()
     {
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        timesDug = 0;
         gameOver = false;
     }
 
@@ -34,15 +42,24 @@ public class MoveLine : MonoBehaviour
         {
             if (isOnTarget)
             {
-                gameOver = true;
-                diggingMiniGame.GameFinish(true);
+                audioSource.PlayOneShot(success);
+                timesDug++;
+                spriteRenderer.sprite = spriteArray[timesDug];
+                spriteRenderer.sortingOrder = 3;
+                if (timesDug == 3)
+                {
+                    audioSource.PlayOneShot(success);
+                    gameOver = true;
+                    diggingMiniGame.GameFinish(true);
+                }
             }
             else
             {
                 lives--;
                 heart = GameObject.Find("Lives");
                 Destroy(heart);
-                
+                audioSource.PlayOneShot(heartLoss);
+
                 if (lives == 0)
                 {
                     gameOver = true;
@@ -52,22 +69,21 @@ public class MoveLine : MonoBehaviour
         }
         if (movingRight == false)
         {
-            transform.Translate(Vector2.left * Speed * Time.deltaTime);
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
             if (transform.localPosition.x <= leftLimitX)
             {
                 movingRight = true;
-                Debug.Log(movingRight);
+                //Debug.Log(movingRight);
             }
         }
         else
         {
-            transform.Translate(Vector2.right * Speed * Time.deltaTime);
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
             if (transform.localPosition.x >= rightLimitX)
             {
                 movingRight = false;
             }
         }
-
 
     }
    private void OnTriggerEnter2D(Collider2D collision)
