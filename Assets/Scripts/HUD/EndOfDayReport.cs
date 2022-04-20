@@ -17,6 +17,7 @@ public class EndOfDayReport : MonoBehaviour
     public Text TotalTasknumber;
     public Text DayCondition;
     public Text timeBonus;
+    private PlayFabManager playFabManager;
 
 
 
@@ -25,6 +26,9 @@ public class EndOfDayReport : MonoBehaviour
     
     void Start()
     {
+       
+
+        playFabManager = FindObjectOfType<PlayFabManager>();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
@@ -40,7 +44,8 @@ public class EndOfDayReport : MonoBehaviour
         TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
        
         int remainingTime = TimerCountdown.Instance.GetRemainingTime();
- 
+
+        
 
             MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
             timeBonus.text += $"  {remainingTime} seconds remaining ";
@@ -51,11 +56,51 @@ public class EndOfDayReport : MonoBehaviour
             MostPlayedMinigame.text = $"{returnPrefabTaskNameInDutch(playerReportData.GetTheMostPlayedMiniGameName(out playNr)).ToString()} : {playNr} keer.";
             timeBonus.text += $"{remainingTime} seconden resterend";
         */
-
-
+        writePlayFabData();
+      
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        Time.timeScale = 0f;
         
+    }
+
+    private void writePlayFabData()
+    {
+        playFabManager.SendLeaderBoard(playerReportData.GetTheSuccessfulMinigameNumber());
+        playFabManager.WriteCustomPlayerEvent("Distance_travelled_per_game",new Dictionary<string, object> {
+            { "DistanceTravelled" ,(playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2") }
+
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_successful_tasks_per_game", new Dictionary<string, object> {
+            { "SuccessfulTasks" ,playerReportData.GetTheSuccessfulMinigameNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_failed_tasks_per_game", new Dictionary<string, object> {
+            { "FailedTasks" ,playerReportData.GetTheFailedMinigameNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Sustainibility_level_per_game", new Dictionary<string, object> {
+            { "SustainibilityLevel" ,ProgressBar.Instance.GetSlideValue().ToString("F2") }
+        });
+        playFabManager.WriteCustomPlayerEvent("Total_number_of minigames_played_per_game", new Dictionary<string, object> {
+            { "TotalNrTasks" ,playerReportData.GetTotalTaskNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Remaining_time_after_the_game", new Dictionary<string, object> {
+            { "RemainingTime" ,TimerCountdown.Instance.GetRemainingTime().ToString() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_trash_pieces_disposed", new Dictionary<string, object> {
+            { "nrOfTrashDisposed" ,playerReportData.nrOfTrashDisposed }
+        });
+
+        /*  playFabManager.SendEndOfTheDayReportData(new Dictionary<string, string>
+          {
+              { "DistanceTravelled" , DistanceTraveled.text},
+              { "PlayerName", "John"},
+              { "SuccessfulMissions", Success.text},
+              { "FailedMissions",Fail.text},
+              { "SustainibilityLevel",SliderValue.text},
+              { "TotalNumberOfMinigames",TotalTasknumber.text},
+              { "Time Remaining",TimerCountdown.Instance.GetRemainingTime().ToString()},
+          }
+          );*/
     }
 
 

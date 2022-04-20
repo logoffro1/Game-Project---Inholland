@@ -6,10 +6,12 @@ public class TrashBag : MonoBehaviour
 {
     private List<Trash> items;
     private int bagCapacity = 15;
+    PlayerReportData playerData;
 
     void Start()
     {
         items = new List<Trash>();
+        playerData = FindObjectOfType<PlayerReportData>();
     }
 
 
@@ -35,6 +37,7 @@ public class TrashBag : MonoBehaviour
     }
     public void EmptyBag()
     {
+        playerData.IncreaseTheNumberOfTrashDisposed(items.Count);
         StartCoroutine(StartEmptyBag());
     }
     private IEnumerator StartEmptyBag()
