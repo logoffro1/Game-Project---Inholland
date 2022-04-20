@@ -86,7 +86,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Naam werknemer : {playerName}'
+    m_Localized: 'Naam werknemer:'
     m_Metadata:
       m_Items:
       - id: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1363087433457664
-    m_Localized: 'Totaal aantal geprobeerde taken:'
+    m_Localized: 'Aantal geprobeerde taken:'
     m_Metadata:
       m_Items: []
   - m_Id: 1363206815932416
@@ -127,7 +127,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1367895653539840
-    m_Localized: "\rRetour lobby"
+    m_Localized: "Terug naar \nkantoor"
     m_Metadata:
       m_Items: []
   - m_Id: 1397286622257152
@@ -167,6 +167,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1521383484043264
     m_Localized: Haal de lat voor duurzaamheid op 80%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6413451483435008
+    m_Localized: 'Plaats:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6413686997798912
+    m_Localized: Stadscentrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6414724156903424
+    m_Localized: 'Inkomen van vandaag:'
     m_Metadata:
       m_Items: []
   references:

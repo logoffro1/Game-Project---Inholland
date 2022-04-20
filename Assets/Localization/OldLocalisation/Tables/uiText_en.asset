@@ -87,7 +87,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Agent name : {playerName}'
+    m_Localized: 'Agent name:'
     m_Metadata:
       m_Items:
       - id: 0
@@ -96,7 +96,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1363087433457664
-    m_Localized: 'Total number of tasks attempted: '
+    m_Localized: 'Amount of attempted tasks: '
     m_Metadata:
       m_Items: []
   - m_Id: 1363206815932416
@@ -128,7 +128,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1367895653539840
-    m_Localized: Return lobby
+    m_Localized: "Return to \nthe office"
     m_Metadata:
       m_Items: []
   - m_Id: 1397286622257152
@@ -168,6 +168,18 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1521383484043264
     m_Localized: Get the sustainability bar to 80%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6413451483435008
+    m_Localized: 'Location:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6413686997798912
+    m_Localized: City center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6414724156903424
+    m_Localized: 'Today''s income:'
     m_Metadata:
       m_Items: []
   references:
