@@ -161,6 +161,11 @@ public class EndOfDayReport : MonoBehaviour
     //TODO: VERY TEMP, REDO
     private string GetIncome()
     {
+        if (ProgressBar.Instance.GetSlideValue() <= 80)
+        {
+            return "0";
+        }
+
         return String.Format("{0:0.0}", 
             ProgressBar.Instance.GetSlideValue() 
             + TimerCountdown.Instance.GetRemainingTime()
