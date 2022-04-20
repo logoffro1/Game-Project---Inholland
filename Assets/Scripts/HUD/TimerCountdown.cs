@@ -34,7 +34,12 @@ public class TimerCountdown : MonoBehaviour
             _instance = this;
         }
     }
-    private int secondsLeft;
+    private static int secondsLeft;
+    public static int SecondsLeft
+    {
+        get { return secondsLeft; }
+        private set { secondsLeft = value; }
+    }
 
     public int StartCountDownLeft
     {

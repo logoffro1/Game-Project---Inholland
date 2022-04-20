@@ -14,6 +14,13 @@ public class MoveLine : MonoBehaviour
 
     public DiggingMiniGame diggingMiniGame;
     // Start is called before the first frame update
+
+    //speed
+    private float startingSpeed = 2f;
+    public float StartingSpeed { get { return startingSpeed;  } private set { startingSpeed = value; } }
+
+    private float speed;
+    public float Speed { get { return speed; } set { speed = value; } }
     void Start()
     {
         gameOver = false;
@@ -45,7 +52,7 @@ public class MoveLine : MonoBehaviour
         }
         if (movingRight == false)
         {
-            transform.Translate(Vector2.left * 2f * Time.deltaTime);
+            transform.Translate(Vector2.left * Speed * Time.deltaTime);
             if (transform.localPosition.x <= leftLimitX)
             {
                 movingRight = true;
@@ -54,7 +61,7 @@ public class MoveLine : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector2.right * 2f * Time.deltaTime);
+            transform.Translate(Vector2.right * Speed * Time.deltaTime);
             if (transform.localPosition.x >= rightLimitX)
             {
                 movingRight = false;

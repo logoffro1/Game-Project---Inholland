@@ -6,6 +6,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private GameObject[] toxicPrefab;
 
     private float xSpawn = 1.5f;
+    private float minSeconds = 0.5f;
+    private float maxSeconds = 2f;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +32,7 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             SpawnToxic();
-            yield return new WaitForSeconds(Random.Range(0.5f, 2f));
+            yield return new WaitForSeconds(Random.Range(minSeconds, maxSeconds));
         }
     }
 

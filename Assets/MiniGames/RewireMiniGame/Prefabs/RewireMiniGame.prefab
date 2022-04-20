@@ -209,7 +209,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532583203136267112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -14.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4093552118092979144}
@@ -532,7 +532,7 @@ Transform:
   m_GameObject: {fileID: 3389812589932303293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 168}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 4093552118092979144}
   m_RootOrder: 1
@@ -577,7 +577,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 76d4c359994b4644d9bc9272cff5e111, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b082ec1e8c78db4084540c720b5e7c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -833,6 +833,10 @@ PrefabInstance:
       value: WireSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726359, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
+      propertyPath: amountWires
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531810728273726359, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: rewireMiniGame
       value: 
       objectReference: {fileID: 3604297858407716159}
@@ -878,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726360, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726360, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: m_LocalPosition.z
