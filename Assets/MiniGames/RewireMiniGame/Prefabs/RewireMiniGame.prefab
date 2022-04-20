@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 6956306683845715852}
   - component: {fileID: 2033944591068617905}
   - component: {fileID: 7313608953840894844}
+  - component: {fileID: 7024411226845249910}
   m_Layer: 0
   m_Name: SuccessText
   m_TagString: Untagged
@@ -182,6 +183,33 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7024411226845249910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 439007825459984317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls: []
+  references:
+    version: 1
 --- !u!1 &532583203136267112
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +237,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 532583203136267112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -14.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4093552118092979144}
@@ -446,7 +474,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &1194454700564050345
 MonoBehaviour:
@@ -532,7 +560,7 @@ Transform:
   m_GameObject: {fileID: 3389812589932303293}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 168}
-  m_LocalScale: {x: 100, y: 100, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 4093552118092979144}
   m_RootOrder: 1
@@ -577,7 +605,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 76d4c359994b4644d9bc9272cff5e111, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b082ec1e8c78db4084540c720b5e7c5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -641,6 +669,36 @@ MonoBehaviour:
   successText: {fileID: 7313608953840894844}
   descriptionText: {fileID: 3040783413692358932}
   infoCanvas: {fileID: 3700501809110751747}
+  localizedStringEventDescription: {fileID: 4301279521967901319}
+  localizedStringHint:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 3071585714057216
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizedStringEventResult: {fileID: 7024411226845249910}
+  resultLocalizedString:
+  - m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 3074702782377984
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 3074801633734656
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!1 &7752162759055635043
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +768,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4093552118092979144}
     m_Modifications:
+    - target: {fileID: 722860639216300280, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
+      propertyPath: m_text
+      value: Houd H vast voor hulp
+      objectReference: {fileID: 0}
     - target: {fileID: 6048147203809426245, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -821,6 +883,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4301279521967901319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2174317454011094996, guid: 4099ba19fcaf080409eb705d4f667f8e, type: 3}
+  m_PrefabInstance: {fileID: 2710477427029335379}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7646112325782558732
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -831,6 +904,10 @@ PrefabInstance:
     - target: {fileID: 5531810728273726358, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: m_Name
       value: WireSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531810728273726359, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
+      propertyPath: amountWires
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726359, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: rewireMiniGame
@@ -878,7 +955,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726360, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5531810728273726360, guid: 5bf7e485a6d95194b8ca2070e885829d, type: 3}
       propertyPath: m_LocalPosition.z

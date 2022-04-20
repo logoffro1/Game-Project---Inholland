@@ -34,7 +34,6 @@ public class MouseLook : MonoBehaviour
         LookAround();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            LevelManager.Instance.LoadScene("MainMenu");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }

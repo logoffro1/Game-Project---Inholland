@@ -49,7 +49,6 @@ public class CastRay : MonoBehaviour
             if (objectHit != null && interactableObject != null && interactableObject.IsInteractable)
             {
                 if (!CanInteract) return;
-                Debug.Log(CanInteract);
                 if (objectHit.layer == 11 || objectHit.layer == 12) return; //xray layer
 
                 if (previousObject != null)

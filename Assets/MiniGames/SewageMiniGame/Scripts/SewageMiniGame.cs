@@ -23,8 +23,8 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
     {
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
 
-            description = "Collect all the trash!\n\nKEYS\nA,D - Move left/right\nSPACE - Shoot hook down";
-
+        //description = "Collect all the trash!\n\nKEYS\nA,D - Move left/right\nSPACE - Shoot hook down";
+        SetLocalizedString();
            // description = "Verzamel al het afval!\n\nToetsen\nA,D - Ga naar links / Rechtsaf\nSPACE - Haak los";
 
     }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Components;
 
 public class MiniGameBase : MonoBehaviour
 {
@@ -26,6 +27,38 @@ public class MiniGameBase : MonoBehaviour
     private float levelOffset;
     private float pointsOffset;
 
+    //localized string
+    [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
+    [SerializeField] protected LocalizedString localizedStringHint;
+
+    [SerializeField] protected LocalizeStringEvent localizedStringEventResult;
+    [SerializeField] protected LocalizedString[] resultLocalizedString;
+
+    private LocalizationSettings locSettings;
+    public async void SetLocalizedString()
+    {
+        try
+        {
+            var handle = LocalizationSettings.InitializationOperation;
+            await handle.Task;
+            locSettings = handle.Result;
+
+            this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
+
+            this.localizedStringEventDescription.StringReference = localizedStringHint;
+            this.localizedStringEventDescription.OnUpdateString.AddListener(OnStringChanged);
+
+        }
+        catch (Exception ex) //it gets here if localizedString is not set
+        {
+            Debug.Log(ex.ToString());
+        }
+    }
+    protected virtual void OnStringChanged(string s)
+    {
+        if (locSettings == null) return;
+        this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
+    }
 
     private void Awake()
     {
@@ -86,19 +119,24 @@ public class MiniGameBase : MonoBehaviour
     }
     private void ChangeSuccessText(bool successful)
     {
-
+        LocalizedString locStr;
         successText.enabled = true;
         if (successful)
         {
             successText.color = Color.green;
-            successText.text = "SUCCESS";
+            locStr = resultLocalizedString[0];
 
-            return;
+        }
+        else
+        {
+            successText.color = Color.red;
+
+            locStr = resultLocalizedString[1];
         }
 
-        successText.color = Color.red;
+        localizedStringEventResult.StringReference = locStr;
 
-            successText.text = "FAILURE";
+        successText.text = locSettings.GetStringDatabase().GetLocalizedString(locStr.TableReference, locStr.TableEntryReference);
     }
 
     public void SetLevel()

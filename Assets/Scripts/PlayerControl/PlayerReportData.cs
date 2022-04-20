@@ -23,6 +23,7 @@ public class PlayerReportData : MonoBehaviour
     private Vector3 previousLocation;
 
     public Vector3 startPosition;
+    public int nrOfTrashDisposed { get; private set; }
    
     //SewageMiniGame
     //ColorBeepMiniGame
@@ -36,6 +37,7 @@ public class PlayerReportData : MonoBehaviour
         NrOfTasksFail = new Dictionary<string, int>();
         FinalProgress = 0;
         totalDistance = 0;
+        nrOfTrashDisposed = 0;
         startPosition = gameObject.transform.position;
     }
     void FixedUpdate()
@@ -49,6 +51,11 @@ public class PlayerReportData : MonoBehaviour
 /*        Debug.Log($"{totalDistance} is the current distance travelled");*/
     }
 
+
+    public void IncreaseTheNumberOfTrashDisposed(int nr)
+    {
+        this.nrOfTrashDisposed += nr;
+    }
     public int GetTheSuccessfulMinigameNumber()
     {
         int totalNumber = 0;

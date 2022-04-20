@@ -46,20 +46,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wirePrefab: {fileID: 8407347709607450439, guid: ee0358b1195c87b4a8c005105df6a119, type: 3}
   colors:
-  - {r: 0, g: 1, b: 0.13973308, a: 1}
   - {r: 0.009789959, g: 0.41509432, b: 0.020780506, a: 1}
+  - {r: 0, g: 1, b: 0.13973308, a: 1}
+  - {r: 1, g: 0.97139204, b: 0.08962262, a: 1}
   - {r: 1, g: 0.6175269, b: 0, a: 1}
   - {r: 1, g: 0.11814092, b: 0, a: 1}
   - {r: 1, g: 0, b: 0.9483285, a: 1}
+  - {r: 0.39679077, g: 0.23251157, b: 0.5188679, a: 1}
   - {r: 0.22655392, g: 0, b: 1, a: 1}
   - {r: 0, g: 0.98099923, b: 1, a: 1}
   - {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
   - {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   - {r: 0.4339623, g: 0.35085988, b: 0.16171236, a: 1}
-  amountWires: 5
-  amountFinished: 0
-  amountCorrect: 0
+  explosionParticleEffect: {fileID: 1022970526871509993, guid: 18a7a8806851a1043a0284947c60a813, type: 3}
+  amountWires: 9
   rewireMiniGame: {fileID: 0}
+  audioSource: {fileID: 0}
+  clickAudio: {fileID: 8300000, guid: 58e5086f6f8f99b439d51182d48ee7e0, type: 3}
+  successAudio: {fileID: 8300000, guid: 6896aa858ba07d741b448795a52a5659, type: 3}
+  failAudio: {fileID: 8300000, guid: 4296858e987962c469ba0b13013a1e07, type: 3}
 --- !u!82 &5531810728273726361
 AudioSource:
   m_ObjectHideFlags: 0
@@ -67,10 +72,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5531810728273726358}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 741a51081b9162c4b8b3ac02821911cf, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.056
   m_Pitch: 1

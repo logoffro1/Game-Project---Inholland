@@ -16,6 +16,7 @@ public class GogglesRecharging : InteractableObject
     void Start()
     {
         hoverName = "Recharge Goggles";
+        SetLocalizedString(localizedStringEvent);
         ChangeStatus(RechargingStates.Empty);
     }
 

@@ -20,10 +20,9 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: '{hoverText}'
+    m_Localized: interact
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 3058921672704
     m_Localized: Day's over!
     m_Metadata:
@@ -64,33 +63,11 @@ MonoBehaviour:
     m_Localized: Choose a level
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Localized: 'Map: Alkmaar City Center
-
-
-
-      Description: Pro/Cons of playing
-      the map
-
-      Objective: Here we write what we have to do/ point of the game
-      etc
-
-
-
-      Times played: 0
-
-      Best score: 0'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1355809124835328
-    m_Localized: (E) Interact
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Localized: 'Agent name : {playerName}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 1
   - m_Id: 1362907405541376
     m_Localized: 'Sustainibility progress:'
     m_Metadata:
@@ -145,7 +122,7 @@ MonoBehaviour:
     m_Localized: '{winconditionDay}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 2
   - m_Id: 1478127297814528
     m_Localized: INFO (PAUSED)
     m_Metadata:
@@ -170,9 +147,153 @@ MonoBehaviour:
     m_Localized: Get the sustainability bar to 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Trash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Plant
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Clean
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Build solar panel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Empty trash bag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Plant Trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Set up solar panel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Upgrade street lamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Clean sewers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: 'Dig a hole for the tree!
+
+      Release the shovel at the right
+      moment
+
+
+      KEYS
+
+      SPACE - Release shovel'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: 'Repeat the shown sequence!
+
+
+      After the sequence is over,
+      click on the buttons in the same order'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: 'Collect all the trash!
+
+
+      KEYS
+
+      A,D - Move left/right
+
+      SPACE
+      - Shoot hook down'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: 'Match the wires by color!
+
+
+      Click on the wire on the left
+      side
+
+      Drag to move
+
+      Release click to connect'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: 'Build two rows to complete the solar panel!
+
+
+      KEYS
+
+      A,D
+      - Move left / right
+
+      S - Drop
+
+      SPACE - Hard Drop
+
+      Q,E - Rotate
+      left / right'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Localized: Success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Localized: Failure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: 'Map: Alkmaar City Center
+
+
+      Description: Explore the beautiful
+      city of Alkmaar
+
+      Objective: Clean the city and bring the sustainability
+      above 80%!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Today's income
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: Recharge Goggles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: XRay Goggles
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0090f0c00f00000000e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000001:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000002:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400

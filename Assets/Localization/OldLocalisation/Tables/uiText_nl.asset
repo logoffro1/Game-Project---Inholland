@@ -20,10 +20,9 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: '{hoverText}'
+    m_Localized: interactie
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 3058921672704
     m_Localized: Dag is voorbij!
     m_Metadata:
@@ -64,32 +63,11 @@ MonoBehaviour:
     m_Localized: Kies een niveau
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Localized: 'Plattegrond: Alkmaar Centrum
-
-
-      Beschrijving: Pro/Cons van
-      het spelen van de kaart
-
-      Doelstelling: Hier schrijven we wat we moeten
-      doen / punt van het spel etc
-
-
-      Aantal keren gespeeld: 0
-
-      Beste
-      score: 0'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1355809124835328
-    m_Localized: (E) Interactie
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Localized: 'Naam werknemer : {playerName}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 1
   - m_Id: 1362907405541376
     m_Localized: 'Duurzaamheid vooruitgang:'
     m_Metadata:
@@ -144,7 +122,7 @@ MonoBehaviour:
     m_Localized: '{winconditionDay}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 2
   - m_Id: 1478127297814528
     m_Localized: INFO (GEPAUZEERD)
     m_Metadata:
@@ -169,9 +147,153 @@ MonoBehaviour:
     m_Localized: Haal de lat voor duurzaamheid op 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Afval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Boom planten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Schoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Zonnepaneel bouwen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Lege vuilniszak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Bomen planten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Zonnepaneel opzetten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Straatlantaarn upgraden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Schone riolen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: 'Graaf een gat voor de boom!
+
+      Laat de schop op het juiste
+      moment los
+
+
+      KEYS
+
+      SPACE - Schop loslaten'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: 'Herhaal de getoonde volgorde!
+
+
+      Nadat de reeks voorbij is,
+      klikt u in dezelfde volgorde op de knoppen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: 'Verzamel al het afval!
+
+
+      TOETSEN
+
+      A,D - Naar links/rechts
+      bewegen
+
+      SPACE - Schiet haak naar beneden'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: 'Match de draden op kleur!
+
+
+      Klik op de draad aan de linkerkant
+
+      Sleep
+      om te bewegen
+
+      Laat de klik los om verbinding te maken'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: 'Bouw twee rijen om het zonnepaneel te voltooien!
+
+
+      TOETSEN
+
+      A,D
+      - Naar links / rechts bewegen
+
+      S - Drop
+
+      SPACE - Harde val
+
+      Q,E
+      - Links/rechts draaien'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Localized: Success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Localized: Mislukking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: 'Plattegrond: Alkmaar Centrum
+
+
+      Beschrijving: Ontdek de prachtige
+      stad Alkmaar
+
+      Doelstelling: Maak de stad schoon en breng de duurzaamheid
+      boven de 80%!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Plaats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Het inkomen van vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: Bril opladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: "R\xF6ntgenbril"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0090f0c00f00000000e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000001:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000002:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400

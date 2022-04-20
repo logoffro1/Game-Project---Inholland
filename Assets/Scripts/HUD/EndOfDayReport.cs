@@ -17,45 +17,147 @@ public class EndOfDayReport : MonoBehaviour
     public Text TotalTasknumber;
     public Text DayCondition;
     public Text timeBonus;
+    public Text Income;
+    private PlayFabManager playFabManager;
+    public AudioClip DayReportAudio;
 
 
 
 
     private PlayerReportData playerReportData;
-    
+    private bool dayFailed = false;
+    private string lang = "en";
     void Start()
     {
+        GetLanguage();
+        dayFailed = GetWinCondition();
+
+        playFabManager = FindObjectOfType<PlayFabManager>();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
         playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
-        DistanceTraveled.text += $"  {distance} m";
+        DistanceTraveled.text += $"{distance} m";
 
         int playNr;
-        
-        Success.text += $"  {playerReportData.GetTheSuccessfulMinigameNumber()}";
-        Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
-        SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
-        TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
-       
-        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
- 
 
-            MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
-            timeBonus.text += $"  {remainingTime} seconds remaining ";
-            DayCondition.text += $"{getWinLoseCondition()} ";
-        /*
-            DayCondition.text = $"{getWinLoseConditionInDutch().ToString()}";
-            Debug.Log(getWinLoseConditionInDutch());
-            MostPlayedMinigame.text = $"{returnPrefabTaskNameInDutch(playerReportData.GetTheMostPlayedMiniGameName(out playNr)).ToString()} : {playNr} keer.";
-            timeBonus.text += $"{remainingTime} seconden resterend";
-        */
+        Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
+        Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
+        SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
+        TotalTasknumber.text += $"{playerReportData.GetTotalTaskNumber()}";
+        Income.text = $"{GetIncome()} SP"; //SP == Sustainability Points -> change
 
+        writePlayFabData();
+        MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
+        timeBonus.text += GetSecondsRemainingText();
+        DayCondition.text += $"{GetWinLoseText()} ";
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        
+        Time.timeScale = 0f;
+
+        GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
+    }
+    private string GetSecondsRemainingText()
+    {
+
+        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
+        switch (lang)
+        {
+            case "en":
+                return $"  {remainingTime} seconds remaining ";
+            case "nl":
+                return $"  {remainingTime} seconden resterend ";
+            case "ro":
+                return $"  {remainingTime} secunde ramase ";
+            default:
+                return $"  {remainingTime} seconds remaining ";
+
+
+        }
+    }
+    private string GetWinLoseText()
+    {
+
+        if (!dayFailed)
+        {
+            switch (lang)
+            {
+                case "en":
+                    return "Day is sucessfully finished";
+                case "nl":
+                    return "Dag is succesvol afgesloten";
+                case "ro":
+                    return "Ziua a fost reusita";
+                default:
+                    return "Day successful";
+            }
+        }
+        else
+            switch (lang)
+            {
+                case "en":
+                    return "Day failed";
+                case "nl":
+                    return "Dag is mislukt";
+                case "ro":
+                    return "Ziua a fost esuata";
+
+                default:
+                    return "Day failed.";
+            }
+    }
+    private bool GetWinCondition()
+    {
+        return !(ProgressBar.Instance.GetSlideValue() >= 80f);
+
+    }
+    private async void GetLanguage()
+    {
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        LocalizationSettings locSettings = handle.Result;
+
+        lang = locSettings.GetSelectedLocale().Identifier.Code;
+    }
+    private void writePlayFabData()
+    {
+        playFabManager.SendLeaderBoard(playerReportData.GetTheSuccessfulMinigameNumber());
+        playFabManager.WriteCustomPlayerEvent("Distance_travelled_per_game", new Dictionary<string, object> {
+            { "DistanceTravelled" ,(playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2") }
+
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_successful_tasks_per_game", new Dictionary<string, object> {
+            { "SuccessfulTasks" ,playerReportData.GetTheSuccessfulMinigameNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_failed_tasks_per_game", new Dictionary<string, object> {
+            { "FailedTasks" ,playerReportData.GetTheFailedMinigameNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Sustainibility_level_per_game", new Dictionary<string, object> {
+            { "SustainibilityLevel" ,ProgressBar.Instance.GetSlideValue().ToString("F2") }
+        });
+        playFabManager.WriteCustomPlayerEvent("Total_number_of minigames_played_per_game", new Dictionary<string, object> {
+            { "TotalNrTasks" ,playerReportData.GetTotalTaskNumber() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Remaining_time_after_the_game", new Dictionary<string, object> {
+            { "RemainingTime" ,TimerCountdown.Instance.GetRemainingTime().ToString() }
+        });
+        playFabManager.WriteCustomPlayerEvent("Number_of_trash_pieces_disposed", new Dictionary<string, object> {
+            { "nrOfTrashDisposed" ,playerReportData.nrOfTrashDisposed }
+        });
+
+        /*  playFabManager.SendEndOfTheDayReportData(new Dictionary<string, string>
+          {
+              { "DistanceTravelled" , DistanceTraveled.text},
+              { "PlayerName", "John"},
+              { "SuccessfulMissions", Success.text},
+              { "FailedMissions",Fail.text},
+              { "SustainibilityLevel",SliderValue.text},
+              { "TotalNumberOfMinigames",TotalTasknumber.text},
+              { "Time Remaining",TimerCountdown.Instance.GetRemainingTime().ToString()},
+          }
+          );*/
     }
 
 
@@ -103,15 +205,32 @@ public class EndOfDayReport : MonoBehaviour
     {
         if (ProgressBar.Instance.GetSlideValue() >= 80)
         {
-            return " Day is successfully finished.";
+            return " Success";
         }
         else
         {
-            return "Day is failed";
+            return " Failed";
         }
     }
 
-   
+    //TODO: VERY TEMP, REDO
+    private string GetIncome()
+    {
+        if (ProgressBar.Instance.GetSlideValue() <= 80)
+        {
+            return "0";
+        }
+
+        return String.Format("{0:0.0}",
+            ProgressBar.Instance.GetSlideValue()
+            + TimerCountdown.Instance.GetRemainingTime()
+            + playerReportData.GetTotalTaskNumber()
+            + playerReportData.GetTheSuccessfulMinigameNumber()
+            - playerReportData.GetTheFailedMinigameNumber());
+    }
+
+
+
 
 
 }
