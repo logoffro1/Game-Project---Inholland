@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: uiText_ro
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ro
+  m_SharedData: {fileID: 11400000, guid: da94c565f8ff38849b53db7b3e21e305, type: 2}
+  m_Metadata:
+    m_Items:
+    - id: 0
+  m_TableData:
+  - m_Id: 5675852795904
+    m_Localized: Joc nou
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5776025358336
+    m_Localized: "Realiz\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858380517376
+    m_Localized: "Set\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5881587601408
+    m_Localized: Credite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5901707677696
+    m_Localized: "Ie\u0219ire"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7170589495296
+    m_Localized: Incepe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7648731762688
+    m_Localized: Alege un nivel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67661500416
+    m_Localized: "Interac\u021Bioneaz\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3058921672704
+    m_Localized: Ziua s-a terminat!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5379613298688
+    m_Localized: "Continu\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7188545310720
+    m_Localized: In curand!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1362783803596800
+    m_Localized: 'Numele agentului : {playerName}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1362907405541376
+    m_Localized: "Progresul sustenabilit\u0103\u021Bii:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363087433457664
+    m_Localized: "Num\u0103rul de obiective \xEEncercate:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363206815932416
+    m_Localized: 'Obiective cu success:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363352815460352
+    m_Localized: 'Cel mai popular obiectiv:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363505563623424
+    m_Localized: "Obiective e\u0219uate"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363743871393792
+    m_Localized: "\r\nDistan\u021Ba parcurs\u0103:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363827040247808
+    m_Localized: 'Timp bonus:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363918203445248
+    m_Localized: 'Rezultatul zilei:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1364105252626432
+    m_Localized: REPORTUL ZILEI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1367895653539840
+    m_Localized: Intoarce-te in lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397286622257152
+    m_Localized: '{bonusTimeRemaining}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399800843264000
+    m_Localized: '{mostAttemptedTask}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399924306796544
+    m_Localized: '{winconditionDay}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1478127297814528
+    m_Localized: "INFO (PAUZ\u0102)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1478634343030784
+    m_Localized: "\u021Aine\u021Bi ap\u0103sat H pentru ajutor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Localized: "W,A,S,D - Mi\u0219care\nX - Activa\u021Bi ochelarii cu raze X\r\nE
+      - Interac\u021Bioneaz\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Localized: "Se incarc\u0103..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1521383484043264
+    m_Localized: "Aduce\u021Bi bara de sustenabilitate la 80%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Gunoi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Planteaza
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Curata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Construieste panou solar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Arunca gunoiul
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Planteaza copaci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Construieste panou solar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Upgrade felinar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Curata canale
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: "S\u0103pa\u021Bi o groap\u0103 pentru copac!\nElibereaz\u0103 lopata
+      la momentul potrivit\n\nTASTE\nSPA\u021AIU - Elibereaz\u0103 lopata"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: "Repeta\u021Bi secven\u021Ba afi\u0219at\u0103!\n\nDup\u0103 terminarea
+      secven\u021Bei, face\u021Bi clic pe butoane \xEEn aceea\u0219i ordine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: "Str\xE2nge\u021Bi tot gunoiul!\n\nTASTE\nA,D - Deplasa\u021Bi la
+      st\xE2nga/dreapta\nSPA\u021AIU - Trage cu c\xE2rligul \xEEn jos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: "Potrivi\u021Bi firele dup\u0103 culoare!\n\nFace\u021Bi clic pe
+      firul din partea st\xE2ng\u0103\nTrage pentru a muta\nElibera\u021Bi clic pentru
+      a v\u0103 conecta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: "Construi\u021Bi dou\u0103 r\xE2nduri pentru a finaliza panoul solar!\n\nTASTE\nA,D
+      - Deplasa\u021Bi la st\xE2nga/dreapta\nS - Drop\nSPA\u021AIU - Hard Drop\nQ,E
+      - Roti\u021Bi st\xE2nga/dreapta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Localized: Success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Localized: "E\u0219ec"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: "Harta: Centrul ora\u0219ului Alkmaar\n\nDescriere: Explora\u021Bi
+      frumosul ora\u0219 Alkmaar\nObiectiv: Cur\u0103\u021Ba\u021Bi ora\u0219ul \u0219i
+      aduce\u021Bi sustenabilitatea peste 80%!"
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1
+    00000000:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0044739f9040000e0c424d3f6040000e004881cf90400

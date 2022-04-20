@@ -3,21 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Components;
 using UnityEngine.Localization.Settings;
 
 public class OfficeTV : InteractableObject
 {
     private OfficeLevelSelector officeLevels;
 
+    [SerializeField] private LocalizeStringEvent localizeStringEvent;
+    [SerializeField] private RenderObjects normalRenderer;
+
 
     private void Start()
     {
-
-        hoverName = "Interact";
-
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
+        SetLocalizedString(localizeStringEvent);
     }
+
     public override void DoAction(GameObject player)
     {
         officeLevels.ShowPanel(true);

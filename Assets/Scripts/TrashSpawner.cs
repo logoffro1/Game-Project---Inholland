@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class TrashSpawner : MonoBehaviour
 {
     public GameObject[] trashList;
     private int amount = 0;
    [SerializeField] private int limit = 200;
+    [SerializeField] private LocalizeStringEvent localizedStringEvent;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnRoutine());   
     }
-
-
     private IEnumerator SpawnRoutine() //not really efficient, but it works
     {
         while(amount < limit)
@@ -24,7 +24,9 @@ public class TrashSpawner : MonoBehaviour
                 continue;
 
             GameObject trash = trashList[Random.Range(0, trashList.Length)];
-            Instantiate(trash, spawnPos, trash.transform.rotation, transform);
+            
+            GameObject spawnedTrash = Instantiate(trash, spawnPos, trash.transform.rotation, transform);
+            spawnedTrash.GetComponent<Trash>().SetLocalizedString(localizedStringEvent);
             yield return null;
             amount++;
         }

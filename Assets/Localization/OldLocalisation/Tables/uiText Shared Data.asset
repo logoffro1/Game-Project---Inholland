@@ -59,14 +59,6 @@ MonoBehaviour:
     m_Key: choose_a_level
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Key: alkmaar_city_centre_description
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1355809124835328
-    m_Key: interact.hover.text
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Key: report.agent.name
     m_Metadata:
@@ -143,16 +135,80 @@ MonoBehaviour:
     m_Key: GoalText
     m_Metadata:
       m_Items: []
-  - m_Id: 6413451483435008
-    m_Key: Location
+  - m_Id: 2385090661462016
+    m_Key: "trashText\t"
     m_Metadata:
       m_Items: []
-  - m_Id: 6413686997798912
-    m_Key: CityCenter
+  - m_Id: 3039102146588672
+    m_Key: plantText
     m_Metadata:
       m_Items: []
-  - m_Id: 6414724156903424
-    m_Key: TodaysIncome
+  - m_Id: 3039134233014272
+    m_Key: upgradeText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Key: cleanText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Key: buildSolarPanelText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Key: "emptyTrashText\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Key: taskListPlantTrees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Key: taskListSolarPanels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Key: taskListStreetLamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Key: taskListSewers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Key: hintDigGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Key: hintColorBeep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Key: hintSewageGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Key: hintRewireGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Key: hintSolarPanelsGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Key: successText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Key: failureText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Key: alkmaarLevelDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5323275150438400
+    m_Key: 
     m_Metadata:
       m_Items: []
   m_Metadata:
