@@ -15,6 +15,7 @@ public class ProgressBar : MonoBehaviour
     public bool isGameOngoing;
 
 
+
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
 
