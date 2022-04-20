@@ -67,7 +67,8 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //Manually set which object is linked to which game
-        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
