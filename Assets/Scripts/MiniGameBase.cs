@@ -1,15 +1,17 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Linq;
 using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
 
-public abstract class MiniGameBase : MonoBehaviour
+public class MiniGameBase : MonoBehaviour
 {
-
-    protected int sustainabilityPoints = 5;
+    protected int startingSustainabilityPoints = 5;
+    public int StartingSustainabilityPoints { get { return startingSustainabilityPoints; } protected set { startingSustainabilityPoints = value; } }
+    public int SustainabilityPoints { get { return startingSustainabilityPoints + (int)pointsOffset; } }
 
     protected string description;
     public bool IsPlaying { get; set; } = true;
@@ -23,7 +25,7 @@ public abstract class MiniGameBase : MonoBehaviour
     public float Level { get { return level;  } private set { level = value; } }
     [Range(0.0f, 100.0f)]
     private float levelOffset;
-    public float LevelOffset { get { return levelOffset; } private set { levelOffset = value; } }
+    private float pointsOffset;
 
     //localized string
     [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
@@ -102,7 +104,7 @@ public abstract class MiniGameBase : MonoBehaviour
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(-sustainabilityPoints, true);
+        ProgressBar.Instance.ChangeSustainibility(-SustainabilityPoints, true);
     }
     protected void GameWon() //remove the duplicate
     {
@@ -112,7 +114,8 @@ public abstract class MiniGameBase : MonoBehaviour
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(sustainabilityPoints, true);
+        ProgressBar.Instance.ChangeSustainibility(SustainabilityPoints, true);
+        TimerCountdown.Instance.SecondsLeft += GetAddedTime();
     }
     private void ChangeSuccessText(bool successful)
     {
@@ -141,14 +144,16 @@ public abstract class MiniGameBase : MonoBehaviour
         //Level is 90% determined by the sustainability bar, and 10% deterined by time
         float timeRatio = 0.1f;
         float sustainRatio = 0.9f;
-        float secondsPercentage = ((float)TimerCountdown.SecondsMax - TimerCountdown.SecondsLeft) / 100f;
+        float secondsPercentage = ((float)TimerCountdown.Instance.SecondsMax - TimerCountdown.Instance.SecondsLeft) / 100f;
         float level = (secondsPercentage * timeRatio) + (ProgressBar.Instance.GetSlideValue() * sustainRatio); 
 
         float minLevel = 20f; //20%
         float maxLevel = 90f;
         float relativeLevel = (maxLevel - minLevel) * level / 100 + 30f;
 
-        relativeLevel += LevelOffset;
+        UpdateLevelOffset();
+        UpdatePointOffset();
+        relativeLevel += levelOffset;
 
         if (relativeLevel > 100) relativeLevel = 100;
         if (relativeLevel < 0) relativeLevel = 0;
@@ -156,7 +161,24 @@ public abstract class MiniGameBase : MonoBehaviour
         CoordinateLevel();
     }
 
-    //abstract methods
+    private void UpdateLevelOffset()
+    {
+        OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigameDifficultyDecrease).FirstOrDefault();
+        levelOffset = upgrade.LevelOffSet;
+    }
+
+    private void UpdatePointOffset()
+    {
+        OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigamePointsIncrease).FirstOrDefault();
+        pointsOffset = upgrade.PointsOffSet;
+    }
+
+    private int GetAddedTime()
+    {
+        return FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame;
+    }
+
+
     public virtual void CoordinateLevel() { }
     public virtual void GameFinish(bool success) { }
 }

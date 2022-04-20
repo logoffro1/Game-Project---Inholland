@@ -111,9 +111,7 @@ public class ProgressBar : MonoBehaviour
 
     public float GetSlideValue()
     {
+        if (slider == null) return 0;
         return slider.value;
     }
-
-
-
 }

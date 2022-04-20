@@ -49,7 +49,7 @@ public class EndOfDayReport : MonoBehaviour
         Income.text = $"{GetIncome()} SP"; //SP == Sustainability Points -> change
 
         writePlayFabData();
-        MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
+        MostPlayedMinigame.text += $"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
         timeBonus.text += GetSecondsRemainingText();
         DayCondition.text += $"{GetWinLoseText()} ";
 
@@ -66,13 +66,13 @@ public class EndOfDayReport : MonoBehaviour
         switch (lang)
         {
             case "en":
-                return $"  {remainingTime} seconds remaining ";
+                return $"{remainingTime} seconds";
             case "nl":
-                return $"  {remainingTime} seconden resterend ";
+                return $"{remainingTime} seconden";
             case "ro":
-                return $"  {remainingTime} secunde ramase ";
+                return $"{remainingTime} secunde";
             default:
-                return $"  {remainingTime} seconds remaining ";
+                return $"{remainingTime} seconds ";
 
 
         }
@@ -85,27 +85,27 @@ public class EndOfDayReport : MonoBehaviour
             switch (lang)
             {
                 case "en":
-                    return "Day is sucessfully finished";
+                    return "Success";
                 case "nl":
-                    return "Dag is succesvol afgesloten";
+                    return "Succes";
                 case "ro":
-                    return "Ziua a fost reusita";
+                    return "Succes";
                 default:
-                    return "Day successful";
+                    return "Success";
             }
         }
         else
             switch (lang)
             {
                 case "en":
-                    return "Day failed";
+                    return "Fail";
                 case "nl":
-                    return "Dag is mislukt";
+                    return "Mislukking";
                 case "ro":
-                    return "Ziua a fost esuata";
+                    return "E?ueaz?";
 
                 default:
-                    return "Day failed.";
+                    return "Fail.";
             }
     }
     private bool GetWinCondition()
