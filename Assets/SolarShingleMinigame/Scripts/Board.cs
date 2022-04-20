@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using TMPro;
+using UnityEngine.UI;
+
 public class Board : MonoBehaviour
 {
     public Tilemap tilemap { get; private set; }
@@ -12,6 +14,8 @@ public class Board : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip lineClear;
     public TextMeshProUGUI amountText;
+    public Image solarPanelImage;
+    public int imageFillMaxValue;
 
     public ShinglesMiniGame shinglesGame;
     public int amountOfLinesNeeded { get;  set; }
@@ -29,6 +33,7 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+        this.solarPanelImage.fillAmount = 0f;
         this.audioSource = GetComponent<AudioSource>();
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
@@ -113,8 +118,12 @@ public class Board : MonoBehaviour
                 LineClear(row);
                 this.amountOfLinesNeeded--;
                 this.amountText.text = $"{amountOfLinesNeeded}";
+                float diff = (float)imageFillMaxValue - (float)amountOfLinesNeeded;
+                Debug.Log(diff);
+                this.solarPanelImage.fillAmount = diff/ (float)imageFillMaxValue;
                 if (amountOfLinesNeeded <= 0)
                 {
+                    this.amountText.text = "0";
                     isGameOver = true;
                     shinglesGame.GameFinish(true);
                 }
@@ -131,6 +140,7 @@ public class Board : MonoBehaviour
 
         }
     }
+
     private void LineClear(int row)
     {
         RectInt bounds = this.Bounds;

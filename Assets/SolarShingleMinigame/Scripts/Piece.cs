@@ -59,6 +59,10 @@ public class Piece : MonoBehaviour
 
     private void handlePieceMovement()
     {
+        if (Time.time >= this.stepTime)
+        {
+            Step();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             Rotate(1);
@@ -90,10 +94,7 @@ public class Piece : MonoBehaviour
         {
             HardDrop();
         }
-        if (Time.time >= this.stepTime)
-        {
-            Step();
-        }
+      
     }
 
     private void Step()
