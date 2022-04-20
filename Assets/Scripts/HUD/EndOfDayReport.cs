@@ -17,6 +17,7 @@ public class EndOfDayReport : MonoBehaviour
     public Text TotalTasknumber;
     public Text DayCondition;
     public Text timeBonus;
+    public Text Income;
 
 
 
@@ -38,12 +39,14 @@ public class EndOfDayReport : MonoBehaviour
         Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
         TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
-       
+        Income.text = $"  {GetIncome()} SP"; //SP == Sustainability Points -> change
+
+
         int remainingTime = TimerCountdown.Instance.GetRemainingTime();
  
 
             MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
-            timeBonus.text += $"  {remainingTime} seconds remaining ";
+            timeBonus.text += $"  {remainingTime} seconds";
             DayCondition.text += $"{getWinLoseCondition()} ";
         /*
             DayCondition.text = $"{getWinLoseConditionInDutch().ToString()}";
@@ -103,15 +106,27 @@ public class EndOfDayReport : MonoBehaviour
     {
         if (ProgressBar.Instance.GetSlideValue() >= 80)
         {
-            return " Day is successfully finished.";
+            return " Success";
         }
         else
         {
-            return "Day is failed";
+            return " Failed";
         }
     }
 
-   
+    //TODO: VERY TEMP, REDO
+    private string GetIncome()
+    {
+        return String.Format("{0:0.0}", 
+            ProgressBar.Instance.GetSlideValue() 
+            + TimerCountdown.Instance.GetRemainingTime()
+            + playerReportData.GetTotalTaskNumber()
+            + playerReportData.GetTheSuccessfulMinigameNumber()
+            - playerReportData.GetTheFailedMinigameNumber());
+    }
+
+
+
 
 
 }

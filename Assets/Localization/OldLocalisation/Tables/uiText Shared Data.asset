@@ -143,6 +143,18 @@ MonoBehaviour:
     m_Key: GoalText
     m_Metadata:
       m_Items: []
+  - m_Id: 6413451483435008
+    m_Key: Location
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6413686997798912
+    m_Key: CityCenter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6414724156903424
+    m_Key: TodaysIncome
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
