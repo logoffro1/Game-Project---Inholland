@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 8583040186057cd4180174e9ad65976e, type: 3}
+      objectReference: {fileID: 21300000, guid: aa5851d664a119843bd1f8b56e077cc2, type: 3}
     - target: {fileID: 1181145337, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: spriteArray.Array.data[2]
       value: 
@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: bde1e416fead91e4886823f8a13e74a2, type: 3}
     - target: {fileID: 535315073824741256, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_SortingOrder
       value: 0
