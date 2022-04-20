@@ -126,13 +126,13 @@ public class MiniGameBase : MonoBehaviour
     private void UpdateLevelOffset()
     {
         OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigameDifficultyDecrease).FirstOrDefault();
-        levelOffset += upgrade.LevelOffSet;
+        levelOffset = upgrade.LevelOffSet;
     }
 
     private void UpdatePointOffset()
     {
         OneOffUpgrade upgrade = FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigamePointsIncrease).FirstOrDefault();
-        pointsOffset += upgrade.PointsOffSet;
+        pointsOffset = upgrade.PointsOffSet;
     }
 
     private int GetAddedTime()

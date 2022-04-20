@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 //ADD NEW UPGRADE TO SWITCH CASE OF CONSTRUCTOR, AND ADD CORREDONPOSING METHOD
-public class OneOffUpgrade : MonoBehaviour
+public class OneOffUpgrade 
 {
     private OneOffUpgradesEnum upgrade;
     public OneOffUpgradesEnum Upgrade { get { return upgrade; } private set { upgrade = value; } }
@@ -19,7 +19,7 @@ public class OneOffUpgrade : MonoBehaviour
     public int Level { get { return level; } private set { level = value; } }
 
     private Action levelUpFunction;
-    private int maxLevel = 8;
+    private int maxLevel = 2;
     public int MaxLevel { get { return maxLevel; } private set { maxLevel = value; } }
 
     //For optimizing purposed
@@ -33,21 +33,17 @@ public class OneOffUpgrade : MonoBehaviour
     public float PointsOffSet { get; set; }
     public int TimeAddAfterMiniGame { get; set; }
 
-    private void Start()
-    {
-        UpgradeManager manager = FindObjectOfType<UpgradeManager>();
-        player = manager.Player;
-
-        playerMovement = player.gameObject.GetComponent<PlayerMovement>();
-        miniGameBase = FindObjectOfType<MiniGameBase>();
-
-        LevelOffSet = 0f;
-        PointsOffSet = 0f;
-    }
-
     public OneOffUpgrade() 
     {
         level = 0;
+    }
+
+    public OneOffUpgrade(OneOffUpgradesEnum upgrade, Player player, PlayerMovement playerMovement, MiniGameBase miniGameBase) 
+        :this(upgrade)
+    {
+        this.player = player;
+        this.playerMovement = playerMovement;
+        this.miniGameBase = miniGameBase;
     }
 
 
@@ -55,9 +51,11 @@ public class OneOffUpgrade : MonoBehaviour
     {
         this.upgrade = upgrade;
         level = 0;
+        LevelOffSet = 0f;
+        PointsOffSet = 0f;
 
         //ADD NEW UPGRADE TO SWITCH CASE
-        switch(upgrade)
+        switch (upgrade)
         {
             case OneOffUpgradesEnum.Speed:
                 levelUpFunction = SpeedLevelUp;
@@ -76,7 +74,7 @@ public class OneOffUpgrade : MonoBehaviour
                 break;
             case OneOffUpgradesEnum.AddedTimeAfterMinigame:
                 levelUpFunction = AddedTimeAfterMinigameLevelUp;
-                title = "Added time after minigame success";
+                title = "Added time after minigame";
                 description = "You get some time if you finish a minigame successfully!";
                 break;
             default:
@@ -93,7 +91,6 @@ public class OneOffUpgrade : MonoBehaviour
     public void SpeedLevelUp()
     {
         float amountIncrement = 0.5f;
-        if (playerMovement == null) playerMovement = FindObjectOfType<PlayerMovement>();
         playerMovement.Speed += amountIncrement;
     }
 
@@ -115,19 +112,6 @@ public class OneOffUpgrade : MonoBehaviour
         int amountIncrement = 2;
         TimeAddAfterMiniGame += amountIncrement;
     }
-
-    public static List<OneOffUpgrade> SetUpList()
-    {
-        List<OneOffUpgrade> list = new List<OneOffUpgrade>();
-        foreach (OneOffUpgradesEnum upgrade in (OneOffUpgradesEnum[])Enum.GetValues(typeof(OneOffUpgradesEnum)))
-        {
-            list.Add(new OneOffUpgrade(upgrade));
-        }
-
-        return list;
-    }
-
-
 
 }
 

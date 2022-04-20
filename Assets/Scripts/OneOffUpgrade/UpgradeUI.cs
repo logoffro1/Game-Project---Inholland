@@ -36,21 +36,35 @@ public class UpgradeUI : MonoBehaviour
             int randomIndex = Random.Range(0, list.Count);
             OneOffUpgrade upgrade = list[randomIndex];
             list.RemoveAt(randomIndex);
+            UnityEngine.UI.Button button = textButton.gameObject.GetComponentInParent<UnityEngine.UI.Button>();
 
-            if(upgrade.Level >= upgrade.MaxLevel)
+            if (upgrade.Level >= upgrade.MaxLevel)
             {
                 //Editting the button itself
-                UnityEngine.UI.Button button = textButton.gameObject.GetComponentInParent<UnityEngine.UI.Button>();
                 button.interactable = false;
                 Color color = textButton.color;
                 color.a = 0.6f;
                 textButton.color = color;
+
+                ColorBlock colorBlock = ColorBlock.defaultColorBlock;
+                colorBlock.normalColor = Color.gray;
+                button.colors = colorBlock;
 
                 //Text
                 textButton.text = string.Format($"{upgrade.Title}: LVL MAX");
             }
             else
             {
+                button.interactable = true;
+                Color color = textButton.color;
+                color.a = 1f;
+                textButton.color = color;
+
+                ColorBlock colorBlock = ColorBlock.defaultColorBlock;
+                colorBlock.normalColor = Color.white;
+                button.colors = colorBlock;
+
+                //Text
                 textButton.text = string.Format($"{upgrade.Title}: LVL {upgrade.Level + 1}");
                 UpgradeButton u = textButton.gameObject.GetComponentInParent<UpgradeButton>();
                 u.Upgrade = upgrade.Upgrade;

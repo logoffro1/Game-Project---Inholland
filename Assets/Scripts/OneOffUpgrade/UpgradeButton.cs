@@ -38,7 +38,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void ClickPointsButton()
     {
         ui.TurnOff();
-        ProgressBar.Instance.SetSlideValue(ProgressBar.Instance.GetSlideValue() + 3f);
+        ProgressBar.Instance.ChangeSustainibility(3f, true);
         manager.UpgradeSessionFInished();
     }
 

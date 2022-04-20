@@ -10,7 +10,7 @@ public class UpgradeManager : MonoBehaviour
     private bool canvasIsOn;
 
     //occurences
-    private float occurenceAmount = 100f;
+    private float occurenceAmount = 10f;
     private float amountTilNextOccurence;
     private float amountOfLastOccurence;
 
@@ -26,12 +26,11 @@ public class UpgradeManager : MonoBehaviour
         upgradeCanvas = GetComponent<UpgradeUI>();
 
         canvasIsOn = false;
+        amountTilNextOccurence = ProgressBar.Instance.GetSlideValue() + occurenceAmount;
     }
 
     private void TimerCountdown_OnSecondChange(int countDown)
     {
-        if (amountTilNextOccurence == 0) amountTilNextOccurence = ProgressBar.Instance.GetSlideValue() + occurenceAmount;
-
         int secondsPassed = TimerCountdown.Instance.SecondsMax - countDown;
         float sustainValue = ProgressBar.Instance.GetSlideValue();
         MiniGameManager manager = FindObjectOfType<MiniGameManager>();

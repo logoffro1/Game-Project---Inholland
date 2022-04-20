@@ -9,7 +9,6 @@ public class OfficeTV : InteractableObject
 {
     private OfficeLevelSelector officeLevels;
 
-    [SerializeField] private RenderObjects normalRenderer;
 
     private void Start()
     {
@@ -18,7 +17,6 @@ public class OfficeTV : InteractableObject
 
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
-        normalRenderer.SetActive(true);
     }
     public override void DoAction(GameObject player)
     {
