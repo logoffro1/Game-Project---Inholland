@@ -19,7 +19,7 @@ public class OneOffUpgrade
     public int Level { get { return level; } private set { level = value; } }
 
     private Action levelUpFunction;
-    private int maxLevel = 2;
+    private int maxLevel = 8;
     public int MaxLevel { get { return maxLevel; } private set { maxLevel = value; } }
 
     //For optimizing purposed
