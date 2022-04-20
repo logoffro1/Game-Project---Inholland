@@ -11,7 +11,9 @@ public class Piece : MonoBehaviour
     public Vector3Int[] cells { get; private set; }
 
     public int rotationIndex { get; private set; }
-
+    public AudioSource audioSource;
+    public AudioClip flipPieceSound;
+    public AudioClip movePieceSound;
 
     public float stepDelay = 1f; //By default its one second.
 
@@ -19,6 +21,11 @@ public class Piece : MonoBehaviour
 
     private float stepTime;
     private float lockTime;
+
+    private void Start()
+    {
+        this.audioSource = GetComponent<AudioSource>();
+    }
     public void Init(Board board,Vector3Int position, TetrominoData tetrisData)
     {
         this.board = board;
@@ -52,36 +59,42 @@ public class Piece : MonoBehaviour
 
     private void handlePieceMovement()
     {
+        if (Time.time >= this.stepTime)
+        {
+            Step();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             Rotate(1);
+            this.audioSource.PlayOneShot(flipPieceSound);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Rotate(-1);
+            this.audioSource.PlayOneShot(flipPieceSound);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             Move(Vector2Int.left);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             Move(Vector2Int.right);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             Move(Vector2Int.down);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             HardDrop();
         }
-        if (Time.time >= this.stepTime)
-        {
-            Step();
-        }
+      
     }
 
     private void Step()
@@ -182,7 +195,6 @@ public class Piece : MonoBehaviour
         Vector3Int newPosition = this.position;
         newPosition.x += translation.x;
         newPosition.y += translation.y;
-
         bool valid = this.board.IsValidPosition(this,newPosition);
 
         if (valid)

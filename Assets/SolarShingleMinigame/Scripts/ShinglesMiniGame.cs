@@ -6,21 +6,42 @@ using UnityEngine.Localization.Settings;
 
 public class ShinglesMiniGame : MiniGameBase
 {
+    public AudioSource audioSource;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+    private Board board;
     private void Start()
     {
-
-            description = "Build two rows to complete the solar panel!\n\nKEYS\nA,D - Move left / right\nS - Drop\nSPACE - Hard Drop\nQ,E - Rotate left / right";
+            audioSource = GetComponent<AudioSource>();
+            description = "Build rows to complete the solar panel!\nKEYS\nA,D-Move left / right\nS-Drop\nSPACE-Hard Drop\nQ,E-Rotate left /right";
 
 
           //  description = "Bouw twee rijen om het zonnepaneel te voltooien!\n\nKEYS\nA,D - Ga naar links / Rechtsaf\nS - Val\nSPACE - Harde val\nQ,E - Draai naar links / Rechtsaf";
      
     }
+
+    //abstract methods
+    public override void CoordinateLevel() {
+        Debug.Log(((int)this.Level / 14));
+        board = gameObject.GetComponentInChildren<Board>();
+        board.amountOfLinesNeeded = ((int)this.Level / 14);
+          board.amountText.text = $"{board.amountOfLinesNeeded}";
+        board.imageFillMaxValue = board.amountOfLinesNeeded;
+
+    }
     public override void GameFinish(bool succesful)
     {
-        
+
         if (succesful)
+        {
             this.GameWon();
+            audioSource.PlayOneShot(winClip);
+
+        }
         else
+        {
+            audioSource.PlayOneShot(loseClip);
             this.GameOver();
+        }
     }
 }
