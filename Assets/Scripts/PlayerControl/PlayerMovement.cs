@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove { get; set; } = true;
     void Start()
     {
+        Time.timeScale = 1f;
         controller = GetComponent<CharacterController>();
         canMove = true;
     }
