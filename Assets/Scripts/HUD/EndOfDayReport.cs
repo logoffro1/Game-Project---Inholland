@@ -19,6 +19,7 @@ public class EndOfDayReport : MonoBehaviour
     public Text timeBonus;
     public Text Income;
     private PlayFabManager playFabManager;
+    public AudioClip DayReportAudio;
 
 
 
@@ -35,24 +36,21 @@ public class EndOfDayReport : MonoBehaviour
         //This is temporary. Multiplayer implementation will change it.
         playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
-        DistanceTraveled.text += $"  {distance} m";
+        DistanceTraveled.text += $"{distance} m";
 
         int playNr;
         
-        Success.text += $"  {playerReportData.GetTheSuccessfulMinigameNumber()}";
-        Fail.text += $"  {playerReportData.GetTheFailedMinigameNumber()}";
-        SliderValue.text += $"  {ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
-        TotalTasknumber.text += $"  {playerReportData.GetTotalTaskNumber()}";
-        Income.text = $"  {GetIncome()} SP"; //SP == Sustainability Points -> change
+        Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
+        Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
+        SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
+        TotalTasknumber.text += $"{playerReportData.GetTotalTaskNumber()}";
+        Income.text = $"{GetIncome()} SP"; //SP == Sustainability Points -> change
 
+        int remainingTime = TimerCountdown.Instance.GetRemainingTime();        
 
-        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
-
-        
-
-            MostPlayedMinigame.text += $"  {playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
-            timeBonus.text += $"  {remainingTime} seconds";
-            DayCondition.text += $"{getWinLoseCondition()} ";
+        MostPlayedMinigame.text += $"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
+        timeBonus.text += $"{remainingTime} seconds";
+        DayCondition.text += $"{getWinLoseCondition()} ";
         /*
             DayCondition.text = $"{getWinLoseConditionInDutch().ToString()}";
             Debug.Log(getWinLoseConditionInDutch());
@@ -64,7 +62,8 @@ public class EndOfDayReport : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0f;
-        
+
+        GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }
 
     private void writePlayFabData()
