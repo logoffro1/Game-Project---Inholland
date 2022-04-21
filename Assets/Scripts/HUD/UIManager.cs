@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
     {
         canvas.enabled = !canvas.enabled;
     }
+    public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
     {
         trashText.text = $"{currentAmount} / {limit}";

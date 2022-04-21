@@ -42,12 +42,22 @@ public class PlayerMovement : MonoBehaviour
                 canMove = true;
             }
         }
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        if (!canMove) return;
+        if(!IsRunning(horizontal,vertical))
+        {
+            anim.SetBool("isRunning", false);
+        }
+
+        if (!canMove)
+        {
+            return;
+        }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        Movement();
+        Movement(horizontal,vertical);
         Fall();
 
     }
@@ -59,19 +69,14 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-    private void Movement()
+    private void Movement(float horizontal, float vertical)
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        if(horizontal != 0 || vertical != 0)
+        if (IsRunning(horizontal,vertical))
         {
             anim.SetBool("isRunning", true);
-        }
-        else
-        {
-            anim.SetBool("isRunning", false);
         }
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * speed * Time.deltaTime);
     }
+    public bool IsRunning(float horizontal, float vertical) => horizontal != 0 || vertical != 0; 
 }
