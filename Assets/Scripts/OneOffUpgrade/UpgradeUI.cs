@@ -4,12 +4,13 @@ using System.Linq;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.Localization;
 
 public class UpgradeUI : MonoBehaviour
 {
     public TextMeshProUGUI upgradeDescriptionText;
     public TextMeshProUGUI[] buttonOptions;
+    public LocalizedString[] localizedStrings;
 
     public void TurnOff()
     {

@@ -36,7 +36,8 @@ public abstract class InteractableObject : MonoBehaviour
         }
         catch (Exception ex) //it gets here if localizedString is not set
         {
-            Debug.Log(ex.ToString());
+            
+            //Debug.Log(ex.ToString());
         }
     }
 
