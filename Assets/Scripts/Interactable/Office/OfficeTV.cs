@@ -11,7 +11,6 @@ public class OfficeTV : InteractableObject
     private OfficeLevelSelector officeLevels;
 
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
-    [SerializeField] private RenderObjects normalRenderer;
 
 
     private void Start()
