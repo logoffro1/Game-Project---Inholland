@@ -283,6 +283,14 @@ MonoBehaviour:
     m_Localized: XRay Goggles
     m_Metadata:
       m_Items: []
+  - m_Id: 6690084390842368
+    m_Localized: Choose your upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690306894475264
+    m_Localized: Get a few sustainability points
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

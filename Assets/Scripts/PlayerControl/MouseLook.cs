@@ -32,11 +32,7 @@ public class MouseLook : MonoBehaviour
         } 
         if (!canRotate) return;
         LookAround();
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+
 
     }
     private void LookAround()
