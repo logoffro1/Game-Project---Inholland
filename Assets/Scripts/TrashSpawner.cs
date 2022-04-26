@@ -16,6 +16,7 @@ public class TrashSpawner : MonoBehaviour
     }
     private IEnumerator SpawnRoutine() //not really efficient, but it works
     {
+        var offSet = transform.position;
         while (amount < limit)
         {
             Vector3 spawnPos = new Vector3(Random.Range(180f, -40f), 0.4f, Random.Range(100f, -60f));

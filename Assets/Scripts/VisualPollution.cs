@@ -48,9 +48,9 @@ public class VisualPollution : MonoBehaviour
         StartingVisuals();
         SetDustParticles();
         SetCanal();
-        SetAnimals();
+        if (animals != null) SetAnimals();
         SetPostProcessing();
-        SetPeople();
+        if (people != null) SetPeople();
     }
 
     private void StartingVisuals()
@@ -69,7 +69,7 @@ public class VisualPollution : MonoBehaviour
         UpdateFog(sustainabilityPercentage);
         //UpdateDustParticles(sustainabilityPercentage);
         UpdateCanalColor(sustainabilityPercentage);
-        UpdateAnimals(sustainabilityPercentage, allAnimals);
+        if (animals != null) UpdateAnimals(sustainabilityPercentage, allAnimals);
         UpdatePostProcessing(sustainabilityPercentage);
        // UpdateAnimals(sustainabilityPercentage, allPeople);
     }
