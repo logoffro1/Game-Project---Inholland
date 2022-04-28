@@ -59,14 +59,6 @@ MonoBehaviour:
     m_Key: choose_a_level
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Key: alkmaar_city_centre_description
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1355809124835328
-    m_Key: interact.hover.text
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
     m_Key: report.agent.name
     m_Metadata:
@@ -141,6 +133,106 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1521383484043264
     m_Key: GoalText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2385090661462016
+    m_Key: "trashText\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Key: plantText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Key: upgradeText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Key: cleanText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Key: buildSolarPanelText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Key: "emptyTrashText\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Key: taskListPlantTrees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Key: taskListSolarPanels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Key: taskListStreetLamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Key: taskListSewers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Key: hintDigGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Key: hintColorBeep
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Key: hintSewageGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Key: hintRewireGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Key: hintSolarPanelsGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Key: successText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Key: failureText
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Key: alkmaarLevelDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6550175411744768
+    m_Key: txtLocation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521600
+    m_Key: New Entry
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Key: txtIncome
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Key: "txtRechargeGoggles\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Key: txtXrayGoggles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690084390842368
+    m_Key: txtChooseUpgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690306894475264
+    m_Key: txtGetSustainabilityPoints
     m_Metadata:
       m_Items: []
   m_Metadata:

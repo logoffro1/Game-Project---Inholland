@@ -26,7 +26,7 @@ public class InteractableTaskObject : InteractableObject
 
     private void Start()
     {
-        DetermineObject();
+        //DetermineObject();
         SetInteractableTaskStatusModels();
     }
 
@@ -81,7 +81,7 @@ public class InteractableTaskObject : InteractableObject
         }
     }
 
-    private void DetermineObject()
+/*    private void DetermineObject()
     {
 
         string tag = gameObject.tag;
@@ -106,5 +106,5 @@ public class InteractableTaskObject : InteractableObject
             }
             return;
       
-    }
+    }*/
 }

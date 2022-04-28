@@ -33,10 +33,10 @@ namespace UnityStandardAssets.Utility
                 m_FpsNextPeriod += fpsMeasurePeriod;
                 m_Text.text = string.Format(display, m_CurrentFps);
             }
-
+/*
             if(Input.GetKeyDown(KeyCode.Escape)) {
                 Application.Quit();
-            }
+            }*/
         }
     }
 }

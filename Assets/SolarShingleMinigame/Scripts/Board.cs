@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
@@ -9,9 +11,14 @@ public class Board : MonoBehaviour
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(7, 8);
+    public AudioSource audioSource;
+    public AudioClip lineClear;
+    public TextMeshProUGUI amountText;
+    public Image solarPanelImage;
+    public int imageFillMaxValue;
 
     public ShinglesMiniGame shinglesGame;
-    public int amountOfLinesNeeded { get; private set; }
+    public int amountOfLinesNeeded { get;  set; }
 
     public bool isGameOver = false;
 
@@ -26,9 +33,10 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+        this.solarPanelImage.fillAmount = 0f;
+        this.audioSource = GetComponent<AudioSource>();
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.amountOfLinesNeeded = 3; //Basic difficulty.
         for (int i = 0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -48,6 +56,7 @@ public class Board : MonoBehaviour
         {
             isGameOver = true;
             shinglesGame.GameFinish(false);
+            amountText.text = "0";
         }
         else
         {
@@ -83,6 +92,7 @@ public class Board : MonoBehaviour
         RectInt bounds = this.Bounds;
         for (int i = 0; i < piece.cells.Length; i++)
         {
+
             Vector3Int tilePosition = piece.cells[i] + position;
             if (!bounds.Contains((Vector2Int)tilePosition))
             {
@@ -107,18 +117,30 @@ public class Board : MonoBehaviour
             {
                 LineClear(row);
                 this.amountOfLinesNeeded--;
+                this.amountText.text = $"{amountOfLinesNeeded}";
+                float diff = (float)imageFillMaxValue - (float)amountOfLinesNeeded;
+                Debug.Log(diff);
+                this.solarPanelImage.fillAmount = diff/ (float)imageFillMaxValue;
                 if (amountOfLinesNeeded <= 0)
                 {
+                    this.amountText.text = "0";
                     isGameOver = true;
                     shinglesGame.GameFinish(true);
+                }
+                else
+                {
+                    this.audioSource.PlayOneShot(lineClear);
                 }
             }
             else
             {
                 row++;
+
             }
+
         }
     }
+
     private void LineClear(int row)
     {
         RectInt bounds = this.Bounds;

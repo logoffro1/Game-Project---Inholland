@@ -40,7 +40,6 @@ public class LevelManager : MonoBehaviour
         do
         {
             await Task.Delay(500);
-            Debug.Log(scene.progress);
             target = scene.progress;
             await Task.Delay(1000);
         } while (scene.progress < 0.9f);

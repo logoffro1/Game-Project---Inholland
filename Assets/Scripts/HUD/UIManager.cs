@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
             timerCountdown.OnStartCountdownChange += TimerCountdown_OnStartCountdownChange;
 
             //Setting the start of the countdown
-            countDownText.text = CountdownString(TimerCountdown.SecondsMax);
+            countDownText.text = CountdownString(TimerCountdown.Instance.SecondsMax);
             countDownText.gameObject.SetActive(false);
         }
 
@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
     {
         canvas.enabled = !canvas.enabled;
     }
+    public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
     {
         trashText.text = $"{currentAmount} / {limit}";

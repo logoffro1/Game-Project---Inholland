@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Dragger : MonoBehaviour
 {
     private Camera _cam;
     private WireSpawner spawner;
-
-    //Game features
-    private bool connectedCorrect = false;
-    private Collider2D inCollisionWith;
+    private Vector3 originalPosition;
 
     private void Start()
     {
         spawner = FindObjectOfType<WireSpawner>();
+        originalPosition = transform.position;
     }
 
     private void Awake()
@@ -30,7 +29,6 @@ public class Dragger : MonoBehaviour
 
     private Vector3 GetMousePos()
     {
-        
         //Getting position of the mouse
         var mousePos = Input.mousePosition;
         var distance = Math.Abs(_cam.transform.position.z - transform.position.z);
@@ -42,40 +40,37 @@ public class Dragger : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (inCollisionWith != null && inCollisionWith.CompareTag("WireBackgroundPoint"))
+        Collider2D[] colliders = Physics2D.OverlapBoxAll(GetComponent<RectTransform>().position, GetComponent<BoxCollider2D>().size, 0);
+        List<Collider2D> colliderList = colliders.Where(x => x.CompareTag("WireBackgroundPoint")).ToList();
+
+        if (colliderList.Any())
         {
-            //Getting if they have the same parent, thus saying they are matching
-            connectedCorrect = transform.parent == inCollisionWith.transform.parent;
+            Collider2D collider = colliderList.Where(x => x.transform.parent == transform.parent).FirstOrDefault();
 
             //Locking in spot that they dropped on, for the endWire
-            var collidedObject = inCollisionWith.transform.GetComponent<RectTransform>();
-            var endPosition = collidedObject.transform.position;
-            GetComponent<RectTransform>().position = endPosition;
+            var collidedObject = collider != null ? collider.transform.GetComponent<RectTransform>() : colliderList.FirstOrDefault().transform.GetComponent<RectTransform>();
+            GetComponent<RectTransform>().position = collidedObject.transform.position;
 
             //Changing states, and possibily ending the game
             spawner.OneIsFinished();
-        }
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
 
-        if (connectedCorrect)
+
+            //Getting if they have the same parent, thus saying they are matching
+            if (collider != null)
+            {
+                spawner.OneIsSuccessFul();
+                spawner.InstantiateExplosion(collider.transform.position, transform.GetComponentInParent<Wire>().color);
+            }
+            else
+            {
+                spawner.OneFailed();
+            }
+        }
+        else
         {
-            spawner.OneIsSuccessFul();
+            //snaps back to original pos if placed on no colliders
+            transform.position = originalPosition;
         }
-
-        if (!connectedCorrect && inCollisionWith != null)
-        {
-            spawner.OneFailed();
-        }
-
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        inCollisionWith = collision;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        inCollisionWith = null;
-    }
-
 }

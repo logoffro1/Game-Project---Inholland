@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float speed = 5f;
+    public float Speed { get { return speed;  } set { speed = value; } }
     [SerializeField]
     private float gravity = -9.81f;
     private float groundDistance = 0.4f;  
@@ -16,9 +17,13 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     private bool isGrounded;
 
+    [SerializeField]
+    private Animator anim;
+
     public bool canMove { get; set; } = true;
     void Start()
     {
+        Time.timeScale = 1f;
         controller = GetComponent<CharacterController>();
         canMove = true;
     }
@@ -37,12 +42,22 @@ public class PlayerMovement : MonoBehaviour
                 canMove = true;
             }
         }
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        if (!canMove) return;
+        if(!IsRunning(horizontal,vertical))
+        {
+            anim.SetBool("isRunning", false);
+        }
+
+        if (!canMove)
+        {
+            return;
+        }
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        Movement();
+        Movement(horizontal,vertical);
         Fall();
 
     }
@@ -54,12 +69,14 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-    private void Movement()
+    private void Movement(float horizontal, float vertical)
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
+        if (IsRunning(horizontal,vertical))
+        {
+            anim.SetBool("isRunning", true);
+        }
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * speed * Time.deltaTime);
     }
+    public bool IsRunning(float horizontal, float vertical) => horizontal != 0 || vertical != 0; 
 }

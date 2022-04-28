@@ -98,6 +98,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInteractable: 1
+  localizedStringEvent: {fileID: 0}
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 2385090661462016
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!65 &2394532218924520944
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109,8 +121,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.0530128, y: 0.1, z: 0.55821705}
-  m_Center: {x: 0, y: 0.015932607, z: 0}
+  m_Size: {x: 1.0530128, y: 0.2675169, z: 0.55821705}
+  m_Center: {x: 0, y: 0.09969106, z: 0}
 --- !u!54 &7332625323405445978
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Components;
 
 public class TaskGenerator : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class TaskGenerator : MonoBehaviour
     public Material fixedMaterial;
     public Material failedMaterial;
 
+    public LocalizeStringEvent localizedStringEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -65,7 +67,8 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //Manually set which object is linked to which game
-        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
@@ -120,7 +123,7 @@ public class TaskGenerator : MonoBehaviour
         GameObject newTaskObject = interactableContainers.GetComponent<InteractableTaskStatusModels>().ChangeModel(TaskStatus.Untouched);
         newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
         newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
-
+        newTaskObject.GetComponent<InteractableTaskObject>().SetLocalizedString(localizedStringEvent);
         //Changes the color TODO: REMOVE 
         /*foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
         {

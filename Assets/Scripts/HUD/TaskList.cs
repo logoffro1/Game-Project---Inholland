@@ -6,6 +6,7 @@ using System;
 using TMPro;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Components;
 
 public class TaskList : MonoBehaviour
 {
@@ -22,49 +23,81 @@ public class TaskList : MonoBehaviour
 
     List<InteractableTaskStatusModels> tasks = new List<InteractableTaskStatusModels>();
     List<InteractableTaskStatusModels> allTasks = new List<InteractableTaskStatusModels>();
-    Dictionary<TaskObjectType,int[]> taskObjectTypes = new Dictionary<TaskObjectType,int[]>();
+    Dictionary<TaskObjectType, int[]> taskObjectTypes = new Dictionary<TaskObjectType, int[]>();
     Dictionary<TaskObjectType, string> taskStrings;
     private TextMeshProUGUI taskListText;
 
+    private LocalizeStringEvent localizedStringEvent;
+    [SerializeField] private LocalizedString[] localizedStrings;
+    private LocalizationSettings locSettings;
     // Start is called before the first frame update
     void Start()
     {
-
-            taskStrings = new Dictionary<TaskObjectType, string>()
+        taskStrings = new Dictionary<TaskObjectType, string>()
              {
-        { TaskObjectType.Tree, "Plant Trees" },
+        { TaskObjectType.Tree, "Plant trees"},
         { TaskObjectType.SolarPanel, "Set up solar panel" },
         { TaskObjectType.StreetLamp, "Upgrade street lamp" },
         { TaskObjectType.ManHole, "Clean sewers" }
          };
+        localizedStringEvent = GetComponent<LocalizeStringEvent>();
 
-        
+        localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
+        UpdateLocalization();
+
         FindObjects();
-        Debug.Log("Shingles: "+ solarCounter);
-        Debug.Log("Manhole: " + sewerCounter);
-        Debug.Log("Trees: " + treeCounter);
-        Debug.Log("Street lamps: " + lampCounter);
-        Debug.Log("Total tasks: " + totalObjects);
+
         AssignTasks();
         taskListText = GetComponent<TextMeshProUGUI>();
         //MiniGameManager.Instance.OnGameWon += OnTaskWon;
         UpdateText();
     }
 
- /*   // Update is called once per frame
-    void Update()
+    private void LocSettings_OnSelectedLocaleChanged(Locale obj)
     {
-        if (IsTaskListComplete)
-        {
-            Debug.Log("Minimum requirement and task list is complete");
-        }
+        UpdateLocalization();
     }
-*/
+
+
+    private void OnStringChanged(string s)
+    {
+        if (locSettings == null) return;
+        UpdateLocalization();
+    }
+    private async void UpdateLocalization()
+    {
+
+
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        locSettings = handle.Result;
+        locSettings.OnSelectedLocaleChanged += LocSettings_OnSelectedLocaleChanged;
+
+        int count = 0;
+        foreach (TaskObjectType type in taskStrings.Keys.ToList())
+        {
+            taskStrings[type] = locSettings
+                .GetStringDatabase()
+                .GetLocalizedString(localizedStrings[count].TableReference, localizedStrings[count].TableEntryReference);
+            count++;
+        }
+        UpdateText();
+        
+    }
+    /*   // Update is called once per frame
+       void Update()
+       {
+           if (IsTaskListComplete)
+           {
+               Debug.Log("Minimum requirement and task list is complete");
+           }
+       }
+   */
     List<InteractableTaskStatusModels> FindObjects()
     {
         List<InteractableTaskStatusModels> list = new List<InteractableTaskStatusModels>();
         foreach (InteractableTaskStatusModels task in FindObjectsOfType<InteractableTaskStatusModels>().Where(x => x.gameObject.GetComponentInChildren<InteractableTaskObject>() && x.gameObject.GetComponentInChildren<InteractableTaskObject>().Status == TaskStatus.Untouched))
-        {           
+        {
             if (task != null && task.enabled)
             {
                 if (task.tag == "SolarPanel")
@@ -93,13 +126,13 @@ public class TaskList : MonoBehaviour
     void AssignTasks()
     {
         List<TaskObjectType> allTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
-        
+
         for (int i = 0; i < 3; i++)
         {
-            TaskObjectType type = allTypes[UnityEngine.Random.Range(0,allTypes.Count)];
+            TaskObjectType type = allTypes[UnityEngine.Random.Range(0, allTypes.Count)];
             if (!taskObjectTypes.ContainsKey(type))
             {
-                taskObjectTypes.Add(type,new int[2] {0,UnityEngine.Random.Range(2, 6)});
+                taskObjectTypes.Add(type, new int[2] { 0, UnityEngine.Random.Range(2, 6) });
                 allTypes.Remove(type);
             }
         }
@@ -116,7 +149,8 @@ public class TaskList : MonoBehaviour
         {
             list.Add($"{taskStrings[kvp.Key]} ({kvp.Value[0]}/{kvp.Value[1]})");
         }
-        taskListText.text = string.Join("\n", list);
+        if(list.Count > 0)
+             taskListText.text = string.Join("\n", list);
     }
 
     public void TaskWon(InteractableTaskStatusModels task)
@@ -129,7 +163,7 @@ public class TaskList : MonoBehaviour
             if (task.tag == "SolarPanel")
             {
 
-                if (taskObjectTypes[TaskObjectType.SolarPanel][0]+1 <= taskObjectTypes[TaskObjectType.SolarPanel][1])
+                if (taskObjectTypes[TaskObjectType.SolarPanel][0] + 1 <= taskObjectTypes[TaskObjectType.SolarPanel][1])
                     taskObjectTypes[TaskObjectType.SolarPanel][0]++;
             }
             if (task.tag == "ManHole")
