@@ -212,7 +212,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
-    m_Key: New Entry
+    m_Key: HowToPlayBtn
     m_Metadata:
       m_Items: []
   - m_Id: 6551456519958528
@@ -233,6 +233,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6690306894475264
     m_Key: txtGetSustainabilityPoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Key: HowToPlayTxt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Key: ResumeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Key: ReturnToOfficeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Key: ReturnToMainMenuBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Key: ExitGameBtn
     m_Metadata:
       m_Items: []
   m_Metadata:
