@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324207442927284262}
+  - component: {fileID: -1893915208589211403}
   m_Layer: 0
   m_Name: InteractableBin
   m_TagString: Bin
@@ -23,14 +24,30 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887699589583741219}
-  m_LocalRotation: {x: 0, y: 0.61728996, z: 0, w: 0.7867358}
-  m_LocalPosition: {x: 0, y: 0.1799927, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9009853963015368565}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 76.237, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-1893915208589211403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887699589583741219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe10e6d9d88f064cbd3f43147f9ede0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UntouchedPrefabModel: {fileID: 5553110939071078385, guid: 03b827e9ed9cbe2419c6b603f9d9f17b, type: 3}
+  TouchedPrefabModel: {fileID: 5553110939071078385, guid: 26cb3419549e94a49857412338f10a66, type: 3}
+  SuccessPrefabModel: {fileID: 5553110939071078385, guid: b5c637126c90e29468d4d40157c794fe, type: 3}
+  FailPrefabModel: {fileID: 5553110939071078385, guid: 6b7aa3278a751f7468338445ace47500, type: 3}
 --- !u!1001 &4274516550661679678
 PrefabInstance:
   m_ObjectHideFlags: 0

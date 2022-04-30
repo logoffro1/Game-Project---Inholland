@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Office.unity
     guid: 5363c4650c006d0469bf3eacd9da8533
   - enabled: 0
-    path: Assets/ExternalAssets/PolygonFarm/Demo/Demo.unity
+    path: Assets/PolygonFarm/Demo/Demo.unity
     guid: 28ac9a59020c6bc459f797acd217859a
   - enabled: 0
     path: 

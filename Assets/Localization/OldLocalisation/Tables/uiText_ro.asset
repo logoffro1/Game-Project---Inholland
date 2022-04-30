@@ -249,6 +249,20 @@ MonoBehaviour:
     m_Localized: "Ob\u021Bine\u021Bi c\xE2teva puncte de sustenabilitate"
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: "Ap\u0103sa\u021Bi tastele corecte!\n\nAp\u0103sa\u021Bi A, S, D,
+      F c\xE2nd articolul cade \xEEn zona ro\u0219ie pentru a recicla articolele
+      \xEEn co\u0219ul corespunz\u0103tor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: "Recicla\u021Bi articolele"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: "Recicla\u021Bi articolele"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

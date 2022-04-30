@@ -291,6 +291,22 @@ MonoBehaviour:
     m_Localized: Get a few sustainability points
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: 'Press the correct keys!
+
+
+      Press A, S, D, F when the item
+      falls in the red zone to recycle the items in the proper bin'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

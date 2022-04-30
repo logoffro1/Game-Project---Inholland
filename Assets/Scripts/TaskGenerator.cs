@@ -72,7 +72,7 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
-        //allGamesToObjects.Add(TaskObjectType.Bin, GamePrefabs.Where(x => x.name.Contains("Bin")).ToList());
+        allGamesToObjects.Add(TaskObjectType.Bin, GamePrefabs.Where(x => x.name.Contains("Recycle")).ToList());
     }
 
     private void SetUpAllGamesToAmountSpawn()

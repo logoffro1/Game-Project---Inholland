@@ -51,13 +51,12 @@ public class Activator : MonoBehaviour
 
     public void RemoveFirstNote()
     {
-        notes.RemoveAt(0);
+        if (notes.Count > 0) notes.RemoveAt(0);
     }
 
     private IEnumerator WaitForDestroy(GameObject currentNode)
     {
         yield return new WaitForSeconds(5f);
         Destroy(currentNode);
-
     }
 }

@@ -106,7 +106,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 535315073119332185}
-  - component: {fileID: 1862040445}
   - component: {fileID: 3609637195270716851}
   - component: {fileID: 1178766753359909690}
   m_Layer: 0
@@ -139,51 +138,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1862040445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 535315073119332184}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbcb89b03ea95d949a15c19755c66e94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  successText: {fileID: 1438660997318854090}
-  descriptionText: {fileID: 6230880358567450139}
-  infoCanvas: {fileID: 7268036113774713522}
-  localizedStringEventDescription: {fileID: 3801274753714765687}
-  localizedStringHint:
-    m_TableReference:
-      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
-    m_TableEntryReference:
-      m_KeyId: 3068775396159488
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  localizedStringEventResult: {fileID: 5999853951414092032}
-  resultLocalizedString:
-  - m_TableReference:
-      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
-    m_TableEntryReference:
-      m_KeyId: 3074702782377984
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  - m_TableReference:
-      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
-    m_TableEntryReference:
-      m_KeyId: 3074801633734656
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  references:
-    version: 1
 --- !u!114 &3609637195270716851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,9 +156,9 @@ MonoBehaviour:
   localizedStringEventDescription: {fileID: 3801274753714765687}
   localizedStringHint:
     m_TableReference:
-      m_TableCollectionName: 
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 0
+      m_KeyId: 6551242266521600
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -228,6 +182,7 @@ MonoBehaviour:
     m_WaitForCompletion: 0
     m_LocalVariables: []
   ui: {fileID: 0}
+  activator: {fileID: 3266252127387440157}
   references:
     version: 1
 --- !u!114 &1178766753359909690
