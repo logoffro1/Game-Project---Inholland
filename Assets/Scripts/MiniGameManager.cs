@@ -38,6 +38,13 @@ public class MiniGameManager : MonoBehaviour
         playFabManager = FindObjectOfType<PlayFabManager>();
         PlayerData = FindObjectOfType<PlayerReportData>();
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartGame(tetrisGamePrefab);
+        }
+    }
 
     public void StartGame(GameObject miniGamePrefab)
     {
@@ -46,7 +53,7 @@ public class MiniGameManager : MonoBehaviour
         PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
-        miniGame.GetComponent<MiniGameBase>().SetLevel();
+        //miniGame.GetComponent<MiniGameBase>().SetLevel();
 
         IsPlaying = true;     
     }
