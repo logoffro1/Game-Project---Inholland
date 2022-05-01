@@ -87,5 +87,6 @@ public class CastRay : MonoBehaviour
         else
             maxObjectDistance = 4f;
     }
+
 }
 
