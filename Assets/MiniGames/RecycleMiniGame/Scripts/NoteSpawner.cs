@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
 {
-    public GameObject[] NotePrefabs;
+    public GameObject NoteContainer;
     private Vector3 spawnPosition;
     private bool gameFinished = false;
     public float Speed = 0.2f;
     public float MinWaitTime = 2f;
     public float MaxWaitTime = 4f;
+
+    private List<GameObject> notePrefabs;
 
 
 
@@ -17,6 +19,13 @@ public class NoteSpawner : MonoBehaviour
     void Start()
     {
         spawnPosition = transform.position + new Vector3(0, 1, 0);
+
+        notePrefabs = new List<GameObject>();
+        foreach(Transform child in NoteContainer.transform)
+        {
+            notePrefabs.Add(child.gameObject);
+        }
+
         StartCoroutine(SpawnNotes());
     }
 
@@ -26,7 +35,29 @@ public class NoteSpawner : MonoBehaviour
 
         while (!gameFinished)
         {
-            Instantiate(NotePrefabs[Random.Range(0, NotePrefabs.Length)], spawnPosition, transform.rotation, transform);
+            GameObject note = Instantiate(notePrefabs[Random.Range(0, notePrefabs.Count)], spawnPosition, transform.rotation, transform);
+
+            Color color;
+            switch(note.GetComponent<Note>().type)
+            {
+                case NoteTypeEnum.Paper:
+                    color = new Color(0.75f, 0.75f, 0.4f, 0.6f);
+                    break;
+                case NoteTypeEnum.Plastic:
+                    color = new Color(0.59f, 0.37f, 0.71f, 0.6f);
+                    break;
+                case NoteTypeEnum.Organic:
+                    color = new Color(0.42f, 0.73f, 0.38f, 0.6f);
+                    break;
+                case NoteTypeEnum.Glass:
+                    color = new Color(0.37f, 0.55f, 0.71f, 0.6f);
+                    break;
+                default:
+                    color = Color.white;
+                    break;
+            }
+
+            note.transform.GetChild(0).GetComponent<SpriteRenderer>().color = color;
             yield return new WaitForSeconds(Random.Range(MinWaitTime, MaxWaitTime));
         }
     }
