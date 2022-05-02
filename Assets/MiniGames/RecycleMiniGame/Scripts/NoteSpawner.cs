@@ -7,7 +7,9 @@ public class NoteSpawner : MonoBehaviour
     public GameObject[] NotePrefabs;
     private Vector3 spawnPosition;
     private bool gameFinished = false;
-    public float Speed;
+    public float Speed = 0.2f;
+    public float MinWaitTime = 2f;
+    public float MaxWaitTime = 4f;
 
 
 
@@ -25,7 +27,7 @@ public class NoteSpawner : MonoBehaviour
         while (!gameFinished)
         {
             Instantiate(NotePrefabs[Random.Range(0, NotePrefabs.Length)], spawnPosition, transform.rotation, transform);
-            yield return new WaitForSeconds(Random.Range(2f, 4f));
+            yield return new WaitForSeconds(Random.Range(MinWaitTime, MaxWaitTime));
         }
     }
 }

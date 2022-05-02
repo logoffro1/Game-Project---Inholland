@@ -12,11 +12,21 @@ public class RecycleMiniGame : MiniGameBase
     private Dictionary<NoteTypeEnum, int> notesCollected;
     public RecycleUI ui;
     public Activator activator;
+    private bool gameIsWon = false;
+
+    public AudioClip GoodNote;
+    public AudioClip BadNote;
+    public AudioClip PaperNote;
+    public AudioClip PlasticNote;
+    public AudioClip GlassNote;
+    public AudioClip OrganiicNote;
+    private AudioSource[] audioSource;
 
 
     private void Start()
     {
         notesCollected = new Dictionary<NoteTypeEnum, int>();
+        audioSource = GetComponents<AudioSource>();
 
         foreach (NoteTypeEnum type in System.Enum.GetValues(typeof(NoteTypeEnum)))
         {
@@ -39,19 +49,44 @@ public class RecycleMiniGame : MiniGameBase
 
     public void RemoveALife()
     {
-        lifes--;
-        ui.RemoveAHeart();
-        activator.RemoveFirstNote();
-        if (lifes < 0) GameFinish(false);
+        if (!gameIsWon)
+        {
+            lifes--;
+            ui.RemoveAHeart();
+            activator.RemoveFirstNote();
+            audioSource[0].PlayOneShot(BadNote);
+
+            if (lifes <= 0) GameFinish(false);
+        }
     }
 
     public void CollectANote(NoteTypeEnum note)
     {
         notesCollected[note]++;
         activator.RemoveFirstNote();
+        audioSource[0].PlayOneShot(GoodNote);
+
+        switch(note)
+        {
+            case NoteTypeEnum.Plastic:
+                audioSource[1].PlayOneShot(PlasticNote);
+                break;
+            case NoteTypeEnum.Glass:
+                audioSource[1].PlayOneShot(GlassNote);
+                break;
+            case NoteTypeEnum.Organic:
+                audioSource[1].PlayOneShot(OrganiicNote);
+                break;
+            case NoteTypeEnum.Paper:
+                audioSource[1].PlayOneShot(PaperNote);
+                break;
+            default:
+                break;
+        }
 
         if (notesCollected[note] >= amountToCollect && AreAllNotesCollected())
         {
+            gameIsWon = true;
             GameFinish(true);
         }
     }
