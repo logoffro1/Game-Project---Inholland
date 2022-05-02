@@ -6,7 +6,7 @@ public class LineRendererController : MonoBehaviour
 {
     // Start is called before the first frame update
     private LineRenderer lr;
-    private Transform[] points;
+    public Transform[] points { get; private set; }
     //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z,  
     //Canvas Limits top -0.004 x , -0.347 y ,300.009 z, 
    
@@ -20,7 +20,7 @@ public class LineRendererController : MonoBehaviour
     }
     private void setPoints()
     {
-        points = AddRandomPoints(20);
+        points = AddRandomPoints(30);
         lr.positionCount = points.Length;
         for (int i = 0; i < points.Length; i++)
         {
