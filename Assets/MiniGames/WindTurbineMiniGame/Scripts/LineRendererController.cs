@@ -13,19 +13,15 @@ public class LineRendererController : MonoBehaviour
     private void Start()
     {
         lr = GetComponent<LineRenderer>();
-        points = AddRandomPoints(10);
-        Debug.Log($"Length of points {points.Length}");
-        lr.positionCount = points.Length;
-     
-       foreach(Transform t in points)
-        {
-            Debug.Log($"{t.position.x} x , {t.position.y} y ,{t.position.z} z, ");
-        }
-       
-        
         lr.sortingOrder = 1;
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.material.color = Color.red;
+        setPoints();
+    }
+    private void setPoints()
+    {
+        points = AddRandomPoints(20);
+        lr.positionCount = points.Length;
         for (int i = 0; i < points.Length; i++)
         {
             lr.SetPosition(i, points[i].position);
@@ -40,7 +36,7 @@ public class LineRendererController : MonoBehaviour
         //Canvas Limits left side -1.444 x , -0.057 y ,300.009 z
         Transform[] points = new Transform[difficultyLevel];
         float maxLimit = 2.2f;
-        float minLimit = -2.8f;
+        float minLimit = -2.2f;
         float completeLimit = maxLimit - minLimit;
         float incrementValue = completeLimit / points.Length;
         float minY = -0.347f;
