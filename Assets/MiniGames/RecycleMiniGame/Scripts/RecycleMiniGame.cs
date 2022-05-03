@@ -8,8 +8,9 @@ public class RecycleMiniGame : MiniGameBase
 {
     private int lifes = 3;
 
-    private int amountToCollect = 1;
-    private Dictionary<NoteTypeEnum, int> notesCollected;
+    private int amountToCollect = 5;
+    private int amountCollected = 0;
+
     public RecycleUI ui;
     public Activator activator;
     private bool gameIsWon = false;
@@ -22,18 +23,14 @@ public class RecycleMiniGame : MiniGameBase
     public AudioClip OrganiicNote;
     private AudioSource[] audioSource;
 
+    private NoteSpawner noteSpawner;
+    public float TempLevel = 1;
 
     private void Start()
     {
-        notesCollected = new Dictionary<NoteTypeEnum, int>();
         audioSource = GetComponents<AudioSource>();
-
-        foreach (NoteTypeEnum type in System.Enum.GetValues(typeof(NoteTypeEnum)))
-        {
-            notesCollected.Add(type, 0);
-        }
-
         ui = GetComponent<RecycleUI>();
+        ui.SetUp(amountToCollect);
         SetLocalizedString();
     }
     public override void GameFinish(bool success)
@@ -44,7 +41,26 @@ public class RecycleMiniGame : MiniGameBase
 
     public override void CoordinateLevel()
     {
-       
+        //Amount to collect
+        int minAmountToCollect = 3;
+        int maxAmountToCollect = 20;
+        //Speed
+        float minSpeed = 0.1f;
+        float maxSpeed = 0.38f;
+        //Min wait time
+        float minMinWaitTime = 0.6f;
+        float maxMinWaitTime = 1.4f;
+        //Max wait time
+        float minMaxWaitTime = 1.4f;
+        float maxMaxWaitTime = 3.6f;
+
+
+        noteSpawner = GetComponentInChildren<NoteSpawner>();
+        amountToCollect = minAmountToCollect + (int)(Mathf.CeilToInt(maxAmountToCollect - minAmountToCollect) * (TempLevel / 100));
+        noteSpawner.Speed = minSpeed + (Mathf.Ceil(maxSpeed - minSpeed) * (TempLevel / 100));
+        noteSpawner.MinWaitTime = minMinWaitTime + (Mathf.Ceil(maxMinWaitTime - minMinWaitTime) * ((100 - TempLevel) / 100));
+        noteSpawner.MaxWaitTime = minMaxWaitTime + (Mathf.Ceil(maxMaxWaitTime - minMaxWaitTime) * ((100 - TempLevel) / 100));
+
     }
 
     public void RemoveALife()
@@ -52,7 +68,7 @@ public class RecycleMiniGame : MiniGameBase
         if (!gameIsWon)
         {
             lifes--;
-            ui.RemoveAHeart();
+            ui.RemoveAHeart(lifes);
             activator.RemoveFirstNote();
             audioSource[0].PlayOneShot(BadNote);
 
@@ -62,7 +78,8 @@ public class RecycleMiniGame : MiniGameBase
 
     public void CollectANote(NoteTypeEnum note)
     {
-        notesCollected[note]++;
+        amountCollected++;
+        ui.AddToCounter(amountCollected);
         activator.RemoveFirstNote();
         audioSource[0].PlayOneShot(GoodNote);
 
@@ -84,22 +101,10 @@ public class RecycleMiniGame : MiniGameBase
                 break;
         }
 
-        if (notesCollected[note] >= amountToCollect && AreAllNotesCollected())
+        if (amountCollected >= amountToCollect)
         {
             gameIsWon = true;
             GameFinish(true);
         }
     }
-
-    private bool AreAllNotesCollected()
-    {
-        foreach(int amount in notesCollected.Values)
-        {
-            if (amount < amountToCollect)
-                return false;
-        }
-
-        return true;
-    }
-
 }

@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class RecycleUI : MonoBehaviour
 {
     public List<GameObject> lives;
+    public TextMeshProUGUI ProgressText;
+    private int amountToCollect;
 
-    public void RemoveAHeart()
+    public void SetUp(int amountToCollect)
     {
-        if (lives.Count - 1 < 0) return;
-
-        GameObject life = lives[lives.Count - 1];
-        Destroy(life);
-        lives.Remove(life);
-        //TODO: Add animation
+        this.amountToCollect = amountToCollect;
+        ProgressText.text = $"0 / {amountToCollect}";
     }
 
-    public void MoveNoteToBin(GameObject note, Vector3 position)
+    public void RemoveAHeart(int lifes)
     {
-        //note.transform.LookAt(position);
+        if (lifes < 0) return;
+
+        GameObject life = lives[lifes];
+        life.GetComponent<Animator>().SetTrigger("CollectiblePassed");
+    }
+
+    public void AddToCounter(int amountCollected)
+    {
+        ProgressText.text = $"{amountCollected} / {amountToCollect}";
     }
 }

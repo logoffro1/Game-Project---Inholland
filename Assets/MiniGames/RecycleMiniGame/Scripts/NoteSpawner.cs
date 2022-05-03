@@ -7,13 +7,11 @@ public class NoteSpawner : MonoBehaviour
     public GameObject NoteContainer;
     private Vector3 spawnPosition;
     private bool gameFinished = false;
-    public float Speed = 0.2f;
-    public float MinWaitTime = 2f;
-    public float MaxWaitTime = 4f;
+    public float Speed = 0.05f;
+    public float MinWaitTime = 5f;
+    public float MaxWaitTime = 6f;
 
     private List<GameObject> notePrefabs;
-
-
 
     // Start is called before the first frame update
     void Start()
