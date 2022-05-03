@@ -8,6 +8,7 @@ public class RecycleUI : MonoBehaviour
     public List<GameObject> lives;
     public TextMeshProUGUI ProgressText;
     private int amountToCollect;
+    public GameObject Explosion;
 
     public void SetUp(int amountToCollect)
     {
@@ -26,5 +27,12 @@ public class RecycleUI : MonoBehaviour
     public void AddToCounter(int amountCollected)
     {
         ProgressText.text = $"{amountCollected} / {amountToCollect}";
+    }
+
+    public void ExplodeParticles(GameObject note)
+    {
+        GameObject explosion = Instantiate(Explosion, note.transform.position, note.transform.rotation, note.transform);
+        var main = explosion.GetComponent<ParticleSystem>().main;
+        main.startColor = note.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
     }
 }

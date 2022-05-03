@@ -55,13 +55,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 855775498640758839, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1178766753359909690, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 1022970526871509993, guid: 8fcef9e38f269c84aa62176f8662a112, type: 3}
     - target: {fileID: 1178766753359909690, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: ProgressText
       value: 
       objectReference: {fileID: 4325627670245136156}
     - target: {fileID: 3609637195270716851, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: TempLevel
-      value: 95
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4607273727427805381, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_fontColor.b
@@ -95,6 +103,10 @@ PrefabInstance:
       propertyPath: NoteContainer
       value: 
       objectReference: {fileID: 6027342244601485418, guid: 1250581790637134580b681a3f4edd78, type: 3}
+    - target: {fileID: 8105558190894956838, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
 --- !u!1 &777815342654803259 stripped

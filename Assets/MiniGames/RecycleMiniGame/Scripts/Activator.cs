@@ -17,7 +17,7 @@ public class Activator : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F))
         {
             if (notes.Count > 0)
             {
@@ -29,6 +29,7 @@ public class Activator : MonoBehaviour
                     var noteComp = currentNode.GetComponent<Note>();
                     noteComp.Bin = bin;
                     game.CollectANote(noteComp.type);
+                    game.ui.ExplodeParticles(currentNode);
                     StartCoroutine(WaitForDestroy(currentNode));
                 }
                 else

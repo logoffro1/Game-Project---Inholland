@@ -24,7 +24,7 @@ public class RecycleMiniGame : MiniGameBase
     private AudioSource[] audioSource;
 
     private NoteSpawner noteSpawner;
-    public float TempLevel = 1;
+    private bool currentlyLoosing;
 
     private void Start()
     {
@@ -42,11 +42,11 @@ public class RecycleMiniGame : MiniGameBase
     public override void CoordinateLevel()
     {
         //Amount to collect
-        int minAmountToCollect = 3;
+        int minAmountToCollect = 2;
         int maxAmountToCollect = 20;
         //Speed
-        float minSpeed = 0.1f;
-        float maxSpeed = 0.38f;
+        float minSpeed = 0.08f;
+        float maxSpeed = 0.3f;
         //Min wait time
         float minMinWaitTime = 0.6f;
         float maxMinWaitTime = 1.4f;
@@ -54,23 +54,26 @@ public class RecycleMiniGame : MiniGameBase
         float minMaxWaitTime = 1.4f;
         float maxMaxWaitTime = 3.6f;
 
-
         noteSpawner = GetComponentInChildren<NoteSpawner>();
-        amountToCollect = minAmountToCollect + (int)(Mathf.CeilToInt(maxAmountToCollect - minAmountToCollect) * (TempLevel / 100));
-        noteSpawner.Speed = minSpeed + (Mathf.Ceil(maxSpeed - minSpeed) * (TempLevel / 100));
-        noteSpawner.MinWaitTime = minMinWaitTime + (Mathf.Ceil(maxMinWaitTime - minMinWaitTime) * ((100 - TempLevel) / 100));
-        noteSpawner.MaxWaitTime = minMaxWaitTime + (Mathf.Ceil(maxMaxWaitTime - minMaxWaitTime) * ((100 - TempLevel) / 100));
+        amountToCollect = minAmountToCollect + (int)(Mathf.CeilToInt(maxAmountToCollect - minAmountToCollect) * (Level / 100));
+        noteSpawner.Speed = minSpeed + (Mathf.Ceil(maxSpeed - minSpeed) * (Level / 100));
+        noteSpawner.MinWaitTime = minMinWaitTime + (Mathf.Ceil(maxMinWaitTime - minMinWaitTime) * ((100 - Level) / 100));
+        noteSpawner.MaxWaitTime = minMaxWaitTime + (Mathf.Ceil(maxMaxWaitTime - minMaxWaitTime) * ((100 - Level) / 100));
 
     }
 
     public void RemoveALife()
     {
-        if (!gameIsWon)
+        if (!gameIsWon && !currentlyLoosing)
         {
+            currentlyLoosing = true;
+
             lifes--;
             ui.RemoveAHeart(lifes);
             activator.RemoveFirstNote();
             audioSource[0].PlayOneShot(BadNote);
+
+            currentlyLoosing = false;
 
             if (lifes <= 0) GameFinish(false);
         }
