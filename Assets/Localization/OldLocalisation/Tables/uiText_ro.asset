@@ -249,6 +249,11 @@ MonoBehaviour:
     m_Localized: "Ob\u021Bine\u021Bi c\xE2teva puncte de sustenabilitate"
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: "\xCEncerca\u021Bi s\u0103 utiliza\u021Bi pistolul de sudur\u0103
+      \xEEn interiorul liniei!\r\n\r\nChei\r\nW- Du-te sus\r\nS-jos"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

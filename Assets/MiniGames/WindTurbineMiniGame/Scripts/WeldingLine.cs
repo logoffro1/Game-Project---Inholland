@@ -11,9 +11,11 @@ public class WeldingLine : MonoBehaviour
     LineRenderer lr;
     private bool isStarted;
     public LineRendererController lrController;
+    WindTurbineMinigame minigame;
     float speed = 0.1f;
     void Start()
     {
+        minigame = GetComponentInParent<WindTurbineMinigame>();
         isStarted = false;
       /*  lrController = FindObjectOfType<LineRendererController>();
         gameObject.transform.position = lrController.points[0].position;*/
@@ -60,7 +62,7 @@ public class WeldingLine : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isStarted = false;
-
+        minigame.GameFinish(false);
         Debug.Log("lostgametriggerWelding");
     }
    

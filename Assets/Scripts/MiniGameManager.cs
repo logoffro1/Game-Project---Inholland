@@ -78,8 +78,9 @@ public class MiniGameManager : MonoBehaviour
     public void GameOver()
     {
         
-        PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
+        PlayerData.AddLostGames(InteractableObject.GamePrefab);
+
     }
 
     public void GameWon()

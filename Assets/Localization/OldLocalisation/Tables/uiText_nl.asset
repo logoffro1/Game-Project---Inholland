@@ -291,6 +291,21 @@ MonoBehaviour:
     m_Localized: Haal een paar duurzaamheidspunten
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: '
+
+      Probeer de lastoorts binnen de lijn te gebruiken!
+
+      
+
+      TOETSEN
+
+      W-
+      Omhoog gaan
+
+      S-naar beneden'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

@@ -18,6 +18,7 @@ TagManager:
   - Water
   - Animal
   - People
+  - WindTurbine
   layers:
   - Default
   - TransparentFX
