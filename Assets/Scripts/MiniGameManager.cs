@@ -56,7 +56,7 @@ public class MiniGameManager : MonoBehaviour
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
         //Uncomment and implement this for turbine mini game merge!!!!
-        //miniGame.GetComponent<MiniGameBase>().SetLevel();
+        miniGame.GetComponent<MiniGameBase>().SetLevel();
 
         IsPlaying = true;     
     }
