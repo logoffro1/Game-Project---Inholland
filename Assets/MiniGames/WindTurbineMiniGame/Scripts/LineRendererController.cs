@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//[RequireComponent(typeof(EdgeCollider2D))]
+
 public class LineRendererController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -23,16 +23,10 @@ public class LineRendererController : MonoBehaviour
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.material.color = Color.red;
        
-        setPoints();
-      //  SetEdgeCollider(lr);
+        setPoints();    
         torch = FindObjectOfType<WeldingLine>();
         torch.SetPosition(points[0].position);
 
-    }
-
-    private void Update()
-    {
-       // SetEdgeCollider(lr);
     }
 
      public Vector3[] GetPositions()
@@ -47,17 +41,7 @@ public class LineRendererController : MonoBehaviour
         return lr.startWidth;
     }
 
-    void SetEdgeCollider(LineRenderer lr)
-    {
-        List<Vector2> edges = new List<Vector2>();
-
-        for(int i = 0; i < lr.positionCount; i++)
-        {
-            Vector3 lineRendererv3 = lr.GetPosition(i);
-            edges.Add(new Vector2(lineRendererv3.x, lineRendererv3.y));
-        }
-        //ed2d.SetPoints(edges);
-    }
+  
     private void setPoints()
     {
         points = AddRandomPoints(15);
