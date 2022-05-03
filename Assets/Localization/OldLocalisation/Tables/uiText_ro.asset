@@ -254,6 +254,10 @@ MonoBehaviour:
       \xEEn interiorul liniei!\r\n\r\nChei\r\nW- Du-te sus\r\nS-jos"
     m_Metadata:
       m_Items: []
+  - m_Id: 11217092649213952
+    m_Localized: Ventilatoare pentru turbine de sudare
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

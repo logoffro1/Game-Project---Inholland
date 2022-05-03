@@ -235,6 +235,10 @@ MonoBehaviour:
     m_Key: txtGetSustainabilityPoints
     m_Metadata:
       m_Items: []
+  - m_Id: 11217092649213952
+    m_Key: taskListWindTurbine
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
