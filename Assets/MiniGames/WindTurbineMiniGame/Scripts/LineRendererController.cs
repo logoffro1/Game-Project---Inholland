@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(EdgeCollider2D))]
+//[RequireComponent(typeof(EdgeCollider2D))]
 public class LineRendererController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private LineRenderer lr;
-    EdgeCollider2D ed2d;
+    public LineRenderer lr;
+    //EdgeCollider2D ed2d;
     WeldingLine torch;
     public Transform[] points { get; private set; }
    
     //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z,  
     //Canvas Limits top -0.004 x , -0.347 y ,300.009 z, 
    
-    private void Start()
+    private void Awake()
     {
-        ed2d = this.GetComponent<EdgeCollider2D>();
+        //ed2d = this.GetComponent<EdgeCollider2D>();
         lr = GetComponent<LineRenderer>();
         lr.sortingOrder = 1;
 
@@ -24,7 +24,7 @@ public class LineRendererController : MonoBehaviour
         lr.material.color = Color.red;
        
         setPoints();
-        SetEdgeCollider(lr);
+      //  SetEdgeCollider(lr);
         torch = FindObjectOfType<WeldingLine>();
         torch.SetPosition(points[0].position);
 
@@ -32,7 +32,19 @@ public class LineRendererController : MonoBehaviour
 
     private void Update()
     {
-        SetEdgeCollider(lr);
+       // SetEdgeCollider(lr);
+    }
+
+     public Vector3[] GetPositions()
+    {
+        Vector3[] positions = new Vector3[lr.positionCount];
+        lr.GetPositions(positions);
+        return positions;
+    }
+
+    public float GetWidth() {
+
+        return lr.startWidth;
     }
 
     void SetEdgeCollider(LineRenderer lr)
@@ -44,7 +56,7 @@ public class LineRendererController : MonoBehaviour
             Vector3 lineRendererv3 = lr.GetPosition(i);
             edges.Add(new Vector2(lineRendererv3.x, lineRendererv3.y));
         }
-        ed2d.SetPoints(edges);
+        //ed2d.SetPoints(edges);
     }
     private void setPoints()
     {
@@ -88,11 +100,4 @@ public class LineRendererController : MonoBehaviour
         }
         return points;
     }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("lostgame");
-
-    }
-
 }

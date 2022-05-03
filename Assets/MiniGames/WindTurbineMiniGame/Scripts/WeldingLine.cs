@@ -61,18 +61,18 @@ public class WeldingLine : MonoBehaviour
     {
         isStarted = false;
 
-        Debug.Log("lostgame");
+        Debug.Log("lostgametriggerWelding");
     }
    
     private void OnCollisionExit2D(Collision2D collision)
     {
         isStarted = false;
-        Debug.Log("lostgameCollision");
+        Debug.Log("lostgameCollisionwelding");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            Debug.Log("Touched");
+            Debug.Log("Touchedcollisionwelding");
         
     }
     bool GameEnded()
