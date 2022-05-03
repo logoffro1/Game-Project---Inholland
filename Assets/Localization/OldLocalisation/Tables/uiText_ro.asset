@@ -283,6 +283,10 @@ MonoBehaviour:
     m_Localized: "IE\u0218I\u021AI JOCUL"
     m_Metadata:
       m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: "\xCENAPOI"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

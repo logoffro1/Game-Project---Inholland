@@ -334,6 +334,10 @@ MonoBehaviour:
     m_Localized: SPEL VERLATEN
     m_Metadata:
       m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: TERUG
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

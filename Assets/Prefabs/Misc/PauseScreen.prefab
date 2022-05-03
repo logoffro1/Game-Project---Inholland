@@ -575,7 +575,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5742053764927488
+      m_KeyId: 10076490606612480
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 1906933332894752239}
   - component: {fileID: 1906933332894752237}
   - component: {fileID: 1906933332894752238}
+  - component: {fileID: 1383018948}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -890,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -899,10 +900,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 0
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -910,7 +911,46 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X
+  m_Text: BACK
+--- !u!114 &1383018948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906933332894752224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 11189247741562880
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1906933332894752238}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  references:
+    version: 1
 --- !u!1 &1906933332929829074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,7 +1196,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5741991416598528
+      m_KeyId: 6551242266521600
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1294,7 +1334,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5741884654784512
+      m_KeyId: 10076190596435968
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1564,7 +1604,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5742118940217344
+      m_KeyId: 10076751186137088
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1701,7 +1741,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5742210191495168
+      m_KeyId: 10076805695311872
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1838,7 +1878,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 5742186560786432
+      m_KeyId: 10076774460329984
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1897,7 +1937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 309.6, y: 91.23688}
+  m_AnchoredPosition: {x: -8.8, y: -97.6}
   m_SizeDelta: {x: 62.9827, y: 35.5263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1906933333615738664
