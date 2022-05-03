@@ -8,6 +8,7 @@ public class LineRendererController : MonoBehaviour
     // Start is called before the first frame update
     private LineRenderer lr;
     EdgeCollider2D ed2d;
+    WeldingLine torch;
     public Transform[] points { get; private set; }
    
     //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z,  
@@ -23,6 +24,14 @@ public class LineRendererController : MonoBehaviour
         lr.material.color = Color.red;
        
         setPoints();
+        SetEdgeCollider(lr);
+        torch = FindObjectOfType<WeldingLine>();
+        torch.SetPosition(points[0].position);
+
+    }
+
+    private void Update()
+    {
         SetEdgeCollider(lr);
     }
 

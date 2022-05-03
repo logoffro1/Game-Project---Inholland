@@ -15,7 +15,8 @@ public class WeldingLine : MonoBehaviour
     void Start()
     {
         isStarted = false;
-      /*  gameObject.transform.position = new Vector2(lrController.points[0].localPosition.x, lrController.points[0].localPosition.y);*/
+      /*  lrController = FindObjectOfType<LineRendererController>();
+        gameObject.transform.position = lrController.points[0].position;*/
         /*      lr = GetComponent<LineRenderer>();
               lr.material.color = Color.yellow;*/
 
@@ -25,10 +26,16 @@ public class WeldingLine : MonoBehaviour
 
     }
 
+    public void SetPosition(Vector3 pos)
+    {
+        gameObject.transform.position = pos;
+    }
+
     // Update is called once per frame
     void Update()
     {
-      
+        
+        if(isStarted)
         transform.Translate(Vector3.right * speed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.W))
@@ -52,7 +59,15 @@ public class WeldingLine : MonoBehaviour
   
     private void OnTriggerExit2D(Collider2D collision)
     {
+        isStarted = false;
+
         Debug.Log("lostgame");
+    }
+   
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        isStarted = false;
+        Debug.Log("lostgameCollision");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -62,7 +77,6 @@ public class WeldingLine : MonoBehaviour
     }
     bool GameEnded()
     {
-        Debug.Log($"P1{gameObject.transform.localPosition} : P2 {lrController.points[lrController.points.Length - 1].transform.localPosition}");
         if (gameObject.transform.localPosition == lrController.points[lrController.points.Length-1].localPosition)
             return true;
         else
