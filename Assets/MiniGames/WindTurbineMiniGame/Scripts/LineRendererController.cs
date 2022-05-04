@@ -10,16 +10,20 @@ public class LineRendererController : MonoBehaviour
     //EdgeCollider2D ed2d;
     WeldingLine torch;
     public Transform[] points { get; private set; }
+    public int difficultyLevel;
+
+    WindTurbineMinigame minigame;
    
     //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z,  
     //Canvas Limits top -0.004 x , -0.347 y ,300.009 z, 
    
-    private void Awake()
+    private void Start()
     {
         //ed2d = this.GetComponent<EdgeCollider2D>();
         lr = GetComponent<LineRenderer>();
+        minigame = GetComponentInParent<WindTurbineMinigame>();
         lr.sortingOrder = 1;
-
+        difficultyLevel = 10;
         lr.material = new Material(Shader.Find("Sprites/Default"));
         lr.material.color = Color.red;
        
@@ -44,7 +48,7 @@ public class LineRendererController : MonoBehaviour
   
     private void setPoints()
     {
-        points = AddRandomPoints(15);
+        points = AddRandomPoints(minigame.difficultyLevel);
         lr.positionCount = points.Length;
         for (int i = 0; i < points.Length; i++)
         {
@@ -64,8 +68,8 @@ public class LineRendererController : MonoBehaviour
         float minLimit = -1.444f;
         float completeLimit = maxLimit - minLimit;
         float incrementValue = completeLimit / points.Length;
-        float minY = -0.347f;
-        float maxY = 0.307f;
+        float minY = -0.247f;
+        float maxY = 0.207f;
         float lastXValue = minLimit;
 
         for (int i = 0; i < points.Length; i++)
