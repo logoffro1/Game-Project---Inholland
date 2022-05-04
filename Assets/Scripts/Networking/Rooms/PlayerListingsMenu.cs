@@ -25,10 +25,29 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
                     listings.Add(listing);
                     count++;
                 }
-
             }
         }
 
+    }
+    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+    {
+        foreach(PlayerListing l in listings)
+        {
+            Destroy(l.gameObject);
+        }
+        listings.Clear();
+        int count = 1;
+        foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
+        {
+
+            PlayerListing listing = Instantiate(this.playerListing, content);
+            if (listing != null)
+            {
+                listing.SetPlayerInfo(count, player.Value);
+                listings.Add(listing);
+                count++;
+            }
+        }
     }
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
