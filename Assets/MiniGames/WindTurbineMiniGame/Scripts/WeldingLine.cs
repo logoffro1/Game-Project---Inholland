@@ -7,6 +7,8 @@ public class WeldingLine : MonoBehaviour
 
     LineRenderer lr;
     public bool isStarted;
+    public AudioSource audioSource;
+    public AudioClip torchSound;
     public LineRendererController lrController;
     WindTurbineMinigame minigame;
     private bool isObjMoving;
