@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class WeldingLine : MonoBehaviour
 {
-    Vector3 startPos;
+ /*   Vector3 startPos;
     Vector3 endPos;
     Vector3 mousePos;
-    Vector3 mouseDir;
+    Vector3 mouseDir;*/
     LineRenderer lr;
     private bool isStarted;
     public LineRendererController lrController;
     WindTurbineMinigame minigame;
     float speed = 0.1f;
+
+    private Vector3 endPoint;
     void Start()
     {
         minigame = GetComponentInParent<WindTurbineMinigame>();
         isStarted = false;
       /*  lrController = FindObjectOfType<LineRendererController>();
-        gameObject.transform.position = lrController.points[0].position;*/
-        /*      lr = GetComponent<LineRenderer>();
-              lr.material.color = Color.yellow;*/
-
-        /*        Debug.Log($"real pos: {lrController.points[0].position}");*/
-        /*  startPos = lrController.points[0].position;
-          gameObject.transform.position = startPos;*/
-
+        endPoint = lrController.points[lrController.points.Length - 1].position;*/
     }
 
     public void SetPosition(Vector3 pos)
@@ -36,9 +31,10 @@ public class WeldingLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(isStarted)
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        if (isStarted) {
+            transform.Translate(Vector3.right * speed * Time.deltaTime);
+        }
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -51,11 +47,6 @@ public class WeldingLine : MonoBehaviour
             isStarted = true;
             transform.Translate(Vector3.down * 0.5f * Time.deltaTime);
         }
-/*
-        if (GameEnded())
-        {
-            isStarted = false;
-        }*/
     }
 
   
@@ -74,14 +65,7 @@ public class WeldingLine : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-            Debug.Log("Touchedcollisionwelding");
-        
+            Debug.Log("Touchedcollisionwelding");        
     }
-    bool GameEnded()
-    {
-        if (gameObject.transform.localPosition == lrController.points[lrController.points.Length-1].localPosition)
-            return true;
-        else
-            return false;
-    }
+
 }
