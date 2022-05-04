@@ -7,6 +7,7 @@ using UnityEngine.Localization.Settings;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject[] lobbyActivation;
     public void ContinueGame()
     {
         //TODO: Get save file, load safe file
@@ -21,8 +22,11 @@ public class MainMenu : MonoBehaviour
         //TODO: If save file exists, ask if it can be deleted (no --> go back to main menu)
         // Yes --> create new save file, start tutorial
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("Office");
+        //LevelManager.Instance.LoadScene("Office");
+        foreach (GameObject go in lobbyActivation)
+            go.SetActive(true);
+
+        gameObject.SetActive(false);
     }
     public void OnLanguageChange(TMP_Dropdown dropdown)
     {

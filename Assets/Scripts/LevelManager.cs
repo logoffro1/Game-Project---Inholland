@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using Photon.Pun;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
@@ -31,8 +32,9 @@ public class LevelManager : MonoBehaviour
     }
     public async void LoadScene(string sceneName)
     {
-        var scene = SceneManager.LoadSceneAsync(sceneName);
-        scene.allowSceneActivation = false;
+
+        // var scene = SceneManager.LoadSceneAsync(sceneName);
+        // scene.allowSceneActivation = false;
 
         loadCanvas.SetActive(true);
         InitProgressBar();
@@ -40,12 +42,13 @@ public class LevelManager : MonoBehaviour
         do
         {
             await Task.Delay(500);
-            target = scene.progress;
-            await Task.Delay(1000);
-        } while (scene.progress < 0.9f);
+            target += Random.Range(0.2f,0.5f);
+        } while (target < 1f);
 
-        scene.allowSceneActivation = true;
+       // scene.allowSceneActivation = true;
         loadCanvas.SetActive(false);
+
+        PhotonNetwork.LoadLevel(sceneName);
     }
     private void Update()
     {
