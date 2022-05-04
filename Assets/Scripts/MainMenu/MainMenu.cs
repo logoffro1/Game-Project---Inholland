@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Settings;
+using Photon.Pun;
 
 public class MainMenu : MonoBehaviour
 {
@@ -31,6 +32,14 @@ public class MainMenu : MonoBehaviour
     public void OnLanguageChange(TMP_Dropdown dropdown)
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[dropdown.value];
+    }
+    public void OnUserNameChange(TextMeshProUGUI nickname)
+    {
+        if (nickname.text.Length <= 1)
+            PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
+
+        PhotonNetwork.NickName = nickname.text;
+        Debug.Log(nickname.text);
     }
     public void QuitGame()
     {
