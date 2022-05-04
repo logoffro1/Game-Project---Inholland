@@ -17,7 +17,6 @@ public class SuccessHitBox : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("YAYY IT FUCKING WORKS");
         minigame.GameFinish(true);
     }
     // Update is called once per frame

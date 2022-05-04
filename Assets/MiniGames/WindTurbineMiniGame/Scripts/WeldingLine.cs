@@ -9,7 +9,7 @@ public class WeldingLine : MonoBehaviour
     Vector3 mousePos;
     Vector3 mouseDir;*/
     LineRenderer lr;
-    private bool isStarted;
+    public bool isStarted;
     public LineRendererController lrController;
     WindTurbineMinigame minigame;
     float speed = 0.1f;
@@ -18,7 +18,6 @@ public class WeldingLine : MonoBehaviour
     void Start()
     {
         minigame = GetComponentInParent<WindTurbineMinigame>();
-        isStarted = false;
       /*  lrController = FindObjectOfType<LineRendererController>();
         endPoint = lrController.points[lrController.points.Length - 1].position;*/
     }
@@ -26,25 +25,21 @@ public class WeldingLine : MonoBehaviour
     public void SetPosition(Vector3 pos)
     {
         gameObject.transform.position = pos;
+        isStarted = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (isStarted) {
+        if(isStarted)
             transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
-
         if (Input.GetKey(KeyCode.W))
         {
-            isStarted = true;
             transform.Translate(Vector3.up * 0.5f * Time.deltaTime);
         }
         else if (Input.GetKey(KeyCode.S))
         {
 
-            isStarted = true;
             transform.Translate(Vector3.down * 0.5f * Time.deltaTime);
         }
     }
@@ -55,17 +50,6 @@ public class WeldingLine : MonoBehaviour
         isStarted = false;
         minigame.GameFinish(false);
         Debug.Log("lostgametriggerWelding");
-    }
-   
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        isStarted = false;
-        Debug.Log("lostgameCollisionwelding");
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-            Debug.Log("Touchedcollisionwelding");        
     }
 
 }
