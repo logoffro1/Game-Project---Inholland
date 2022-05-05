@@ -249,6 +249,49 @@ MonoBehaviour:
     m_Localized: "Ob\u021Bine\u021Bi c\xE2teva puncte de sustenabilitate"
     m_Metadata:
       m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Nivelul general Alkmaar:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: Centrul orasului
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Teren agricol
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: "A treia hart\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Localized: "Aduce\u021Bi sustenabilitatea la 80%!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: "Exploreaz\u0103 inima lui Alkmaar! Cu frumoasa biseric\u0103 \u0219i
+      canale, sunt multe de v\u0103zut. La fel \u0219i multe lucruri de sus\u021Binut!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: "Explora\u021Bi prin fermele Alkmaar! Ve\u021Bi vedea un amestec
+      de agricultur\u0103 \u0219i panouri solare, dintre care unele pot avea nevoie
+      de \xEEntre\u021Binere!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: "A treia descriere a h\u0103r\u021Bii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: "Selecta\u021Bi un district"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
