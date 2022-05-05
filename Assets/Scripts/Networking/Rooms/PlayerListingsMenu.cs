@@ -49,6 +49,10 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
             }
         }
     }
+    public override void OnLeftRoom()
+    {
+        content.DestroyChildren();
+    }
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
     {
         int index = listings.FindIndex(x => x.Player == otherPlayer);

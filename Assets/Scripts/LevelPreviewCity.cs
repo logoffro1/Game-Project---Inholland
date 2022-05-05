@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using Photon.Pun;
 public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
 
@@ -48,6 +49,12 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        LevelManager.Instance.LoadScene("GameUKDay");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            LevelManager.Instance.LoadScene("GameUKDay");
+        }
+
     }
 }
