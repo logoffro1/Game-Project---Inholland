@@ -29,7 +29,7 @@ public class Activator : MonoBehaviour
                     var noteComp = currentNode.GetComponent<Note>();
                     noteComp.Bin = bin;
                     game.CollectANote(noteComp.type);
-                    game.ui.ExplodeParticles(currentNode);
+                    game.ui.ConvertToWonDesign(currentNode);
                     StartCoroutine(WaitForDestroy(currentNode));
                 }
                 else
@@ -37,10 +37,6 @@ public class Activator : MonoBehaviour
                     game.RemoveALife();
                     Destroy(currentNode);
                 }
-            }
-            else
-            {
-                game.RemoveALife();
             }
         }
     }

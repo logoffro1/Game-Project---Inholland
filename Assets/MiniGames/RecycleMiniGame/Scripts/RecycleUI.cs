@@ -29,10 +29,30 @@ public class RecycleUI : MonoBehaviour
         ProgressText.text = $"{amountCollected} / {amountToCollect}";
     }
 
-    public void ExplodeParticles(GameObject note)
+    public void ConvertToWonDesign(GameObject note)
+    {
+        ExplodeParticles(note);
+        MakeNoteTransparent(note);
+        MakeNoteSmaller(note);
+    }
+
+    private void ExplodeParticles(GameObject note)
     {
         GameObject explosion = Instantiate(Explosion, note.transform.position, note.transform.rotation, note.transform);
         var main = explosion.GetComponent<ParticleSystem>().main;
         main.startColor = note.transform.GetChild(0).GetComponent<SpriteRenderer>().color;
     }
+
+    private void MakeNoteTransparent(GameObject note)
+    {
+        Color color = note.GetComponent<SpriteRenderer>().color;
+        color.a = 0.5f;
+        note.GetComponent<SpriteRenderer>().color = color;
+    }
+
+    private void MakeNoteSmaller(GameObject note)
+    {
+        note.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+    }
+
 }

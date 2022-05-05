@@ -67,6 +67,14 @@ PrefabInstance:
       propertyPath: ProgressText
       value: 
       objectReference: {fileID: 4325627670245136156}
+    - target: {fileID: 2556973955607651730, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556973955607651730, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 3609637195270716851, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: TempLevel
       value: 20
@@ -103,6 +111,22 @@ PrefabInstance:
       propertyPath: NoteContainer
       value: 
       objectReference: {fileID: 6027342244601485418, guid: 1250581790637134580b681a3f4edd78, type: 3}
+    - target: {fileID: 6404359673798016131, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.a
+      value: 0.79607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404359673798016131, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.b
+      value: 0.20799215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404359673798016131, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.g
+      value: 0.20799215
+      objectReference: {fileID: 0}
+    - target: {fileID: 6404359673798016131, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Color.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
     - target: {fileID: 8105558190894956838, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Color.a
       value: 0
