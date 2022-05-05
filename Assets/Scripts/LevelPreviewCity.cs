@@ -23,6 +23,8 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     private List<LevelPreviewCity> otherLevels;
     private OverallDistrictScreen overallDistrictScreen;
 
+    private bool firstClick = false;
+
     private void Start()
     {
         overallDistrictScreen = GetComponentInParent<OverallDistrictScreen>();
@@ -56,21 +58,16 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     public void OnPointerEnter(PointerEventData eventData)
     {
         Cursor.SetCursor(handIcon,Vector2.zero,CursorMode.Auto);
+
+        foreach (LevelPreviewCity level in otherLevels)
+        {
+            level.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
         StartCoroutine(HoverAnim());
     }
     private IEnumerator HoverAnim()
     {
-        //Disable the others
-        foreach(LevelPreviewCity level in otherLevels)
-        {
-            level.EnableAllText(false);
-        }
-
-        //Enabnle this one
-        EnableAllText(true);
-        middleSelectText.enabled = false;
-        topSelectText.enabled = true;
-        startButton.SetActive(false);
 
         Vector3 scale = transform.localScale;
         while (true)
@@ -93,10 +90,23 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        //disable
+        foreach (LevelPreviewCity level in otherLevels)
+        {
+            level.EnableAllText(false);
+            level.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+
+        //Enabnle this one
         EnableAllText(true);
+        middleSelectText.enabled = false;
+        topSelectText.enabled = true;
+        startButton.SetActive(false);
+    
         startButton.GetComponent<DistrictLoadScene>().SceneName = sceneName;
         startButton.SetActive(true);
         overallDistrictScreen.PlayerData.IsInDistrict = District;
+        firstClick = true;
     }
 
     public void EnableAllText(bool value)
