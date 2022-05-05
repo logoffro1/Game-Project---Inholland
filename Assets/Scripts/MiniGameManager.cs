@@ -45,7 +45,7 @@ public class MiniGameManager : MonoBehaviour
         miniGameTime = TimerCountdown.Instance.GetRemainingTime();
         PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
-        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
+        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 1000), miniGamePrefab.transform.rotation);
         miniGame.GetComponent<MiniGameBase>().SetLevel();
 
         IsPlaying = true;     
