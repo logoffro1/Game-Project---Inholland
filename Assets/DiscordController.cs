@@ -6,14 +6,23 @@ using Discord;
 public class DiscordController : MonoBehaviour
 {
     public Discord.Discord discord;
+
+  
+    public string name;
+
+    public string state;
+
+    public string details;
     void Start()
     {
         discord = new Discord.Discord(972250653097340969, (System.UInt16)Discord.CreateFlags.Default);
         var activityManager = discord.GetActivityManager();
         var activity = new Discord.Activity {
             
-            Details = "I love dew dew",
-            State= "Chilling in the office"
+            Name = name,
+            Details = details,
+            State= state,
+            Assets = { LargeImage = "big"}
         };
 
         activityManager.UpdateActivity(activity, (res) =>
