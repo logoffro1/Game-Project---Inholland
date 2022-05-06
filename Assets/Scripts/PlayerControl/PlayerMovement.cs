@@ -1,6 +1,7 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     [SerializeField]
     private float speed = 5f;
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
         if (MiniGameManager.Instance != null)
         {
 

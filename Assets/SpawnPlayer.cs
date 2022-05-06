@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon;
-public class SpawnPlayer : MonoBehaviour
+public class SpawnPlayer : MonoBehaviourPun
 {
     [SerializeField] private GameObject playerPrefab;
     // Start is called before the first frame update
     void Start()
     {
-        //check if view is mine
+
         PhotonNetwork.Instantiate(playerPrefab.name, transform.position, Quaternion.identity);
     }
 }

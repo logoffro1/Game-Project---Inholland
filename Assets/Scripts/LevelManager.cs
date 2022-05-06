@@ -48,7 +48,8 @@ public class LevelManager : MonoBehaviour
        // scene.allowSceneActivation = true;
         loadCanvas.SetActive(false);
 
-        PhotonNetwork.LoadLevel(sceneName);
+        if(PhotonNetwork.IsMasterClient)
+            PhotonNetwork.LoadLevel(sceneName);
     }
     private void Update()
     {

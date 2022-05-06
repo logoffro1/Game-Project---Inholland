@@ -48,6 +48,10 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
         }
 
     }
+    public override void OnJoinedRoom()
+    {
+
+    }
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
         Debug.Log("Entered room...");
