@@ -297,8 +297,10 @@ MonoBehaviour:
 
       KEYS
 
-      W-
-      Move Up
+      SPACE-
+      Start the game
+
+      W- Move Up
 
       S- Move Down'
     m_Metadata:

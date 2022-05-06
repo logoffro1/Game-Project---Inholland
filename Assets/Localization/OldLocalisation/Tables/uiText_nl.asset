@@ -300,8 +300,10 @@ MonoBehaviour:
 
       TOETSEN
 
-      W-
-      Omhoog gaan
+      SPATIEBALK
+      - Start het spel
+
+      W- Omhoog gaan
 
       S-naar beneden'
     m_Metadata:

@@ -485,7 +485,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2e4860e97e3dc2f4983da10177de0ab4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.588
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -911,8 +911,10 @@ PrefabInstance:
 
         KEYS
 
-        W-
-        Move Up
+        SPACE-
+        Start the game
+
+        W- Move Up
 
         S- Move Down'
       objectReference: {fileID: 0}

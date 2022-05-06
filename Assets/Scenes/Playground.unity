@@ -4239,6 +4239,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12301a91d40c3f84c92a6406369bf47f, type: 3}
+--- !u!1001 &562416961
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5120255319639426451, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_Volume
+      value: 0.588
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424684, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6719101568384424685, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
+      propertyPath: m_Name
+      value: TurbineMinigame
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 212bce01b9576524c887e2b0d63481ac, type: 3}
 --- !u!1001 &573427639
 PrefabInstance:
   m_ObjectHideFlags: 0
