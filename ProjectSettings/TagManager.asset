@@ -18,6 +18,8 @@ TagManager:
   - Water
   - Animal
   - People
+  - Bin
+  - Note
   layers:
   - Default
   - TransparentFX
@@ -55,6 +57,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer
+  - name: RecycleMinigame
     uniqueID: 3966355723
     locked: 0

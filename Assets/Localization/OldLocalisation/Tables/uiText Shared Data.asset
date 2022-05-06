@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
   m_Name: uiText Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: uiText
+  m_TableCollectionName: r
   m_TableCollectionNameGuidString: da94c565f8ff38849b53db7b3e21e305
   m_Entries:
   - m_Id: 67661500416
@@ -235,6 +235,12 @@ MonoBehaviour:
     m_Key: txtGetSustainabilityPoints
     m_Metadata:
       m_Items: []
+  - m_Id: 10218383323975680
+    m_Key: recycleTrash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Key: 'taskListRecycle
   - m_Id: 10076190596435968
     m_Key: HowToPlayTxt
     m_Metadata:
