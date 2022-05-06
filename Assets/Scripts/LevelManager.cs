@@ -32,7 +32,6 @@ public class LevelManager : MonoBehaviour
     }
     public async void LoadScene(string sceneName)
     {
-
         // var scene = SceneManager.LoadSceneAsync(sceneName);
         // scene.allowSceneActivation = false;
 
@@ -48,7 +47,7 @@ public class LevelManager : MonoBehaviour
        // scene.allowSceneActivation = true;
         loadCanvas.SetActive(false);
 
-        if(PhotonNetwork.IsMasterClient)
+        if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(sceneName);
     }
     private void Update()

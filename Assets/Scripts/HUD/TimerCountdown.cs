@@ -57,12 +57,13 @@ public class TimerCountdown : MonoBehaviour
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
-        StartCoroutine(StartCountDown());
+        StartCoroutine(StartCountDown(1f));
         
     }
 
-    private IEnumerator StartCountDown()
+    private IEnumerator StartCountDown(float waitTime)
     {
+        yield return new WaitForSeconds(waitTime);
         while (startCountDownLeft > 0)
         {
             yield return new WaitForSeconds(1);

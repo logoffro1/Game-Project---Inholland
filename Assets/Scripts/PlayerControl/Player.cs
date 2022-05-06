@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Photon.Pun;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     private bool host = true;
     public bool Host { get { return host;  } }
@@ -17,6 +18,16 @@ public class Player : MonoBehaviour
     private PlayerMovement playerMovement;
     //private MiniGameBase miniGameBase;
 
+    public static GameObject LocalPlayerInstance;
+
+    private void Awake()
+    {
+        if (photonView.IsMine)
+        {
+            LocalPlayerInstance = this.gameObject;
+        }
+        DontDestroyOnLoad(this.gameObject);
+    }
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
