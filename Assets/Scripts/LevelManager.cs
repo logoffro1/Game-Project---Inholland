@@ -32,23 +32,24 @@ public class LevelManager : MonoBehaviour
     }
     public async void LoadScene(string sceneName)
     {
+        target = 0f;
+        if (!PhotonNetwork.IsMasterClient) return;
         // var scene = SceneManager.LoadSceneAsync(sceneName);
         // scene.allowSceneActivation = false;
 
         loadCanvas.SetActive(true);
         InitProgressBar();
 
-        do
+        // scene.allowSceneActivation = true;
+
+        PhotonNetwork.LoadLevel(sceneName);
+        while(target < 1f)
         {
             await Task.Delay(500);
-            target += Random.Range(0.2f,0.5f);
-        } while (target < 1f);
-
-       // scene.allowSceneActivation = true;
+            target = PhotonNetwork.LevelLoadingProgress;
+        }
         loadCanvas.SetActive(false);
 
-        if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel(sceneName);
     }
     private void Update()
     {

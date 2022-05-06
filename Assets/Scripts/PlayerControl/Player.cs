@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using System;
 using Photon.Pun;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Player : MonoBehaviourPun
 {
@@ -32,7 +33,10 @@ public class Player : MonoBehaviourPun
     {
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
-        oneOffUpgradeList = SetUpList(); 
+        oneOffUpgradeList = SetUpList();
+        Hashtable hashtable = new Hashtable();
+        hashtable.Add("ready", true);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
     }
 
     public List<OneOffUpgrade> SetUpList()

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-
+using Photon.Pun;
 public class TimerCountdown : MonoBehaviour
 {
     private int secondsMax = 5*60;
@@ -57,13 +57,17 @@ public class TimerCountdown : MonoBehaviour
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
-        StartCoroutine(StartCountDown(1f));
+        StartCoroutine(StartCountDown());
         
     }
-
-    private IEnumerator StartCountDown(float waitTime)
+    
+    private IEnumerator StartCountDown()
     {
-        yield return new WaitForSeconds(waitTime);
+/*        bool allPlayersReady = (bool)PhotonNetwork.LocalPlayer.CustomProperties["ready"];
+        while (!allPlayersReady)
+        {
+            yield return new WaitForSeconds(0f);
+        }*/
         while (startCountDownLeft > 0)
         {
             yield return new WaitForSeconds(1);
