@@ -34,12 +34,12 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - ActivateTrash
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - ActivateTrash
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

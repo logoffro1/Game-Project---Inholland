@@ -22,6 +22,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     {
         Debug.Log("Created room successfully.", this);
         LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.CoroutineLoading();
     }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {

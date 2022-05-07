@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Threading.Tasks;
 using Photon.Pun;
-public class LevelManager : MonoBehaviour
+using ExitGames.Client.Photon;
+using Photon.Realtime;
+
+public class LevelManager : MonoBehaviourPun
 {
     public static LevelManager Instance;
 
     [SerializeField] private GameObject loadCanvas;
     [SerializeField] private Slider progressBar;
+
+    private const byte LOADING_PROGRESS_EVENT = 0;
 
     private float target;
     private void Awake()
@@ -30,26 +35,55 @@ public class LevelManager : MonoBehaviour
         progressBar.minValue = 0;
         progressBar.maxValue = 1;
     }
-    public async void LoadScene(string sceneName)
+    private void OnEnable()
     {
-        target = 0f;
-        if (!PhotonNetwork.IsMasterClient) return;
+        PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
+    }
+
+    private void NetworkingClient_EventReceived(EventData obj)
+    {
+        if (obj.Code == LOADING_PROGRESS_EVENT)
+        {
+            Debug.Log("EVENT CODE: " + obj.Code);
+            StartCoroutine(LoadingProgress());
+        }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        if (sceneName == "GameUKDay")
+        {
+            RaiseEventOptions eventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            bool sent = PhotonNetwork.RaiseEvent(LOADING_PROGRESS_EVENT, null, eventOptions, SendOptions.SendReliable);
+            Debug.Log("RECEIVED + " + sent);
+
+        }
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.LoadLevel(sceneName);
+
+
+
         // var scene = SceneManager.LoadSceneAsync(sceneName);
         // scene.allowSceneActivation = false;
-
+        // scene.allowSceneActivation = true;
+    }
+    public void CoroutineLoading()
+    {
+        StartCoroutine(LoadingProgress());
+    }
+    private IEnumerator LoadingProgress()
+    {
+        Debug.Log("LOADINGGG");
+        target = 0;
         loadCanvas.SetActive(true);
         InitProgressBar();
-
-        // scene.allowSceneActivation = true;
-
-        PhotonNetwork.LoadLevel(sceneName);
-        while(target < 1f)
+        while (target < 1f)
         {
-            await Task.Delay(500);
-            target = PhotonNetwork.LevelLoadingProgress;
+            target += Random.Range(0.2f, 0.5f);
+            yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
         }
+        yield return new WaitForSeconds(1f);
         loadCanvas.SetActive(false);
-
     }
     private void Update()
     {

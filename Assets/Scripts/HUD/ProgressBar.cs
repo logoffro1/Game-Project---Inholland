@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ProgressBar : MonoBehaviour
+using Photon.Pun;
+public class ProgressBar : MonoBehaviourPun, IPunObservable
 {
 
     [SerializeField] private Text _SliderText;
@@ -55,6 +56,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
         if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(-0.0005f);
@@ -113,5 +115,19 @@ public class ProgressBar : MonoBehaviour
     {
         if (slider == null) return 0;
         return slider.value;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(slider.value);
+            UpdateProgressPercent();
+        }
+        else if(stream.IsReading)
+        {
+            slider.value = (float)stream.ReceiveNext();
+            UpdateProgressPercent();
+        }
     }
 }

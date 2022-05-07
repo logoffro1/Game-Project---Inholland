@@ -44,6 +44,7 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
         if (roomListing.RoomInfo.PlayerCount < roomListing.RoomInfo.MaxPlayers)
         {
             PhotonNetwork.JoinRoom(roomListing.RoomInfo.Name);
+            LevelManager.Instance.CoroutineLoading();
             LevelManager.Instance.LoadScene("Office");
         }
 
