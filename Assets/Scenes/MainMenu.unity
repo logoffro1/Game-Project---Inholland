@@ -10607,14 +10607,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7884645068021133644, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
-      propertyPath: state
-      value: Take your time...
-      objectReference: {fileID: 0}
-    - target: {fileID: 7884645068021133644, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
-      propertyPath: details
-      value: Hanging around in main menu
-      objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133645, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_Name
       value: DiscordManager
@@ -10625,7 +10617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 251.64702
+      value: 251.64703
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10641,15 +10633,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7884645068021133647, guid: 7afa7c53238fd0b4493f43996e464af7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

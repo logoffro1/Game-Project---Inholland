@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Playing Re Life
-  state: Hanging around in main menu
-  details: Take your time...
+  state: Take your time...
+  details: Hanging around in main menu
+  imageKey: menu

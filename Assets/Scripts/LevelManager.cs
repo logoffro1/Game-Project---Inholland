@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using System;
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
@@ -31,6 +32,10 @@ public class LevelManager : MonoBehaviour
     }
     public async void LoadScene(string sceneName)
     {
+        //Discord status change happens on every scene change before LoadSceneAsync();
+        StatusType type = (StatusType)Enum.Parse(typeof(StatusType),sceneName);
+        DiscordController.Instance.UpdateDiscordStatus(type);
+
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
 
