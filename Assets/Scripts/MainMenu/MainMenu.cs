@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour
         //Load lobby scene
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.LoadScene("NewOffice");
     }
 
     public void NewGame()
@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
         // Yes --> create new save file, start tutorial
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.LoadScene("NewOffice");
     }
     public void OnLanguageChange(TMP_Dropdown dropdown)
     {
