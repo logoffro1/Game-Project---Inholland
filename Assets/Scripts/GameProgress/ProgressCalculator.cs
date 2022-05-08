@@ -11,6 +11,9 @@ public class ProgressCalculator : MonoBehaviour
     public float cityCenterSustainibility = 70f;
     public float thirdMapSustainibility = 70f;
 
+
+    private PlayerData currentPlayerData;
+
     //15 hours of gameplay is the max time - If player is experienced and does the missions well - 7,5-10 hours
     //60/15 900 minutes is 15 hours of gameplay
     //900/8 112 iterations is the required amount of play times for all maps(maximum amount of times)
@@ -27,6 +30,7 @@ public class ProgressCalculator : MonoBehaviour
     void Start()
     {
         calculateTotalAlkmaarSustainibility();
+        currentPlayerData = FindObjectOfType<PlayerData>();
     }
 
     private void calculateTotalAlkmaarSustainibility()
@@ -39,7 +43,7 @@ public class ProgressCalculator : MonoBehaviour
          increaseAmount = 2.7f;
         if (ifWon) {
             Debug.Log($"Remaining seconds: {(float)remainingSeconds / 30f}");
-            increaseAmount += (float)remainingSeconds / 30f;
+            increaseAmount += (float)remainingSeconds / 60f;
             Debug.Log($"Easy buff: {(float)nrOfEasyGames / 20f}");
             increaseAmount += (float)nrOfEasyGames / 20f;
             Debug.Log($"Medium buff: {(float)nrOfMediumGames / 10f}");
