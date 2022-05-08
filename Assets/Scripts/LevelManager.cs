@@ -49,14 +49,18 @@ public class LevelManager : MonoBehaviourPun
         }
     }
 
-    public void LoadScene(string sceneName)
+    public void LoadScene(string sceneName, bool loadForAllPlayers)
     {
-        if (sceneName == "GameUKDay")
+        if (loadForAllPlayers)
         {
             RaiseEventOptions eventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             bool sent = PhotonNetwork.RaiseEvent(LOADING_PROGRESS_EVENT, null, eventOptions, SendOptions.SendReliable);
             Debug.Log("RECEIVED + " + sent);
 
+        }
+        else
+        {
+            CoroutineLoading();
         }
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(sceneName);

@@ -6,6 +6,6 @@ public class ButtonHandler : MonoBehaviour
 {
     public void LoadOfficeScene()
     {
-        LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.LoadScene("Office",false);
     }
 }

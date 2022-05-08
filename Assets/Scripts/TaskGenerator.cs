@@ -29,7 +29,6 @@ public class TaskGenerator : MonoBehaviourPun
     {
         gameObjectsWithTasks = new List<GameObject>();
 
-        if (!PhotonNetwork.IsMasterClient) return;
         SetUpAllData();
         SetUpEvents();
 

@@ -53,7 +53,7 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
         {
             PhotonNetwork.CurrentRoom.IsOpen = false;
             PhotonNetwork.CurrentRoom.IsVisible = false;
-            LevelManager.Instance.LoadScene("GameUKDay");
+            LevelManager.Instance.LoadScene("GameUKDay",true);
         }
 
     }

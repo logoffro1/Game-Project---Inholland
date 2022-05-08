@@ -77,13 +77,13 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToOffice()
     {
         Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.LoadScene("Office",true);
     }
 
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("MainMenu");
+        LevelManager.Instance.LoadScene("MainMenu",false);
     }
 
     public void ExitGame()

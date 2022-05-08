@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
-public class ProgressBar : MonoBehaviourPun, IPunObservable
+
+public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallbacks
 {
 
     [SerializeField] private Text _SliderText;
@@ -38,6 +39,11 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable
         {
             _instance = this;
         }
+        PhotonNetwork.AddCallbackTarget(_instance);
+    }
+    private void OnDestroy()
+    {
+        PhotonNetwork.RemoveCallbackTarget(_instance);
     }
     public float GetSliderMaxValue()
     {
@@ -56,7 +62,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        if (!PhotonNetwork.IsMasterClient) return;
+        if (!photonView.IsMine) return;
         if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(-0.0005f);
@@ -105,6 +111,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable
 
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
     {
+        base.photonView.RequestOwnership();
         /*        slider.value += sustainabilityChange;
                 fill.color = gradient.Evaluate(slider.normalizedValue);*/
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
@@ -121,13 +128,31 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(slider.value);
-            UpdateProgressPercent();
+            stream.SendNext(GetSlideValue());
         }
         else if(stream.IsReading)
         {
             slider.value = (float)stream.ReceiveNext();
             UpdateProgressPercent();
         }
+    }
+
+    public void OnOwnershipRequest(PhotonView targetView, Photon.Realtime.Player requestingPlayer)
+    {
+        if (targetView != base.photonView)
+            return;
+
+        base.photonView.TransferOwnership(requestingPlayer);
+    }
+
+    public void OnOwnershipTransfered(PhotonView targetView, Photon.Realtime.Player previousOwner)
+    {
+        if (targetView != base.photonView)
+            return;
+    }
+
+    public void OnOwnershipTransferFailed(PhotonView targetView, Photon.Realtime.Player senderOfFailedRequest)
+    {
+        //throw new System.NotImplementedException();
     }
 }
