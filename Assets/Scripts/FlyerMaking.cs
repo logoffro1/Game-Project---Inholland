@@ -84,7 +84,7 @@ public class FlyerMaking : MonoBehaviour
 
     private IEnumerator ViewTheFlyer()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         //Check
         AmountFlyersMade++;
@@ -93,7 +93,7 @@ public class FlyerMaking : MonoBehaviour
             ProgressPanel.SetActive(true);
             FindObjectOfType<PlayerData>().FlyerPoints = TotalPoints / (2 * AmountFlyersToMake);
 
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(2f);
 
             Printer.ReturnToOpenWorld(); 
             yield return null;
