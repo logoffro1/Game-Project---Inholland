@@ -113,7 +113,7 @@ public class DiscordController : MonoBehaviour
             "Resigning as we speak",
             "On a coffee break",
             "Cleaning the equipments",
-            "Making coctails for friday",
+            "Making cocktails for friday",
         };
 
             return officereplies[Random.Range(0, officereplies.Count)];
