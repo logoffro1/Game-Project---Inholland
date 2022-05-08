@@ -21,8 +21,18 @@ public class Activator : MonoBehaviour
         {
             if (notes.Count > 0)
             {
-                GameObject currentNode = notes[0];
-                var bin = bins.GetComponentsInChildren<RecycleBin>().Where(x => x.type == currentNode.GetComponent<Note>().type).FirstOrDefault();
+                GameObject currentNode = notes[0]; ;
+                RecycleBin bin;
+                try
+                {
+                    bin = bins.GetComponentsInChildren<RecycleBin>().Where(x => x.type == currentNode.GetComponent<Note>().type).FirstOrDefault();
+                }
+                catch
+                {
+                    game.RemoveALife();
+                    Destroy(currentNode);
+                    return;
+                }
 
                 if (Input.GetKeyDown(bin.key))
                 {
