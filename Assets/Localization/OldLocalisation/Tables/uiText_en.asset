@@ -305,6 +305,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 10222970051252224
     m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
   - m_Id: 6551242266521601
     m_Localized: HOW TO PLAY
     m_Metadata:
@@ -350,6 +352,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11189247741562880
     m_Localized: BACK
+    m_Metadata:
+      m_Items: []
   - m_Id: 11838257938845696
     m_Localized: 'Overall Alkmaar level:'
     m_Metadata:
@@ -390,6 +394,113 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11840659194662912
     m_Localized: Select a district
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1261318721536
+    m_Localized: Make it green!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1496510124032
+    m_Localized: Run the fuels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1565716140032
+    m_Localized: Plant, grow, live
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1650189422592
+    m_Localized: Stomp the plants
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1734780145664
+    m_Localized: Hug the trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1812076974080
+    m_Localized: Go nature!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890850197504
+    m_Localized: Save the bees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1960148488192
+    m_Localized: Smell the flowers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2057758330880
+    m_Localized: Dump sodas
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2119234244608
+    m_Localized: New solar panels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2199966208000
+    m_Localized: Did you know there are 12 times more trees on Earth than stars in
+      the Milky Way?!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2301283815424
+    m_Localized: Research done by a 3 year old shows burning petrol is good for the
+      skin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2386583375872
+    m_Localized: You can help the environment by following these three simple tricks!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2472377864192
+    m_Localized: Help bees out by leaving diluted sugar outside
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2551931228160
+    m_Localized: Your household plant can produce ONE LITER of oxygen A DAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2622395535360
+    m_Localized: Fossil fuel burning is like smoking, very cool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2699407151104
+    m_Localized: Camels can puke their guts out (literally- to cool off)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2768755773440
+    m_Localized: Now solar panels can be installed in your windows!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2838418968576
+    m_Localized: Throwing your soda cans on the ground is great for the environment!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2937031249920
+    m_Localized: Install walls made of plants! Perfect for a beautiful view and for
+      natural insulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3424400986112
+    m_Localized: Print some flyers?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3659495919616
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3824629862400
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3979496148992
+    m_Localized: You have already made enough flyers for today
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4147868094464
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4254298558464
+    m_Localized: Finished all the flyers!
     m_Metadata:
       m_Items: []
   references:

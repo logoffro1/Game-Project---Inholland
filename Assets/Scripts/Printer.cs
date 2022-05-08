@@ -5,7 +5,7 @@ public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
 
-    private bool IsDoneForToday = false;
+    public bool IsDoneForToday = false;
     private bool isPanelActive = false;
     public GameObject PrinterCanvas;
     public GameObject ChoicePanel;
@@ -36,7 +36,6 @@ public class Printer : InteractableObject
         else
         {
             ChoicePanel.SetActive(true);
-            IsDoneForToday = true;
         }
 
         Cursor.lockState = CursorLockMode.None;

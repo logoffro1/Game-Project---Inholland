@@ -53,7 +53,7 @@ public class FlyerMaking : MonoBehaviour
         {
             int index = Random.Range(0, titleList.Count);
             FlyerButton flyerButton = titleButton.GetComponent<FlyerButton>();
-            flyerButton.SetButton(titleList[index].GetComponent<Text>().text, titleList[index].GetComponent<FlyerOption>().Points);
+            flyerButton.SetButton(titleList[index].GetComponent<TextMeshProUGUI>().text, titleList[index].GetComponent<FlyerOption>().Points);
             titleList.RemoveAt(index);
         }
 
@@ -61,7 +61,7 @@ public class FlyerMaking : MonoBehaviour
         {
             int index = Random.Range(0, bodyList.Count);
             FlyerButton flyerButton = bodyButton.GetComponent<FlyerButton>();
-            flyerButton.SetButton(bodyList[index].GetComponent<Text>().text, bodyList[index].GetComponent<FlyerOption>().Points);
+            flyerButton.SetButton(bodyList[index].GetComponent<TextMeshProUGUI>().text, bodyList[index].GetComponent<FlyerOption>().Points);
             bodyList.RemoveAt(index);
         }
     }
@@ -84,13 +84,16 @@ public class FlyerMaking : MonoBehaviour
 
     private IEnumerator ViewTheFlyer()
     {
+        AmountFlyersMade++;
+        SetCounter();
+
         yield return new WaitForSeconds(3f);
 
         //Check
-        AmountFlyersMade++;
         if (AmountFlyersMade >= AmountFlyersToMake)
         {
             ProgressPanel.SetActive(true);
+            this.Printer.IsDoneForToday = true;
             FindObjectOfType<PlayerData>().FlyerPoints = TotalPoints / (2 * AmountFlyersToMake);
 
             yield return new WaitForSeconds(2f);
@@ -100,7 +103,6 @@ public class FlyerMaking : MonoBehaviour
         }
 
         //Reset everything
-        SetCounter();
         SettingNewValues();
         EnableButtons(TitleButtons, true);
         EnableButtons(BodyButtons, true);

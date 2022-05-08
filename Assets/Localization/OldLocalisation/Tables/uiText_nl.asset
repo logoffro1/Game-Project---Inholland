@@ -305,6 +305,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 10222970051252224
     m_Localized: Artikelen recyclen
+    m_Metadata:
+      m_Items: []
   - m_Id: 6551242266521601
     m_Localized: HOE TE SPELEN
     m_Metadata:
@@ -350,6 +352,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11189247741562880
     m_Localized: TERUG
+    m_Metadata:
+      m_Items: []
   - m_Id: 11838257938845696
     m_Localized: 'Alkmaar niveau:'
     m_Metadata:
@@ -390,6 +394,112 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11840659194662912
     m_Localized: Selecteer een wijk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1261318721536
+    m_Localized: Maak het groen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1496510124032
+    m_Localized: Voer de brandstoffen uit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1565716140032
+    m_Localized: Plant, groei, leef
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1650189422592
+    m_Localized: Stamp de planten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1734780145664
+    m_Localized: Knuffel de bomen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1812076974080
+    m_Localized: Ga de natuur!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1890850197504
+    m_Localized: Red de bijen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1960148488192
+    m_Localized: Ruik de bloemen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2057758330880
+    m_Localized: Dump frisdrank
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2119234244608
+    m_Localized: Nieuwe zonnepanelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2199966208000
+    m_Localized: Wist je dat er 12 keer meer bomen op aarde zijn dan sterren in de
+      Melkweg?!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2301283815424
+    m_Localized: Uit onderzoek van een 3-jarige blijkt dat het verbranden van benzine
+      goed is voor de huid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2386583375872
+    m_Localized: U kunt het milieu helpen door deze drie eenvoudige trucs te volgen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2472377864192
+    m_Localized: Help bijen door verdunde suiker buiten te laten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2551931228160
+    m_Localized: Uw huishoudplant kan EEN LITER zuurstof PER DAG produceren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2622395535360
+    m_Localized: Het verbranden van fossiele brandstoffen is als roken, erg cool
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2699407151104
+    m_Localized: Kamelen kunnen hun ingewanden uitkotsen (letterlijk - om af te koelen)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2768755773440
+    m_Localized: "Nu kunnen zonnepanelen in uw ramen worden ge\xEFnstalleerd!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2838418968576
+    m_Localized: Je blikjes frisdrank op de grond gooien is goed voor het milieu!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2937031249920
+    m_Localized: Je blikjes frisdrank op de grond gooien is goed voor het milieu!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3424400986112
+    m_Localized: Flyers afdrukken?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3659495919616
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3824629862400
+    m_Localized: Nee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3979496148992
+    m_Localized: Je hebt al genoeg flyers gemaakt voor vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4147868094464
+    m_Localized: Opbrengst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4254298558464
+    m_Localized: Alle flyers klaar!
     m_Metadata:
       m_Items: []
   references:
