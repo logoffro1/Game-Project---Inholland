@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18243253, g: 0.2251425, b: 0.2898488, a: 1}
+  m_IndirectSpecularColor: {r: 0.18243256, g: 0.2251425, b: 0.2898488, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -14926,7 +14926,7 @@ MonoBehaviour:
   - {fileID: 4278559126353129008, guid: be5ab4bd4390e214ba784a0ac96c901a, type: 3}
   - {fileID: 8619247169481751377, guid: a061e580c278ea546bcdaec51de06d96, type: 3}
   - {fileID: 6418118427772936154, guid: 7fb591b863a88b542801781cd66c8c0e, type: 3}
-  - {fileID: 331637174592893057, guid: 4d60f4ec4458a404cbbfe82ad5eb1390, type: 3}
+  - {fileID: 1992860199577755902, guid: ba8f956c132a4cf46a5f616adfcf6b03, type: 3}
   miniGameManager: {fileID: 1189326062}
   canSolveMaterial: {fileID: 2100000, guid: b260175093a60204699d4483db4420c8, type: 2}
   fixedMaterial: {fileID: 2100000, guid: 3aad964e9adc0dc46863e4b7c7c84afa, type: 2}
