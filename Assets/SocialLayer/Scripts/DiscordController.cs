@@ -27,12 +27,11 @@ public class DiscordController : MonoBehaviour
         {
             _instance = this;
         }
-        DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
     void Start()
     {
         discord = new Discord.Discord(972250653097340969, (System.UInt16)Discord.CreateFlags.Default);
-        status = StatusType.MainMenu;
         UpdateDiscordStatus(status);
     }
    
@@ -83,7 +82,7 @@ public class DiscordController : MonoBehaviour
                 imageKey = "office";
                 break;
             case StatusType.CityCenter:
-                state = "Making city centre sustainable";
+                state = "Cleaning city center";
                 details = "Playing in city centre";
                 imageKey = "citycentre";
                 break;
@@ -93,7 +92,7 @@ public class DiscordController : MonoBehaviour
                 imageKey = "farm";
                 break;
             case StatusType.GameUKDay:
-                state = "Making downtown more sustainable";
+                state = "Running in downtown";
                 details = "Alkmaar downtown area";
                 imageKey = "citycentre";
                 break;
