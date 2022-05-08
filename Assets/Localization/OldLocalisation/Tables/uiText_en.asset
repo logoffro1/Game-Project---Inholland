@@ -503,6 +503,10 @@ MonoBehaviour:
     m_Localized: Finished all the flyers!
     m_Metadata:
       m_Items: []
+  - m_Id: 129710360383488
+    m_Localized: 'Amount flyers printed:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

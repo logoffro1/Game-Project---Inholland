@@ -502,6 +502,10 @@ MonoBehaviour:
     m_Localized: Alle flyers klaar!
     m_Metadata:
       m_Items: []
+  - m_Id: 129710360383488
+    m_Localized: 'Aantal geprinte flyers:'
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
