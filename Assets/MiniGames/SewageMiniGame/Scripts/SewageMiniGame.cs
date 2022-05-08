@@ -28,6 +28,11 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
            // description = "Verzamel al het afval!\n\nToetsen\nA,D - Ga naar links / Rechtsaf\nSPACE - Haak los";
 
     }
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Hard;
+    }
     public void DecreaseLives()
     {
         lives -= 1;

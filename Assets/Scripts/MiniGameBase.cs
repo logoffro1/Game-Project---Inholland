@@ -19,6 +19,8 @@ public class MiniGameBase : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public GameObject infoCanvas;
 
+    public MiniGameDifficulty gameDifficulty;
+
     //Level 
     [Range(0.0f, 100.0f)]
     private float level;
@@ -178,6 +180,8 @@ public class MiniGameBase : MonoBehaviour
         return FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame;
     }
 
+
+    public virtual void DetermineGameDifficulty() { }
 
     public virtual void CoordinateLevel() { }
     public virtual void GameFinish(bool success) { }

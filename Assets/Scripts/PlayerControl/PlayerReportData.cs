@@ -154,14 +154,48 @@ public class PlayerReportData : MonoBehaviour
             case "ColorBeepMiniGame Variant":
                 value = "Converting street lamp to solar lamp";
                 break;
+            case "RecycleGame":
+                value = "Recycling the waste";
+                break;
             default:
                 value = "None";
                 break;
         }
         return value;
     }
-     
-  
+    //Add calculateDifficulty methods later on
+    private MiniGameDifficulty returnDifficulty(string prefabname)
+    {
+        MiniGameDifficulty value;
+        switch (prefabname)
+        {
+            case "SewageMiniGame":
+                value = MiniGameDifficulty.Hard;
+                break;
+            case "RecycleGame":
+            value = MiniGameDifficulty.Hard;
+                break;
+
+            case "RewireMiniGame":
+                value = MiniGameDifficulty.Easy;
+                break;
+            case "SolarShingleGamePrefab":
+                value = MiniGameDifficulty.Hard;
+                break;
+            case "DigTime Variant":
+                value = MiniGameDifficulty.Easy;
+                break;
+            case "ColorBeepMiniGame Variant":
+                value = MiniGameDifficulty.Medium;
+                break;
+            default:
+                value = MiniGameDifficulty.Medium;
+                break;
+        }
+        return value;
+    }
+
+
 
     public void AddPlayedGames(GameObject minigamePrefab)
     {

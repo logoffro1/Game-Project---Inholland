@@ -20,6 +20,11 @@ public class ShinglesMiniGame : MiniGameBase
 
     }
 
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Hard;
+    }
     //abstract methods
     public override void CoordinateLevel()
     {

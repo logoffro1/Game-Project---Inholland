@@ -21,6 +21,11 @@ public class DiggingMiniGame : MiniGameBase
         else GameOver();
     }
 
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Easy;
+    }
     public override void CoordinateLevel()
     {
         MoveLine moveline = gameObject.transform.Find("WholeBar").GetComponentInChildren<MoveLine>();
