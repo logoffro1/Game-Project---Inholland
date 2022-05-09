@@ -8,5 +8,6 @@ public enum TaskObjectType
     Tree,
     ManHole,
     SolarPanel, 
-    Bin
+    Bin,
+    WindTurbine
 }

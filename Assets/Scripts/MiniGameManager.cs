@@ -39,6 +39,15 @@ public class MiniGameManager : MonoBehaviour
         PlayerData = FindObjectOfType<PlayerReportData>();
     }
 
+    //Delete This before merging to dev
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartGame(tetrisGamePrefab);
+        }
+    }
+
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
@@ -46,6 +55,7 @@ public class MiniGameManager : MonoBehaviour
         PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
+        //Uncomment and implement this for turbine mini game merge!!!!
         miniGame.GetComponent<MiniGameBase>().SetLevel();
 
         IsPlaying = true;     
@@ -68,8 +78,9 @@ public class MiniGameManager : MonoBehaviour
     public void GameOver()
     {
         
-        PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
+        PlayerData.AddLostGames(InteractableObject.GamePrefab);
+
     }
 
     public void GameWon()
