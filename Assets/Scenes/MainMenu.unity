@@ -9337,6 +9337,7 @@ MonoBehaviour:
   - {fileID: 1453769288}
   - {fileID: 851556923}
   - {fileID: 1877774277}
+  nicknameInput: {fileID: 1945491227}
 --- !u!224 &1537405451
 RectTransform:
   m_ObjectHideFlags: 0
