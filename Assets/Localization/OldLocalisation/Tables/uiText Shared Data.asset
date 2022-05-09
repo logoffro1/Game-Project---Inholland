@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
   m_Name: uiText Shared Data
   m_EditorClassIdentifier: 
-  m_TableCollectionName: uiText
+  m_TableCollectionName: r
   m_TableCollectionNameGuidString: da94c565f8ff38849b53db7b3e21e305
   m_Entries:
   - m_Id: 67661500416
@@ -212,7 +212,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
-    m_Key: New Entry
+    m_Key: HowToPlayBtn
     m_Metadata:
       m_Items: []
   - m_Id: 6551456519958528
@@ -233,6 +233,194 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 6690306894475264
     m_Key: txtGetSustainabilityPoints
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Key: recycleTrash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Key: TaskListRecycle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Key: HowToPlayTxt
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Key: ResumeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Key: ReturnToOfficeBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Key: ReturnToMainMenuBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Key: ExitGameBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Key: BackBtn
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838257938845696
+    m_Key: officeScreen_overallAlkmaarPercentage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Key: officeScreen_citycentername
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Key: officeScreen_farmLandName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Key: officeScreen_thirdMapName
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Key: officeScreen_goal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Key: officeScreen_cityCenterDescripton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Key: officeScreen_farmDescripton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Key: officeScreen_thirdMapDescripton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Key: officeScreen_start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Key: officeScreen_select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13291700499009536
+    m_Key: taskListTurbine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13295209013334016
+    m_Key: interact-turbine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415166007070720
+    m_Key: flyer-title-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Key: flyer-title-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Key: flyer-title-option3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Key: flyer-title-option4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Key: flyer-title-option5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Key: flyer-title-option6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Key: flyer-title-option7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Key: flyer-title-option8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Key: flyer-title-option9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Key: flyer-title-option10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Key: flyer-body-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Key: flyer-body-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Key: flyer-body-option3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Key: flyer-body-option4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Key: flyer-body-option5
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Key: flyer-body-option6
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Key: flyer-body-option7
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Key: flyer-body-option8
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Key: flyer-body-option9
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Key: flyer-body-option10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Key: flyer-printflyers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Key: flyer-yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Key: flyer-no
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Key: flyer-madeEnough
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Key: flyer-return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Key: flyer-amountFlyersPrinted
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Key: flyer-finished
     m_Metadata:
       m_Items: []
   m_Metadata:

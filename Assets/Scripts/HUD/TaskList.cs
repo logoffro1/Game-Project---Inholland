@@ -38,8 +38,10 @@ public class TaskList : MonoBehaviour
         { TaskObjectType.Tree, "Plant trees"},
         { TaskObjectType.SolarPanel, "Set up solar panel" },
         { TaskObjectType.StreetLamp, "Upgrade street lamp" },
-        { TaskObjectType.ManHole, "Clean sewers" }
-         };
+        { TaskObjectType.ManHole, "Clean sewers" },
+        { TaskObjectType.Bin, "Recycle items" },
+        { TaskObjectType.WindTurbine, "Weld Turbine fans" }        
+        };
         localizedStringEvent = GetComponent<LocalizeStringEvent>();
 
         localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);

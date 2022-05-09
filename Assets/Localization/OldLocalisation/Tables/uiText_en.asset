@@ -291,6 +291,238 @@ MonoBehaviour:
     m_Localized: Get a few sustainability points
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: 'Press the correct keys!
+
+
+      Press A, S, D, F when the item
+      falls in the red zone to recycle the items in the proper bin'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521601
+    m_Localized: HOW TO PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Localized: 'You are an agent of POCITYF in the City of Alkmaar. Your job is
+      to make the city more sustainable than it already is by upgrading existing
+      green options or by installing new equipment that will make Alkmaar more green.
+
+
+      The
+      controls can be seen at the bottom left of the screen.
+
+      The minimap can
+      be seen at the top left of the screen.
+
+      The task list can be seen on
+      the top right of the screen.
+
+      The sustainability of the city of Alkmaar
+      can be seen in the middle of your screen at the top.
+
+      During any minigame,
+      if you are unsure what to do, press H to open the help menu. This will pause
+      the minigame and will give you time to read the instructions.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Localized: RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Localized: RETURN TO OFFICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Localized: EXIT GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Overall Alkmaar level:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: City center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Farm land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: Third map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Localized: Get the sustainability to 80%!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: Explore Alkmaar's heart! With the beautiful church and canals, there
+      is much to see. As well as many things to sustain-ify!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: Explore through Alkmaar farms! You will see mix of agriculture and
+      solar panels, some of which may need some maintenance!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: Third map description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: Select a district
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13291700499009536
+    m_Localized: Weld fans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13295209013334016
+    m_Localized: Weld fans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415166007070720
+    m_Localized: Embrace nature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Localized: Plant seeds!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Localized: Throw trash on the ground
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Localized: Light trees on fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Localized: Hug trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Localized: Install solar panels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Localized: Spill petrol in canals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Localized: Care for the world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Localized: Bike > Bus > Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Localized: Clean the beaches!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Localized: A 5-minute shower is equal to 20-35 gallons of water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Localized: "A heavy coat of dust on a light bulb can block up to half of the
+      light.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Localized: Heating, ventilating and air conditioning systems account for 40-60
+      percent of total energy use in the commercial sector.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Localized: 25% of the bottled water you buy is really municipal tap water,
+      so you might as well pass on the plastic bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Localized: Follow these three tips to live a healthier and more sustainable
+      life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Localized: Spitting your gum in nature is actually good! Why? Well it kills
+      that nasty nature around it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Localized: Tourism in coral reefs is actually great, because not only does
+      it actively permanently destroy coral reefs, but it also disassembles entire
+      fish populations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Localized: Help out your local community by doing community organic bins! Throw
+      your organic waste to create fertile land for your yellow neighbors!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Localized: Barry B. Benson, an idealistic honey bee who has the ability to
+      talk to humans, has recently graduated from college and is about to enter the
+      hive's Honex Industries honey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Localized: Print some flyers?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Localized: You have already made enough flyers for today
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Localized: 'Amount flyers printed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Localized: Finished all the flyers!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Localized: Research done by 3 year old shows that throwing cans on the ground
+      is good
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

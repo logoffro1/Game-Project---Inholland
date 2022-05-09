@@ -291,6 +291,152 @@ MonoBehaviour:
     m_Localized: Haal een paar duurzaamheidspunten
     m_Metadata:
       m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: '
+
+      Probeer de lastoorts binnen de lijn te gebruiken!
+
+
+
+      TOETSEN
+
+      SPATIEBALK
+      - Start het spel
+
+      W- Omhoog gaan
+
+      S-naar beneden'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11217092649213952
+    m_Localized: Ventilatoren voor lasturbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13291700499009536
+    m_Localized: Lasventilatoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13295209013334016
+    m_Localized: Lasventilatoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415166007070720
+    m_Localized: Omarm de natuur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Localized: Plant zaden!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Localized: Gooi afval op de grond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Localized: Lichte bomen in brand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Localized: Knuffel bomen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Localized: Zonnepanelen installeren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Localized: Benzine morsen in kanalen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Localized: Zorg voor de wereld
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Localized: Fiets > Bus > Auto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Localized: Maak de stranden schoon!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Localized: Een douche van 5 minuten staat gelijk aan 20-35 gallons water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Localized: Een dikke laag stof op een gloeilamp kan tot de helft van het licht
+      blokkeren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Localized: "Verwarmings-, ventilatie- en airconditioningsystemen zijn goed
+      voor 40-60 procent van het totale energieverbruik in de commerci\xEBle sector."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Localized: 25% van het flessenwater dat je koopt is echt gemeentelijk kraanwater,
+      dus je kunt net zo goed de plastic fles doorgeven
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Localized: Onderzoek gedaan door 3-jarige toont aan dat blikjes op de grond
+      gooien goed is
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Localized: Volg deze drie tips om gezonder en duurzamer te leven.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Localized: Kauwgom spugen in de natuur is eigenlijk goed! Waarom? Nou, het
+      doodt die vervelende natuur eromheen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Localized: Toerisme in koraalriffen is eigenlijk geweldig, want het vernietigt
+      niet alleen actief koraalriffen, maar het ontmantelt ook hele vispopulaties!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Localized: "Help je lokale gemeenschap door organische afvalbakken te maken!
+      Gooi je organisch afval om vruchtbare grond te cre\xEBren voor je gele buren!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Localized: Barry B. Benson, een idealistische honingbij die met mensen kan
+      praten, is onlangs afgestudeerd aan de universiteit en staat op het punt de
+      Honex Industries-honing van de korf binnen te gaan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Localized: Flyers afdrukken?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Localized: Nee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Localized: Je hebt al genoeg flyers gemaakt voor vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Localized: Opbrengst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Localized: 'Aantal geprinte flyers:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Localized: Alle flyers klaar!
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
