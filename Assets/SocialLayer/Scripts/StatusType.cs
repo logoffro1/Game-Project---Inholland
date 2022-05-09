@@ -1,5 +1,5 @@
 
 
 public enum StatusType {
-    MainMenu, Office, Farm, CityCenter,GameUKDay
+    MainMenu, Office, Farm, CityCenter,GameUKDay,NewOffice
 }
