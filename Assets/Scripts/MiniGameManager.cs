@@ -39,6 +39,15 @@ public class MiniGameManager : MonoBehaviour
         PlayerData = FindObjectOfType<PlayerReportData>();
     }
 
+    //Delete This before merging to dev
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartGame(tetrisGamePrefab);
+        }
+    }
+
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
@@ -68,8 +77,9 @@ public class MiniGameManager : MonoBehaviour
     public void GameOver()
     {
         
-        PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
+        PlayerData.AddLostGames(InteractableObject.GamePrefab);
+
     }
 
     public void GameWon()

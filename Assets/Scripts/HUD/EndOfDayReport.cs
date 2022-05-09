@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class EndOfDayReport : MonoBehaviour
 {
     public Text DistanceTraveled;
+    public Text Location;
     public Text PlayerName;
     public Text MostPlayedMinigame;
     public Text Success;
@@ -21,16 +22,21 @@ public class EndOfDayReport : MonoBehaviour
     private PlayFabManager playFabManager;
     public AudioClip DayReportAudio;
 
-
-
-
     private PlayerReportData playerReportData;
     private bool dayFailed = false;
     private string lang = "en";
+
+    private PlayerData playerData;
+
     void Start()
     {
         GetLanguage();
         dayFailed = GetWinCondition();
+
+        playerData = FindObjectOfType<PlayerData>();
+        playerData.NewSustainabilityPoints = dayFailed ? -0.05f : (ProgressBar.Instance.GetSlideValue() / 2000); //Change 
+        playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
+        DontDestroyOnLoad(playerData.gameObject);
 
         playFabManager = FindObjectOfType<PlayFabManager>();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
@@ -42,6 +48,7 @@ public class EndOfDayReport : MonoBehaviour
 
         int playNr;
 
+        Location.text = playerData.IsInDistrict.ToString();
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
