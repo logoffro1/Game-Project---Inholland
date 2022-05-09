@@ -8,12 +8,13 @@ public class ButtonHandler : MonoBehaviour
     public void LoadOfficeScene()
     {
         Time.timeScale = 1.0f;
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+/*        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
+            MouseLook m = p.transform.GetComponentInChildren<MouseLook>();
+            m.canR = true;
 
-                p.GetComponentInChildren<MouseLook>().canR = true;
-        }
+        }*/
         if (PhotonNetwork.IsMasterClient)
         {
             LevelManager.Instance.LoadScenePhoton("Office", true);
