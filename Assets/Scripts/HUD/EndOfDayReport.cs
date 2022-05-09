@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EndOfDayReport : MonoBehaviour
 {
@@ -29,19 +30,28 @@ public class EndOfDayReport : MonoBehaviour
     private string lang = "en";
     void Start()
     {
+        
         GetLanguage();
         dayFailed = GetWinCondition();
 
         playFabManager = FindObjectOfType<PlayFabManager>();
-        /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
-        //This is temporary. Multiplayer implementation will change it.
-        playerReportData = FindObjectOfType<PlayerReportData>();
+        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        foreach (PlayerReportData data in datas)
+        {
+            if (data.photonView.IsMine)
+            {
+                playerReportData = data;
+                break;
+            }
+        }
+      //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
 
         int playNr;
 
+        PlayerName.text = PhotonNetwork.LocalPlayer.NickName;
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
@@ -55,7 +65,7 @@ public class EndOfDayReport : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0f;
+       // Time.timeScale = 0f;
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }

@@ -24,14 +24,13 @@ public class PlayerMovement : MonoBehaviourPun
     public bool canMove { get; set; } = true;
     void Start()
     {
-        Time.timeScale = 1f;
         controller = GetComponent<CharacterController>();
         canMove = true;
     }
 
     void Update()
     {
-        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
+        if (!photonView.IsMine) return;
         if (MiniGameManager.Instance != null)
         {
 
@@ -44,9 +43,9 @@ public class PlayerMovement : MonoBehaviourPun
                 canMove = true;
             }
         }
+        
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         if(!IsRunning(horizontal,vertical))
         {
             anim.SetBool("isRunning", false);
@@ -56,7 +55,6 @@ public class PlayerMovement : MonoBehaviourPun
         {
             return;
         }
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement(horizontal,vertical);

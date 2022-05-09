@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
         //Load lobby scene
 
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScene("Office",false);
+        LevelManager.Instance.LoadScenePhoton("Office",false);
     }
 
     public void NewGame()

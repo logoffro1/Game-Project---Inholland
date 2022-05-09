@@ -64,10 +64,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Numele agentului : {playerName}'
+    m_Localized: 'Numele agentului :'
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 1362907405541376
     m_Localized: "Progresul sustenabilit\u0103\u021Bii:"
     m_Metadata:
@@ -292,4 +291,4 @@ MonoBehaviour:
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e084d471d7040000e0044739f9040000e0c424d3f6040000e004881cf90400
+        m_Entries: 00e0044739f9040000e0c424d3f6040000e004881cf90400

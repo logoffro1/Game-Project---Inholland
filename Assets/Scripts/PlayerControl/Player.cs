@@ -4,12 +4,13 @@ using UnityEngine;
 using System.Linq;
 using System;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Player : MonoBehaviourPun
 {
     private bool host = true;
-    public bool Host { get { return host;  } }
+    public bool Host { get { return host; } }
     private string name;
     private List<OneOffUpgrade> oneOffUpgradeList;
     public List<OneOffUpgrade> OneOffUpgradeList { get { return oneOffUpgradeList; } }
@@ -23,14 +24,23 @@ public class Player : MonoBehaviourPun
 
     private void Awake()
     {
+        Debug.Log("AWAKE");
+        
         if (photonView.IsMine)
         {
             LocalPlayerInstance = this.gameObject;
+            DontDestroyOnLoad(this.gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
+    }
+    private void OnLevelWasLoaded()
+    {
+
+        SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
+        transform.position = spawnPlayer.transform.position;
     }
     void Start()
     {
+        Debug.Log("PLAYER START");
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
         oneOffUpgradeList = SetUpList();
@@ -38,7 +48,6 @@ public class Player : MonoBehaviourPun
         hashtable.Add("ready", true);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
     }
-
     public List<OneOffUpgrade> SetUpList()
     {
         //TODO: Change how this is gotten
@@ -57,7 +66,7 @@ public class Player : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public OneOffUpgrade GetUpgrade(OneOffUpgradesEnum upgrade)

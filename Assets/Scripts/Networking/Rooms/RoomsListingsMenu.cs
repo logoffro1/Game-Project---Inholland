@@ -13,6 +13,7 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log("UPDATE ROOM");
         foreach (RoomInfo info in roomList)
         {
             if (info.RemovedFromList) //removed room
@@ -44,7 +45,7 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
         if (roomListing.RoomInfo.PlayerCount < roomListing.RoomInfo.MaxPlayers)
         {
             PhotonNetwork.JoinRoom(roomListing.RoomInfo.Name);
-            LevelManager.Instance.LoadScene("Office",false);
+            LevelManager.Instance.LoadScenePhoton("Office",false);
         }
 
     }

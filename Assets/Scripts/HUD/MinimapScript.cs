@@ -25,6 +25,7 @@ public class MinimapScript : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (player == null) return;
         Vector3 newPosition = player.position;
         newPosition.y = transform.position.y;
         transform.position = newPosition;

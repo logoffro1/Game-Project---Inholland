@@ -6,18 +6,19 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Photon.Pun;
-public class TimerCountdown : MonoBehaviour
+public class TimerCountdown : MonoBehaviourPun, IPunObservable
 {
-    private int secondsMax = 5*60;
+    private int secondsMax = 60; //5x60
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
-    public int SecondsMax { 
+    public int SecondsMax
+    {
         private set
         {
             secondsMax = value;
         }
-        
+
         get
         {
             return secondsMax;
@@ -53,21 +54,32 @@ public class TimerCountdown : MonoBehaviour
     public event Action<string> OnStartCountdownChange;
     public event EventHandler OnCountdownEnd;
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(secondsLeft);
+        }
+        else if (stream.IsReading)
+        {
+            secondsLeft = (int)stream.ReceiveNext();
+            OnSecondChange?.Invoke(secondsLeft);
+        }
+    }
     void Start()
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
         StartCoroutine(StartCountDown());
-        
+
     }
-    
     private IEnumerator StartCountDown()
     {
-/*        bool allPlayersReady = (bool)PhotonNetwork.LocalPlayer.CustomProperties["ready"];
-        while (!allPlayersReady)
-        {
-            yield return new WaitForSeconds(0f);
-        }*/
+        /*        bool allPlayersReady = (bool)PhotonNetwork.LocalPlayer.CustomProperties["ready"];
+                while (!allPlayersReady)
+                {
+                    yield return new WaitForSeconds(0f);
+                }*/
         while (startCountDownLeft > 0)
         {
             yield return new WaitForSeconds(1);
@@ -99,16 +111,21 @@ public class TimerCountdown : MonoBehaviour
                 break;
             }
             yield return new WaitForSeconds(1);
-            secondsLeft -= 1;
-            OnSecondChange?.Invoke(secondsLeft);
+            if (photonView.IsMine)
+            {
+                secondsLeft -= 1;
+                OnSecondChange?.Invoke(secondsLeft);
+            }
+
 
             VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());
         }
 
-        OnCountdownEnd?.Invoke(this, EventArgs.Empty);        
+        OnCountdownEnd?.Invoke(this, EventArgs.Empty);
     }
     public int GetRemainingTime()
     {
         return secondsLeft;
     }
+
 }

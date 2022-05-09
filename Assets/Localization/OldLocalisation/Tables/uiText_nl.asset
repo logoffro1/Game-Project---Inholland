@@ -64,7 +64,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Naam werknemer : {playerName}'
+    m_Localized: 'Naam werknemer :'
     m_Metadata:
       m_Items:
       - id: 1
@@ -343,7 +343,7 @@ MonoBehaviour:
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e0c424d3f6040000e004881cf9040000e0044739f90400
     00000001:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:

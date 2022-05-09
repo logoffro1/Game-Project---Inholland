@@ -87,7 +87,7 @@ public class MiniGameBase : MonoBehaviour
         if (show)
         {
 
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
         }
         else
         {

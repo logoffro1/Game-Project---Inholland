@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviourPunCallbacks
 {
 
     public static bool isPaused = false;
@@ -18,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -47,10 +49,10 @@ public class PauseMenu : MonoBehaviour
         CloseHowToPlay();
         isPaused = false;
     }
-     void Pause()
+    void Pause()
     {
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         centerDotUI.SetActive(false);
         hoverTextUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
@@ -76,15 +78,30 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToOffice()
     {
-        Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("Office",true);
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            
+            LevelManager.Instance.LoadScenePhoton("Office", true);
+        }
+            
     }
 
     public void LoadMenu()
     {
-        Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("MainMenu",false);
+       // PhotonNetwork.LeaveRoom(true);
+        //LevelManager.Instance.LoadScenePhoton("MainMenu",false);
     }
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Leaving room...");
+    }
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+
+    }
+
+
 
     public void ExitGame()
     {

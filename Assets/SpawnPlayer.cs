@@ -6,10 +6,12 @@ using Photon;
 public class SpawnPlayer : MonoBehaviourPun
 {
     [SerializeField] private GameObject playerPrefab;
-    [SerializeField] private Transform[] spawnPositions;
+    [SerializeField] public Transform[] spawnPositions;
     void Awake()
     {
-
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[Random.Range(0,spawnPositions.Length)].position, Quaternion.identity);
+        Time.timeScale = 1.0f;
+        Debug.Log(PhotonNetwork.CurrentRoom.IsOpen);
+        if(PhotonNetwork.CurrentRoom.IsOpen)
+            PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[Random.Range(0,spawnPositions.Length)].position, Quaternion.identity);
     }
 }

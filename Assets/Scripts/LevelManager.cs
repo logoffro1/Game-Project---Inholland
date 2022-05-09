@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviourPun
         }
     }
 
-    public void LoadScene(string sceneName, bool loadForAllPlayers)
+    public void LoadScenePhoton(string sceneName, bool loadForAllPlayers)
     {
         if (loadForAllPlayers)
         {
@@ -70,6 +70,11 @@ public class LevelManager : MonoBehaviourPun
         // var scene = SceneManager.LoadSceneAsync(sceneName);
         // scene.allowSceneActivation = false;
         // scene.allowSceneActivation = true;
+    }
+    public void LoadSceneSP(string sceneName)
+    {
+        CoroutineLoading();
+        SceneManager.LoadScene(sceneName);
     }
     public void CoroutineLoading()
     {
