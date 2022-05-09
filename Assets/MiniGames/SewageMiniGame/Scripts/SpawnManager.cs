@@ -9,24 +9,24 @@ public class SpawnManager : MonoBehaviour
     private float minSeconds = 0.5f;
     private float maxSeconds = 2f;
 
+    private float corridorSpeed = 0.35f;
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SpawnLoop());
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetCorridorSpeed(float corridorSpeed)
     {
-
+        this.corridorSpeed = corridorSpeed;
     }
     private void SpawnToxic()
     {
         GameObject go = toxicPrefab[Random.Range(0, toxicPrefab.Length)];
         Vector3 spawnPos = new Vector3(xSpawn, Random.Range(-0.5f, 0.17f), 300f);
-        Instantiate(go, spawnPos, go.transform.rotation, transform);
+       GameObject trash = Instantiate(go, spawnPos, go.transform.rotation, transform);
+        trash.GetComponent<Collectible>().ChangeCoridorSpeed(corridorSpeed);
     }
+
     private IEnumerator SpawnLoop()
     {
         while (true)
