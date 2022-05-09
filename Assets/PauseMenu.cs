@@ -40,6 +40,15 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     }
     public void Resume()
     {
+        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        foreach (PlayerReportData data in datas)
+        {
+            if (data.photonView.IsMine)
+            {
+                data.gameObject.GetComponentInChildren<MouseLook>().canR = true;
+                break;
+            }
+        }
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         centerDotUI.SetActive(true);
@@ -51,6 +60,15 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     }
     void Pause()
     {
+        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        foreach (PlayerReportData data in datas)
+        {
+            if (data.photonView.IsMine)
+            {
+                data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
+                break;
+            }
+        }
         pauseMenuUI.SetActive(true);
         //Time.timeScale = 0f;
         centerDotUI.SetActive(false);

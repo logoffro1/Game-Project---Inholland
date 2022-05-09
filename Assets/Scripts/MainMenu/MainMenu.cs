@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
             go.SetActive(true);
 
         gameObject.SetActive(false);
+        PhotonNetwork.NickName = nicknameInput.text;
     }
     public void OnLanguageChange(TMP_Dropdown dropdown)
     {

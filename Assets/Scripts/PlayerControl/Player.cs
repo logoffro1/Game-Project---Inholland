@@ -29,13 +29,21 @@ public class Player : MonoBehaviourPun
         if (photonView.IsMine)
         {
             LocalPlayerInstance = this.gameObject;
-            DontDestroyOnLoad(this.gameObject);
         }
+            DontDestroyOnLoad(this.gameObject);
     }
     private void OnLevelWasLoaded()
     {
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
+
+        if (SceneManager.GetActiveScene().name == "Office")
+        {
+            GetComponent<PlayerMovement>().canMove = true;
+            GetComponentInChildren<MouseLook>().canR = true;
+        }
+        else { }
+
     }
     void Start()
     {

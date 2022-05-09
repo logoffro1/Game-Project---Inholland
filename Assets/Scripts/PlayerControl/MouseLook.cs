@@ -11,6 +11,7 @@ public class MouseLook : MonoBehaviourPun
     private Transform player;
 
     public bool canRotate { get; set; } = true;
+    public bool canR { get; set; } = true;
 
     void Start()
     {
@@ -34,6 +35,8 @@ public class MouseLook : MonoBehaviourPun
             }
         }
         if (!canRotate) return;
+
+        if (!canR) return;
         LookAround();
 
 

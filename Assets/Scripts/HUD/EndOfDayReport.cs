@@ -42,12 +42,10 @@ public class EndOfDayReport : MonoBehaviour
             if (data.photonView.IsMine)
             {
                 playerReportData = data;
+                data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
                 break;
             }
-
         }
-        MiniGameManager.Instance.FreezeScreen(true);
-
         //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
