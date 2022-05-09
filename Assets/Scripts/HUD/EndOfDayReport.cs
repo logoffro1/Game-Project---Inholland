@@ -34,7 +34,17 @@ public class EndOfDayReport : MonoBehaviour
         dayFailed = GetWinCondition();
 
         playerData = FindObjectOfType<PlayerData>();
-        playerData.NewSustainabilityPoints = dayFailed ? -0.05f : (ProgressBar.Instance.GetSlideValue() / 2000); //Change 
+        playerReportData = FindObjectOfType<PlayerReportData>();
+
+
+        playerData.NewSustainabilityPoints = 
+            playerReportData.calculateIncreaseAmount(
+                TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            GetWinCondition()); ; //Change 
+
         playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
         DontDestroyOnLoad(playerData.gameObject);
 
@@ -42,7 +52,6 @@ public class EndOfDayReport : MonoBehaviour
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
-        playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
 
@@ -80,8 +89,6 @@ public class EndOfDayReport : MonoBehaviour
                 return $"{remainingTime} secunde";
             default:
                 return $"{remainingTime} seconds ";
-
-
         }
     }
     private string GetWinLoseText()

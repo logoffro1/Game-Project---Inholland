@@ -13,16 +13,19 @@ public class PlayerData : MonoBehaviour
     public float FarmSustainability { get; private set; }
     public float LastMapSustainability { get; private set; }
 
+    private PlayerReportData pData;
+
     // Start is called before the first frame update
     void Start()
     {
         //Load data from save file
         //temp
+        pData = FindObjectOfType<PlayerReportData>();
         if (CityCenterSustainability == 0)
         {
-            CityCenterSustainability = 0.3f;
-            FarmSustainability = 0.6f;
-            LastMapSustainability = 0.43f;
+            CityCenterSustainability = 3f;
+            FarmSustainability = 6f;
+            LastMapSustainability = 4.3f;
         }
 
         OverallAlkmaarSustainability = (CityCenterSustainability + FarmSustainability + LastMapSustainability) / 3;
@@ -43,21 +46,35 @@ public class PlayerData : MonoBehaviour
         LastMapSustainability = value;
         SetOverallAlkmaarSustainability();
     }
+  
     public void AddToCurrentDistrict(float value)
-    {
+    { 
         switch(IsInDistrict)
         {
             case DistrictEnum.CityCenter:
                 SetCityCenterSustainability(CityCenterSustainability + value);
+                if (CityCenterSustainability > 100f)
+                {
+                    CityCenterSustainability = 100f;
+                }
                 break;
             case DistrictEnum.FarmLand:
                 SetFarmSustainability(FarmSustainability + value);
+                if (FarmSustainability > 100f)
+                {
+                    FarmSustainability = 100f;
+                }
                 break;
             case DistrictEnum.ThirdMap:
                 SetLastMapSustainability(LastMapSustainability + value);
+                if (LastMapSustainability > 100f)
+                {
+                    LastMapSustainability = 100f;
+                }
                 break;
         }
     }
+  
 
     private void SetOverallAlkmaarSustainability()
     {

@@ -100,6 +100,29 @@ public class PlayerReportData : MonoBehaviour
         numberPlayed = topPlayNumber;
         return returnPrefabTaskName(mostPlayedMinigame);
     }
+    public float calculateIncreaseAmount(int remainingSeconds ,int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool ifWon)
+    {
+        float increaseAmount = 2.7f;
+        if (ifWon)
+        {
+            Debug.Log($"Remaining seconds: {(float)remainingSeconds / 30f}");
+            increaseAmount += (float)remainingSeconds / 60f;
+            Debug.Log($"Easy buff: {(float)nrOfEasyGames / 20f}");
+            increaseAmount += (float)nrOfEasyGames / 20f;
+            Debug.Log($"Medium buff: {(float)nrOfMediumGames / 10f}");
+            increaseAmount += (float)nrOfMediumGames / 10f;
+            Debug.Log($"Hard buff: {(float)nrOfHardGames / 5f}");
+            increaseAmount += (float)nrOfHardGames / 5f;
+        }
+        Debug.Log($"Before adjustment of 5, the amount is: {increaseAmount}");
+
+        if (increaseAmount > 5f)
+        {
+            increaseAmount = 5f;
+        }
+        Debug.Log($"final amount: {increaseAmount}");
+        return increaseAmount;
+    }
 
     public void AddWonGames(GameObject minigamePrefab)
     {
@@ -115,6 +138,36 @@ public class PlayerReportData : MonoBehaviour
             //This log should be deleted before merge.
             Debug.Log($"{minigamePrefab.name} added current wins : {NrOfTasksSuccess[minigamePrefab.name]}");
         }
+    }
+    public int GetEasyGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if (returnDifficulty(entry.Key) == MiniGameDifficulty.Easy)
+                totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+    public int GetMediumGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if (returnDifficulty(entry.Key) == MiniGameDifficulty.Medium)
+                totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+    public int GetHardGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if(returnDifficulty(entry.Key)==MiniGameDifficulty.Hard)
+            totalNumber += entry.Value;
+        }
+        return totalNumber;
     }
 
     public void AddLostGames(GameObject minigamePrefab)
