@@ -292,21 +292,104 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
-    m_Localized: 'Try to use the welding torch within the line!
+    m_Localized: 'Press the correct keys!
 
 
-      KEYS
-
-      SPACE-
-      Start the game
-
-      W- Move Up
-
-      S- Move Down'
+      Press A, S, D, F when the item
+      falls in the red zone to recycle the items in the proper bin'
     m_Metadata:
       m_Items: []
-  - m_Id: 11217092649213952
-    m_Localized: Weld Turbine fans
+  - m_Id: 10218383323975680
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Recycle items
+  - m_Id: 6551242266521601
+    m_Localized: HOW TO PLAY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Localized: 'You are an agent of POCITYF in the City of Alkmaar. Your job is
+      to make the city more sustainable than it already is by upgrading existing
+      green options or by installing new equipment that will make Alkmaar more green.
+
+
+      The
+      controls can be seen at the bottom left of the screen.
+
+      The minimap can
+      be seen at the top left of the screen.
+
+      The task list can be seen on
+      the top right of the screen.
+
+      The sustainability of the city of Alkmaar
+      can be seen in the middle of your screen at the top.
+
+      During any minigame,
+      if you are unsure what to do, press H to open the help menu. This will pause
+      the minigame and will give you time to read the instructions.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Localized: RESUME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Localized: RETURN TO OFFICE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Localized: MAIN MENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Localized: EXIT GAME
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: BACK
+  - m_Id: 11838257938845696
+    m_Localized: 'Overall Alkmaar level:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: City center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Farm land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: Third map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Localized: Get the sustainability to 80%!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: Explore Alkmaar's heart! With the beautiful church and canals, there
+      is much to see. As well as many things to sustain-ify!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: Explore through Alkmaar farms! You will see mix of agriculture and
+      solar panels, some of which may need some maintenance!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: Third map description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: Select a district
     m_Metadata:
       m_Items: []
   references:

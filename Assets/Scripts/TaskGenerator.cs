@@ -72,6 +72,7 @@ public class TaskGenerator : MonoBehaviour
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
+        allGamesToObjects.Add(TaskObjectType.Bin, GamePrefabs.Where(x => x.name.Contains("Recycle")).ToList());
         allGamesToObjects.Add(TaskObjectType.WindTurbine, GamePrefabs.Where(x => x.name.Contains("Turbine")).ToList());
        
     }
@@ -84,7 +85,7 @@ public class TaskGenerator : MonoBehaviour
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
             if (allInteractableObjects.ContainsKey(objectType))
-                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/3);
+                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/2);
         }
 
         //Manual
