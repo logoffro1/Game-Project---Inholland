@@ -5,10 +5,21 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using Photon.Pun;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] lobbyActivation;
+    [SerializeField] private TMP_InputField nicknameInput;
+
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey("nickname"))
+        {
+            nicknameInput.text = PlayerPrefs.GetString("nickname");
+
+        }
+    }
     public void ContinueGame()
     {
         //TODO: Get save file, load safe file
@@ -39,7 +50,7 @@ public class MainMenu : MonoBehaviour
             PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
 
         PhotonNetwork.NickName = nickname.text;
-        Debug.Log(nickname.text);
+        PlayerPrefs.SetString("nickname", nickname.text);
     }
     public void QuitGame()
     {
