@@ -110,9 +110,12 @@ public class TaskGenerator : MonoBehaviour
         foreach(GameObject gameObject in allObjects)
         {
             //Get random game prefab for a game
-            GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
-            //Creating a fully functional interactable task object
-            AddTaskToObject(gameObject, gamePrefab);
+            if (allGamesToObjects[objectType].Count > 0)
+            {
+                GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
+                //Creating a fully functional interactable task object
+                AddTaskToObject(gameObject, gamePrefab);
+            }
         }
     }
 
