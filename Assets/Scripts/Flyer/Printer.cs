@@ -5,7 +5,6 @@ public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
 
-    public bool IsDoneForToday = false;
     private bool isPanelActive = false;
     public GameObject PrinterCanvas;
     public GameObject ChoicePanel;
@@ -29,13 +28,16 @@ public class Printer : InteractableObject
         isPanelActive = !isPanelActive;
         PrinterCanvas.SetActive(show);
 
-        if (IsDoneForToday)
+        if (show)
         {
-            NoPanel.SetActive(true);
-        }
-        else
-        {
-            ChoicePanel.SetActive(true);
+            if (PrinterCanvas.GetComponent<FlyerMaking>().IsDoneForToday)
+            {
+                NoPanel.SetActive(true);
+            }
+            else
+            {
+                ChoicePanel.SetActive(true);
+            }
         }
 
         Cursor.lockState = CursorLockMode.None;
@@ -58,7 +60,7 @@ public class Printer : InteractableObject
     public void ChoseToContinue()
     {
         ChoicePanel.SetActive(false);
-        PrinterPanel.GetComponent<FlyerMaking>().Printer = this;
+        PrinterCanvas.GetComponent<FlyerMaking>().Printer = this;
         PrinterPanel.SetActive(true);
     }
 

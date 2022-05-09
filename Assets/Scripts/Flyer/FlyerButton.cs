@@ -17,7 +17,7 @@ public class FlyerButton : MonoBehaviour
 
     private void Start()
     {
-        flyerMaking = transform.parent.parent.GetComponent<FlyerMaking>();
+        flyerMaking = transform.parent.parent.parent.GetComponent<FlyerMaking>();
         title = flyerMaking.Title;
         body = flyerMaking.Body;
     }

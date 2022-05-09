@@ -16,7 +16,6 @@ public class FlyerMaking : MonoBehaviour
     public TextMeshProUGUI Body;
 
     public TextMeshProUGUI Counter;
-    public GameObject ProgressPanel;
     public TextMeshProUGUI AmountPrinted;
 
     public List<Flyer> flyerList;
@@ -32,6 +31,7 @@ public class FlyerMaking : MonoBehaviour
     private List<GameObject> titleList;
     private List<GameObject> bodyList;
 
+    [HideInInspector] public bool IsDoneForToday = false;
     [HideInInspector] public Printer Printer;
 
     private void Start()
@@ -100,10 +100,11 @@ public class FlyerMaking : MonoBehaviour
         //Check
         if (AmountFlyersMade >= AmountFlyersToMake)
         {
-            ProgressPanel.SetActive(true);
-            this.Printer.IsDoneForToday = true;
+            this.Printer.ProgressPanel.SetActive(true);
             FindObjectOfType<PlayerData>().FlyerPoints = TotalPoints / (2 * AmountFlyersToMake);
             AmountPrinted.text = (AmountFlyersToMake * AmountToPrintPerFlyer).ToString();
+            IsDoneForToday = true;
+            this.Printer.PrinterPanel.SetActive(false);
 
             yield return new WaitForSeconds(2f);
 
