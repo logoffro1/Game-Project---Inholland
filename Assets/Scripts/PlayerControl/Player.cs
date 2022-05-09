@@ -40,10 +40,13 @@ public class Player : MonoBehaviourPun
         if (SceneManager.GetActiveScene().name == "Office")
         {
             GetComponent<PlayerMovement>().canMove = true;
-            GetComponentInChildren<MouseLook>().canR = true;
+            gameObject.GetComponentInChildren<MouseLook>().canR = true;
         }
-        else { }
+        else {
 
+        }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void Start()
     {

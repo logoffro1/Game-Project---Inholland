@@ -6,9 +6,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Photon.Pun;
-public class TimerCountdown : MonoBehaviourPun, IPunObservable
+public class TimerCountdown : MonoBehaviourPun
 {
-    private int secondsMax = 10; //5x60
+    private int secondsMax = 120; //5x60
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
@@ -54,7 +54,7 @@ public class TimerCountdown : MonoBehaviourPun, IPunObservable
     public event Action<string> OnStartCountdownChange;
     public event EventHandler OnCountdownEnd;
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+/*    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
@@ -65,7 +65,7 @@ public class TimerCountdown : MonoBehaviourPun, IPunObservable
             secondsLeft = (int)stream.ReceiveNext();
             OnSecondChange?.Invoke(secondsLeft);
         }
-    }
+    }*/
     void Start()
     {
         secondsLeft = secondsMax;
@@ -111,11 +111,9 @@ public class TimerCountdown : MonoBehaviourPun, IPunObservable
                 break;
             }
             yield return new WaitForSeconds(1);
-            if (photonView.IsMine)
-            {
+
                 secondsLeft -= 1;
                 OnSecondChange?.Invoke(secondsLeft);
-            }
 
 
             VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());
