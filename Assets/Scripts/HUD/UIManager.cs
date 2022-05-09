@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
+    public GameObject Popup;
     
 
     public Image trashFillImage;
@@ -48,6 +49,8 @@ public class UIManager : MonoBehaviour
             countDownText.text = CountdownString(TimerCountdown.Instance.SecondsMax);
             countDownText.gameObject.SetActive(false);
         }
+
+        FindObjectOfType<MiniGameManager>().OnGameWon += ShowPopUp;
 
     }
 
@@ -154,6 +157,14 @@ public class UIManager : MonoBehaviour
     private bool IsColorChangeNeeded(Color newColor)
     {
         return countDownText.color != newColor;
+    }
+
+    private void ShowPopUp(InteractableTaskObject interactableTaskObject)
+    {
+        Vector3 position = transform.position;
+        position.y += 300;
+        GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
+        popup.GetComponent<Popup>().Task = interactableTaskObject.interactableTaskStatusModels.task;
     }
 
 }
