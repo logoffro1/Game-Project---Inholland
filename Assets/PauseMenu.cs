@@ -40,12 +40,12 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     }
     public void Resume()
     {
-        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
-        foreach (PlayerReportData data in datas)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
         {
-            if (data.photonView.IsMine)
+            if (p.GetComponent<Player>().photonView.IsMine)
             {
-                data.gameObject.GetComponentInChildren<MouseLook>().canR = true;
+                p.GetComponentInChildren<MouseLook>().canR = false;
                 break;
             }
         }
@@ -60,12 +60,12 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     }
     void Pause()
     {
-        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
-        foreach (PlayerReportData data in datas)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
         {
-            if (data.photonView.IsMine)
+            if (p.GetComponent<Player>().photonView.IsMine)
             {
-                data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
+                p.GetComponentInChildren<MouseLook>().canR = false;
                 break;
             }
         }

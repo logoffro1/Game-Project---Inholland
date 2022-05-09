@@ -36,7 +36,17 @@ public class EndOfDayReport : MonoBehaviour
 
         playFabManager = FindObjectOfType<PlayFabManager>();
 
-        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach(GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                playerReportData = p.GetComponent<PlayerReportData>();
+                p.GetComponentInChildren<MouseLook>().canR = false;
+                break;
+            }
+        }
+/*        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
         foreach (PlayerReportData data in datas)
         {
             if (data.photonView.IsMine)
@@ -45,7 +55,7 @@ public class EndOfDayReport : MonoBehaviour
                 data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
                 break;
             }
-        }
+        }*/
         //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";

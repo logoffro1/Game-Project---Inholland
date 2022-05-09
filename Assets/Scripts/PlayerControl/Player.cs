@@ -15,6 +15,7 @@ public class Player : MonoBehaviourPun
     private List<OneOffUpgrade> oneOffUpgradeList;
     public List<OneOffUpgrade> OneOffUpgradeList { get { return oneOffUpgradeList; } }
     private float minigameLevel;
+    [SerializeField] MouseLook mouseLook;
 
     //All necessary components
     private PlayerMovement playerMovement;
@@ -40,13 +41,13 @@ public class Player : MonoBehaviourPun
         if (SceneManager.GetActiveScene().name == "Office")
         {
             GetComponent<PlayerMovement>().canMove = true;
-            gameObject.GetComponentInChildren<MouseLook>().canR = true;
         }
         else {
 
         }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        mouseLook.canR = true;
     }
     void Start()
     {
