@@ -44,8 +44,11 @@ public class EndOfDayReport : MonoBehaviour
                 playerReportData = data;
                 break;
             }
+
         }
-      //  playerReportData = FindObjectOfType<PlayerReportData>();
+        MiniGameManager.Instance.FreezeScreen(true);
+
+        //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
 

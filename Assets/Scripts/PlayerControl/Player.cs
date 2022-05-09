@@ -34,7 +34,6 @@ public class Player : MonoBehaviourPun
     }
     private void OnLevelWasLoaded()
     {
-
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
     }
