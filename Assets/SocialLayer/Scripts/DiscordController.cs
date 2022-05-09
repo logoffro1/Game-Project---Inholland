@@ -13,6 +13,8 @@ public class DiscordController : MonoBehaviour
     public string details;
     public string imageKey; //menu , office, farm, citycentre
 
+    private bool isDiscordRunning;
+
 
 
     private static DiscordController _instance;
@@ -29,10 +31,31 @@ public class DiscordController : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
+    public bool IsDiscordRunning()
+    {
+         isDiscordRunning = false;
+        // loops through open processes
+        for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
+        {
+            // checks if current process is discord
+            Debug.Log(System.Diagnostics.Process.GetProcesses()[i].ToString());
+            if (System.Diagnostics.Process.GetProcesses()[i].ToString() == "System.Diagnostics.Process (Discord)")
+            {
+                isDiscordRunning = true;
+                break;
+            }
+        }
+        return isDiscordRunning;
+    }
     void Start()
     {
-        discord = new Discord.Discord(972250653097340969, (System.UInt16)Discord.CreateFlags.Default);
-        UpdateDiscordStatus(status);
+        if (IsDiscordRunning())
+        {
+            discord = new Discord.Discord(972250653097340969, (System.UInt16)Discord.CreateFlags.Default);
+            UpdateDiscordStatus(status);
+        }
+
     }
    
     public void UpdateDiscordStatus(StatusType status)
@@ -76,7 +99,7 @@ public class DiscordController : MonoBehaviour
                 imageKey = "menu";
             break;
 
-            case StatusType.Office:
+            case StatusType.NewOffice:
                 state = RandomizeOfficeReplies();
                 details = "Chilling in the office";
                 imageKey = "office";
@@ -121,6 +144,9 @@ public class DiscordController : MonoBehaviour
 
     void Update()
     {
-        discord.RunCallbacks();
+        if (isDiscordRunning)
+        {
+            discord.RunCallbacks();
+        }
     }
 }

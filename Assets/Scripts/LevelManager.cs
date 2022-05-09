@@ -33,8 +33,11 @@ public class LevelManager : MonoBehaviour
     public async void LoadScene(string sceneName)
     {
         //Discord status change happens on every scene change before LoadSceneAsync();
-        StatusType type = (StatusType)Enum.Parse(typeof(StatusType), sceneName);
-        DiscordController.Instance.UpdateDiscordStatus(type);
+        if (DiscordController.Instance.IsDiscordRunning()) {
+            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), sceneName);
+            DiscordController.Instance.UpdateDiscordStatus(type);
+        }
+      
 
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
