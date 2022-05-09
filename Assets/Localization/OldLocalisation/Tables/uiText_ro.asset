@@ -27,6 +27,127 @@ MonoBehaviour:
     m_Localized: Ventilatoare sudate
     m_Metadata:
       m_Items: []
+  - m_Id: 13415166007070720
+    m_Localized: "\xCEmbr\u0103\u021Bi\u0219eaz\u0103 natura"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Localized: Seminte de plante!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Localized: "Arunc\u0103 gunoiul pe p\u0103m\xE2nt"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Localized: "Aprinde copacii \xEEn fl\u0103c\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Localized: "\xCEmbr\u0103\u021Bi\u0219eaz\u0103 copacii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Localized: "Instala\u021Bi panouri solare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Localized: "V\u0103rsa\u021Bi benzin\u0103 \xEEn canale"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Localized: "Ai grij\u0103 de lume"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Localized: "Biciclet\u0103 > Autobuz > Ma\u0219in\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Localized: "Cur\u0103\u021Ba\u021Bi plajele!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Localized: "Un du\u0219 de 5 minute este egal cu 20-35 de galoane de ap\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Localized: "Un strat greu de praf pe un bec poate bloca p\xE2n\u0103 la jum\u0103tate
+      din lumin\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Localized: "Sistemele de \xEEnc\u0103lzire, ventila\u021Bie \u0219i aer condi\u021Bionat
+      reprezint\u0103 40-60% din consumul total de energie \xEEn sectorul comercial."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Localized: "25% din apa \xEEmbuteliat\u0103 pe care o cump\u0103ra\u021Bi este
+      \xEEntr-adev\u0103r ap\u0103 municipal\u0103 de la robinet, a\u0219a c\u0103
+      a\u021Bi putea la fel de bine s\u0103 transmite\u021Bi sticla de plastic"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Localized: "Cercet\u0103rile f\u0103cute de un copil de 3 ani arat\u0103 c\u0103
+      aruncarea conservelor pe p\u0103m\xE2nt este bine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Localized: "Urma\u021Bi aceste trei sfaturi pentru a tr\u0103i o via\u021B\u0103
+      mai s\u0103n\u0103toas\u0103 \u0219i mai durabil\u0103."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Localized: "A-\u021Bi scuipa guma \xEEn natur\u0103 este de fapt bine! De ce?
+      Ei bine, ucide natura aceea ur\xE2t\u0103 din jurul lui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Localized: "Turismul \xEEn recifele de corali este de fapt grozav, pentru c\u0103
+      nu numai c\u0103 distruge \xEEn mod activ \u0219i permanent recifele de corali,
+      dar \u0219i demonteaz\u0103 popula\u021Bii \xEEntregi de pe\u0219ti!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Localized: "Ajuta\u021Bi-v\u0103 comunitatea local\u0103 f\u0103c\xE2nd co\u0219uri
+      organice comunitare! Arunc\u0103-\u021Bi de\u0219eurile organice pentru a crea
+      p\u0103m\xE2nt fertil pentru vecinii t\u0103i galbeni!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Localized: "Barry B. Benson, o albin\u0103 idealist\u0103, care are capacitatea
+      de a vorbi cu oamenii, a absolvit recent facultatea \u0219i este pe cale s\u0103
+      intre \xEEn mierea de la Honex Industries a stupului."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Localized: "Imprima\u021Bi ni\u0219te flutura\u0219i?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Localized: Da
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Localized: Nu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Localized: "Ai f\u0103cut deja destui flutura\u0219i pentru ast\u0103zi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Localized: "\xCEntoarcere"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Localized: "Cantitatea flutura\u0219i tip\u0103ri\u021Bi:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Localized: "Am terminat toate flutura\u0219ii!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
