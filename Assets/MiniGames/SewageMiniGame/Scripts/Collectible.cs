@@ -3,9 +3,12 @@ using System;
 public class Collectible : MonoBehaviour
 {
     public Action onCollect = delegate { };
+    private float minSpeed = 0.15f;
+    private float maxSpeed = 0.55f;
     private float originalSpeed = .35f;
     public float OriginalSpeed { get { return originalSpeed; } set { originalSpeed = value; } }
     private float speed;
+
     public float Speed { get { return speed; } set { speed = value; } }
     private float rotationSpeed;
     bool attached = false;
@@ -13,12 +16,13 @@ public class Collectible : MonoBehaviour
     public LayerMask boatMask;
     private AudioSource audioSource;
 
+
     private bool isDestroyed = false;
     private void Awake()
     {
-        
+
         onCollect += Collect;
-        rotationSpeed = UnityEngine.Random.Range(5f, 30f); 
+        rotationSpeed = UnityEngine.Random.Range(5f, 30f);
         audioSource = GetComponent<AudioSource>();
         speed = originalSpeed;
 
@@ -29,7 +33,7 @@ public class Collectible : MonoBehaviour
 
         if (!attached)
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime,Space.World);
+            transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         }
 
@@ -41,7 +45,7 @@ public class Collectible : MonoBehaviour
         {
             PickUp();
         }
-          
+
     }
     private void Collect()
     {
@@ -54,11 +58,19 @@ public class Collectible : MonoBehaviour
         Destroy(gameObject, 0.2f);
     }
     private void OutOfBounds()
-    {   if (isDestroyed) return;
+    {
+        if (isDestroyed) return;
 
         isDestroyed = true;
         SewageMiniGame.Instance.DecreaseLives();
         audioSource.PlayOneShot(passedClip);
-        Destroy(gameObject,0.5f);
+        Destroy(gameObject, 0.5f);
+    }
+    public void ChangeCoridorSpeed(float speed)
+    {
+
+        if (speed < minSpeed) this.speed = minSpeed;
+        else if (speed > maxSpeed) this.speed = maxSpeed;
+        else this.speed = speed;
     }
 }

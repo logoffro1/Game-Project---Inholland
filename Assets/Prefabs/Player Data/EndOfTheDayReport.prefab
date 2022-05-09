@@ -1097,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceTraveled: {fileID: 343283927413098721}
+  Location: {fileID: 8837735321275749704}
   PlayerName: {fileID: 2001517596510411079}
   MostPlayedMinigame: {fileID: 9138914245549140666}
   Success: {fileID: 4949371294437784437}

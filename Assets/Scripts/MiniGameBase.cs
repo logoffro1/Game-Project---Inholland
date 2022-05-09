@@ -81,12 +81,12 @@ public class MiniGameBase : MonoBehaviour
     }
     private void ShowInfo(bool show)
     {
+        Debug.Log("Method is called");
         if (infoCanvas.activeSelf == show) return;
         CursorLockMode mode = Cursor.lockState;
         bool cursorVisible = Cursor.visible;
         if (show)
         {
-
             Time.timeScale = 0f;
         }
         else
