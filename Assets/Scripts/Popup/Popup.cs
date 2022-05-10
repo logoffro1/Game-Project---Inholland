@@ -10,6 +10,7 @@ public class Popup : MonoBehaviour
     public bool isMinigamePopup = true; //else is achievement
     public GameObject design;
 
+    //Content containers
     public GameObject minigameSewage;
     public GameObject minigameRecycle;
     public GameObject minigameSolarPanel;
@@ -17,10 +18,17 @@ public class Popup : MonoBehaviour
     public GameObject minigameWindTurbine;
     public GameObject minigameTree;
 
+    //What changes
     public TextMeshProUGUI factText;
+    public GameObject LeafIcon;
+    public GameObject TrophyIcon;
+
+    private AudioSource AudioSource;
+    public AudioClip AudioClip;
 
     void Start()
     {
+        AudioSource = GetComponent<AudioSource>();
         StartCoroutine(WaitAndMove(1f));
     }
 
@@ -59,12 +67,14 @@ public class Popup : MonoBehaviour
         }
 
         factText.text = chosenText.text;
-
+        LeafIcon.SetActive(isMinigamePopup);
+        TrophyIcon.SetActive(!isMinigamePopup);
 
         //Go down
         Vector3 startingPos = transform.position;
-        Vector3 finalPos = transform.position + (transform.up * -110);
+        Vector3 finalPos = transform.position + (transform.up * -120);
         float elapsedTime = 0;
+        AudioSource.PlayOneShot(AudioClip);
 
         while (elapsedTime < time)
         {
@@ -74,7 +84,7 @@ public class Popup : MonoBehaviour
         }
 
         //Wait for player to read
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(6f);
 
         //Goes back up
         elapsedTime = 0;
