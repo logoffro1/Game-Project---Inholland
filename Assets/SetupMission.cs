@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class SetupMission : MonoBehaviour
@@ -10,28 +11,31 @@ public class SetupMission : MonoBehaviour
     private Player player;
 
     public TextMeshProUGUI goalText;
-    public GameObject timer;
+    public TextMeshProUGUI timerText;
+    public RawImage timerImage;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerData data = FindObjectOfType<PlayerData>();
-        player = FindObjectOfType<Player>();
-        gameMode = data.IsInGameMode;
-        goalText.text = data.GoalText;
-
         StartCoroutine(SetGameMode());
     }
 
     private IEnumerator SetGameMode()
     {
         yield return new WaitForEndOfFrame();
+
+        PlayerData data = FindObjectOfType<PlayerData>();
+        player = FindObjectOfType<Player>();
+        gameMode = data.IsInGameMode;
+        goalText.text = data.GoalText;
+
         switch (gameMode)
         {
             case GameMode.Chill:
                 TimerCountdown.Instance.SecondsLeft = (60 * 60 * 2); //2 hours
-                timer.SetActive(false);
+                timerText.enabled = false;
+                timerImage.enabled = false;
                 break;
             case GameMode.Crazy:
                 TimerCountdown.Instance.SecondsLeft = (40);
