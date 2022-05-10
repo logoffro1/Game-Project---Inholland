@@ -13,6 +13,11 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public TextMeshProUGUI ChillText;
     public TextMeshProUGUI CrazyText;
     public TextMeshProUGUI DefaultText;
+    private PlayerData playerData;
+    private void Start()
+    {
+        playerData = FindObjectOfType<PlayerData>();
+    }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -25,12 +30,15 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             case GameMode.Chill:
                 ChillText.enabled = true;
+                playerData.GoalText = ChillText.text;
                 break;
             case GameMode.Crazy:
                 CrazyText.enabled = true;
+                playerData.GoalText = CrazyText.text;
                 break;
             case GameMode.Normal:
                 NormalText.enabled = true;
+                playerData.GoalText = NormalText.text;
                 break;
 
         }

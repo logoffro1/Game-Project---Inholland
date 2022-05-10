@@ -7,6 +7,7 @@ public class PlayerData : MonoBehaviour
     public bool IsCurrentlyInMission;
     public DistrictEnum IsInDistrict;
     public GameMode IsInGameMode;
+    public string GoalText;
     public float NewSustainabilityPoints;
     public float FlyerPoints;
 
