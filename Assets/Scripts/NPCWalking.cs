@@ -21,7 +21,6 @@ public class NPCWalking : MonoBehaviour
         {
             HeadToNextWaypoint();
         }
-        Debug.Log($"Has path: {navMeshAgent.pathPending} - Is stopped: {navMeshAgent.isStopped} - Is stale: {navMeshAgent.isPathStale}");
     }
     private void HeadToNextWaypoint()
     {
