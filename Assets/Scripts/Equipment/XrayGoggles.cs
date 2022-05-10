@@ -13,7 +13,6 @@ public class XrayGoggles : Equipment
 
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
         activeTime = 15f;
 
         if (xrayVision == null) return;
@@ -46,12 +45,16 @@ public class XrayGoggles : Equipment
     // Update is called once per frame
     void Update()
     {
-      
+        if (Input.GetKeyDown(KeyCode.Z))
+            SetLocked(!isLocked);
+
         if (isLocked) return;
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if(cooldown <= 0)
-             DoAction();
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
+                DoAction();
         }
         if(!isActive)
         {
@@ -60,7 +63,16 @@ public class XrayGoggles : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
+        }
+        else
+        {
+            cooldown += (Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+            onCooldownChange(this);
         }
         DrainTime();
     }

@@ -16,8 +16,8 @@ public class Vacuum : Equipment
         drainOverTime = false;
         isActive = false;
         equipmentName = "Vacuum";
-        activeTime = 20;
-        maxCooldown = 5f;
+        activeTime = 10;
+        maxCooldown = 15;
         cooldown = maxCooldown;
     }
 
@@ -26,9 +26,11 @@ public class Vacuum : Equipment
     {
         if (isLocked) return;
 
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (cooldown <= 0)
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
                 DoAction();
         }
         if (!isActive)
@@ -38,7 +40,18 @@ public class Vacuum : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
+        }
+        else
+        {
+            cooldown += (Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+
+
+            onCooldownChange(this);
         }
         DrainTime();
 
@@ -47,7 +60,7 @@ public class Vacuum : Equipment
     }
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
+        
         activeTime = 15f;
 
         isActive = !isActive;

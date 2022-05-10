@@ -7,8 +7,7 @@ public class RunningShoes : Equipment
     [SerializeField] private PlayerMovement playerMovement;
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
-        activeTime = 15f;
+        activeTime = 7f;
 
         isActive = !isActive;
 
@@ -35,10 +34,14 @@ public class RunningShoes : Equipment
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+            SetLocked(!isLocked);
         if (isLocked) return;
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (cooldown <= 0)
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
                 DoAction();
         }
         if (!isActive)
@@ -48,7 +51,16 @@ public class RunningShoes : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
+        }
+        else
+        {
+            cooldown += (4f * Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+            onCooldownChange(this);
         }
 
         DrainTime();
