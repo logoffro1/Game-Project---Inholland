@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vacuum : Equipment
 {
@@ -25,7 +26,7 @@ public class Vacuum : Equipment
     void Update()
     {
         if (isLocked) return;
-
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             if (!isActive && cooldown <= 0)

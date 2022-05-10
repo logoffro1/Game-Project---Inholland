@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RunningShoes : Equipment
 {
@@ -41,6 +42,7 @@ public class RunningShoes : Equipment
         if (Input.GetKeyDown(KeyCode.Z))
             SetLocked(!isLocked);
         if (isLocked) return;
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             if (!isActive && cooldown <= 0)

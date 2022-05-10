@@ -951,7 +951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1231825347}
   m_Layer: 5
-  m_Name: SideItem
+  m_Name: SideItemTrash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,7 +965,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1231825346}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00011160715}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 630859538}
@@ -977,7 +977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130.59995, y: -172.17719}
+  m_AnchoredPosition: {x: 137, y: -172.17719}
   m_SizeDelta: {x: 61.4968, y: 61.4967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1303432258
@@ -1067,7 +1067,7 @@ GameObject:
   - component: {fileID: 4137876922861704604}
   - component: {fileID: 5351443045504951175}
   m_Layer: 5
-  m_Name: TrashImage
+  m_Name: FlyerImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1120,7 +1120,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8c1df92d7f5ee2a468fcaafd970e34c2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0fba0126c0b58ac45972774d746a3871, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1142,12 +1142,12 @@ GameObject:
   - component: {fileID: 505540244983825519}
   - component: {fileID: 5792151093333185680}
   m_Layer: 5
-  m_Name: TrashImageFill
+  m_Name: FlyerImageFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1264401124495492402
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1195,7 +1195,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71dfe8675a4442447b8533a203fb47d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 269d7a4d805d62544b06e2b6fdfb92fb, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1218,7 +1218,7 @@ GameObject:
   - component: {fileID: 8867565949950763640}
   - component: {fileID: 3493229191624183090}
   m_Layer: 5
-  m_Name: TrashBagText
+  m_Name: FlyerBagText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1444,7 +1444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3195666273382222401}
   m_Layer: 5
-  m_Name: SideItem (1)
+  m_Name: SideItemFlyers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1458,7 +1458,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135496953417688305}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00011160715}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1784117130804286088}
@@ -1470,7 +1470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130.59995, y: -172.17719}
+  m_AnchoredPosition: {x: -137, y: -172.17719}
   m_SizeDelta: {x: 61.4968, y: 61.4967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9153428692150331985
@@ -1763,6 +1763,7 @@ GameObject:
   - component: {fileID: 9153428692907248675}
   - component: {fileID: 9153428692907248674}
   - component: {fileID: 288125044}
+  - component: {fileID: 1132506988}
   m_Layer: 0
   m_Name: Player_worker
   m_TagString: Untagged
@@ -1981,6 +1982,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1132506988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9153428692907248683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd2d57ec0b333834da10b3b2a34699f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &799653387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3023,14 +3036,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 370f977f1a4733248a730588776ba3c5, type: 3}
---- !u!1 &8342613983974617843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 370f977f1a4733248a730588776ba3c5, type: 3}
-  m_PrefabInstance: {fileID: 9153428693099368354}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8686664794242230345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 370f977f1a4733248a730588776ba3c5, type: 3}
+  m_PrefabInstance: {fileID: 9153428693099368354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8342613983974617843 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 370f977f1a4733248a730588776ba3c5, type: 3}
   m_PrefabInstance: {fileID: 9153428693099368354}
   m_PrefabAsset: {fileID: 0}
 --- !u!82 &134010525

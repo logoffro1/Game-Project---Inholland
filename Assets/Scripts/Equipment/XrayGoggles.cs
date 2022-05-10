@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class XrayGoggles : Equipment
 {
     [SerializeField]
@@ -49,6 +50,7 @@ public class XrayGoggles : Equipment
             SetLocked(!isLocked);
 
         if (isLocked) return;
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             if (!isActive && cooldown <= 0)
