@@ -7,22 +7,31 @@ public class NPCWalking : MonoBehaviour
 
     [SerializeField] private Transform[] targetPositions;
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private Transform currentWaypoint;
 
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        HeadToNextWaypoint();
     }
     void Update()
     {
-        if (!navMeshAgent.hasPath || Vector3.Distance(navMeshAgent.destination,transform.position) <= 2f)
+        if (!navMeshAgent.pathPending || Vector3.Distance(navMeshAgent.destination,transform.position) <= 3f)
         {
             HeadToNextWaypoint();
         }
+        Debug.Log($"Has path: {navMeshAgent.pathPending} - Is stopped: {navMeshAgent.isStopped} - Is stale: {navMeshAgent.isPathStale}");
     }
     private void HeadToNextWaypoint()
     {
         if (targetPositions.Length > 0)
-            navMeshAgent.destination = targetPositions[Random.Range(0, targetPositions.Length)].position;
+        {
+            currentWaypoint = targetPositions[Random.Range(0, targetPositions.Length)].transform;
+            navMeshAgent.destination = currentWaypoint.position;
+            
+
+        }
+            
     }
 }
