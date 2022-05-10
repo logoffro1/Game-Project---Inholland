@@ -10,11 +10,17 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
     [SerializeField] private Transform content;
 
     private List<RoomListing> listings = new List<RoomListing>();
+    private List<RoomInfo> roomList;
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        Debug.Log("UPDATE ROOM");
-        foreach (RoomInfo info in roomList)
+        this.roomList = roomList;
+        UpdateRoom();
+    }
+    private void UpdateRoom()
+    {
+        listings.Clear();
+        foreach (RoomInfo info in this.roomList)
         {
             if (info.RemovedFromList) //removed room
             {
@@ -47,6 +53,7 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
             PhotonNetwork.JoinRoom(roomListing.RoomInfo.Name);
             LevelManager.Instance.LoadScenePhoton("Office",false);
         }
+        
 
     }
     public override void OnJoinedRoom()
