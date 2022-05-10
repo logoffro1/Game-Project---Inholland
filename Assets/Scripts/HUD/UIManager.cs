@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
-    
+    public Canvas playerCanvas;
 
     public Image trashFillImage;
     //For the countdown
@@ -65,6 +65,7 @@ public class UIManager : MonoBehaviour
     public void ChangeCanvasShown()
     {
         canvas.enabled = !canvas.enabled;
+        playerCanvas.enabled = canvas.enabled;
     }
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
