@@ -23,9 +23,9 @@ public class PlayerData : MonoBehaviour
         pData = FindObjectOfType<PlayerReportData>();
         if (CityCenterSustainability == 0)
         {
-            CityCenterSustainability = 3f;
-            FarmSustainability = 6f;
-            LastMapSustainability = 4.3f;
+            CityCenterSustainability = 1f;
+            FarmSustainability = 1f;
+            LastMapSustainability = 1f;
         }
 
         OverallAlkmaarSustainability = (CityCenterSustainability + FarmSustainability + LastMapSustainability) / 3;

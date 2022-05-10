@@ -36,6 +36,7 @@ public class EndOfDayReport : MonoBehaviour
         playerData = FindObjectOfType<PlayerData>();
         playerReportData = FindObjectOfType<PlayerReportData>();
 
+       
 
         playerData.NewSustainabilityPoints = 
             playerReportData.calculateIncreaseAmount(
@@ -43,10 +44,10 @@ public class EndOfDayReport : MonoBehaviour
             playerReportData.GetHardGameNumbers(),
             playerReportData.GetMediumGameNumbers(),
             playerReportData.GetEasyGameNumbers(),
-            GetWinCondition()); ; //Change 
-
+            dayFailed);
+        
         playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
-        DontDestroyOnLoad(playerData.gameObject);
+        DontDestroyOnLoad(playerData.gameObject);//Try Playerdata Start instead
 
         playFabManager = FindObjectOfType<PlayFabManager>();
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/

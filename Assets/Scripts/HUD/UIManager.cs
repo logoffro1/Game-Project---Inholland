@@ -80,8 +80,12 @@ public class UIManager : MonoBehaviour
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
         //Time ended so the progress bar animations has to stop.
-        ProgressBar.Instance.isGameOngoing = false;
-        Instantiate(endOfTheDayReportPrefab);
+        if (ProgressBar.Instance.isGameOngoing)
+        {
+            ProgressBar.Instance.isGameOngoing = false;
+            Debug.Log("Countdownendrun");
+            Instantiate(endOfTheDayReportPrefab);
+        }
     }
 
     private bool FirstSecondPassed = false;
@@ -98,8 +102,11 @@ public class UIManager : MonoBehaviour
 
         if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
         {
-            ProgressBar.Instance.isGameOngoing = false;
-            Instantiate(endOfTheDayReportPrefab);
+            if (ProgressBar.Instance.isGameOngoing) {
+                ProgressBar.Instance.isGameOngoing = false;
+                Debug.Log("100%run");
+                Instantiate(endOfTheDayReportPrefab);
+            }      
         }
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);

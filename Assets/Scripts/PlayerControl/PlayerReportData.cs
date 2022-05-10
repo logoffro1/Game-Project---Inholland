@@ -100,20 +100,27 @@ public class PlayerReportData : MonoBehaviour
         numberPlayed = topPlayNumber;
         return returnPrefabTaskName(mostPlayedMinigame);
     }
-    public float calculateIncreaseAmount(int remainingSeconds ,int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool ifWon)
+    public float calculateIncreaseAmount(int remainingSeconds ,int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
         float increaseAmount = 2.7f;
-        if (ifWon)
-        {
+        if (!dayFailed) {
+
             Debug.Log($"Remaining seconds: {(float)remainingSeconds / 30f}");
-            increaseAmount += (float)remainingSeconds / 60f;
+            if (remainingSeconds > 60)
+            {
+                increaseAmount += 1f;
+            }
+            else
+            {
+                increaseAmount += (float)remainingSeconds / 300f;
+            }
             Debug.Log($"Easy buff: {(float)nrOfEasyGames / 20f}");
             increaseAmount += (float)nrOfEasyGames / 20f;
             Debug.Log($"Medium buff: {(float)nrOfMediumGames / 10f}");
             increaseAmount += (float)nrOfMediumGames / 10f;
             Debug.Log($"Hard buff: {(float)nrOfHardGames / 5f}");
             increaseAmount += (float)nrOfHardGames / 5f;
-        }
+        } 
         Debug.Log($"Before adjustment of 5, the amount is: {increaseAmount}");
 
         if (increaseAmount > 5f)
