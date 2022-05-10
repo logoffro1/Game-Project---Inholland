@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
     public TextMeshProUGUI trashText;
+    public TextMeshProUGUI flyersText;
     public TextMeshProUGUI countDownText;
     public TextMeshProUGUI startCountDownText;
     public TextMeshProUGUI goalText;
@@ -70,7 +71,10 @@ public class UIManager : MonoBehaviour
     {
         trashText.text = $"{currentAmount} / {limit}";
         trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
-        Debug.Log(((float)currentAmount / (float)limit));
+    }
+    public void SetFlyersText(int currentAmount, int limit)
+    {
+        flyersText.text = $"{currentAmount} / {limit}";
     }
     public void BagFullAnim()
     {
