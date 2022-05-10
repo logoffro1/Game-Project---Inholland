@@ -230,7 +230,7 @@ MonoBehaviour:
   goalText: {fileID: 4234332728947655368}
   endMissionText: {fileID: 4234332729628283973}
   endOfTheDayReportPrefab: {fileID: 2001517595936745070, guid: 995b8d4d513cd5542b6eabd0b0f24f5b, type: 3}
-  Popup: {fileID: 0}
+  Popup: {fileID: 8388685178439571880, guid: a40f7505f256a9942b1aec20a7df8305, type: 3}
   trashFillImage: {fileID: 956079398788058618}
   CountdownBeginningColor: {r: 1, g: 1, b: 1, a: 1}
   CountdownMiddleColor: {r: 1, g: 0.60957754, b: 0.0141509175, a: 1}
