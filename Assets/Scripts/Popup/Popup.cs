@@ -40,7 +40,7 @@ public class Popup : MonoBehaviour
     private IEnumerator WaitAndMove(float time)
     {
         //Wait for minigame
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         //change image
 
         Text chosenText = null;

@@ -32,10 +32,19 @@ public class MiniGameManager : MonoBehaviour
             _instance = this;
     }
 
+    private Dictionary<string, int> amountOfGameOccurence;
+    private int maxOccurence = 2;
+
     private void Start()
     {
         playFabManager = FindObjectOfType<PlayFabManager>();
         PlayerData = FindObjectOfType<PlayerReportData>();
+        TaskGenerator taskGenerator = FindObjectOfType<TaskGenerator>();
+        amountOfGameOccurence = new Dictionary<string, int>();
+        foreach (GameObject gamePrefab in taskGenerator.GamePrefabs)
+        {
+            amountOfGameOccurence.Add(gamePrefab.name, 0);
+        }
     }
 
     //Delete This before merging to dev
@@ -56,7 +65,9 @@ public class MiniGameManager : MonoBehaviour
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 1000), miniGamePrefab.transform.rotation);
         MiniGameBase miniGameBase = miniGame.GetComponent<MiniGameBase>();
         miniGameBase.SetLevel();
-        StartCoroutine(miniGameBase.ShowTutorialCanvas());
+
+        amountOfGameOccurence[miniGamePrefab.name]++;
+        if (amountOfGameOccurence[miniGamePrefab.name] <= maxOccurence) StartCoroutine(miniGameBase.ShowTutorialCanvas());
 
         IsPlaying = true;
     }

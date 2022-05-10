@@ -50,7 +50,8 @@ public class UIManager : MonoBehaviour
             countDownText.gameObject.SetActive(false);
         }
 
-        FindObjectOfType<MiniGameManager>().OnGameWon += ShowPopUp;
+        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
+        if (manager != null) manager.OnGameWon += ShowPopUp;
 
     }
 

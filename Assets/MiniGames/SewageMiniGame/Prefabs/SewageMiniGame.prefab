@@ -6928,6 +6928,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8619247169481751378}
     m_Modifications:
+    - target: {fileID: 3095551063191834796, guid: e5c028cd92dc8c8469bbe4e1b9cb0590, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6614338963453321902, guid: e5c028cd92dc8c8469bbe4e1b9cb0590, type: 3}
       propertyPath: m_Name
       value: TutorialCanvas
