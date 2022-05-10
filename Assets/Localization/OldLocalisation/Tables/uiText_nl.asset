@@ -437,6 +437,68 @@ MonoBehaviour:
     m_Localized: Alle flyers klaar!
     m_Metadata:
       m_Items: []
+  - m_Id: 13627794507714560
+    m_Localized: "Door \xE9\xE9n glazen fles te recyclen, bespaar je genoeg energie
+      om een lamp van 100 watt vier uur lang te laten branden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628594088857600
+    m_Localized: Kartonnen dozen kunnen minstens zeven keer worden gerecycled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628606281699328
+    m_Localized: Zonne-energie is de snelst groeiende energiebron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632285734883328
+    m_Localized: Zonnepanelen kunnen stroom produceren zonder direct zonlicht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632494648971264
+    m_Localized: U kunt elektrische voertuigen opladen met zonnepanelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632540912144384
+    m_Localized: "Straatlantaarns op zonne-energie kunnen overal worden ge\xEFnstalleerd
+      - in het midden van de zee of het bos, in een park of op een berg"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632589633179648
+    m_Localized: Straatlantaarns op zonne-energie zijn praktisch en kosteneffectief
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632615478480896
+    m_Localized: "Wanneer LED is ge\xEFntegreerd, zijn straatverlichting op zonne-energie
+      duurzaam en milieuvriendelijk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632644645670912
+    m_Localized: Wist u dat de huidige windturbines minder lawaai kunnen maken dan
+      een auto?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632685343002624
+    m_Localized: Windenergie is toonaangevend op de markt voor duurzame energie met
+      installaties die elk jaar groeien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632712031358976
+    m_Localized: Fossiele brandstofcentrales zijn gevaarlijker voor vogels dan windturbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632741223714816
+    m_Localized: Fossiele brandstofcentrales zijn gevaarlijker voor vogels dan windturbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632775394709504
+    m_Localized: "Bomen verminderen geluidsoverlast door als geluidsbarri\xE8re te
+      fungeren"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632800984158208
+    m_Localized: "E\xE9n boom produceert jaarlijks bijna 120 kg zuurstof"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

@@ -423,6 +423,62 @@ MonoBehaviour:
     m_Key: flyer-finished
     m_Metadata:
       m_Items: []
+  - m_Id: 13627794507714560
+    m_Key: popup-recycle-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628594088857600
+    m_Key: popup-recycle-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628606281699328
+    m_Key: popup-solarpanel-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632285734883328
+    m_Key: popup-solarpanel-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632494648971264
+    m_Key: popup-solarpanel-option3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632540912144384
+    m_Key: popup-streetlamp-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632589633179648
+    m_Key: popup-streetlamp-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632615478480896
+    m_Key: popup-streetlamp-option3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632644645670912
+    m_Key: popup-windturbine-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632685343002624
+    m_Key: popup-windturbine-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632712031358976
+    m_Key: popup-windturbine-option3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632741223714816
+    m_Key: popup-tree-option1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632775394709504
+    m_Key: popup-tree-option2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632800984158208
+    m_Key: popup-tree-option3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

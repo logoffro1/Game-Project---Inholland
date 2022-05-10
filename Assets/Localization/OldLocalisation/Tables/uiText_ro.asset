@@ -148,6 +148,73 @@ MonoBehaviour:
     m_Localized: "Am terminat toate flutura\u0219ii!"
     m_Metadata:
       m_Items: []
+  - m_Id: 13627794507714560
+    m_Localized: "Reciclarea unei sticle de sticl\u0103 economise\u0219te suficient\u0103
+      energie pentru a aprinde un bec de 100 de wa\u021Bi timp de patru ore"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628594088857600
+    m_Localized: "Cutiile de carton pot fi reciclate de cel pu\u021Bin \u0219apte
+      ori"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628606281699328
+    m_Localized: "Energia solar\u0103 este sursa de energie cu cea mai rapid\u0103
+      cre\u0219tere"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632285734883328
+    m_Localized: "Panourile solare pot produce energie f\u0103r\u0103 lumina direct\u0103
+      a soarelui"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632494648971264
+    m_Localized: "Pute\u021Bi \xEEnc\u0103rca vehicule electrice cu panouri solare"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632540912144384
+    m_Localized: "Luminile solare pot fi instalate oriunde - \xEEn mijlocul m\u0103rii
+      sau p\u0103durii, \xEEn interiorul unui parc sau pe un munte"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632589633179648
+    m_Localized: "Luminile stradale solare sunt practice \u0219i rentabile"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632615478480896
+    m_Localized: "C\xE2nd LED-ul este \xEEncorporat, luminile solare stradale sunt
+      durabile \u0219i ecologice"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632644645670912
+    m_Localized: "\u0218tia\u021Bi c\u0103 turbinele eoliene de ast\u0103zi pot fi
+      mai pu\u021Bin zgomotoase dec\xE2t o ma\u0219in\u0103?"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632685343002624
+    m_Localized: "Energia eolian\u0103 este lider pe pia\u021Ba energiei regenerabile
+      cu instala\u021Bii care continu\u0103 s\u0103 creasc\u0103 \xEEn fiecare an."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632712031358976
+    m_Localized: "Instala\u021Biile cu combustibili fosili sunt mai periculoase pentru
+      p\u0103s\u0103ri dec\xE2t turbinele eoliene"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632741223714816
+    m_Localized: "Instala\u021Biile cu combustibili fosili sunt mai periculoase pentru
+      p\u0103s\u0103ri dec\xE2t turbinele eoliene"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632775394709504
+    m_Localized: "Copacii reduc poluarea fonic\u0103 ac\u021Bion\xE2nd ca bariere
+      fonice"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632800984158208
+    m_Localized: "Un copac produce aproape 120 kg de oxigen \xEEn fiecare an"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
