@@ -77,7 +77,7 @@ public class PauseMenu : MonoBehaviour
     public void ReturnToOffice()
     {
         Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("Office");
+        LevelManager.Instance.LoadScene("NewOffice");
     }
 
     public void LoadMenu()
