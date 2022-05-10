@@ -6,6 +6,7 @@ using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
+using System.Collections;
 
 public class MiniGameBase : MonoBehaviour
 {
@@ -26,6 +27,9 @@ public class MiniGameBase : MonoBehaviour
     [Range(0.0f, 100.0f)]
     private float levelOffset;
     private float pointsOffset;
+
+    //Tutorial panel
+    public GameObject TutorialCanvas;
 
     //localized string
     [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
@@ -64,6 +68,18 @@ public class MiniGameBase : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public IEnumerator ShowTutorialCanvas()
+    {
+        CanvasGroup canvasGroup = TutorialCanvas.GetComponent<CanvasGroup>();
+        while (canvasGroup.alpha > 0)
+        {
+            if (!IsPlaying) yield break;
+
+            canvasGroup.alpha -= 0.005f;
+            yield return null;
+        }
     }
 
     public event Action<InteractableTaskObject> OnGameWon;

@@ -20,7 +20,6 @@ public class MiniGameManager : MonoBehaviour
     public event Action<InteractableTaskObject> OnGameWon;
     public event Action<InteractableTaskObject> OnGameOver;
 
-
     public bool IsPlaying { get; private set; }
     int miniGameTime;
     private GameObject miniGame;
@@ -55,9 +54,11 @@ public class MiniGameManager : MonoBehaviour
         PlayerData.AddPlayedGames(miniGamePrefab);
         UIManager.Instance.ChangeCanvasShown();
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 1000), miniGamePrefab.transform.rotation);
-        miniGame.GetComponent<MiniGameBase>().SetLevel();
+        MiniGameBase miniGameBase = miniGame.GetComponent<MiniGameBase>();
+        miniGameBase.SetLevel();
+        StartCoroutine(miniGameBase.ShowTutorialCanvas());
 
-        IsPlaying = true;     
+        IsPlaying = true;
     }
 
     public IEnumerator StopGame(GameObject go)
