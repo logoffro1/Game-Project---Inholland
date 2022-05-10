@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &271596252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1107,6 +1107,7 @@ MonoBehaviour:
   timeBonus: {fileID: 2377776774688154647}
   Income: {fileID: 6895225935538926257}
   DayReportAudio: {fileID: 8300000, guid: d31a4b1c27fcf8649a9bb79ba1d3cca4, type: 3}
+  ReturnLobbyButton: {fileID: 271596251}
 --- !u!82 &5088511770198097746
 AudioSource:
   m_ObjectHideFlags: 0

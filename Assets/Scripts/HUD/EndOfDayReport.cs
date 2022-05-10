@@ -21,7 +21,7 @@ public class EndOfDayReport : MonoBehaviour
     public Text Income;
     private PlayFabManager playFabManager;
     public AudioClip DayReportAudio;
-
+    public GameObject ReturnLobbyButton;
 
 
 
@@ -30,7 +30,10 @@ public class EndOfDayReport : MonoBehaviour
     private string lang = "en";
     void Start()
     {
-        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            ReturnLobbyButton.SetActive(true);
+        }
         GetLanguage();
         dayFailed = GetWinCondition();
 
@@ -46,7 +49,8 @@ public class EndOfDayReport : MonoBehaviour
                 break;
             }
         }
-/*        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        
+        /*        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
         foreach (PlayerReportData data in datas)
         {
             if (data.photonView.IsMine)
