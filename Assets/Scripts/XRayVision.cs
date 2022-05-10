@@ -27,12 +27,12 @@ public class XRayVision : MonoBehaviour
 
     public void BatteryChanged(float batteryLevel)
     {
-        batteryFullImage.fillAmount = (batteryLevel / 100);
+ /*       batteryFullImage.fillAmount = (batteryLevel / 100);
         if (batteryLevel <= 35 && !flashing)
         {
             if (batteryLevel > 0 && xrayVolume.enabled)
                 StartCoroutine(FlashBattery());
-        }
+        }*/
     }
 
     private IEnumerator FlashBattery()
@@ -62,7 +62,7 @@ public class XRayVision : MonoBehaviour
         normalRenderer.SetActive(!normalRenderer.isActive);
         xrayRenderer.SetActive(!xrayRenderer.isActive);
         trashRenderer.SetActive(!trashRenderer.isActive);
-        canvas.enabled = xrayRenderer.isActive;
+        //canvas.enabled = xrayRenderer.isActive;
 
         UIManager.Instance.ChangeCanvasShown();
 
