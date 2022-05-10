@@ -587,6 +587,26 @@ MonoBehaviour:
     m_Localized: One tree produces nearly 120kg of oxygen each year
     m_Metadata:
       m_Items: []
+  - m_Id: 13676581104144384
+    m_Localized: Click at the right moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Localized: Space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Localized: Connect the colors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Localized: Collect the trash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Localized: Start with
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

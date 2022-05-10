@@ -499,6 +499,26 @@ MonoBehaviour:
     m_Localized: "E\xE9n boom produceert jaarlijks bijna 120 kg zuurstof"
     m_Metadata:
       m_Items: []
+  - m_Id: 13676581104144384
+    m_Localized: Klik op het juiste moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Localized: Spatietoets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Localized: Verbind de kleuren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Localized: Verzamel het afval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Localized: Beginnen met
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

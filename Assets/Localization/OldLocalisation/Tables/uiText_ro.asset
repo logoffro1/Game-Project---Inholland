@@ -215,6 +215,26 @@ MonoBehaviour:
     m_Localized: "Un copac produce aproape 120 kg de oxigen \xEEn fiecare an"
     m_Metadata:
       m_Items: []
+  - m_Id: 13676581104144384
+    m_Localized: "Face\u021Bi clic la momentul potrivit"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Localized: "Spa\u021Biu"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Localized: "Conecta\u021Bi culorile"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Localized: "Str\xE2nge gunoiul"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Localized: "\xCEncepe cu"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

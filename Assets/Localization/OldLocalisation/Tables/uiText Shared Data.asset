@@ -479,6 +479,26 @@ MonoBehaviour:
     m_Key: popup-tree-option3
     m_Metadata:
       m_Items: []
+  - m_Id: 13676581104144384
+    m_Key: minigame-tutorial-rightmoment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Key: minigame-tutorial-space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Key: minigame-tutorial-connectcolors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Key: minigame-tutorial-trash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Key: minigame-tutorial-startWith
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
