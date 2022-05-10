@@ -73,11 +73,18 @@ public class MiniGameBase : MonoBehaviour
     public IEnumerator ShowTutorialCanvas()
     {
         CanvasGroup canvasGroup = TutorialCanvas.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.4f;
+
+        yield return new WaitForSeconds(1f);
+
+        float subtractAmount = 0.005f;
         while (canvasGroup.alpha > 0)
         {
             if (!IsPlaying) yield break;
 
-            canvasGroup.alpha -= 0.005f;
+            canvasGroup.alpha -= subtractAmount;
+            subtractAmount += subtractAmount / 8;
+
             yield return null;
         }
     }
