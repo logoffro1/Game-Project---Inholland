@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RunningShoes : Equipment
 {
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shoesOn;
+    [SerializeField] private AudioClip shoesOff;
     [SerializeField] private PlayerMovement playerMovement;
     public override void DoAction()
     {
@@ -14,15 +17,16 @@ public class RunningShoes : Equipment
         drainOverTime = isActive;
         playerMovement.SpeedBoost(isActive);
 
-/*        if (isActive)
-            audioSource.PlayOneShot(xrayOn);
+        if (isActive)
+            audioSource.PlayOneShot(shoesOn);
         else
-            audioSource.PlayOneShot(xrayOff);*/
+            audioSource.PlayOneShot(shoesOff);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         drainOverTime = false;
         isActive = false;
         equipmentName = "Running Shoes";
