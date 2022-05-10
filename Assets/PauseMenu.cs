@@ -45,7 +45,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         {
             if (p.GetComponent<Player>().photonView.IsMine)
             {
-                p.GetComponentInChildren<MouseLook>().canR = false;
+                p.GetComponentInChildren<MouseLook>().canR = true;
                 break;
             }
         }
