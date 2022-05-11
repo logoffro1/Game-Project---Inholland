@@ -57,7 +57,7 @@ public class Printer : InteractableObject
         ShowPanel(false);
     }
 
-    public void ChoseToContinue()
+    public void ChooseToContinue()
     {
         ChoicePanel.SetActive(false);
         PrinterCanvas.GetComponent<FlyerMaking>().Printer = this;

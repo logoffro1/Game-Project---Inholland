@@ -92,12 +92,7 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-            LevelManager.Instance.LoadScenePhoton("GameUKDay",true);
-        }
+ 
 
         //disable
         foreach (LevelPreviewCity level in otherLevels)

@@ -17,17 +17,9 @@ public class MainMenu : MonoBehaviour
         if (PlayerPrefs.HasKey("nickname"))
         {
             nicknameInput.text = PlayerPrefs.GetString("nickname");
-
         }
     }
-    public void ContinueGame()
-    {
-        //TODO: Get save file, load safe file
-        //Load lobby scene
 
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        LevelManager.Instance.LoadScenePhoton("Office",false);
-    }
 
     public void NewGame()
     {

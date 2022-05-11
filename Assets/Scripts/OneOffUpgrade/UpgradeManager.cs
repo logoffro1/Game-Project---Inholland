@@ -10,7 +10,7 @@ public class UpgradeManager : MonoBehaviour
     private bool canvasIsOn;
 
     //occurences
-    private float occurenceAmount = 80f;
+    private float occurenceAmount = 250f;
     private float amountTilNextOccurence;
     private float amountOfLastOccurence;
 

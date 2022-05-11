@@ -17,7 +17,7 @@ public class ButtonHandler : MonoBehaviour
         }*/
         if (PhotonNetwork.IsMasterClient)
         {
-            LevelManager.Instance.LoadScenePhoton("Office", true);
+            LevelManager.Instance.LoadScenePhoton("NewOffice", true);
         }
 
     }

@@ -17,7 +17,6 @@ public class PlayerReputation : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Start runned right here");
         if (PlayerPrefs.HasKey("reputation"))
         {
             CurrentReputationExp = PlayerPrefs.GetFloat("reputation");

@@ -57,9 +57,7 @@ public class FlyerMaking : MonoBehaviour
         }
 
         SettingNewValues();
-        
     }
-
     private void SettingNewValues()
     {
         foreach (GameObject titleButton in TitleButtons)

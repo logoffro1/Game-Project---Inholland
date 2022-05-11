@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 
 public class DistrictLoadScene : MonoBehaviour
@@ -13,7 +14,12 @@ public class DistrictLoadScene : MonoBehaviour
     }
     private void LoadMyScene()
     {
-        LevelManager.Instance.LoadScene(SceneName);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+            LevelManager.Instance.LoadScenePhoton(SceneName, true);
+        }
     }
 
     public void ChoseNormalMode()

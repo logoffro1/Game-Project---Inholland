@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Photon.Pun;
 using ExitGames.Client.Photon;
 using Photon.Realtime;
+using System;
 
 public class LevelManager : MonoBehaviourPun
 {
@@ -18,6 +19,7 @@ public class LevelManager : MonoBehaviourPun
     private const byte LOADING_PROGRESS_EVENT = 0;
 
     private float target;
+    private string sceneName;
     private void Awake()
     {
         if (Instance == null)
@@ -51,11 +53,14 @@ public class LevelManager : MonoBehaviourPun
 
     public void LoadScenePhoton(string sceneName, bool loadForAllPlayers)
     {
+        this.sceneName = sceneName;
         if (loadForAllPlayers)
         {
+
+
             RaiseEventOptions eventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
             bool sent = PhotonNetwork.RaiseEvent(LOADING_PROGRESS_EVENT, null, eventOptions, SendOptions.SendReliable);
-            Debug.Log("RECEIVED + " + sent);
+
 
         }
         else
@@ -67,11 +72,12 @@ public class LevelManager : MonoBehaviourPun
 
 
 
+
         // var scene = SceneManager.LoadSceneAsync(sceneName);
         // scene.allowSceneActivation = false;
         // scene.allowSceneActivation = true;
     }
-    public void LoadSceneSP(string sceneName)
+    public void LoadSceneSP()
     {
         CoroutineLoading();
         SceneManager.LoadScene(sceneName);
@@ -81,15 +87,20 @@ public class LevelManager : MonoBehaviourPun
         StartCoroutine(LoadingProgress());
     }
     private IEnumerator LoadingProgress()
-    {
+    {            //Discord status change happens on every scene change before LoadSceneAsync();
+        if (DiscordController.Instance.IsDiscordRunning())
+        {
+            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), this.sceneName);
+            DiscordController.Instance.UpdateDiscordStatus(type);
+        }
         Debug.Log("LOADINGGG");
         target = 0;
         loadCanvas.SetActive(true);
         InitProgressBar();
         while (target < 1f)
         {
-            target += Random.Range(0.2f, 0.5f);
-            yield return new WaitForSeconds(Random.Range(0.2f, 0.5f));
+            target += UnityEngine.Random.Range(0.2f, 0.5f);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 0.5f));
         }
         yield return new WaitForSeconds(1f);
         loadCanvas.SetActive(false);

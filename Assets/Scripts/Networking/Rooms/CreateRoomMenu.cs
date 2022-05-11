@@ -21,7 +21,7 @@ public class CreateRoomMenu : MonoBehaviourPunCallbacks
     public override void OnCreatedRoom()
     {
         Debug.Log("Created room successfully.", this);
-        LevelManager.Instance.LoadScenePhoton("Office",false);
+        LevelManager.Instance.LoadScenePhoton("NewOffice",false);
     }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {

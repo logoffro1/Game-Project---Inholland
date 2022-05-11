@@ -5,6 +5,8 @@ using System.Linq;
 using System;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class Player : MonoBehaviourPun
@@ -23,6 +25,11 @@ public class Player : MonoBehaviourPun
 
     public static GameObject LocalPlayerInstance;
 
+    [SerializeField] private TextMeshProUGUI trashText;
+    [SerializeField] private TextMeshProUGUI flyersText;
+    [SerializeField] private Image trashFill;
+    [SerializeField] private Canvas playerCanvas;
+
     private void Awake()
     {
         Debug.Log("AWAKE");
@@ -38,13 +45,14 @@ public class Player : MonoBehaviourPun
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
 
-        if (SceneManager.GetActiveScene().name == "Office")
+        if (SceneManager.GetActiveScene().name == "NewOffice")
         {
             GetComponent<PlayerMovement>().canMove = true;
         }
         else {
 
         }
+        UIManager.Instance.SetPlayerInfo(trashText,flyersText,playerCanvas,trashFill);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         mouseLook.canR = true;

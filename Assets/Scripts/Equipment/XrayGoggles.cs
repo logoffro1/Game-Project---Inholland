@@ -33,7 +33,11 @@ public class XrayGoggles : Equipment
         else
             audioSource.PlayOneShot(xrayOff);
     }
-
+    private void OnLevelWasLoaded(int level)
+    {
+        if(SceneManager.GetActiveScene().name != "NewOffice")
+            xrayVision = GameObject.FindGameObjectWithTag("xray").GetComponent<XRayVision>();
+    }
     void Start()
     {      
         drainOverTime = false;
