@@ -46,8 +46,7 @@ public class XrayGoggles : Equipment
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-            SetLocked(!isLocked);
+
 
         if (isLocked) return;
         if (SceneManager.GetActiveScene().name == "NewOffice") return;
