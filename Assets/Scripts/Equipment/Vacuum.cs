@@ -8,7 +8,7 @@ public class Vacuum : Equipment
     private AudioSource audioSource;
     [SerializeField] private AudioClip vacuumON;
     [SerializeField] private AudioClip vacuumOFF;
-
+    [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -50,14 +50,9 @@ public class Vacuum : Equipment
             cooldown += (Time.deltaTime);
             if (cooldown >= maxCooldown)
                 cooldown = maxCooldown;
-
-
             onCooldownChange(this);
         }
         DrainTime();
-
-
-
     }
     public override void DoAction()
     {
@@ -75,21 +70,36 @@ public class Vacuum : Equipment
     }
     private void OnTriggerEnter(Collider other)
     {
-
+        VacuumTrash(other);
+ 
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        VacuumTrash(other);
+    }
+    private void VacuumTrash(Collider other)
+    {
         if (!isActive) return;
         if (other.gameObject.TryGetComponent(out Trash trash))
         {
-            if (transform.parent.TryGetComponent(out TrashBag bag))
+            if (trash.collected) return;
+            if (player.TryGetComponent(out TrashBag bag))
             {
-                if (!bag.CanCollect()) return;
+                if (!bag.CanCollect())
+                {
+                    if (isActive)
+                        DoAction();
+                    return;
+                }
+                trash.collected = true;
                 StartCoroutine(VacuumTrash(trash, bag));
             }
-            Debug.Log("TRASH IN RANGE");
         }
     }
+   
     private IEnumerator VacuumTrash(Trash trash, TrashBag bag)
     {
-        Transform camerTransform = transform.parent.Find("Camera").transform;
+        Transform camerTransform = player.transform.Find("Camera").transform;
 
         while (true)
         {
