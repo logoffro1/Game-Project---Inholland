@@ -118,6 +118,11 @@ public class DiscordController : MonoBehaviour
                 details = "Alkmaar downtown area";
                 imageKey = "citycentre";
                 break;
+            case StatusType.Playground:
+                state = "Doing cool stuff";
+                details = "Testing in playground";
+                imageKey = "office";
+                break;
         }
     }
 

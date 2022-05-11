@@ -23,7 +23,7 @@ public class OverallDistrictScreen : MonoBehaviour
 
     public string ConvertFloatPercentageToString(float percentage)
     {
-        return string.Format("{0:0}%", percentage * 100);
+        return percentage.ToString("0.0")+ "%";
     }
 
 }

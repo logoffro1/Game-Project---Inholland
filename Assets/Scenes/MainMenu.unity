@@ -2533,7 +2533,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: https://discord.gg/XWXjeAzYuQ
+          m_StringArgument: https://discord.gg/5zRdXTN7pT
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &572857384
@@ -5981,7 +5981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5bc5b281ee8c944c9daa223e8eddfe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  discordLink: https://discord.gg/XWXjeAzYuQ
+  discordLink: https://discord.gg/5zRdXTN7pT
   redditLink: 
 --- !u!1 &1291356003
 GameObject:
