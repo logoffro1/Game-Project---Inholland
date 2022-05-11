@@ -22,6 +22,7 @@ public class Hotbar : MonoBehaviour
         {
             equipment.onLockedChange += LockItem;
             equipment.onCooldownChange += SetCooldownFill;
+            equipment.SetPlayerRep();
         }
 
     }

@@ -23,6 +23,7 @@ public class EndOfDayReport : MonoBehaviour
     public AudioClip DayReportAudio;
 
     private PlayerReportData playerReportData;
+    private PlayerReputation playerRep;
     private bool dayFailed = false;
     private string lang = "en";
 
@@ -35,7 +36,13 @@ public class EndOfDayReport : MonoBehaviour
 
         playerData = FindObjectOfType<PlayerData>();
         playerReportData = FindObjectOfType<PlayerReportData>();
+        playerRep = FindObjectOfType<PlayerReputation>();
 
+        playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
        
 
         playerData.NewSustainabilityPoints = 
@@ -56,7 +63,7 @@ public class EndOfDayReport : MonoBehaviour
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
         //achievements
-        int distanceM = int.Parse(distance) / 1000;
+        int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
         FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
         
         int playNr;
@@ -75,7 +82,6 @@ public class EndOfDayReport : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0f;
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }

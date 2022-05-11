@@ -13,7 +13,9 @@ public class Vacuum : Equipment
     // Start is called before the first frame update
     void Start()
     {
+        playerRep = FindObjectOfType<PlayerReputation>();
         audioSource = GetComponent<AudioSource>();
+        SetLocked(playerRep.IsVacuumLocked);
         drainOverTime = false;
         isActive = false;
         equipmentName = "Vacuum";
@@ -21,6 +23,7 @@ public class Vacuum : Equipment
         maxCooldown = 15;
         cooldown = maxCooldown;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -53,6 +56,11 @@ public class Vacuum : Equipment
             onCooldownChange(this);
         }
         DrainTime();
+    }
+    public override void SetPlayerRep()
+    {
+        playerRep = FindObjectOfType<PlayerReputation>();
+        SetLocked(playerRep.IsVacuumLocked);
     }
     public override void DoAction()
     {

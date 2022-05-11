@@ -10,6 +10,7 @@ public class XrayGoggles : Equipment
 
     [SerializeField] private AudioClip xrayOn;
     [SerializeField] private AudioClip xrayOff;
+
     private AudioSource audioSource;
 
     public override void DoAction()
@@ -34,7 +35,7 @@ public class XrayGoggles : Equipment
     }
 
     void Start()
-    {
+    {      
         drainOverTime = false;
         isActive = false;
         equipmentName = "XRAY Goggles";
@@ -44,6 +45,13 @@ public class XrayGoggles : Equipment
 
         audioSource = GetComponent<AudioSource>();
     }
+
+    public override void SetPlayerRep()
+    {
+        playerRep = FindObjectOfType<PlayerReputation>();
+        SetLocked(playerRep.IsXrayLocked);
+    }
+  
 
     void Update()
     {
