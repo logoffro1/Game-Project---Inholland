@@ -167,16 +167,14 @@ public class UIManager : MonoBehaviour
     }
     public void ShowPopUp(string text)
     {
-        Vector3 position = transform.position;
-        position.y += 400;
-        GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
+        GameObject popup = Instantiate(Popup, Popup.transform.position, transform.rotation,transform);
+        popup.transform.localPosition = new Vector3(0, 320, 0);
         popup.GetComponent<Popup>().InfoText = text;
     }
     private void ShowPopUp(InteractableTaskObject interactableTaskObject)
     {
-        Vector3 position = transform.position;
-        position.y += 400;
-        GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
+        GameObject popup = Instantiate(Popup, Popup.transform.position, transform.rotation, transform);
+        popup.transform.localPosition = new Vector3(0, 320, 0);
         popup.GetComponent<Popup>().Task = interactableTaskObject.interactableTaskStatusModels.task;
     }
 

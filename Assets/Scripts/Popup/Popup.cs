@@ -40,7 +40,6 @@ public class Popup : MonoBehaviour
 
     private IEnumerator WaitAndMove(float time)
     {
-        Debug.Log("WAIT AND MOVE");
         //Wait for minigame
         if (InfoText.Equals(""))
             yield return new WaitForSeconds(2.5f);
@@ -86,14 +85,14 @@ public class Popup : MonoBehaviour
         TrophyIcon.SetActive(!isMinigamePopup);
 
         //Go down
-        Vector3 startingPos = transform.position;
-        Vector3 finalPos = transform.position + (transform.up * -120);
+        Vector3 startingPos = transform.localPosition;
+        Vector3 finalPos = transform.localPosition + (transform.up * -120);
         float elapsedTime = 0;
         AudioSource.PlayOneShot(AudioClip);
 
         while (elapsedTime < time)
         {
-            transform.position = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
+            transform.localPosition = Vector3.Lerp(startingPos, finalPos, (elapsedTime / time));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -108,7 +107,7 @@ public class Popup : MonoBehaviour
         elapsedTime = 0;
         while (elapsedTime < time)
         {
-            transform.position = Vector3.Lerp(finalPos, startingPos, (elapsedTime / time));
+            transform.localPosition = Vector3.Lerp(finalPos, startingPos, (elapsedTime / time));
             elapsedTime += Time.deltaTime;
             yield return null;
         }
