@@ -26,6 +26,11 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
         SetLocalizedString();
 
     }
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Hard;
+    }
     public void DecreaseLives()
     {
         lives -= 1;
