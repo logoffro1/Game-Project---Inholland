@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 using UnityEngine;
 
 public class ButtonsSFX : MonoBehaviour
@@ -9,6 +10,10 @@ public class ButtonsSFX : MonoBehaviour
     [SerializeField] private AudioClip hoverFX;
     [SerializeField] private AudioClip pressedFX;
     // Start is called before the first frame update
+    private void Awake()
+    {
+
+    }
     void Start()
     {
         audioSource = GetComponent<AudioSource>();

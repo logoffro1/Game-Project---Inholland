@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
 
     public bool isGameOngoing;
 
-
+    public float AmountDecreasingPerSecond = -0.0005f;
 
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
@@ -65,7 +65,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
         if (!photonView.IsMine) return;
         if (isGameOngoing)
         {
-            DecreaseSustainibilityPerSecond(-0.0005f);
+            DecreaseSustainibilityPerSecond(AmountDecreasingPerSecond);
         }
     }
 

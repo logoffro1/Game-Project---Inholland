@@ -21,6 +21,11 @@ public class RewireMiniGame : MiniGameBase
         else GameOver();
     }
 
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Easy;
+    }
+
     public override void CoordinateLevel()
     {
         int level = Mathf.RoundToInt(this.Level / 10);

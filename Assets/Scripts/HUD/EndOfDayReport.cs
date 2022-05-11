@@ -10,6 +10,7 @@ using Photon.Pun;
 public class EndOfDayReport : MonoBehaviour
 {
     public Text DistanceTraveled;
+    public Text Location;
     public Text PlayerName;
     public Text MostPlayedMinigame;
     public Text Success;
@@ -26,8 +27,12 @@ public class EndOfDayReport : MonoBehaviour
 
 
     private PlayerReportData playerReportData;
+    private PlayerReputation playerRep;
     private bool dayFailed = false;
     private string lang = "en";
+
+    private PlayerData playerData;
+
     void Start()
     {
         if (PhotonNetwork.IsMasterClient)
@@ -36,6 +41,28 @@ public class EndOfDayReport : MonoBehaviour
         }
         GetLanguage();
         dayFailed = GetWinCondition();
+
+        playerData = FindObjectOfType<PlayerData>();
+        playerReportData = FindObjectOfType<PlayerReportData>();
+        playerRep = FindObjectOfType<PlayerReputation>();
+
+        playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
+       
+
+        playerData.NewSustainabilityPoints = 
+            playerReportData.calculateIncreaseAmount(
+                TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
+        
+        playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
+        DontDestroyOnLoad(playerData.gameObject);//Try Playerdata Start instead
 
         playFabManager = FindObjectOfType<PlayFabManager>();
 
@@ -63,9 +90,13 @@ public class EndOfDayReport : MonoBehaviour
         //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
-
+        //achievements
+        int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
+        
         int playNr;
 
+        Location.text = playerData.IsInDistrict.ToString();
         PlayerName.text = PhotonNetwork.LocalPlayer.NickName;
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
@@ -86,8 +117,12 @@ public class EndOfDayReport : MonoBehaviour
     }
     private string GetSecondsRemainingText()
     {
+        int remainingTime;
+        if (playerData.IsInGameMode == GameMode.Chill)
+            remainingTime = 0;
+        else
+            remainingTime = TimerCountdown.Instance.GetRemainingTime();
 
-        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
         switch (lang)
         {
             case "en":
@@ -98,8 +133,6 @@ public class EndOfDayReport : MonoBehaviour
                 return $"{remainingTime} secunde";
             default:
                 return $"{remainingTime} seconds ";
-
-
         }
     }
     private string GetWinLoseText()

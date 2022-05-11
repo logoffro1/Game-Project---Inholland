@@ -60,6 +60,20 @@ public class PlayerMovement : MonoBehaviourPun
         Movement(horizontal,vertical);
         Fall();
 
+
+    }
+    public void SpeedBoost(bool activate)
+    {
+        Debug.Log("HEY");
+        if (activate)
+        {
+
+            speed += 2.5f;
+        }
+        else
+        {
+            speed -= 2.5f;
+        }
     }
     private void Fall()
     {

@@ -57,6 +57,7 @@ public class CastRay : MonoBehaviour
                     previousObject = null;
                 }
                 UIManager.Instance.SetHoverText(interactableObject.GetHoverName());
+                if (interactableObject == null) Debug.Log("INTERACT NULL");
                 if (Input.GetKeyDown(KeyCode.E))
                     interactableObject.DoAction(gameObject);
 
@@ -87,5 +88,6 @@ public class CastRay : MonoBehaviour
         else
             maxObjectDistance = 4f;
     }
+
 }
 

@@ -24,25 +24,33 @@ public class SpawnButton : MiniGameBase
     public AudioClip buttonSound;
     public AudioClip winSound;
     private AudioSource audioSource;
+
+    private float sequenceWaitTime = 1f;
     // Start is called before the first frame update
     void Start()
+    {
+        StartCoroutine(WaitBeforeStarting(WaitTime));
+    }
+
+    private IEnumerator WaitBeforeStarting(float time)
     {
         buttons = new GameObject[width, height];
         buttonSprite = buttonPrefab.GetComponent<SpriteRenderer>();
         colorSequence = new List<GameObject>();
         audioSource = GetComponent<AudioSource>();
-
-
-        // description = "Repeat the shown sequence!\n\nAfter the sequence is over, click on the buttons in the same order";
-
-        //description = "Herhaal de getoonde volgorde!\n\nNadat de reeks voorbij is, klikt u in dezelfde volgorde op de knoppen";
         SetLocalizedString();
 
         InitButtons();
+
+        yield return new WaitForSeconds(time);
+
         SetSequence();
 
-        StartCoroutine(ShowSequence(1f));
+        StartCoroutine(ShowSequence(sequenceWaitTime));
+
+        yield return null;
     }
+
     private void InitButtons()
     {
         Vector2 spriteSize = buttonSprite.bounds.size;
@@ -70,7 +78,6 @@ public class SpawnButton : MiniGameBase
     {
         if (Time.timeScale == 0) return;
         if (!canSelect || gameOver) return;
-        Debug.Log(gameOver);
         selectedSprites.Add(button);
         if (!selectedSprites[selectedCount].Equals(colorSequence[selectedCount]))
         {
@@ -108,14 +115,21 @@ public class SpawnButton : MiniGameBase
     }
     private IEnumerator ButtonFlash(GameObject button, bool correctBtn)
     {
-        SpriteRenderer sprite = button.GetComponent<SpriteRenderer>();
+        GameObject buttonUnpressed = button.transform.Find("ButtonUnpressed").gameObject;
+        GameObject buttonPressed = button.transform.Find("ButtonPressed").gameObject;
+        SpriteRenderer sprite = buttonPressed.GetComponent<SpriteRenderer>();
 
         if (correctBtn) sprite.color = Color.green;
         else
             sprite.color = Color.red;
 
-        yield return new WaitForSeconds(0.1f);
+        buttonPressed.SetActive(true);
+        buttonUnpressed.SetActive(false);
+
+        yield return new WaitForSeconds(0.15f);
         sprite.color = Color.white;
+        buttonPressed.SetActive(false);
+        buttonUnpressed.SetActive(true);
     }
     private void SetSequence()
     {
@@ -132,21 +146,37 @@ public class SpawnButton : MiniGameBase
         yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < colorSequence.Count; i++)
         {
-            if (colorSequence[i].TryGetComponent(out SpriteRenderer sprite))
+            GameObject buttonUnpressed = colorSequence[i].transform.Find("ButtonUnpressed").gameObject;
+            GameObject buttonPressed = colorSequence[i].transform.Find("ButtonPressed").gameObject;
+            if(buttonPressed != null && buttonUnpressed != null)
             {
-                StartCoroutine(SetColor(sprite, Color.magenta));
-                yield return new WaitForSeconds(1f);
+                StartCoroutine(SequencePressButton(buttonUnpressed,buttonPressed, Color.magenta));
+                yield return new WaitForSeconds(sequenceWaitTime);
             }
+
+
         }
         canSelect = true;
-
     }
-    private IEnumerator SetColor(SpriteRenderer sprite, Color color)
+    public override void CoordinateLevel()
+    {
+        if (this.Level <= 40f) sequenceWaitTime = 1f;
+        else if (this.Level <= 65f) sequenceWaitTime = 0.7f;
+        else sequenceWaitTime = 0.45f;
+    }
+    private IEnumerator SequencePressButton(GameObject buttonUnpressed, GameObject buttonPressed, Color color)
     {
 
         audioSource.PlayOneShot(buttonSound);
-        sprite.color = color;
+        buttonUnpressed.SetActive(false);
+        buttonPressed.SetActive(true);
+        if(buttonPressed.TryGetComponent(out SpriteRenderer spriteRenderer))
+        {
+            spriteRenderer.color = color;
+        }
         yield return new WaitForSeconds(0.5f);
-        sprite.color = Color.white;
+        spriteRenderer.color = Color.white;
+        buttonUnpressed.SetActive(true);
+        buttonPressed.SetActive(false);
     }
 }

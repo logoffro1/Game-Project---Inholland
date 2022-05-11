@@ -23,7 +23,7 @@ public class GogglesRecharging : InteractableObject
     // Update is called once per frame
     void Update()
     {
-        if (goggles != null)
+/*        if (goggles != null)
         {
             hoverName = $"Recharging ({goggles.BatteryLevel.ToString("0.0")}%)";
         }
@@ -31,11 +31,11 @@ public class GogglesRecharging : InteractableObject
         {
             hoverName = "Recharge Goggles";
         }
-        ChangeStatus(GetStatus());
+        ChangeStatus(GetStatus());*/
     }
     public override void DoAction(GameObject player)
     {
-        if (goggles == null)
+/*        if (goggles == null)
         {
             goggles = player.transform.parent.GetComponentInChildren<XrayGoggles>();
             if (goggles != null)
@@ -52,17 +52,19 @@ public class GogglesRecharging : InteractableObject
             goggles.IsEquipped = true;
             goggles = null;
 
-        }
+        }*/
 
     }
     private RechargingStates GetStatus()
     {
-        if (goggles == null) return RechargingStates.Empty;
+/*        if (goggles == null) return RechargingStates.Empty;
 
         if (goggles.BatteryLevel < 100f)
             return RechargingStates.Charging;
         else
-            return RechargingStates.Full;
+            return RechargingStates.Full;*/
+
+        return RechargingStates.Full;
 
     }
     private void ChangeStatus(RechargingStates status)

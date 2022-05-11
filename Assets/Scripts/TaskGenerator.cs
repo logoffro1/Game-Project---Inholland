@@ -56,6 +56,7 @@ public class TaskGenerator : MonoBehaviourPun
             TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactableContainers.gameObject.tag);
             if (allInteractableObjects.ContainsKey(task))
             {
+                interactableContainers.task = task;
                 allInteractableObjects[task].Add(interactableContainers.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
@@ -70,11 +71,14 @@ public class TaskGenerator : MonoBehaviourPun
         allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //Manually set which object is linked to which game
-        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
-        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire")).ToList());
+        allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
+        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("ColorBeep")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
+        allGamesToObjects.Add(TaskObjectType.Bin, GamePrefabs.Where(x => x.name.Contains("Recycle")).ToList());
+        allGamesToObjects.Add(TaskObjectType.WindTurbine, GamePrefabs.Where(x => x.name.Contains("Turbine")).ToList());
+       
     }
 
     private void SetUpAllGamesToAmountSpawn()
@@ -110,9 +114,12 @@ public class TaskGenerator : MonoBehaviourPun
         foreach (GameObject gameObject in allObjects)
         {
             //Get random game prefab for a game
-            GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
-            //Creating a fully functional interactable task object
-            AddTaskToObject(gameObject, gamePrefab);
+            if (allGamesToObjects[objectType].Count > 0)
+            {
+                GameObject gamePrefab = allGamesToObjects[objectType][random.Next(allGamesToObjects[objectType].Count)];
+                //Creating a fully functional interactable task object
+                AddTaskToObject(gameObject, gamePrefab);
+            }
         }
     }
 

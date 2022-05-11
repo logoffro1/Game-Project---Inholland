@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 using Photon.Pun;
 public class TimerCountdown : MonoBehaviourPun
 {
-    private int secondsMax = 15; //5x60
+    private int secondsMax = 8*60;
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
@@ -53,6 +53,7 @@ public class TimerCountdown : MonoBehaviourPun
     public event Action<int> OnSecondChange;
     public event Action<string> OnStartCountdownChange;
     public event EventHandler OnCountdownEnd;
+    private GameMode gameMode;
 
 /*    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
@@ -70,6 +71,7 @@ public class TimerCountdown : MonoBehaviourPun
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
+        gameMode = FindObjectOfType<PlayerData>().IsInGameMode;
         StartCoroutine(StartCountDown());
 
     }
@@ -101,7 +103,6 @@ public class TimerCountdown : MonoBehaviourPun
             }
         }
     }
-
     private IEnumerator TimerTake()
     {
         while (secondsLeft > 0)
@@ -111,10 +112,8 @@ public class TimerCountdown : MonoBehaviourPun
                 break;
             }
             yield return new WaitForSeconds(1);
-
-                secondsLeft -= 1;
-                OnSecondChange?.Invoke(secondsLeft);
-
+            if (gameMode != GameMode.Chill) secondsLeft -= 1;
+            OnSecondChange?.Invoke(secondsLeft);
 
             VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());
         }

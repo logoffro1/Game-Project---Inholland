@@ -74,14 +74,15 @@ public class Player : MonoBehaviourPun
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public OneOffUpgrade GetUpgrade(OneOffUpgradesEnum upgrade)
     {
         return oneOffUpgradeList.Where(x => x.Upgrade == upgrade).FirstOrDefault();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Church"))
+        {
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The Holy Grail").CurrentCount++;
+        }
     }
 }

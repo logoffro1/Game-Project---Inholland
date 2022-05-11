@@ -23,10 +23,13 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
     {
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
 
-        //description = "Collect all the trash!\n\nKEYS\nA,D - Move left/right\nSPACE - Shoot hook down";
         SetLocalizedString();
-           // description = "Verzamel al het afval!\n\nToetsen\nA,D - Ga naar links / Rechtsaf\nSPACE - Haak los";
 
+    }
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Hard;
     }
     public void DecreaseLives()
     {
@@ -47,5 +50,11 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
             this.GameWon();
 
         sewageUIManager.ChangeScoreText(score, maxScore);
+    }
+    public override void CoordinateLevel()
+    {
+        Debug.Log(this.Level);
+        float newSpeed = this.Level / 150;
+        FindObjectOfType<SpawnManager>().SetCorridorSpeed(newSpeed);
     }
 }

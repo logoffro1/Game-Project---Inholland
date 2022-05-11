@@ -101,6 +101,36 @@ public class PlayerReportData : MonoBehaviour
         numberPlayed = topPlayNumber;
         return returnPrefabTaskName(mostPlayedMinigame);
     }
+    public float calculateIncreaseAmount(int remainingSeconds ,int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
+    {
+        float increaseAmount = 2.7f;
+        if (!dayFailed) {
+
+            Debug.Log($"Remaining seconds: {(float)remainingSeconds / 30f}");
+            if (remainingSeconds > 60)
+            {
+                increaseAmount += 1f;
+            }
+            else
+            {
+                increaseAmount += (float)remainingSeconds / 300f;
+            }
+            Debug.Log($"Easy buff: {(float)nrOfEasyGames / 20f}");
+            increaseAmount += (float)nrOfEasyGames / 20f;
+            Debug.Log($"Medium buff: {(float)nrOfMediumGames / 10f}");
+            increaseAmount += (float)nrOfMediumGames / 10f;
+            Debug.Log($"Hard buff: {(float)nrOfHardGames / 5f}");
+            increaseAmount += (float)nrOfHardGames / 5f;
+        } 
+        Debug.Log($"Before adjustment of 5, the amount is: {increaseAmount}");
+
+        if (increaseAmount > 5f)
+        {
+            increaseAmount = 5f;
+        }
+        Debug.Log($"final amount: {increaseAmount}");
+        return increaseAmount;
+    }
 
     public void AddWonGames(GameObject minigamePrefab)
     {
@@ -116,6 +146,36 @@ public class PlayerReportData : MonoBehaviour
             //This log should be deleted before merge.
             Debug.Log($"{minigamePrefab.name} added current wins : {NrOfTasksSuccess[minigamePrefab.name]}");
         }
+    }
+    public int GetEasyGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if (returnDifficulty(entry.Key) == MiniGameDifficulty.Easy)
+                totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+    public int GetMediumGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if (returnDifficulty(entry.Key) == MiniGameDifficulty.Medium)
+                totalNumber += entry.Value;
+        }
+        return totalNumber;
+    }
+    public int GetHardGameNumbers()
+    {
+        int totalNumber = 0;
+        foreach (KeyValuePair<string, int> entry in NrOfTasksSuccess)
+        {
+            if(returnDifficulty(entry.Key)==MiniGameDifficulty.Hard)
+            totalNumber += entry.Value;
+        }
+        return totalNumber;
     }
 
     public void AddLostGames(GameObject minigamePrefab)
@@ -155,8 +215,42 @@ public class PlayerReportData : MonoBehaviour
             case "ColorBeepMiniGame Variant":
                 value = "Converting street lamp to solar lamp";
                 break;
+            case "RecycleGame":
+                value = "Recycling the waste";
+                break;
             default:
                 value = "None";
+                break;
+        }
+        return value;
+    }
+    //Add calculateDifficulty methods later on
+    private MiniGameDifficulty returnDifficulty(string prefabname)
+    {
+        MiniGameDifficulty value;
+        switch (prefabname)
+        {
+            case "SewageMiniGame":
+                value = MiniGameDifficulty.Hard;
+                break;
+            case "RecycleGame":
+            value = MiniGameDifficulty.Hard;
+                break;
+
+            case "RewireMiniGame":
+                value = MiniGameDifficulty.Easy;
+                break;
+            case "SolarShingleGamePrefab":
+                value = MiniGameDifficulty.Hard;
+                break;
+            case "DigTime Variant":
+                value = MiniGameDifficulty.Easy;
+                break;
+            case "ColorBeepMiniGame Variant":
+                value = MiniGameDifficulty.Medium;
+                break;
+            default:
+                value = MiniGameDifficulty.Medium;
                 break;
         }
         return value;

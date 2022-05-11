@@ -20,7 +20,7 @@ public class InteractableTaskObject : InteractableObject
     public GameObject CurrentModel;
 
     [HideInInspector]
-    private InteractableTaskStatusModels interactableTaskStatusModels;
+    public InteractableTaskStatusModels interactableTaskStatusModels;
 
     public TaskStatus Status;
 

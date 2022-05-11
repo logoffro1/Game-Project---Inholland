@@ -292,6 +292,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
+    m_Localized: 'Press the correct keys!
+
+
+      Press A, S, D, F when the item
+      falls in the red zone to recycle the items in the proper bin'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Recycle items
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521601
     m_Localized: HOW TO PLAY
     m_Metadata:
       m_Items: []
@@ -336,6 +352,281 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11189247741562880
     m_Localized: BACK
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Overall Alkmaar level:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: City center
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Farm land
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: Third map
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Localized: Get the sustainability to 80% in 8 minutes!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: Explore Alkmaar's heart! With the beautiful church and canals, there
+      is much to see. As well as many things to sustain-ify!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: Explore through Alkmaar farms! You will see mix of agriculture and
+      solar panels, some of which may need some maintenance!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: Third map description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: START
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: Select a district
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13291700499009536
+    m_Localized: Weld fans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13295209013334016
+    m_Localized: Weld fans
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415166007070720
+    m_Localized: Embrace nature
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Localized: Plant seeds!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Localized: Throw trash on the ground
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Localized: Light trees on fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Localized: Hug trees
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Localized: Install solar panels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Localized: Spill petrol in canals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Localized: Care for the world
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Localized: Bike > Bus > Car
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Localized: Clean the beaches!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Localized: A 5-minute shower is equal to 20-35 gallons of water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Localized: "A heavy coat of dust on a light bulb can block up to half of the
+      light.\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Localized: Heating, ventilating and air conditioning systems account for 40-60
+      percent of total energy use in the commercial sector.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Localized: 25% of the bottled water you buy is really municipal tap water,
+      so you might as well pass on the plastic bottle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Localized: Follow these three tips to live a healthier and more sustainable
+      life.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Localized: Spitting your gum in nature is actually good! Why? Well it kills
+      that nasty nature around it
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Localized: Tourism in coral reefs is actually great, because not only does
+      it actively permanently destroy coral reefs, but it also disassembles entire
+      fish populations!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Localized: Help out your local community by doing community organic bins! Throw
+      your organic waste to create fertile land for your yellow neighbors!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Localized: Barry B. Benson, an idealistic honey bee who has the ability to
+      talk to humans, has recently graduated from college and is about to enter the
+      hive's Honex Industries honey
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Localized: Print some flyers?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Localized: Yes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Localized: No
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Localized: You have already made enough flyers for today
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Localized: Return
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Localized: 'Amount flyers printed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Localized: Finished all the flyers!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Localized: Research done by 3 year old shows that throwing cans on the ground
+      is good
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769775309410304
+    m_Localized: Get the sustainability to 80% before the time runs out!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769965097472000
+    m_Localized: Take your time to get the sustainability to 100%!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770079937515520
+    m_Localized: Clean trash, fix the broken, and bring the sustainability bar up!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992611751940096
+    m_Localized: Classic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992750046531584
+    m_Localized: Chill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992829117550592
+    m_Localized: Crazy
+  - m_Id: 13627794507714560
+    m_Localized: Recycling one glass bottle saves enough energy to light a 100-watt
+      bulb for four hours
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628594088857600
+    m_Localized: Cardboard boxes can be recycled at least seven times
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628606281699328
+    m_Localized: Solar power is the fastest-growing energy source
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632285734883328
+    m_Localized: Solar panels can produce power without direct sunlight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632494648971264
+    m_Localized: You can charge electric vehicles with solar panels
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632540912144384
+    m_Localized: Solar street lights can be installed anywhere- in the middle of
+      the sea or forest, inside a park, or on a mountain
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632589633179648
+    m_Localized: Solar street lights are practical and cost-effective
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632615478480896
+    m_Localized: When LED is incorporated, solar street lights are durable and environmentally
+      friendly
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632644645670912
+    m_Localized: "Did you know  that today\u2019s Wind Turbines can be less noisy
+      than a car?\r"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632685343002624
+    m_Localized: Wind energy is leading the renewable energy market with installations
+      that keep growing each year.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632712031358976
+    m_Localized: Fossil Fuel Plants are more dangerous for birds than wind turbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632741223714816
+    m_Localized: 'Trees keep our air supply fresh by absorbing carbon dioxide and
+      producing oxygen.
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632775394709504
+    m_Localized: Trees cut down noise pollution by acting as sound barriers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632800984158208
+    m_Localized: One tree produces nearly 120kg of oxygen each year
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676581104144384
+    m_Localized: Click at the right moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Localized: Space
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Localized: Connect the colors
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Localized: Collect the trash
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Localized: Start with
     m_Metadata:
       m_Items: []
   references:
