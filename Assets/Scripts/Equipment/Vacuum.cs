@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Vacuum : Equipment
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip vacuumON;
     [SerializeField] private AudioClip vacuumOFF;
-
+    [SerializeField] private GameObject player;
 
     // Start is called before the first frame update
     void Start()
@@ -16,8 +17,8 @@ public class Vacuum : Equipment
         drainOverTime = false;
         isActive = false;
         equipmentName = "Vacuum";
-        activeTime = 20;
-        maxCooldown = 5f;
+        activeTime = 10;
+        maxCooldown = 15;
         cooldown = maxCooldown;
     }
 
@@ -25,10 +26,12 @@ public class Vacuum : Equipment
     void Update()
     {
         if (isLocked) return;
-
-        if (Input.GetKeyDown(KeyCode.G))
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            if (cooldown <= 0)
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
                 DoAction();
         }
         if (!isActive)
@@ -38,16 +41,22 @@ public class Vacuum : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
         }
+        else
+        {
+            cooldown += (Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+            onCooldownChange(this);
+        }
         DrainTime();
-
-
-
     }
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
+        
         activeTime = 15f;
 
         isActive = !isActive;
@@ -61,21 +70,36 @@ public class Vacuum : Equipment
     }
     private void OnTriggerEnter(Collider other)
     {
-
+        VacuumTrash(other);
+ 
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        VacuumTrash(other);
+    }
+    private void VacuumTrash(Collider other)
+    {
         if (!isActive) return;
         if (other.gameObject.TryGetComponent(out Trash trash))
         {
-            if (transform.parent.TryGetComponent(out TrashBag bag))
+            if (trash.collected) return;
+            if (player.TryGetComponent(out TrashBag bag))
             {
-                if (!bag.CanCollect()) return;
+                if (!bag.CanCollect())
+                {
+                    if (isActive)
+                        DoAction();
+                    return;
+                }
+                trash.collected = true;
                 StartCoroutine(VacuumTrash(trash, bag));
             }
-            Debug.Log("TRASH IN RANGE");
         }
     }
+   
     private IEnumerator VacuumTrash(Trash trash, TrashBag bag)
     {
-        Transform camerTransform = transform.parent.Find("Camera").transform;
+        Transform camerTransform = player.transform.Find("Camera").transform;
 
         while (true)
         {

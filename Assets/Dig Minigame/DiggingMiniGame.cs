@@ -8,7 +8,6 @@ public class DiggingMiniGame : MiniGameBase
 {
     private void Start()
     {
-
         SetLocalizedString();
         // description = "Dig a hole for the tree!\nRelease the shovel at the right moment\n\nKEYS\nSPACE - Release shovel";
 
@@ -21,6 +20,11 @@ public class DiggingMiniGame : MiniGameBase
         else GameOver();
     }
 
+
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Easy;
+    }
     public override void CoordinateLevel()
     {
         MoveLine moveline = gameObject.transform.Find("WholeBar").GetComponentInChildren<MoveLine>();

@@ -33,9 +33,14 @@ public class FlyerMaking : MonoBehaviour
 
     [HideInInspector] public bool IsDoneForToday = false;
     [HideInInspector] public Printer Printer;
+    private GameObject player;
+    private FlyerBag playerFlyerBag;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player"); //change for MP
+        playerFlyerBag = player.GetComponent<FlyerBag>();
+        if (!playerFlyerBag.CanCollect()) return;
         SetCounter();
         flyerList = new List<Flyer>();
 
@@ -52,6 +57,7 @@ public class FlyerMaking : MonoBehaviour
         }
 
         SettingNewValues();
+        
     }
 
     private void SettingNewValues()
@@ -81,7 +87,12 @@ public class FlyerMaking : MonoBehaviour
 
     public void MadeNewFlyer()
     {
-        flyerList.Add(new Flyer(Title.text, Body.text, PointForCurrentFlyer/2, AmountToPrintPerFlyer));
+        Flyer flyer = new Flyer(Title.text, Body.text, PointForCurrentFlyer / 2, AmountToPrintPerFlyer);
+        flyerList.Add(flyer);
+        for(int i = 0; i < flyer.AmountToPrint; i++)
+        {
+            playerFlyerBag.AddFlyer(new Flyer(flyer.Title, flyer.Body, flyer.Points, 1));
+        }
         StartCoroutine(ViewTheFlyer());
     }
 

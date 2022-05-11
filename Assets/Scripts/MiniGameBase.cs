@@ -6,6 +6,7 @@ using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
+using System.Collections;
 
 public class MiniGameBase : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class MiniGameBase : MonoBehaviour
     public TextMeshProUGUI descriptionText;
     public GameObject infoCanvas;
 
+    public MiniGameDifficulty gameDifficulty;
+
     //Level 
     [Range(0.0f, 100.0f)]
     private float level;
@@ -26,6 +29,10 @@ public class MiniGameBase : MonoBehaviour
     [Range(0.0f, 100.0f)]
     private float levelOffset;
     private float pointsOffset;
+
+    //Tutorial panel
+    public GameObject TutorialCanvas;
+    public float WaitTime;
 
     //localized string
     [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
@@ -64,6 +71,25 @@ public class MiniGameBase : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+    }
+
+    public IEnumerator ShowTutorialCanvas()
+    {
+        CanvasGroup canvasGroup = TutorialCanvas.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.4f;
+
+        yield return new WaitForSeconds(1f);
+
+        float subtractAmount = 0.005f;
+        while (canvasGroup.alpha > 0)
+        {
+            if (!IsPlaying) yield break;
+
+            canvasGroup.alpha -= subtractAmount;
+            subtractAmount += subtractAmount / 8;
+
+            yield return null;
+        }
     }
 
     public event Action<InteractableTaskObject> OnGameWon;
@@ -178,6 +204,8 @@ public class MiniGameBase : MonoBehaviour
         return FindObjectOfType<Player>().OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame;
     }
 
+
+    public virtual void DetermineGameDifficulty() { }
 
     public virtual void CoordinateLevel() { }
     public virtual void GameFinish(bool success) { }

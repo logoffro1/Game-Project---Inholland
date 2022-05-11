@@ -6,6 +6,7 @@ using UnityEngine.Localization.Components;
 
 public class InteractableTaskStatusModels : MonoBehaviour
 {
+    [HideInInspector] public TaskObjectType task;
 
     // This class is in the container
 

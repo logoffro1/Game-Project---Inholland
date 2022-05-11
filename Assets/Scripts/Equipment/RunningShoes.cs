@@ -1,29 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RunningShoes : Equipment
 {
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip shoesOn;
+    [SerializeField] private AudioClip shoesOff;
     [SerializeField] private PlayerMovement playerMovement;
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
-        activeTime = 15f;
+        activeTime = 7f;
 
         isActive = !isActive;
 
         drainOverTime = isActive;
         playerMovement.SpeedBoost(isActive);
 
-/*        if (isActive)
-            audioSource.PlayOneShot(xrayOn);
+        if (isActive)
+            audioSource.PlayOneShot(shoesOn);
         else
-            audioSource.PlayOneShot(xrayOff);*/
+            audioSource.PlayOneShot(shoesOff);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         drainOverTime = false;
         isActive = false;
         equipmentName = "Running Shoes";
@@ -35,10 +39,14 @@ public class RunningShoes : Equipment
     // Update is called once per frame
     void Update()
     {
+
         if (isLocked) return;
-        if (Input.GetKeyDown(KeyCode.F))
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            if (cooldown <= 0)
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
                 DoAction();
         }
         if (!isActive)
@@ -48,7 +56,16 @@ public class RunningShoes : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
+        }
+        else
+        {
+            cooldown += (4f * Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+            onCooldownChange(this);
         }
 
         DrainTime();

@@ -39,6 +39,10 @@ public class RecycleMiniGame : MiniGameBase
         else GameOver();
     }
 
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Hard;
+    }
     public override void CoordinateLevel()
     {
         //Amount to collect

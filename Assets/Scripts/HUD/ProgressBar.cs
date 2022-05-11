@@ -14,7 +14,7 @@ public class ProgressBar : MonoBehaviour
 
     public bool isGameOngoing;
 
-
+    public float AmountDecreasingPerSecond = -0.0005f;
 
     private static ProgressBar _instance;
     public static ProgressBar Instance { get { return _instance; } }
@@ -57,7 +57,7 @@ public class ProgressBar : MonoBehaviour
     {
         if (isGameOngoing)
         {
-            DecreaseSustainibilityPerSecond(-0.0005f);
+            DecreaseSustainibilityPerSecond(AmountDecreasingPerSecond);
         }
     }
 

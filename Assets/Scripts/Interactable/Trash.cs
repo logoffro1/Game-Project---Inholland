@@ -6,6 +6,7 @@ using UnityEngine.Localization.Settings;
 
 public class Trash : InteractableObject
 {
+    public bool collected { get; set; } = false;
     private void Awake()
     {
         hoverName = "Trash";
