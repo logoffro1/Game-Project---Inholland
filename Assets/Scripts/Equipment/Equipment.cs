@@ -10,6 +10,8 @@ public abstract class Equipment : MonoBehaviour
     public float maxCooldown { get; protected set; }
     protected bool isActive;
     protected bool drainOverTime;
+    protected PlayerReputation playerRep;
+
 
     protected string equipmentName;
 
@@ -18,6 +20,7 @@ public abstract class Equipment : MonoBehaviour
     public Action<Equipment> onCooldownChange = delegate { };
 
     public abstract void DoAction();
+    public abstract void SetPlayerRep();
     public virtual void SetLocked(bool locked)
     {
         isLocked = locked;

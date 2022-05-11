@@ -27,9 +27,17 @@ public class RunningShoes : Equipment
             audioSource.PlayOneShot(shoesOff);
     }
 
+    public override void SetPlayerRep()
+    {
+        playerRep = FindObjectOfType<PlayerReputation>();
+        SetLocked(playerRep.IsShoeLocked);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        playerRep = FindObjectOfType<PlayerReputation>();
+        this.SetLocked(playerRep.IsShoeLocked);
         audioSource = GetComponent<AudioSource>();
         drainOverTime = false;
         isActive = false;
