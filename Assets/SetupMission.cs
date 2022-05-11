@@ -13,6 +13,7 @@ public class SetupMission : MonoBehaviour
     public TextMeshProUGUI goalText;
     public TextMeshProUGUI timerText;
     public RawImage timerImage;
+    public GameObject LineOnProgressBar;
 
 
     // Start is called before the first frame update
@@ -36,6 +37,8 @@ public class SetupMission : MonoBehaviour
                 TimerCountdown.Instance.SecondsLeft = (60 * 60 * 2); //2 hours
                 timerText.enabled = false;
                 timerImage.enabled = false;
+                ProgressBar.Instance.AmountDecreasingPerSecond = 0;
+                LineOnProgressBar.SetActive(false);
                 break;
             case GameMode.Crazy:
                 TimerCountdown.Instance.SecondsLeft = (40);

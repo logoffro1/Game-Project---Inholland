@@ -435,6 +435,18 @@ MonoBehaviour:
     m_Key: officeScreen_defaultGoal
     m_Metadata:
       m_Items: []
+  - m_Id: 13992611751940096
+    m_Key: gamemode-classic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992750046531584
+    m_Key: gamemode-chill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992829117550592
+    m_Key: gamemode-crazy
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
