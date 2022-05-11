@@ -29,6 +29,11 @@ public class SpawnButton : MiniGameBase
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(WaitBeforeStarting(WaitTime));
+    }
+
+    private IEnumerator WaitBeforeStarting(float time)
+    {
         buttons = new GameObject[width, height];
         buttonSprite = buttonPrefab.GetComponent<SpriteRenderer>();
         colorSequence = new List<GameObject>();
@@ -36,10 +41,16 @@ public class SpawnButton : MiniGameBase
         SetLocalizedString();
 
         InitButtons();
+
+        yield return new WaitForSeconds(time);
+
         SetSequence();
 
         StartCoroutine(ShowSequence(sequenceWaitTime));
+
+        yield return null;
     }
+
     private void InitButtons()
     {
         Vector2 spriteSize = buttonSprite.bounds.size;

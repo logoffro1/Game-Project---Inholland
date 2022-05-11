@@ -12886,6 +12886,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7079380008194899320, guid: ee9fb1fbf75aa8940aa9a6b076da7f47, type: 3}
+      propertyPath: Popup
+      value: 
+      objectReference: {fileID: 8388685178439571880, guid: a40f7505f256a9942b1aec20a7df8305, type: 3}
     - target: {fileID: 7079380008194899324, guid: ee9fb1fbf75aa8940aa9a6b076da7f47, type: 3}
       propertyPath: m_Camera
       value: 

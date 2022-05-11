@@ -53,6 +53,7 @@ public class TaskGenerator : MonoBehaviour
             TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactableContainers.gameObject.tag);
             if (allInteractableObjects.ContainsKey(task))
             {
+                interactableContainers.task = task;
                 allInteractableObjects[task].Add(interactableContainers.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
