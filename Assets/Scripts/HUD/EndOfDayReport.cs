@@ -23,6 +23,7 @@ public class EndOfDayReport : MonoBehaviour
     public AudioClip DayReportAudio;
 
     private PlayerReportData playerReportData;
+    private PlayerReputation playerRep;
     private bool dayFailed = false;
     private string lang = "en";
 
@@ -35,7 +36,13 @@ public class EndOfDayReport : MonoBehaviour
 
         playerData = FindObjectOfType<PlayerData>();
         playerReportData = FindObjectOfType<PlayerReportData>();
+        playerRep = FindObjectOfType<PlayerReputation>();
 
+        playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
        
 
         playerData.NewSustainabilityPoints = 

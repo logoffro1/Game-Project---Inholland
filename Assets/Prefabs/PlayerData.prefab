@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7112075837169896511}
   - component: {fileID: 7112075837169896508}
+  - component: {fileID: -6503258503414520021}
   m_Layer: 0
   m_Name: PlayerData
   m_TagString: Untagged
@@ -45,4 +46,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsCurrentlyInMission: 0
   IsInDistrict: 0
+  IsInGameMode: 0
+  GoalText: 
   NewSustainabilityPoints: 0
+  FlyerPoints: 0
+--- !u!114 &-6503258503414520021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7112075837169896509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0688be0f30029df4e989a0487147ccf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

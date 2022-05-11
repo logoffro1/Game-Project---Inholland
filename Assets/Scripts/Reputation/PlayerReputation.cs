@@ -8,13 +8,13 @@ public class PlayerReputation : MonoBehaviour
     public float CurrentReputationExp { get; private set; }
      public int CurrentRepLevel { get; private set; }
 
-    public bool IsXrayLocked { get; private set; }
-    public bool IsVacuumLocked { get; private set; }
-    public bool IsShoeLocked { get; private set; }
+   [SerializeField] public bool IsXrayLocked { get; private set; }
+    [SerializeField] public bool IsVacuumLocked { get; private set; }
+    [SerializeField] public bool IsShoeLocked { get; private set; }
 
     private void Start()
     {
-        CurrentReputationExp = 100;//This should come from save/load later on.
+        CurrentReputationExp = 195;//This should come from save/load later on.
         DetermineReputationLevel();
         DontDestroyOnLoad(this.gameObject);
     }
@@ -41,21 +41,27 @@ public class PlayerReputation : MonoBehaviour
                 IsShoeLocked = false;
                 IsVacuumLocked = true;
                 IsXrayLocked = true;
+                Debug.Log($"{IsShoeLocked} is isshoelocked.");
+
                 break;
             case 3:
                 IsShoeLocked = false;
                 IsVacuumLocked = false;
                 IsXrayLocked = true;
+                Debug.Log($"{IsVacuumLocked} is isvacuumlocked.");
                 break;
-/*            case 4:
+            case 4:
                 IsShoeLocked = false;
                 IsVacuumLocked = false;
                 IsXrayLocked = false;
-                break;*/
+                Debug.Log($"{IsXrayLocked} is isXrayLocked.");
+                break;
             default:
+                //After lv 5 everything is open/ I know case 4 can be deleted but for now I'll keep it in case we put something else.
                 IsShoeLocked = false;
                 IsVacuumLocked = false;
-                IsXrayLocked = true;
+                IsXrayLocked = false;
+                Debug.Log($"{IsXrayLocked} is isXrayLocked.");
                 break;
 
         }
@@ -63,7 +69,7 @@ public class PlayerReputation : MonoBehaviour
 
     public void IncreaseEXP(int remainingSeconds, int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
-        float increaseAmount = 2.7f;
+        float increaseAmount = 5f;
         if (!dayFailed)
         {         
             if (remainingSeconds > 60)
@@ -74,18 +80,18 @@ public class PlayerReputation : MonoBehaviour
             {
                 increaseAmount += (float)remainingSeconds / 300f;
             }
-            Debug.Log($"Easy buff: {(float)nrOfEasyGames / 10f}");
-            increaseAmount += (float)nrOfEasyGames / 10f;
-            Debug.Log($"Medium buff: {(float)nrOfMediumGames / 5f}");
-            increaseAmount += (float)nrOfMediumGames / 5f;
-            Debug.Log($"Hard buff: {(float)nrOfHardGames / 2f}");
-            increaseAmount += (float)nrOfHardGames / 2f;
+            Debug.Log($"Easy buff: {(float)nrOfEasyGames}");
+            increaseAmount += (float)nrOfEasyGames;
+            Debug.Log($"Medium buff: {(float)nrOfMediumGames*2}");
+            increaseAmount += (float)nrOfMediumGames * 2;
+            Debug.Log($"Hard buff: {(float)nrOfHardGames * 3f}");
+            increaseAmount += (float)nrOfHardGames * 3f;
         }
-        Debug.Log($"Before adjustment of 5, the amount is: {increaseAmount}");
+        Debug.Log($"Before adjustment of 100, the amount is: {increaseAmount}");
 
         if (increaseAmount > 100f)
         {
-            increaseAmount = 25f;
+            increaseAmount = 32f;
         }
         Debug.Log($"final amount: {increaseAmount}");
         CurrentReputationExp+= increaseAmount;
