@@ -26,9 +26,27 @@ public class PlayerData : MonoBehaviour
         pData = FindObjectOfType<PlayerReportData>();
         if (CityCenterSustainability == 0)
         {
-            CityCenterSustainability = 1f;
-            FarmSustainability = 1f;
-            LastMapSustainability = 1f;
+            if (PlayerPrefs.HasKey("citySus"))
+            {
+                CityCenterSustainability = PlayerPrefs.GetFloat("citySus");
+            }
+            else
+            {
+                CityCenterSustainability = 1f;
+            }
+            if (PlayerPrefs.HasKey("farmSus"))
+            {
+                FarmSustainability = PlayerPrefs.GetFloat("farmSus");
+            }
+            else
+                FarmSustainability = 1f;
+            if (PlayerPrefs.HasKey("lastMapSus"))
+            {
+                LastMapSustainability = PlayerPrefs.GetFloat("lastMapSus");
+            }
+            else
+                LastMapSustainability = 1f;
+
         }
 
         OverallAlkmaarSustainability = (CityCenterSustainability + FarmSustainability + LastMapSustainability) / 3;
@@ -37,16 +55,19 @@ public class PlayerData : MonoBehaviour
     public void SetCityCenterSustainability(float value)
     {
         CityCenterSustainability = value;
+        PlayerPrefs.SetFloat("citySus", CityCenterSustainability);
         SetOverallAlkmaarSustainability();
     }
     public void SetFarmSustainability(float value)
     {
         FarmSustainability = value;
+        PlayerPrefs.SetFloat("farmSus", FarmSustainability);
         SetOverallAlkmaarSustainability();
     }
     public void SetLastMapSustainability(float value)
     {
         LastMapSustainability = value;
+        PlayerPrefs.SetFloat("lastMapSus", LastMapSustainability);
         SetOverallAlkmaarSustainability();
     }
   

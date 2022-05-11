@@ -10,11 +10,7 @@ public class FlyerBag : MonoBehaviour
     void Start()
     {
         flyers = new List<Flyer>();
-     
-        //testing only
-        AddFlyer(new Flyer("test", "test", 0.3f, 1));
-        AddFlyer(new Flyer("test", "test", -1f, 1));
-        AddFlyer(new Flyer("test", "test", 5f, 1));
+
     }
 
 

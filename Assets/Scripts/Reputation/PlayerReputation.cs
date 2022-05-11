@@ -18,6 +18,10 @@ public class PlayerReputation : MonoBehaviour
     private void Start()
     {
         Debug.Log("Start runned right here");
+        if (PlayerPrefs.HasKey("reputation"))
+        {
+            CurrentReputationExp = PlayerPrefs.GetFloat("reputation");
+        }
         CurrentReputationExp = 395;//This should come from save/load later on.
         IncreaseExpAmount = 0;
         DetermineReputationLevel();
@@ -27,6 +31,7 @@ public class PlayerReputation : MonoBehaviour
     private void DetermineReputationLevel()
     {
         CurrentReputationExp += IncreaseExpAmount;
+        PlayerPrefs.SetFloat("reputation", CurrentReputationExp);
         Debug.Log($"Old exp : {CurrentReputationExp} , old Level : {CurrentRepLevel} ");
         int oldLevel = CurrentRepLevel;
         CurrentRepLevel = (int)(CurrentReputationExp / 100);
