@@ -21,7 +21,6 @@ public class GlobalAchievements : MonoBehaviour
     }
     void Start()
     {
-        PlayerPrefs.DeleteAll();
         audioSource = GetComponent<AudioSource>();
 
         InitAchievements();
@@ -42,7 +41,7 @@ public class GlobalAchievements : MonoBehaviour
         achievements.Add(new Achievement("Wallhacks", "Use the XRay Goggles for the first time", 1)); //
         achievements.Add(new Achievement("Run Forest, Run!", "Use the Running Shoes for the first time", 1)); //
         achievements.Add(new Achievement("The cleaning lady", "Use the Vacuum for the first time", 1)); //
-        achievements.Add(new Achievement("These are harder than they look, you know...", "Fail 5 tasks", 5)); //
+        achievements.Add(new Achievement("These are harder than they look", "Fail 5 tasks", 5)); //
         achievements.Add(new Achievement("I like the way you recycle, boy!", "Complete 25 recycling tasks", 25)); //
         achievements.Add(new Achievement("Gardening Simulator", "Complete 25 planting tree tasks", 25)); //
         achievements.Add(new Achievement("The Cable Guy", "Complete 25 rewire lamp tasks", 25));//
@@ -72,6 +71,7 @@ public class GlobalAchievements : MonoBehaviour
         }
         return null;
     }
+    public List<Achievement> GetAllAchievements() => achievements;
     private IEnumerator TriggerAchievement(Achievement ach)
     {
         Debug.Log($"{ach.Title} TRIGGERED");
