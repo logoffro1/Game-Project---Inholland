@@ -1246,7 +1246,7 @@ Animator:
   m_GameObject: {fileID: 131946}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4a5a8c8ff5d6d2e48ab8d2b27100cf57, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52f870557b912cf4898317fc4882fa0c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2587,6 +2587,8 @@ GameObject:
   m_Component:
   - component: {fileID: 414918}
   - component: {fileID: 13723036}
+  - component: {fileID: 1645970867}
+  - component: {fileID: 1645970866}
   m_Layer: 0
   m_Name: Character_Grandma
   m_TagString: Untagged
@@ -2709,6 +2711,45 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0003182292, y: 0.8643121, z: -0.03325156}
     m_Extent: {x: 1.0221856, y: 0.9775942, z: 0.20858932}
   m_DirtyAABB: 0
+--- !u!136 &1645970867
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169144}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.54
+  m_Height: 1.9579613
+  m_Direction: 1
+  m_Center: {x: 0.00055485964, y: 0.881389, z: -0.02716045}
+--- !u!114 &1645970866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 169144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91530d50bfc02224087dd3ca85ce7d0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsInteractable: 1
+  localizedStringEvent: {fileID: 0}
+  localizedString:
+    m_TableReference:
+      m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
+    m_TableEntryReference:
+      m_KeyId: 14001102653632512
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!1 &172420
 GameObject:
   m_ObjectHideFlags: 0

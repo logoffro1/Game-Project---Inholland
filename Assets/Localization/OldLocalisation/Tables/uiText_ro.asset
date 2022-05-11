@@ -148,6 +148,10 @@ MonoBehaviour:
     m_Localized: "Am terminat toate flutura\u0219ii!"
     m_Metadata:
       m_Items: []
+  - m_Id: 14001102653632512
+    m_Localized: Ofera pamflet
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

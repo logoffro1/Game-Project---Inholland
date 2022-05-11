@@ -10,6 +10,11 @@ public class FlyerBag : MonoBehaviour
     void Start()
     {
         flyers = new List<Flyer>();
+     
+        //testing only
+        AddFlyer(new Flyer("test", "test", 0.3f, 1));
+        AddFlyer(new Flyer("test", "test", -1f, 1));
+        AddFlyer(new Flyer("test", "test", 5f, 1));
     }
 
 
@@ -21,11 +26,13 @@ public class FlyerBag : MonoBehaviour
 
         UIManager.Instance.SetFlyersText(flyers.Count, bagCapacity);
     }
+    public List<Flyer> GetFlyers() => flyers;
     public void RemoveFlyer(Flyer flyer)
     {
         flyers.Remove(flyer);
         ProgressBar.Instance.ChangeSustainibility(flyer.Points, false);
         UIManager.Instance.SetFlyersText(flyers.Count, bagCapacity);
+        Debug.Log("Flyers: " + flyers.Count);
     }
 
     public bool CanCollect() => flyers.Count < bagCapacity;

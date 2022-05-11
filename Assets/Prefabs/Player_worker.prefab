@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vacuumON: {fileID: 8300000, guid: bf4d72c1b2548fd409691bb076d7fee9, type: 3}
   vacuumOFF: {fileID: 8300000, guid: b368b1ad0c78ac343a4cd22ab8d5f334, type: 3}
+  player: {fileID: 9153428692907248683}
 --- !u!135 &240001516
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -563,7 +564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19958171, g: 0.6509434, b: 0.61394656, a: 0.5882353}
+  m_Color: {r: 0.2769134, g: 0.6509804, b: 0.19999997, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1450,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19958171, g: 0.6509434, b: 0.61394656, a: 0.5882353}
+  m_Color: {r: 0.2784314, g: 0.6509804, b: 0.2, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2180,6 +2181,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6143836978633219476, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3372549
+      objectReference: {fileID: 0}
     - target: {fileID: 8507050611124659105, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2339,6 +2344,10 @@ PrefabInstance:
       propertyPath: m_FillAmount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6143836978633219476, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3372549
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
 --- !u!1 &1528111828610155791 stripped
@@ -2453,6 +2462,18 @@ PrefabInstance:
     - target: {fileID: 5587140272650078196, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
       propertyPath: m_Name
       value: ItemSlot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143836978633219476, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
+      propertyPath: m_Color.b
+      value: 0.33528912
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143836978633219476, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143836978633219476, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
+      propertyPath: m_Color.r
+      value: 0.30588236
       objectReference: {fileID: 0}
     - target: {fileID: 8507050611124659105, guid: 15760b34261071044b9a9d7c9ed2f16b, type: 3}
       propertyPath: m_RootOrder
