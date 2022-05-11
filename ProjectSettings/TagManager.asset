@@ -21,6 +21,7 @@ TagManager:
   - Bin
   - Note
   - WindTurbine
+  - Church
   layers:
   - Default
   - TransparentFX

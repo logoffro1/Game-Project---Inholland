@@ -26,6 +26,8 @@ public class TrashBag : MonoBehaviour
      
         trash.gameObject.SetActive(false);
         items.Add(trash);
+        Achievement achPickupTrash = FindObjectOfType<GlobalAchievements>().GetAchievement("Stop Littering");
+        achPickupTrash.CurrentCount++;
         if(items.Count >= bagCapacity / 2)
         {
             if (Random.Range(0, 12f) == 1)

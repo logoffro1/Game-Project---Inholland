@@ -67,6 +67,7 @@ public class MiniGameManager : MonoBehaviour
         miniGameBase.SetLevel();
 
         amountOfGameOccurence[miniGamePrefab.name]++;
+
         if (amountOfGameOccurence[miniGamePrefab.name] <= maxOccurence)
         {
             miniGameBase.WaitTime = 2f;
@@ -89,17 +90,33 @@ public class MiniGameManager : MonoBehaviour
             { miniGame.gameObject.name,miniGameTime}
         });
         yield return new WaitForSeconds(2f);
+        MiniGameBase miniGameBase = go.GetComponent<MiniGameBase>();
         Destroy(go);
         IsPlaying = false;
         UIManager.Instance.ChangeCanvasShown();
+
+        //achievements
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Beginner").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Enthusiast").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Expert").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Master").CurrentCount++;
+        if (miniGameBase.GetType() == typeof(SewageMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("Sewage Cleaner").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(RewireMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The Cable Guy").CurrentCount++;
+        else if(miniGameBase.GetType() == typeof(DiggingMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("Gardening Simulator").CurrentCount++;
+        else if(miniGameBase.GetType() == typeof(ShinglesMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("How did I even get up there?").CurrentCount++;
+        else if(miniGameBase.GetType() == typeof(RecycleMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("I like the way you recycle, boy!").CurrentCount++;
     }
 
     public void GameOver()
     {
-        
         OnGameOver?.Invoke(InteractableObject);
         PlayerData.AddLostGames(InteractableObject.GamePrefab);
-
+        FindObjectOfType<GlobalAchievements>().GetAchievement("These are harder than they look").CurrentCount++;
     }
 
     public void GameWon()

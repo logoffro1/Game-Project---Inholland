@@ -17,7 +17,6 @@ public class TimerCountdown : MonoBehaviour
         {
             secondsMax = value;
         }
-        
         get
         {
             return secondsMax;
@@ -60,9 +59,7 @@ public class TimerCountdown : MonoBehaviour
         MiniGameManager.Instance.FreezeScreen(true);
         gameMode = FindObjectOfType<PlayerData>().IsInGameMode;
         StartCoroutine(StartCountDown());
-        
     }
-
     private IEnumerator StartCountDown()
     {
         while (startCountDownLeft > 0)
@@ -86,7 +83,6 @@ public class TimerCountdown : MonoBehaviour
             }
         }
     }
-
     private IEnumerator TimerTake()
     {
         while (secondsLeft > 0)
