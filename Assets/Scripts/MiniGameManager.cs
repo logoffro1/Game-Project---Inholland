@@ -67,7 +67,15 @@ public class MiniGameManager : MonoBehaviour
         miniGameBase.SetLevel();
 
         amountOfGameOccurence[miniGamePrefab.name]++;
-        if (amountOfGameOccurence[miniGamePrefab.name] <= maxOccurence) StartCoroutine(miniGameBase.ShowTutorialCanvas());
+        if (amountOfGameOccurence[miniGamePrefab.name] <= maxOccurence)
+        {
+            miniGameBase.WaitTime = 2f;
+            StartCoroutine(miniGameBase.ShowTutorialCanvas());
+        }
+        else
+        {
+            miniGameBase.WaitTime = 0f;
+        }
 
         IsPlaying = true;
     }

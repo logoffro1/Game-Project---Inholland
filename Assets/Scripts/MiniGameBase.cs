@@ -30,6 +30,7 @@ public class MiniGameBase : MonoBehaviour
 
     //Tutorial panel
     public GameObject TutorialCanvas;
+    public float WaitTime;
 
     //localized string
     [SerializeField] protected LocalizeStringEvent localizedStringEventDescription;
