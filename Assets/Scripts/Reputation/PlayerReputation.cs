@@ -2,10 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerReputation : MonoBehaviour
 {
     public float CurrentReputationExp { get; private set; }
+
+    public float IncreaseExpAmount { get; private set; }
      public int CurrentRepLevel { get; private set; }
 
    [SerializeField] public bool IsXrayLocked { get; private set; }
@@ -14,18 +17,53 @@ public class PlayerReputation : MonoBehaviour
 
     private void Start()
     {
-        CurrentReputationExp = 195;//This should come from save/load later on.
+        Debug.Log("Start runned right here");
+        CurrentReputationExp = 395;//This should come from save/load later on.
+        IncreaseExpAmount = 0;
         DetermineReputationLevel();
         DontDestroyOnLoad(this.gameObject);
     }
 
     private void DetermineReputationLevel()
     {
+        CurrentReputationExp += IncreaseExpAmount;
         Debug.Log($"Old exp : {CurrentReputationExp} , old Level : {CurrentRepLevel} ");
+        int oldLevel = CurrentRepLevel;
         CurrentRepLevel = (int)(CurrentReputationExp / 100);
-        Debug.Log($"Current exp : {CurrentReputationExp} , Current Level : {CurrentRepLevel} ");
 
+        if (CurrentRepLevel > oldLevel)
+        {
+            bool oldVacuum = IsVacuumLocked;
+            bool oldShoe = IsShoeLocked;
+            bool oldXray = IsXrayLocked;
+
+            DetermineToolProgression();
+
+
+            Debug.Log($"old locked {oldShoe}, new lock {IsShoeLocked}");
+            if (oldShoe&& !IsShoeLocked) {
+                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked running shoes! Now you are able to run faster for a period of time!!");
+            }else if (oldVacuum && !IsVacuumLocked)
+            {
+                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked Vacuum cleaner! Now you are able to pickup trash faster and easier!!");
+            }
+            else if (oldXray && !IsXrayLocked)
+            {
+                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked the XRay goggles. Now you are able to see all the games you can play around you!!");
+            }
+
+        }
+        Debug.Log($"Current exp : {CurrentReputationExp} , Current Level : {CurrentRepLevel} ");
+        IncreaseExpAmount = 0;
         DetermineToolProgression();
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        Debug.Log("Office runned right here");
+        if (SceneManager.GetActiveScene().name == "NewOffice") {
+            DetermineReputationLevel();
+        }
     }
 
     private void DetermineToolProgression()
@@ -63,9 +101,10 @@ public class PlayerReputation : MonoBehaviour
                 IsXrayLocked = false;
                 Debug.Log($"{IsXrayLocked} is isXrayLocked.");
                 break;
-
         }
     }
+
+
 
     public void IncreaseEXP(int remainingSeconds, int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
@@ -94,7 +133,6 @@ public class PlayerReputation : MonoBehaviour
             increaseAmount = 32f;
         }
         Debug.Log($"final amount: {increaseAmount}");
-        CurrentReputationExp+= increaseAmount;
-        DetermineReputationLevel();
+        IncreaseExpAmount = increaseAmount;
     }
 }

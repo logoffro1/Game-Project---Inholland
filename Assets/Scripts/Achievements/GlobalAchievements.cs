@@ -21,7 +21,7 @@ public class GlobalAchievements : MonoBehaviour
     }
     void Start()
     {
-
+        PlayerPrefs.DeleteAll();
         audioSource = GetComponent<AudioSource>();
 
         InitAchievements();

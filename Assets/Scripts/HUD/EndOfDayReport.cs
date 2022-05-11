@@ -63,7 +63,7 @@ public class EndOfDayReport : MonoBehaviour
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
         //achievements
-        int distanceM = int.Parse(distance) / 1000;
+        int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
         FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
         
         int playNr;
@@ -82,7 +82,6 @@ public class EndOfDayReport : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        Time.timeScale = 0f;
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }
