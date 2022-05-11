@@ -42,4 +42,11 @@ public class Player : MonoBehaviour
     {
         return oneOffUpgradeList.Where(x => x.Upgrade == upgrade).FirstOrDefault();
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Church"))
+        {
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The Holy Grail").CurrentCount++;
+        }
+    }
 }

@@ -64,7 +64,10 @@ public class Vacuum : Equipment
         drainOverTime = isActive;
 
         if (isActive)
+        {
             audioSource.PlayOneShot(vacuumON);
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The cleaning lady").CurrentCount++;
+        }
         else
             audioSource.PlayOneShot(vacuumOFF);
     }
