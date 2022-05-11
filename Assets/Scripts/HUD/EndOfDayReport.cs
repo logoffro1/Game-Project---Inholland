@@ -55,7 +55,10 @@ public class EndOfDayReport : MonoBehaviour
         //This is temporary. Multiplayer implementation will change it.
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
-
+        //achievements
+        int distanceM = int.Parse(distance) / 1000;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
+        
         int playNr;
 
         Location.text = playerData.IsInDistrict.ToString();

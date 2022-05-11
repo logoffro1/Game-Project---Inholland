@@ -16,6 +16,7 @@ public class NPC : InteractableObject
             Flyer flyer = flyers[Random.Range(0, flyers.Count)];
             bag.RemoveFlyer(flyer);
             receivedFlyer = true;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The Activist").CurrentCount++;
         }
         else
         {
