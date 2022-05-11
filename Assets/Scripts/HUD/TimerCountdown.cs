@@ -52,11 +52,13 @@ public class TimerCountdown : MonoBehaviour
     public event Action<int> OnSecondChange;
     public event Action<string> OnStartCountdownChange;
     public event EventHandler OnCountdownEnd;
+    private GameMode gameMode;
 
     void Start()
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
+        gameMode = FindObjectOfType<PlayerData>().IsInGameMode;
         StartCoroutine(StartCountDown());
         
     }
@@ -94,7 +96,7 @@ public class TimerCountdown : MonoBehaviour
                 break;
             }
             yield return new WaitForSeconds(1);
-            secondsLeft -= 1;
+            if (gameMode != GameMode.Chill) secondsLeft -= 1;
             OnSecondChange?.Invoke(secondsLeft);
 
             VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());

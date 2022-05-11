@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     //All necessary components
     private PlayerMovement playerMovement;
     //private MiniGameBase miniGameBase;
-
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -38,12 +37,6 @@ public class Player : MonoBehaviour
         return list;
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public OneOffUpgrade GetUpgrade(OneOffUpgradesEnum upgrade)
     {

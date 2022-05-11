@@ -102,8 +102,10 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
         middleSelectText.enabled = false;
         topSelectText.enabled = true;
         startButton.SetActive(false);
-    
-        startButton.GetComponent<DistrictLoadScene>().SceneName = sceneName;
+        foreach(Transform child in startButton.transform)
+        {
+            child.gameObject.GetComponent<DistrictLoadScene>().SceneName = sceneName;
+        }
         startButton.SetActive(true);
         overallDistrictScreen.PlayerData.IsInDistrict = District;
         firstClick = true;

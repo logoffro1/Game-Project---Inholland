@@ -9,11 +9,13 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
     public TextMeshProUGUI trashText;
+    public TextMeshProUGUI flyersText;
     public TextMeshProUGUI countDownText;
     public TextMeshProUGUI startCountDownText;
     public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
+    public Canvas playerCanvas;
     public GameObject Popup;
     
 
@@ -68,13 +70,17 @@ public class UIManager : MonoBehaviour
     public void ChangeCanvasShown()
     {
         canvas.enabled = !canvas.enabled;
+        playerCanvas.enabled = canvas.enabled;
     }
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
     {
         trashText.text = $"{currentAmount} / {limit}";
         trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
-        Debug.Log(((float)currentAmount / (float)limit));
+    }
+    public void SetFlyersText(int currentAmount, int limit)
+    {
+        flyersText.text = $"{currentAmount} / {limit}";
     }
     public void BagFullAnim()
     {

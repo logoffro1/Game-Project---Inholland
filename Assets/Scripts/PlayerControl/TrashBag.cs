@@ -28,7 +28,7 @@ public class TrashBag : MonoBehaviour
         items.Add(trash);
         if(items.Count >= bagCapacity / 2)
         {
-            if (Random.Range(0, 11f) == 0)
+            if (Random.Range(0, 12f) == 1)
             {
                 BreakBag();
             }
