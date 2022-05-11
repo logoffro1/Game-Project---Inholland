@@ -23,6 +23,7 @@ public class EndOfDayReport : MonoBehaviour
     public AudioClip DayReportAudio;
 
     private PlayerReportData playerReportData;
+    private PlayerReputation reputation;
     private bool dayFailed = false;
     private string lang = "en";
 
@@ -42,7 +43,19 @@ public class EndOfDayReport : MonoBehaviour
         /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
         //This is temporary. Multiplayer implementation will change it.
+
         playerReportData = FindObjectOfType<PlayerReportData>();
+
+        reputation = GameObject.FindObjectOfType<PlayerReputation>();
+
+        //MERGE POINT SYSTEM INTO DEV A S A P
+      /*
+           reputation.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
+*/
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
 
