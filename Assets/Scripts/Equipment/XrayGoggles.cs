@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 public class XrayGoggles : Equipment
 {
     [SerializeField]
@@ -13,7 +14,6 @@ public class XrayGoggles : Equipment
 
     public override void DoAction()
     {
-        if (isActive) cooldown = maxCooldown - activeTime;
         activeTime = 15f;
 
         if (xrayVision == null) return;
@@ -46,12 +46,16 @@ public class XrayGoggles : Equipment
     // Update is called once per frame
     void Update()
     {
-      
+
+
         if (isLocked) return;
-        if (Input.GetKeyDown(KeyCode.X))
+        if (SceneManager.GetActiveScene().name == "NewOffice") return;
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if(cooldown <= 0)
-             DoAction();
+            if (!isActive && cooldown <= 0)
+                DoAction();
+            else if (isActive)
+                DoAction();
         }
         if(!isActive)
         {
@@ -60,7 +64,16 @@ public class XrayGoggles : Equipment
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
+
+                onCooldownChange(this);
             }
+        }
+        else
+        {
+            cooldown += (Time.deltaTime);
+            if (cooldown >= maxCooldown)
+                cooldown = maxCooldown;
+            onCooldownChange(this);
         }
         DrainTime();
     }

@@ -78,8 +78,12 @@ public class EndOfDayReport : MonoBehaviour
     }
     private string GetSecondsRemainingText()
     {
+        int remainingTime;
+        if (playerData.IsInGameMode == GameMode.Chill)
+            remainingTime = 0;
+        else
+            remainingTime = TimerCountdown.Instance.GetRemainingTime();
 
-        int remainingTime = TimerCountdown.Instance.GetRemainingTime();
         switch (lang)
         {
             case "en":

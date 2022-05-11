@@ -9,11 +9,14 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
     public TextMeshProUGUI trashText;
+    public TextMeshProUGUI flyersText;
     public TextMeshProUGUI countDownText;
     public TextMeshProUGUI startCountDownText;
     public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
+    public Canvas playerCanvas;
+    public GameObject Popup;
     
 
     public Image trashFillImage;
@@ -49,6 +52,9 @@ public class UIManager : MonoBehaviour
             countDownText.gameObject.SetActive(false);
         }
 
+        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
+        if (manager != null) manager.OnGameWon += ShowPopUp;
+
     }
 
     public void SetHoverText(string text)
@@ -64,13 +70,17 @@ public class UIManager : MonoBehaviour
     public void ChangeCanvasShown()
     {
         canvas.enabled = !canvas.enabled;
+        playerCanvas.enabled = canvas.enabled;
     }
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
     {
         trashText.text = $"{currentAmount} / {limit}";
         trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
-        Debug.Log(((float)currentAmount / (float)limit));
+    }
+    public void SetFlyersText(int currentAmount, int limit)
+    {
+        flyersText.text = $"{currentAmount} / {limit}";
     }
     public void BagFullAnim()
     {
@@ -161,6 +171,14 @@ public class UIManager : MonoBehaviour
     private bool IsColorChangeNeeded(Color newColor)
     {
         return countDownText.color != newColor;
+    }
+
+    private void ShowPopUp(InteractableTaskObject interactableTaskObject)
+    {
+        Vector3 position = transform.position;
+        position.y += 300;
+        GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
+        popup.GetComponent<Popup>().Task = interactableTaskObject.interactableTaskStatusModels.task;
     }
 
 }
