@@ -24,12 +24,15 @@ public class XrayGoggles : Equipment
         xrayVision.ActivateVision();
 
         if (isActive)
+        {
             audioSource.PlayOneShot(xrayOn);
+            FindObjectOfType<GlobalAchievements>().GetAchievement("Wallhacks").CurrentCount++;
+        }
+           
         else
             audioSource.PlayOneShot(xrayOff);
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         drainOverTime = false;
@@ -38,12 +41,10 @@ public class XrayGoggles : Equipment
         activeTime = 15f;
         maxCooldown = 15f;
         cooldown = maxCooldown;
-        //SetLocalizedString(this.localizedStringEvent);
 
         audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 

@@ -39,7 +39,6 @@ public class DiscordController : MonoBehaviour
         for (int i = 0; i < System.Diagnostics.Process.GetProcesses().Length; i++)
         {
             // checks if current process is discord
-            Debug.Log(System.Diagnostics.Process.GetProcesses()[i].ToString());
             if (System.Diagnostics.Process.GetProcesses()[i].ToString() == "System.Diagnostics.Process (Discord)")
             {
                 isDiscordRunning = true;

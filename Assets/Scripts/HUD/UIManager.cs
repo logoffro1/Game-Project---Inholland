@@ -165,11 +165,17 @@ public class UIManager : MonoBehaviour
     {
         return countDownText.color != newColor;
     }
-
+    public void ShowPopUp(string text)
+    {
+        Vector3 position = transform.position;
+        position.y += 400;
+        GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
+        popup.GetComponent<Popup>().InfoText = text;
+    }
     private void ShowPopUp(InteractableTaskObject interactableTaskObject)
     {
         Vector3 position = transform.position;
-        position.y += 300;
+        position.y += 400;
         GameObject popup = Instantiate(Popup, position, transform.rotation, transform);
         popup.GetComponent<Popup>().Task = interactableTaskObject.interactableTaskStatusModels.task;
     }
