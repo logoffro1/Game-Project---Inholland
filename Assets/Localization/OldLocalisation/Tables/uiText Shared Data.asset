@@ -284,7 +284,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839357672771584
-    m_Key: officeScreen_goal
+    m_Key: officeScreen_normalGoal
     m_Metadata:
       m_Items: []
   - m_Id: 11839685034004480
@@ -421,6 +421,30 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13421029346267136
     m_Key: flyer-finished
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769775309410304
+    m_Key: officeScreen_CrazyGoal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769965097472000
+    m_Key: officeScreen_chillGoal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770079937515520
+    m_Key: officeScreen_defaultGoal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992611751940096
+    m_Key: gamemode-classic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992750046531584
+    m_Key: gamemode-chill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992829117550592
+    m_Key: gamemode-crazy
     m_Metadata:
       m_Items: []
   m_Metadata:
