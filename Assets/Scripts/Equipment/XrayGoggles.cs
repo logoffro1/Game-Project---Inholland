@@ -35,6 +35,7 @@ public class XrayGoggles : Equipment
     }
     private void OnLevelWasLoaded(int level)
     {
+        SetPlayerRep();
         if(SceneManager.GetActiveScene().name != "NewOffice")
             xrayVision = GameObject.FindGameObjectWithTag("xray").GetComponent<XRayVision>();
     }
