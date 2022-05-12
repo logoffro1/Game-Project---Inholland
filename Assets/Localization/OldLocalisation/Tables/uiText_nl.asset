@@ -64,7 +64,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Naam werknemer : {playerName}'
+    m_Localized: 'Naam werknemer :'
     m_Metadata:
       m_Items:
       - id: 1
@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Items:
       - id: 2
   - m_Id: 1478127297814528
-    m_Localized: INFO (GEPAUZEERD)
+    m_Localized: INFO
     m_Metadata:
       m_Items: []
   - m_Id: 1478634343030784
@@ -133,8 +133,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1481396124442624
     m_Localized: 'W,A,S,D - Beweging
-
-      X - X ray activeren
 
       E - Interactie '
     m_Metadata:
@@ -292,24 +290,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
-    m_Localized: '
-
-      Probeer de lastoorts binnen de lijn te gebruiken!
-
-
-
-      TOETSEN
-
-      SPATIEBALK
-      - Start het spel
-
-      W- Omhoog gaan
-
-      S-naar beneden'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11217092649213952
-    m_Localized: Ventilatoren voor lasturbines
+    m_Localized: Hoe te spelen
     m_Metadata:
       m_Items: []
   - m_Id: 13291700499009536
@@ -464,6 +445,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13992829117550592
     m_Localized: Gek
+    m_Metadata:
+      m_Items: []
   - m_Id: 13627794507714560
     m_Localized: "Door \xE9\xE9n glazen fles te recyclen, bespaar je genoeg energie
       om een lamp van 100 watt vier uur lang te laten branden"
@@ -546,12 +529,101 @@ MonoBehaviour:
     m_Localized: Beginnen met
     m_Metadata:
       m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Alkmaar niveau:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: Stadscentrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Landbouwgrond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: derde kaart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: Ontdek het hart van Alkmaar! Met de prachtige kerk en grachten is
+      er veel te zien. Evenals veel dingen om te onderhouden!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: Verken de boerderijen van Alkmaar! Je ziet een mix van landbouw
+      en zonnepanelen, waarvan sommige misschien wat onderhoud nodig hebben!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: Derde kaartbeschrijving
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: BEGIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: Selecteer een wijk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: Artikelen recyclen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Artikelen recyclen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Localized: 'U bent agent van POCITYF in de gemeente Alkmaar. Het is jouw taak
+      om de stad duurzamer te maken dan ze al is door bestaande groenvoorzieningen
+      op te waarderen of door nieuwe apparatuur te plaatsen die Alkmaar groener maakt.
+
+
+      De
+      bedieningselementen zijn linksonder in het scherm te zien.
+
+      De minimap
+      is linksboven in het scherm te zien.
+
+      De takenlijst is rechtsboven in
+      het scherm te zien.
+
+      De duurzaamheid van de stad Alkmaar zie je bovenaan
+      in het midden van je scherm.
+
+      Als je tijdens een minigame niet zeker
+      weet wat je moet doen, druk je op H om het helpmenu te openen. Hierdoor wordt
+      de minigame gepauzeerd en heb je tijd om de instructies te lezen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Localized: HERVAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Localized: TERUG NAAR KANTOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Localized: HOOFDMENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Localized: SPEL VERLATEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: RUG
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e0c424d3f6040000e004881cf9040000e0044739f90400
     00000001:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:

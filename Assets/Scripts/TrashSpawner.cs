@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using Photon.Pun;
 
 public class TrashSpawner : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class TrashSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnRoutine());
+        if(PhotonNetwork.IsMasterClient)
+            StartCoroutine(SpawnRoutine());
     }
     private IEnumerator SpawnRoutine() //not really efficient, but it works
     {
@@ -25,7 +27,7 @@ public class TrashSpawner : MonoBehaviour
 
             GameObject trash = trashList[Random.Range(0, trashList.Length)];
 
-            GameObject spawnedTrash = Instantiate(trash, spawnPos, trash.transform.rotation, transform);
+            GameObject spawnedTrash = PhotonNetwork.Instantiate(trash.name, spawnPos, trash.transform.rotation);
             spawnedTrash.GetComponent<Trash>().SetLocalizedString(localizedStringEvent);
             yield return null;
             amount++;

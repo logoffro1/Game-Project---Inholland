@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Localization.Components;
+using Photon.Pun;
 
-public class TaskGenerator : MonoBehaviour
+public class TaskGenerator : MonoBehaviourPun
 {
     private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects { get; set; }
     private Dictionary<TaskObjectType, List<GameObject>> allGamesToObjects;
@@ -32,7 +33,9 @@ public class TaskGenerator : MonoBehaviour
         SetUpEvents();
 
         ChooseAllTasksAtStart();
+
     }
+
 
     private void SetUpAllData()
     {
@@ -46,7 +49,7 @@ public class TaskGenerator : MonoBehaviour
         allInteractableObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
         //foreach object that has InteractableTaskObject script in it
-    
+
         foreach (InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>())
         {
             //Using tags
@@ -86,7 +89,7 @@ public class TaskGenerator : MonoBehaviour
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
             if (allInteractableObjects.ContainsKey(objectType))
-                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count/2);
+                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count / 3);
         }
 
         //Manual
@@ -108,7 +111,7 @@ public class TaskGenerator : MonoBehaviour
     {
         System.Random random = new System.Random();
 
-        foreach(GameObject gameObject in allObjects)
+        foreach (GameObject gameObject in allObjects)
         {
             //Get random game prefab for a game
             if (allGamesToObjects[objectType].Count > 0)
@@ -143,7 +146,7 @@ public class TaskGenerator : MonoBehaviour
     {
         //Chooses at random which object to give a task
         //Goes through each tag (eg. first tree, then manhole, then streetlamp...)
-        foreach(KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
+        foreach (KeyValuePair<TaskObjectType, List<GameObject>> pair in allInteractableObjects)
         {
             //Initializing
             List<GameObject> allObjects = new List<GameObject>(pair.Value);
@@ -194,6 +197,5 @@ public class TaskGenerator : MonoBehaviour
         interactableObject.enabled = false;
         interactableObject.IsInteractable = false;
     }
-
 
 }

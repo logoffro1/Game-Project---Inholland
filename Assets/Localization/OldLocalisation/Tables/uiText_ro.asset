@@ -23,6 +23,10 @@ MonoBehaviour:
     m_Localized: Ventilatoare sudate
     m_Metadata:
       m_Items: []
+  - m_Id: 5675852795904
+    m_Localized: Incepe Jocul
+    m_Metadata:
+      m_Items: []
   - m_Id: 13295209013334016
     m_Localized: Ventilatoare sudate
     m_Metadata:
@@ -65,6 +69,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13416837697261568
     m_Localized: "Cur\u0103\u021Ba\u021Bi plajele!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1362783803596800
+    m_Localized: 'Numele agentului :'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1362907405541376
+    m_Localized: "Progresul sustenabilit\u0103\u021Bii:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363087433457664
+    m_Localized: "Cantitatea de sarcini \xEEncercate:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363206815932416
+    m_Localized: 'Obiective cu success:'
     m_Metadata:
       m_Items: []
   - m_Id: 13417160100827136
@@ -175,6 +195,8 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 13992829117550592
     m_Localized: Nebun
+    m_Metadata:
+      m_Items: []
   - m_Id: 13627794507714560
     m_Localized: "Reciclarea unei sticle de sticl\u0103 economise\u0219te suficient\u0103
       energie pentru a aprinde un bec de 100 de wa\u021Bi timp de patru ore"
@@ -262,9 +284,302 @@ MonoBehaviour:
     m_Localized: "\xCEncepe cu"
     m_Metadata:
       m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Nivelul general Alkmaar:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: Centrul orasului
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Ferma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: "A treia hart\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: "Exploreaz\u0103 inima orasului Alkmaar! Cu frumoasa biseric\u0103
+      \u0219i canale, sunt multe de v\u0103zut. La fel \u0219i multe lucruri de sus\u021Binut!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: "Explora\u021Bi prin fermele Alkmaar! Ve\u021Bi vedea un amestec
+      de agricultur\u0103 \u0219i panouri solare, dintre care unele ar putea avea
+      nevoie de ceva \xEEntre\u021Binere!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: "A treia descriere a h\u0103r\u021Bii"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: INCEPE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: "Selecta\u021Bi un district"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 67661500416
+    m_Localized: Interactiune
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3058921672704
+    m_Localized: Ziua s-a terminat!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5379613298688
+    m_Localized: Continua
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5776025358336
+    m_Localized: "Realiz\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5858380517376
+    m_Localized: "Set\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5881587601408
+    m_Localized: Credite
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5901707677696
+    m_Localized: Iesire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7170589495296
+    m_Localized: Incepe
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7188545310720
+    m_Localized: In curand!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7648731762688
+    m_Localized: "Alege\u021Bi un nivel"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363352815460352
+    m_Localized: 'Cel mai incercat task:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363505563623424
+    m_Localized: 'Task-uri esuate:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363743871393792
+    m_Localized: "Distan\u021Ba parcurs\u0103:"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363827040247808
+    m_Localized: 'Timp bonus:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1363918203445248
+    m_Localized: 'Rezultatul zilei:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1364105252626432
+    m_Localized: REPORTUL ZILEI
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1367895653539840
+    m_Localized: "Holul de \xEEntoarcere"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1397286622257152
+    m_Localized: '{bonusTimeRemaining}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399800843264000
+    m_Localized: '{mostAttemptedTask}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1399924306796544
+    m_Localized: '{winconditionDay}'
+    m_Metadata:
+      m_Items:
+      - id: 0
+  - m_Id: 1478127297814528
+    m_Localized: INFO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1478634343030784
+    m_Localized: "\u021Aine\u021Bi apasat H pentru ajutor"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1481396124442624
+    m_Localized: "W,A,S,D - Mutare\nE - Interac\u021Bioneaz\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1498280521687040
+    m_Localized: "Se \xEEncarc\u0103..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1521383484043264
+    m_Localized: "Aduce\u021Bi bara de sustenabilitate la 80%"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Gunoi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Planteaza copac
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Curata
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Construieste panou solar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Goleste gunoi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Planteaza copaci
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: "Configura\u021Bi panoul solar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: "Upgrade lampa stradal\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: "Cur\u0103\u021Ba\u021Bi canaliz\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: "S\u0103pa\u021Bi o groap\u0103 pentru copac!\nElibereaz\u0103 lopata
+      la momentul potrivit\n\nCHEIE\nSPA\u021AIU - Elibereaz\u0103 lopata"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: "Repeta\u021Bi secven\u021Ba afi\u0219at\u0103!\n\nDup\u0103 terminarea
+      secven\u021Bei, face\u021Bi clic pe butoane \xEEn aceea\u0219i ordine"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: "Str\xE2nge\u021Bi tot gunoiul!\n\nCHEIE\nA,D - Deplasa\u021Bi la
+      st\xE2nga/dreapta\nSPA\u021AIU - Trage cu c\xE2rligul \xEEn jos"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: "Potrivi\u021Bi firele dup\u0103 culoare!\n\nFace\u021Bi clic pe
+      firul din partea st\xE2ng\u0103\nTrage pentru a muta\nElibera\u021Bi clic pentru
+      a v\u0103 conecta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: "Construi\u021Bi dou\u0103 r\xE2nduri pentru a finaliza panoul solar!\n\nCHEIE\nA,D
+      - Deplasa\u021Bi la st\xE2nga/dreapta\nS - Drop\nSPA\u021AIU - Hard Drop\nQ,E
+      - Roti\u021Bi st\xE2nga/dreapta"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Localized: Success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Localized: Esuat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: "Harta: Centrul ora\u0219ului Alkmaar\n\nDescriere: Explora\u021Bi
+      frumosul ora\u0219 Alkmaar\nObiectiv: Cur\u0103\u021Ba\u021Bi ora\u0219ul \u0219i
+      aduce\u021Bi sustenabilitatea peste 80%!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Locatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: "Cum s\u0103 joci"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Venitul de azi
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: "Re\xEEnc\u0103rca\u021Bi ochelarii de protec\u021Bie"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: Ochelari cu raze X
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690084390842368
+    m_Localized: "Alege\u021Bi upgrade-ul dvs"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690306894475264
+    m_Localized: "Ob\u021Bine\u021Bi c\xE2teva puncte de sustenabilitate"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: "Recicla\u021Bi articolele"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: "Recicla\u021Bi articolele"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Localized: "Sunte\u021Bi un agent al POCITYF \xEEn ora\u0219ul Alkmaar. Sarcina
+      ta este s\u0103 faci ora\u0219ul mai sustenabil dec\xE2t este deja prin modernizarea
+      op\u021Biunilor verzi existente sau prin instalarea de noi echipamente care
+      vor face Alkmaar mai ecologic.\n\nComenzile pot fi v\u0103zute \xEEn partea
+      st\xE2ng\u0103 jos a ecranului.\nMiniharta poate fi v\u0103zut\u0103 \xEEn
+      partea st\xE2ng\u0103 sus a ecranului.\nLista sarcinilor poate fi v\u0103zut\u0103
+      \xEEn partea dreapt\u0103 sus a ecranului.\nDurabilitatea ora\u0219ului Alkmaar
+      poate fi v\u0103zut\u0103 \xEEn mijlocul ecranului, \xEEn partea de sus.\n\xCEn
+      timpul oric\u0103rui minijoc, dac\u0103 nu sunte\u021Bi sigur ce s\u0103 face\u021Bi,
+      ap\u0103sa\u021Bi H pentru a deschide meniul de ajutor. Acest lucru va \xEEntrerupe
+      minijocul \u0219i v\u0103 va oferi timp s\u0103 citi\u021Bi instruc\u021Biunile."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Localized: RELUARE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Localized: REVENIRE LA BIRO
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Localized: MENIU PRINCIPAL
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Localized: "IE\u0218I\u021AI JOCUL"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: "\xCENAPOI"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 00e084d471d7040000e0044739f9040000e0c424d3f6040000e004881cf90400
+        m_Entries: 00e0044739f9040000e0c424d3f6040000e004881cf90400

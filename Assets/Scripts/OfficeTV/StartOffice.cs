@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class StartOffice : MonoBehaviour
+public class StartOffice : MonoBehaviourPun
 {
 
     public GameObject PlayerData;
@@ -12,7 +13,7 @@ public class StartOffice : MonoBehaviour
         var data = FindObjectOfType<PlayerData>();
         if (data == null)
         {
-            Instantiate(PlayerData);
+            PhotonNetwork.Instantiate(PlayerData.name,PlayerData.transform.position,PlayerData.transform.rotation);
         }
 
         Destroy(this.gameObject);

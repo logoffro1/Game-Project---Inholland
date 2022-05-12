@@ -13,9 +13,7 @@ public class Vacuum : Equipment
     // Start is called before the first frame update
     void Start()
     {
-        playerRep = FindObjectOfType<PlayerReputation>();
         audioSource = GetComponent<AudioSource>();
-        SetLocked(playerRep.IsVacuumLocked);
         drainOverTime = false;
         isActive = false;
         equipmentName = "Vacuum";
@@ -28,7 +26,7 @@ public class Vacuum : Equipment
     // Update is called once per frame
     void Update()
     {
-        if (isLocked) return;
+        if (IsLocked) return;
         if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
@@ -59,7 +57,11 @@ public class Vacuum : Equipment
     }
     public override void SetPlayerRep()
     {
-        playerRep = FindObjectOfType<PlayerReputation>();
+        foreach (PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
+        {
+            if (pr.photonView.IsMine)
+                playerRep = pr;
+        }
         SetLocked(playerRep.IsVacuumLocked);
     }
     public override void DoAction()

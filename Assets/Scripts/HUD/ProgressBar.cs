@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class ProgressBar : MonoBehaviour
+using Photon.Pun;
+
+public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallbacks
 {
 
     [SerializeField] private Text _SliderText;
@@ -37,6 +39,11 @@ public class ProgressBar : MonoBehaviour
         {
             _instance = this;
         }
+        PhotonNetwork.AddCallbackTarget(_instance);
+    }
+    private void OnDestroy()
+    {
+        PhotonNetwork.RemoveCallbackTarget(_instance);
     }
     public float GetSliderMaxValue()
     {
@@ -55,6 +62,7 @@ public class ProgressBar : MonoBehaviour
 
     private void Update()
     {
+        if (!photonView.IsMine) return;
         if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(AmountDecreasingPerSecond);
@@ -103,6 +111,7 @@ public class ProgressBar : MonoBehaviour
 
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
     {
+        base.photonView.RequestOwnership();
         /*        slider.value += sustainabilityChange;
                 fill.color = gradient.Evaluate(slider.normalizedValue);*/
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
@@ -113,5 +122,37 @@ public class ProgressBar : MonoBehaviour
     {
         if (slider == null) return 0;
         return slider.value;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(GetSlideValue());
+        }
+        else if(stream.IsReading)
+        {
+            slider.value = (float)stream.ReceiveNext();
+            UpdateProgressPercent();
+        }
+    }
+
+    public void OnOwnershipRequest(PhotonView targetView, Photon.Realtime.Player requestingPlayer)
+    {
+        if (targetView != base.photonView)
+            return;
+
+        base.photonView.TransferOwnership(requestingPlayer);
+    }
+
+    public void OnOwnershipTransfered(PhotonView targetView, Photon.Realtime.Player previousOwner)
+    {
+        if (targetView != base.photonView)
+            return;
+    }
+
+    public void OnOwnershipTransferFailed(PhotonView targetView, Photon.Realtime.Player senderOfFailedRequest)
+    {
+        //throw new System.NotImplementedException();
     }
 }

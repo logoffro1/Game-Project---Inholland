@@ -36,7 +36,6 @@ public  class PlayFabManager : MonoBehaviour
 
     void OnLeaderBoardSent(UpdatePlayerStatisticsResult result)
     {
-        Debug.Log(" updated from End of the day report.");
     }
    /* void OnEndOfDayReportSuccess(UpdatePlayerStatisticsResult result)
     {

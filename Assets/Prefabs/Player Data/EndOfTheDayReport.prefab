@@ -137,7 +137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &271596252
 RectTransform:
   m_ObjectHideFlags: 0
@@ -641,7 +641,7 @@ MonoBehaviour:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 6413686997798912
+      m_KeyId: 6550175411744768
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
@@ -1097,8 +1097,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DistanceTraveled: {fileID: 343283927413098721}
+  PlayerName: {fileID: 6769314100570945010}
   Location: {fileID: 8837735321275749704}
-  PlayerName: {fileID: 2001517596510411079}
   MostPlayedMinigame: {fileID: 9138914245549140666}
   Success: {fileID: 4949371294437784437}
   Fail: {fileID: 4980451253934637157}
@@ -1108,6 +1108,7 @@ MonoBehaviour:
   timeBonus: {fileID: 2377776774688154647}
   Income: {fileID: 6895225935538926257}
   DayReportAudio: {fileID: 8300000, guid: d31a4b1c27fcf8649a9bb79ba1d3cca4, type: 3}
+  ReturnLobbyButton: {fileID: 271596251}
 --- !u!82 &5088511770198097746
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1453,7 +1454,7 @@ GameObject:
   - component: {fileID: 2001517596510411076}
   - component: {fileID: 2001517596510411078}
   - component: {fileID: 2001517596510411079}
-  - component: {fileID: 1034420535235211586}
+  - component: {fileID: 5910167213838402992}
   m_Layer: 5
   m_Name: PlayerName
   m_TagString: Untagged
@@ -1521,8 +1522,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Agent name : John'
---- !u!114 &1034420535235211586
+  m_Text: 'Agent name : '
+--- !u!114 &5910167213838402992
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1542,32 +1543,13 @@ MonoBehaviour:
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
-    m_LocalVariables:
-    - name: playerName
-      variable:
-        id: 0
+    m_LocalVariables: []
   m_FormatArguments: []
   m_UpdateString:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2001517596510411079}
-        m_TargetAssemblyTypeName: UnityEngine.UI.Text, UnityEngine.UI
-        m_MethodName: set_text
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   references:
     version: 1
-    00000000:
-      type: {class: StringVariable, ns: UnityEngine.Localization.SmartFormat.PersistentVariables, asm: Unity.Localization}
-      data:
-        m_Value: John
 --- !u!1 &2001517596581601548
 GameObject:
   m_ObjectHideFlags: 0

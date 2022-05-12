@@ -225,11 +225,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverText: {fileID: 4234332729039956676}
   trashText: {fileID: 956079399199583939}
+  flyersText: {fileID: 0}
   countDownText: {fileID: 4234332729386286931}
   startCountDownText: {fileID: 4234332728917810020}
   goalText: {fileID: 4234332728947655368}
   endMissionText: {fileID: 4234332729628283973}
   endOfTheDayReportPrefab: {fileID: 2001517595936745070, guid: 995b8d4d513cd5542b6eabd0b0f24f5b, type: 3}
+  playerCanvas: {fileID: 0}
   Popup: {fileID: 8388685178439571880, guid: a40f7505f256a9942b1aec20a7df8305, type: 3}
   trashFillImage: {fileID: 956079398788058618}
   CountdownBeginningColor: {r: 1, g: 1, b: 1, a: 1}
@@ -536,6 +538,7 @@ MonoBehaviour:
   fill: {fileID: 4234332728517471532}
   sliderThreshhold: 0
   isGameOngoing: 0
+  AmountDecreasingPerSecond: -0.0005
 --- !u!1 &4234332728543113090
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviourPun
 {
     [SerializeField]
     private float speed = 5f;
@@ -23,13 +24,13 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove { get; set; } = true;
     void Start()
     {
-        Time.timeScale = 1f;
         controller = GetComponent<CharacterController>();
         canMove = true;
     }
 
     void Update()
     {
+        if (!photonView.IsMine) return;
         if (MiniGameManager.Instance != null)
         {
 
@@ -42,9 +43,9 @@ public class PlayerMovement : MonoBehaviour
                 canMove = true;
             }
         }
+        
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-
         if(!IsRunning(horizontal,vertical))
         {
             anim.SetBool("isRunning", false);
@@ -54,7 +55,6 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
-
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         Movement(horizontal,vertical);

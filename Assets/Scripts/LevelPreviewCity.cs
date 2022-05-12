@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
 public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public DistrictEnum District;
@@ -28,7 +30,17 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     private void Start()
     {
         overallDistrictScreen = GetComponentInParent<OverallDistrictScreen>();
-        if (overallDistrictScreen.PlayerData == null) overallDistrictScreen.PlayerData = FindObjectOfType<PlayerData>();
+        if (overallDistrictScreen.PlayerData == null)
+        {
+            foreach(PlayerData pd in FindObjectsOfType<PlayerData>())
+            {
+                if (pd.photonView.IsMine)
+                {
+                    overallDistrictScreen.PlayerData = pd;
+                }
+            }
+            
+        }
         middleSelectText = overallDistrictScreen.middleSelectText;
         topSelectText = overallDistrictScreen.topSelectText;
         otherLevels = transform.parent.GetComponentsInChildren<LevelPreviewCity>().Where(x => x.districtName != this.districtName).ToList();
@@ -90,6 +102,8 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
 
     public void OnPointerClick(PointerEventData eventData)
     {
+ 
+
         //disable
         foreach (LevelPreviewCity level in otherLevels)
         {

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -16,7 +17,13 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private PlayerData playerData;
     private void Start()
     {
-        playerData = FindObjectOfType<PlayerData>();
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
+        {
+            if (pd.photonView.IsMine)
+            {
+                playerData = pd;
+            }
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

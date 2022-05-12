@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using Photon.Pun;
 
-public class PlayerReportData : MonoBehaviour
+
+
+public class PlayerReportData : MonoBehaviourPun
 {
 
     //In the future,tracking of mission upgrades has to be done once that feature is available.
 
     //Value of the progress bar when the day is over.
     public float FinalProgress { get; private set; }
- 
+
     public Dictionary<string, int> NrOfTasksSuccess { get; private set; }
 
     public Dictionary<string, int> NrOfTasksFail { get; private set; }
@@ -24,7 +26,7 @@ public class PlayerReportData : MonoBehaviour
 
     public Vector3 startPosition;
     public int nrOfTrashDisposed { get; private set; }
-   
+
     //SewageMiniGame
     //ColorBeepMiniGame
     //DigTime Variant
@@ -48,7 +50,7 @@ public class PlayerReportData : MonoBehaviour
     {
         totalDistance += Vector3.Distance(gameObject.transform.position, previousLocation);
         previousLocation = gameObject.transform.position;
-/*        Debug.Log($"{totalDistance} is the current distance travelled");*/
+        /*        Debug.Log($"{totalDistance} is the current distance travelled");*/
     }
 
 
@@ -199,17 +201,17 @@ public class PlayerReportData : MonoBehaviour
         switch (prefabname)
         {
             case "SewageMiniGame":
-                value= "Clean sewers";
+                value = "Clean sewers";
                 break;
 
             case "RewireMiniGame":
-                value= "Rewiring Street lamp";
+                value = "Rewiring Street lamp";
                 break;
             case "SolarShingleGamePrefab":
-                value= "Setting up solar panel";
+                value = "Setting up solar panel";
                 break;
             case "DigTime Variant":
-                value= "Plant trees";
+                value = "Plant trees";
                 break;
             case "ColorBeepMiniGame Variant":
                 value = "Converting street lamp to solar lamp";

@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class EndOfDayReport : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class EndOfDayReport : MonoBehaviour
     public Text Income;
     private PlayFabManager playFabManager;
     public AudioClip DayReportAudio;
+    public GameObject ReturnLobbyButton;
+
+
 
     private PlayerReportData playerReportData;
     private PlayerReputation playerRep;
@@ -31,44 +35,80 @@ public class EndOfDayReport : MonoBehaviour
 
     void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            ReturnLobbyButton.SetActive(true);
+        }
         GetLanguage();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                playerReportData = p.GetComponent<PlayerReportData>();
+                p.GetComponentInChildren<MouseLook>().canR = false;
+                break;
+            }
+        }
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
+        {
+            if (pd.photonView.IsMine)
+            {
+                playerData = pd;
+            }
+        }
+        foreach (PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
+        {
+            if (pr.photonView.IsMine)
+            {
+                playerRep = pr;
+            }
+        }
+        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        foreach (PlayerReportData data in datas)
+        {
+            if (data.photonView.IsMine)
+            {
+                playerReportData = data;
+                data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
+                break;
+            }
+        }
         dayFailed = GetWinCondition();
-
-        playerData = FindObjectOfType<PlayerData>();
-        playerReportData = FindObjectOfType<PlayerReportData>();
-        playerRep = FindObjectOfType<PlayerReputation>();
 
         playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
             playerReportData.GetHardGameNumbers(),
             playerReportData.GetMediumGameNumbers(),
             playerReportData.GetEasyGameNumbers(),
             dayFailed);
-       
 
-        playerData.NewSustainabilityPoints = 
+
+        playerData.NewSustainabilityPoints =
             playerReportData.calculateIncreaseAmount(
                 TimerCountdown.Instance.SecondsLeft,
             playerReportData.GetHardGameNumbers(),
             playerReportData.GetMediumGameNumbers(),
             playerReportData.GetEasyGameNumbers(),
             dayFailed);
-        
+
         playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
         DontDestroyOnLoad(playerData.gameObject);//Try Playerdata Start instead
 
         playFabManager = FindObjectOfType<PlayFabManager>();
-        /*DynamicTranslator.Instance.translateEndOfTheDayVariables();*/
 
-        //This is temporary. Multiplayer implementation will change it.
+
+
+        //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
         //achievements
         int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
         FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
-        
+
         int playNr;
 
         Location.text = playerData.IsInDistrict.ToString();
+        PlayerName.text = PhotonNetwork.LocalPlayer.NickName;
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
@@ -82,6 +122,7 @@ public class EndOfDayReport : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        // Time.timeScale = 0f;
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }

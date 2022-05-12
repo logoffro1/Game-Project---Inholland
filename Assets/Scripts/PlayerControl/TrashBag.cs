@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class TrashBag : MonoBehaviour
+public class TrashBag : MonoBehaviourPun
 {
     private List<Trash> items;
     private int bagCapacity = 15;
@@ -23,12 +24,15 @@ public class TrashBag : MonoBehaviour
             return;
 
         }
-     
-        trash.gameObject.SetActive(false);
+
+
         items.Add(trash);
         Achievement achPickupTrash = FindObjectOfType<GlobalAchievements>().GetAchievement("Stop Littering");
         achPickupTrash.CurrentCount++;
-        if(items.Count >= bagCapacity / 2)
+
+        photonView.RPC("ActivateTrash", RpcTarget.AllViaServer, trash.gameObject.GetPhotonView().ViewID, false);
+
+        if (items.Count >= bagCapacity / 2)
         {
             if (Random.Range(0, 12f) == 1)
             {
@@ -36,6 +40,11 @@ public class TrashBag : MonoBehaviour
             }
         }
         UIManager.Instance.SetTrashText(items.Count, bagCapacity);
+    }
+    [PunRPC]
+    private void ActivateTrash(int ID, bool active)
+    {
+        PhotonView.Find(ID).gameObject.SetActive(active);
     }
     public void EmptyBag()
     {
@@ -45,19 +54,19 @@ public class TrashBag : MonoBehaviour
     private IEnumerator StartEmptyBag()
     {
         int count = items.Count;
-        while(items.Count > 0)
+        while (items.Count > 0)
         {
             items.RemoveAt(0);
             Debug.Log(items.Count);
             UIManager.Instance.SetTrashText(items.Count, bagCapacity);
             yield return new WaitForSeconds(0.15f);
         }
-        ProgressBar.Instance.ChangeSustainibility(0.5f * count,false);
+        ProgressBar.Instance.ChangeSustainibility(0.5f * count, false);
 
     }
     private void BreakBag()
     {
-        foreach(Trash trash in items)
+        foreach (Trash trash in items)
         {
             GameObject trashGO = trash.gameObject;
             trashGO.SetActive(true);

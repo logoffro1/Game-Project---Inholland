@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PauseMenu : MonoBehaviour
+public class PauseMenu : MonoBehaviourPunCallbacks
 {
 
     public static bool isPaused = false;
@@ -18,7 +20,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -38,6 +40,15 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                p.GetComponentInChildren<MouseLook>().canR = true;
+                break;
+            }
+        }
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         centerDotUI.SetActive(true);
@@ -47,10 +58,19 @@ public class PauseMenu : MonoBehaviour
         CloseHowToPlay();
         isPaused = false;
     }
-     void Pause()
+    void Pause()
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                p.GetComponentInChildren<MouseLook>().canR = false;
+                break;
+            }
+        }
         pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         centerDotUI.SetActive(false);
         hoverTextUI.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
@@ -76,19 +96,41 @@ public class PauseMenu : MonoBehaviour
 
     public void ReturnToOffice()
     {
-        Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("NewOffice");
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            
+            LevelManager.Instance.LoadScenePhoton("NewOffice", true);
+        }
+            
     }
 
     public void LoadMenu()
     {
-        Time.timeScale = 1f;
-        LevelManager.Instance.LoadScene("MainMenu");
+       // PhotonNetwork.LeaveRoom(true);
+        //LevelManager.Instance.LoadScenePhoton("MainMenu",false);
     }
+    public override void OnLeftRoom()
+    {
+        Debug.Log("Leaving room...");
+    }
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+
+    }
+
+
 
     public void ExitGame()
     {
-        Debug.Log("quitting game");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            foreach(KeyValuePair<int,Photon.Realtime.Player> p in PhotonNetwork.CurrentRoom.Players)
+            {
+                PhotonNetwork.CloseConnection(p.Value);
+                PhotonNetwork.SendAllOutgoingCommands();
+            }
+        }
         Application.Quit();
     }
 }

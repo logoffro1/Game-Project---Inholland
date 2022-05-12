@@ -56,6 +56,13 @@ public class UIManager : MonoBehaviour
         if (manager != null) manager.OnGameWon += ShowPopUp;
 
     }
+    public void SetPlayerInfo(TextMeshProUGUI trashText, TextMeshProUGUI flyersText, Canvas playerCanvas, Image trashFillImage)
+    {
+        this.trashText = trashText;
+        this.flyersText = flyersText;
+        this.playerCanvas = playerCanvas;
+        this.trashFillImage = trashFillImage;
+    }
 
     public void SetHoverText(string text)
     {

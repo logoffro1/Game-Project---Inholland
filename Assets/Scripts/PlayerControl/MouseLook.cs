@@ -1,6 +1,7 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : MonoBehaviourPun
 {
     [SerializeField]
     private float sensitivity = 200f;
@@ -10,6 +11,7 @@ public class MouseLook : MonoBehaviour
     private Transform player;
 
     public bool canRotate { get; set; } = true;
+    public bool canR { get; set; } = true;
 
     void Start()
     {
@@ -19,7 +21,9 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameManager.Instance != null) {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
+        if (MiniGameManager.Instance != null)
+        {
 
             if (MiniGameManager.Instance.IsPlaying)
             {
@@ -29,8 +33,10 @@ public class MouseLook : MonoBehaviour
             {
                 canRotate = true;
             }
-        } 
+        }
         if (!canRotate) return;
+
+        if (!canR) return;
         LookAround();
 
 

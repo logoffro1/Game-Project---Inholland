@@ -3,26 +3,70 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using Photon.Pun;
+using UnityEngine.SceneManagement;
+using TMPro;
+using UnityEngine.UI;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     private bool host = true;
-    public bool Host { get { return host;  } }
+    public bool Host { get { return host; } }
     private string name;
     private List<OneOffUpgrade> oneOffUpgradeList;
     public List<OneOffUpgrade> OneOffUpgradeList { get { return oneOffUpgradeList; } }
     private float minigameLevel;
+    [SerializeField] MouseLook mouseLook;
 
     //All necessary components
     private PlayerMovement playerMovement;
     //private MiniGameBase miniGameBase;
+
+    public static GameObject LocalPlayerInstance;
+
+    [SerializeField] private TextMeshProUGUI trashText;
+    [SerializeField] private TextMeshProUGUI flyersText;
+    [SerializeField] private Image trashFill;
+    [SerializeField] private Canvas playerCanvas;
+
+    private void Awake()
+    {
+        Debug.Log("AWAKE");
+        
+        if (photonView.IsMine)
+        {
+            LocalPlayerInstance = this.gameObject;
+        }
+            DontDestroyOnLoad(this.gameObject);
+    }
+    private void OnLevelWasLoaded()
+    {
+        SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
+        transform.position = spawnPlayer.transform.position;
+
+        if (SceneManager.GetActiveScene().name == "NewOffice")
+        {
+            GetComponent<PlayerMovement>().canMove = true;
+        }
+        else {
+
+        }
+        UIManager.Instance.SetPlayerInfo(trashText,flyersText,playerCanvas,trashFill);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        mouseLook.canR = true;
+    }
     void Start()
     {
+        Debug.Log("PLAYER START");
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
-        oneOffUpgradeList = SetUpList(); 
+        oneOffUpgradeList = SetUpList();
+        Hashtable hashtable = new Hashtable();
+        hashtable.Add("ready", true);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
     }
-
     public List<OneOffUpgrade> SetUpList()
     {
         //TODO: Change how this is gotten

@@ -38,7 +38,15 @@ public class MiniGameManager : MonoBehaviour
     private void Start()
     {
         playFabManager = FindObjectOfType<PlayFabManager>();
-        PlayerData = FindObjectOfType<PlayerReportData>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                PlayerData = p.GetComponent<PlayerReportData>();
+                break; 
+            }
+         }
         TaskGenerator taskGenerator = FindObjectOfType<TaskGenerator>();
         amountOfGameOccurence = new Dictionary<string, int>();
         foreach (GameObject gamePrefab in taskGenerator.GamePrefabs)

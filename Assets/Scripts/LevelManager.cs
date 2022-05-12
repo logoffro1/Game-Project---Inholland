@@ -4,15 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Threading.Tasks;
+using Photon.Pun;
+using ExitGames.Client.Photon;
+using Photon.Realtime;
 using System;
-public class LevelManager : MonoBehaviour
+
+public class LevelManager : MonoBehaviourPun
 {
     public static LevelManager Instance;
 
     [SerializeField] private GameObject loadCanvas;
     [SerializeField] private Slider progressBar;
 
+    private const byte LOADING_PROGRESS_EVENT = 0;
+
     private float target;
+    private string sceneName;
     private void Awake()
     {
         if (Instance == null)
@@ -30,29 +37,72 @@ public class LevelManager : MonoBehaviour
         progressBar.minValue = 0;
         progressBar.maxValue = 1;
     }
-    public async void LoadScene(string sceneName)
+    private void OnEnable()
     {
-        //Discord status change happens on every scene change before LoadSceneAsync();
-        if (DiscordController.Instance.IsDiscordRunning()) {
-            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), sceneName);
+        PhotonNetwork.NetworkingClient.EventReceived += NetworkingClient_EventReceived;
+    }
+
+    private void NetworkingClient_EventReceived(EventData obj)
+    {
+        if (obj.Code == LOADING_PROGRESS_EVENT)
+        {
+            Debug.Log("EVENT CODE: " + obj.Code);
+            StartCoroutine(LoadingProgress());
+        }
+    }
+
+    public void LoadScenePhoton(string sceneName, bool loadForAllPlayers)
+    {
+        this.sceneName = sceneName;
+        if (loadForAllPlayers)
+        {
+
+
+            RaiseEventOptions eventOptions = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            bool sent = PhotonNetwork.RaiseEvent(LOADING_PROGRESS_EVENT, null, eventOptions, SendOptions.SendReliable);
+
+
+        }
+        else
+        {
+            CoroutineLoading();
+        }
+        if (PhotonNetwork.IsMasterClient)
+            PhotonNetwork.LoadLevel(sceneName);
+
+
+
+
+        // var scene = SceneManager.LoadSceneAsync(sceneName);
+        // scene.allowSceneActivation = false;
+        // scene.allowSceneActivation = true;
+    }
+    public void LoadSceneSP()
+    {
+        CoroutineLoading();
+        SceneManager.LoadScene(sceneName);
+    }
+    public void CoroutineLoading()
+    {
+        StartCoroutine(LoadingProgress());
+    }
+    private IEnumerator LoadingProgress()
+    {            //Discord status change happens on every scene change before LoadSceneAsync();
+        if (DiscordController.Instance.IsDiscordRunning())
+        {
+            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), this.sceneName);
             DiscordController.Instance.UpdateDiscordStatus(type);
         }
-      
-
-        var scene = SceneManager.LoadSceneAsync(sceneName);
-        scene.allowSceneActivation = false;
-
+        Debug.Log("LOADINGGG");
+        target = 0;
         loadCanvas.SetActive(true);
         InitProgressBar();
-
-        do
+        while (target < 1f)
         {
-            await Task.Delay(500);
-            target = scene.progress;
-            await Task.Delay(1000);
-        } while (scene.progress < 0.9f);
-
-        scene.allowSceneActivation = true;
+            target += UnityEngine.Random.Range(0.2f, 0.5f);
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.2f, 0.5f));
+        }
+        yield return new WaitForSeconds(1f);
         loadCanvas.SetActive(false);
     }
     private void Update()
