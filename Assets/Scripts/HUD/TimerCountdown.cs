@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 using Photon.Pun;
 public class TimerCountdown : MonoBehaviourPun
 {
-    private int secondsMax = 30; // 8 * 60
+    private int secondsMax = 8 * 60; 
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
