@@ -47,7 +47,6 @@ public class MiniGameManager : MonoBehaviour
                 break; 
             }
          }
-        PlayerData = FindObjectOfType<PlayerReportData>();
         TaskGenerator taskGenerator = FindObjectOfType<TaskGenerator>();
         amountOfGameOccurence = new Dictionary<string, int>();
         foreach (GameObject gamePrefab in taskGenerator.GamePrefabs)

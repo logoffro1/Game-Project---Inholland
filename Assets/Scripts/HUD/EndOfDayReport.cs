@@ -40,34 +40,8 @@ public class EndOfDayReport : MonoBehaviour
             ReturnLobbyButton.SetActive(true);
         }
         GetLanguage();
-        dayFailed = GetWinCondition();
-
-        playerData = FindObjectOfType<PlayerData>();
-        playerReportData = FindObjectOfType<PlayerReportData>();
-        playerRep = FindObjectOfType<PlayerReputation>();
-
-        playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
-            playerReportData.GetHardGameNumbers(),
-            playerReportData.GetMediumGameNumbers(),
-            playerReportData.GetEasyGameNumbers(),
-            dayFailed);
-       
-
-        playerData.NewSustainabilityPoints = 
-            playerReportData.calculateIncreaseAmount(
-                TimerCountdown.Instance.SecondsLeft,
-            playerReportData.GetHardGameNumbers(),
-            playerReportData.GetMediumGameNumbers(),
-            playerReportData.GetEasyGameNumbers(),
-            dayFailed);
-        
-        playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
-        DontDestroyOnLoad(playerData.gameObject);//Try Playerdata Start instead
-
-        playFabManager = FindObjectOfType<PlayFabManager>();
-
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        foreach(GameObject p in players)
+        foreach (GameObject p in players)
         {
             if (p.GetComponent<Player>().photonView.IsMine)
             {
@@ -76,8 +50,21 @@ public class EndOfDayReport : MonoBehaviour
                 break;
             }
         }
-        
-        /*        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
+        {
+            if (pd.photonView.IsMine)
+            {
+                playerData = pd;
+            }
+        }
+        foreach (PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
+        {
+            if (pr.photonView.IsMine)
+            {
+                playerRep = pr;
+            }
+        }
+        PlayerReportData[] datas = FindObjectsOfType<PlayerReportData>();
         foreach (PlayerReportData data in datas)
         {
             if (data.photonView.IsMine)
@@ -86,14 +73,38 @@ public class EndOfDayReport : MonoBehaviour
                 data.gameObject.GetComponentInChildren<MouseLook>().canR = false;
                 break;
             }
-        }*/
+        }
+        dayFailed = GetWinCondition();
+
+        playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
+
+
+        playerData.NewSustainabilityPoints =
+            playerReportData.calculateIncreaseAmount(
+                TimerCountdown.Instance.SecondsLeft,
+            playerReportData.GetHardGameNumbers(),
+            playerReportData.GetMediumGameNumbers(),
+            playerReportData.GetEasyGameNumbers(),
+            dayFailed);
+
+        playerData.AddToCurrentDistrict(playerData.NewSustainabilityPoints);
+        DontDestroyOnLoad(playerData.gameObject);//Try Playerdata Start instead
+
+        playFabManager = FindObjectOfType<PlayFabManager>();
+
+
+
         //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
         //achievements
         int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
         FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
-        
+
         int playNr;
 
         Location.text = playerData.IsInDistrict.ToString();
@@ -111,7 +122,7 @@ public class EndOfDayReport : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-       // Time.timeScale = 0f;
+        // Time.timeScale = 0f;
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }

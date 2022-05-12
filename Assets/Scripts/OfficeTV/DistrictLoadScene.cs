@@ -7,10 +7,10 @@ public class DistrictLoadScene : MonoBehaviour
 {
     [HideInInspector] public string SceneName;
 
-    private PlayerData playerData;
+    private PlayerData[] playerDatas;
     private void Start()
     {
-        playerData = FindObjectOfType<PlayerData>();
+       
     }
     private void LoadMyScene()
     {
@@ -24,19 +24,25 @@ public class DistrictLoadScene : MonoBehaviour
 
     public void ChoseNormalMode()
     {
-        playerData.IsInGameMode = GameMode.Normal;
+        playerDatas = FindObjectsOfType<PlayerData>();
+        foreach (PlayerData pd in playerDatas)
+            pd.IsInGameMode = GameMode.Normal;
         LoadMyScene();
     }
 
     public void ChoseChillMode()
     {
-        playerData.IsInGameMode = GameMode.Chill;
+        playerDatas = FindObjectsOfType<PlayerData>();
+        foreach (PlayerData pd in playerDatas)
+            pd.IsInGameMode = GameMode.Chill;
         LoadMyScene();
     }
 
     public void ChoseCrazyMode()
     {
-        playerData.IsInGameMode = GameMode.Crazy;
+        playerDatas = FindObjectsOfType<PlayerData>();
+        foreach (PlayerData pd in playerDatas)
+            pd.IsInGameMode = GameMode.Crazy;
         LoadMyScene();
     }
 

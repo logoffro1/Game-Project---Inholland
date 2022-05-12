@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 
 
-public class PlayerReportData : MonoBehaviour
+public class PlayerReportData : MonoBehaviourPun
 {
 
     //In the future,tracking of mission upgrades has to be done once that feature is available.

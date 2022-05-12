@@ -15,7 +15,7 @@ public abstract class Equipment : MonoBehaviour
 
     protected string equipmentName;
 
-    public bool isLocked { get; set; }
+    public bool IsLocked { get; set; }
     public Action<Equipment,bool> onLockedChange = delegate { };
     public Action<Equipment> onCooldownChange = delegate { };
 
@@ -23,8 +23,8 @@ public abstract class Equipment : MonoBehaviour
     public abstract void SetPlayerRep();
     public virtual void SetLocked(bool locked)
     {
-        isLocked = locked;
-        onLockedChange(this,isLocked);
+        IsLocked = locked;
+        onLockedChange(this,IsLocked);
     }
     public virtual void DrainTime()
     {

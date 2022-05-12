@@ -29,7 +29,11 @@ public class RunningShoes : Equipment
 
     public override void SetPlayerRep()
     {
-        playerRep = FindObjectOfType<PlayerReputation>();
+        foreach (PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
+        {
+            if (pr.photonView.IsMine)
+                playerRep = pr;
+        }
         SetLocked(playerRep.IsShoeLocked);
     }
 
@@ -51,7 +55,7 @@ public class RunningShoes : Equipment
     void Update()
     {
 
-        if (isLocked) return;
+        if (IsLocked) return;
         if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {

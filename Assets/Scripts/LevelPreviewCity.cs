@@ -30,7 +30,17 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
     private void Start()
     {
         overallDistrictScreen = GetComponentInParent<OverallDistrictScreen>();
-        if (overallDistrictScreen.PlayerData == null) overallDistrictScreen.PlayerData = FindObjectOfType<PlayerData>();
+        if (overallDistrictScreen.PlayerData == null)
+        {
+            foreach(PlayerData pd in FindObjectsOfType<PlayerData>())
+            {
+                if (pd.photonView.IsMine)
+                {
+                    overallDistrictScreen.PlayerData = pd;
+                }
+            }
+            
+        }
         middleSelectText = overallDistrictScreen.middleSelectText;
         topSelectText = overallDistrictScreen.topSelectText;
         otherLevels = transform.parent.GetComponentsInChildren<LevelPreviewCity>().Where(x => x.districtName != this.districtName).ToList();

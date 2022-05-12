@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Photon.Pun;
 public class OverallDistrictScreen : MonoBehaviour
 {
     public TextMeshProUGUI topSelectText;
@@ -12,7 +13,13 @@ public class OverallDistrictScreen : MonoBehaviour
 
     private void Awake()
     {
-        PlayerData = FindObjectOfType<PlayerData>();
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
+        {
+            if (pd.photonView.IsMine)
+            {
+                PlayerData = pd;
+            }
+        }
         DontDestroyOnLoad(PlayerData);
     }
 

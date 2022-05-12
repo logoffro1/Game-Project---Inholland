@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
 public class SetupMission : MonoBehaviour
 {
@@ -25,9 +26,22 @@ public class SetupMission : MonoBehaviour
     private IEnumerator SetGameMode()
     {
         yield return new WaitForEndOfFrame();
-
         PlayerData data = FindObjectOfType<PlayerData>();
-        player = FindObjectOfType<Player>();
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
+        {
+            if (pd.photonView.IsMine)
+            {
+                data = pd;
+            }
+        }
+        foreach(Player p in FindObjectsOfType<Player>())
+        {
+            if (p.photonView.IsMine)
+            {
+                player = p;
+            }
+        }
+        
         gameMode = data.IsInGameMode;
         goalText.text = data.GoalText;
 
@@ -51,9 +65,4 @@ public class SetupMission : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

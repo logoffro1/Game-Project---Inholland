@@ -14,6 +14,7 @@ public class Hotbar : MonoBehaviour
     }
     private void Init()
     {
+        Debug.Log("Hotbar init");
         equipmentList.Add(playerGameObject.GetComponentInChildren<XrayGoggles>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<Vacuum>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<RunningShoes>());
@@ -27,6 +28,7 @@ public class Hotbar : MonoBehaviour
     }
     private void LockItem(Equipment item, bool locked)
     {
+
         int itemIndex = equipmentList.IndexOf(item);
         GameObject itemLocked = itemSlots[itemIndex].transform.Find("ItemLocked").gameObject;
         GameObject itemCooldown = itemSlots[itemIndex].transform.Find("Cooldown").gameObject;
@@ -47,9 +49,5 @@ public class Hotbar : MonoBehaviour
         GameObject itemCooldown = itemSlots[itemIndex].transform.Find("Cooldown").gameObject;
         Image cooldownFill = itemCooldown.transform.Find("CooldownFill").gameObject.GetComponent<Image>();
         cooldownFill.fillAmount = ((float)item.cooldown / (float)item.maxCooldown);
-    }
-    void Update()
-    {
-        
     }
 }

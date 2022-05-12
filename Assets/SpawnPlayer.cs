@@ -10,7 +10,6 @@ public class SpawnPlayer : MonoBehaviourPun
     void Awake()
     {
         Time.timeScale = 1.0f;
-        Debug.Log(PhotonNetwork.CurrentRoom.IsOpen);
         if(PhotonNetwork.CurrentRoom.IsOpen)
             PhotonNetwork.Instantiate(playerPrefab.name, spawnPositions[Random.Range(0,spawnPositions.Length)].position, Quaternion.identity);
     }

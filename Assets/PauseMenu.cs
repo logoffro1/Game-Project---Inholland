@@ -100,7 +100,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             
-            LevelManager.Instance.LoadScenePhoton("Office", true);
+            LevelManager.Instance.LoadScenePhoton("NewOffice", true);
         }
             
     }
@@ -123,7 +123,14 @@ public class PauseMenu : MonoBehaviourPunCallbacks
 
     public void ExitGame()
     {
-        Debug.Log("quitting game");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            foreach(KeyValuePair<int,Photon.Realtime.Player> p in PhotonNetwork.CurrentRoom.Players)
+            {
+                PhotonNetwork.CloseConnection(p.Value);
+                PhotonNetwork.SendAllOutgoingCommands();
+            }
+        }
         Application.Quit();
     }
 }

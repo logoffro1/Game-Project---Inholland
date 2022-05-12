@@ -52,8 +52,13 @@ public class XrayGoggles : Equipment
 
     public override void SetPlayerRep()
     {
-        playerRep = FindObjectOfType<PlayerReputation>();
+        foreach(PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
+        {
+            if (pr.photonView.IsMine)
+                playerRep = pr;
+        }
         SetLocked(playerRep.IsXrayLocked);
+        Debug.Log("XRAY LOCKED: " + playerRep.IsXrayLocked);
     }
   
 
@@ -61,7 +66,7 @@ public class XrayGoggles : Equipment
     {
 
 
-        if (isLocked) return;
+        if (IsLocked) return;
         if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {

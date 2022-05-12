@@ -110,7 +110,6 @@ public class FlyerMaking : MonoBehaviour
         if (AmountFlyersMade >= AmountFlyersToMake)
         {
             this.Printer.ProgressPanel.SetActive(true);
-            FindObjectOfType<PlayerData>().FlyerPoints = TotalPoints / (2 * AmountFlyersToMake);
             AmountPrinted.text = (AmountFlyersToMake * AmountToPrintPerFlyer).ToString();
             IsDoneForToday = true;
             this.Printer.PrinterPanel.SetActive(false);

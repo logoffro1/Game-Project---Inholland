@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class PlayerData : MonoBehaviour
+public class PlayerData : MonoBehaviourPun
 {
     public bool IsCurrentlyInMission;
     public DistrictEnum IsInDistrict;
@@ -21,9 +22,7 @@ public class PlayerData : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Load data from save file
-        //temp
-        pData = FindObjectOfType<PlayerReportData>();
+        
         if (CityCenterSustainability == 0)
         {
             if (PlayerPrefs.HasKey("citySus"))
