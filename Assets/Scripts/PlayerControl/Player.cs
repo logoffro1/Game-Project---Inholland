@@ -49,7 +49,6 @@ public class Player : MonoBehaviourPun
             Debug.Log(type);
         }
 
-
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
 
