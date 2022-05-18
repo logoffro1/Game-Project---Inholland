@@ -92,8 +92,9 @@ public class LevelManager : MonoBehaviourPun
         {
             StatusType type = (StatusType)Enum.Parse(typeof(StatusType), this.sceneName);
             DiscordController.Instance.UpdateDiscordStatus(type);
+            Debug.Log("Discord RUNNING");
         }
-        Debug.Log("LOADINGGG");
+        Debug.Log("AFTER DISCORD RUN");
         target = 0;
         loadCanvas.SetActive(true);
         InitProgressBar();

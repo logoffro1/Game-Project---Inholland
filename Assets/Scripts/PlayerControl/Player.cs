@@ -32,7 +32,6 @@ public class Player : MonoBehaviourPun
 
     private void Awake()
     {
-        Debug.Log("AWAKE");
         
         if (photonView.IsMine)
         {
@@ -59,7 +58,6 @@ public class Player : MonoBehaviourPun
     }
     void Start()
     {
-        Debug.Log("PLAYER START");
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
         oneOffUpgradeList = SetUpList();
