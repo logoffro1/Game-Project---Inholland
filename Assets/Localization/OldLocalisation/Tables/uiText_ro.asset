@@ -435,7 +435,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3039134233014272
-    m_Localized: Upgrade
+    m_Localized: Modernizare
     m_Metadata:
       m_Items: []
   - m_Id: 3039173676249088
@@ -494,7 +494,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 3074702782377984
-    m_Localized: Success
+    m_Localized: Succes
     m_Metadata:
       m_Items: []
   - m_Id: 3074801633734656
@@ -512,7 +512,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 6551242266521600
-    m_Localized: "Cum s\u0103 joci"
+    m_Localized: CUM SE JOCA
     m_Metadata:
       m_Items: []
   - m_Id: 6551456519958528
@@ -575,6 +575,59 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 11189247741562880
     m_Localized: "\xCENAPOI"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16619958447411200
+    m_Localized: "Sorta\u021Bi gunoiul!\r\n\r\nChei\r\nA: Plastic\r\nS: H\xE2rtie\r\nD:
+      Alimente\r\nF: Sticl\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16622348860952576
+    m_Localized: Volum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16622630378442752
+    m_Localized: Sensibilitate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623038438084608
+    m_Localized: "SC\u0102ZUT"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623442206953472
+    m_Localized: "Realiz\u0103ri"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623455922327552
+    m_Localized: "\xCEnapoi"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16624190500147200
+    m_Localized: "Al\u0103tur\u0103-te Discordului nostru!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16624737525469184
+    m_Localized: Numele Camerei...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625016752869376
+    m_Localized: "Crea\u021Bi o camer\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625209825071104
+    m_Localized: Parola
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625916384940032
+    m_Localized: Nume de utilizator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16626341385375744
+    m_Localized: Angajatii
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16628191144742912
+    m_Localized: 'Liniile hardware necesare: '
     m_Metadata:
       m_Items: []
   references:
