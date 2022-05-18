@@ -41,6 +41,15 @@ public class Player : MonoBehaviourPun
     }
     private void OnLevelWasLoaded()
     {
+        //Discord status change happens on every scene change before LoadSceneAsync();
+        if (DiscordController.Instance.IsDiscordRunning())
+        {
+            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), SceneManager.GetActiveScene().name);
+            DiscordController.Instance.UpdateDiscordStatus(type);
+            Debug.Log(type);
+        }
+
+
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
 

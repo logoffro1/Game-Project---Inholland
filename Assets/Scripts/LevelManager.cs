@@ -87,14 +87,7 @@ public class LevelManager : MonoBehaviourPun
         StartCoroutine(LoadingProgress());
     }
     private IEnumerator LoadingProgress()
-    {            //Discord status change happens on every scene change before LoadSceneAsync();
-        if (DiscordController.Instance.IsDiscordRunning())
-        {
-            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), this.sceneName);
-            DiscordController.Instance.UpdateDiscordStatus(type);
-            Debug.Log("Discord RUNNING");
-        }
-        Debug.Log("AFTER DISCORD RUN");
+    {         
         target = 0;
         loadCanvas.SetActive(true);
         InitProgressBar();
