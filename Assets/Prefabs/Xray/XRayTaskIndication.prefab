@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 3130265459390099835}
   m_Layer: 0
   m_Name: XRayTaskIndication
-  m_TagString: Untagged
+  m_TagString: xray
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,6 +298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalRenderer: {fileID: -2726062073748862871, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   xrayRenderer: {fileID: -5929669759103771485, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
+  trashRenderer: {fileID: -6712198670286870123, guid: 4a8e21d5c33334b11b34a596161b9360, type: 2}
   canvas: {fileID: 41324806}
   batteryFullImage: {fileID: 7802969521003165865}
 --- !u!114 &3130265459390099835
