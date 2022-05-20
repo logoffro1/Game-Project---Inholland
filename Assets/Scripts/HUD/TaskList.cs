@@ -10,9 +10,11 @@ using UnityEngine.Localization.Components;
 
 public class TaskList : MonoBehaviour
 {
+    //minimum requirement of contribution property
     bool IsMinimumRequirementMet { get => taskObjectTypes.Values.Any(value => value[0] == value[1]); }
+    //task list complete property
     bool IsTaskListComplete { get => taskObjectTypes.Values.All(value => value[0] == value[1]); }
-
+    //declaring variables
     bool bonusSusPointsAwarded = false;
     int solarCounter = 0;
     int treeCounter = 0;
@@ -20,19 +22,22 @@ public class TaskList : MonoBehaviour
     int sewerCounter = 0;
     int totalObjects = 0;
     int bonusSusPoints = 5;
-
+    //list of interactabletaskstatusmodels of assigned tasks and all possible tasks
     List<InteractableTaskStatusModels> tasks = new List<InteractableTaskStatusModels>();
     List<InteractableTaskStatusModels> allTasks = new List<InteractableTaskStatusModels>();
+    //dictionary of assigned tasks and task names
     Dictionary<TaskObjectType, int[]> taskObjectTypes = new Dictionary<TaskObjectType, int[]>();
     Dictionary<TaskObjectType, string> taskStrings;
     private TextMeshProUGUI taskListText;
 
+    //task list localization variables
     private LocalizeStringEvent localizedStringEvent;
     [SerializeField] private LocalizedString[] localizedStrings;
     private LocalizationSettings locSettings;
     // Start is called before the first frame update
     void Start()
     {
+        //task list string names are filled into the dictionary
         taskStrings = new Dictionary<TaskObjectType, string>()
              {
         { TaskObjectType.Tree, "Plant trees"},
@@ -42,11 +47,12 @@ public class TaskList : MonoBehaviour
         { TaskObjectType.Bin, "Recycle items" },
         { TaskObjectType.WindTurbine, "Weld Turbine fans" }        
         };
+        //localization is checked as this is a dynamic list that can change
         localizedStringEvent = GetComponent<LocalizeStringEvent>();
 
         localizedStringEvent.OnUpdateString.AddListener(OnStringChanged);
         UpdateLocalization();
-
+        //finds all objects on the level, then assigns tasks to each player
         FindObjects();
 
         AssignTasks();
@@ -55,17 +61,19 @@ public class TaskList : MonoBehaviour
         UpdateText();
     }
 
+    //checks when the selected locale is changed to update the language of the task list
     private void LocSettings_OnSelectedLocaleChanged(Locale obj)
     {
         UpdateLocalization();
     }
-
 
     private void OnStringChanged(string s)
     {
         if (locSettings == null) return;
         UpdateLocalization();
     }
+    //handles the updating of localization when language is changed, as the task list is filled through code
+    //and not the unity inspector, so a localize string event component cannot be used
     private async void UpdateLocalization()
     {
 
@@ -95,9 +103,15 @@ public class TaskList : MonoBehaviour
            }
        }
    */
+
+    //searches the map for all task objects
     List<InteractableTaskStatusModels> FindObjects()
     {
+        //declares a new list of tasks
         List<InteractableTaskStatusModels> list = new List<InteractableTaskStatusModels>();
+        //checks each task in the map which have the untouched status, meaning they are active and
+        //increments the counters for each type of task
+        //and fills the list as well as the total objects
         foreach (InteractableTaskStatusModels task in FindObjectsOfType<InteractableTaskStatusModels>().Where(x => x.gameObject.GetComponentInChildren<InteractableTaskObject>() && x.gameObject.GetComponentInChildren<InteractableTaskObject>().Status == TaskStatus.Untouched))
         {
             if (task != null && task.enabled)
@@ -127,10 +141,13 @@ public class TaskList : MonoBehaviour
 
     void AssignTasks()
     {
+        //all types of tasks are fetched and are assigned per player
         List<TaskObjectType> allTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
 
         for (int i = 0; i < 3; i++)
         {
+            //randomly picks a type of task, then randomly assigns an amount of them to do between 2 and 6
+            //which is then removed from the list and done again 3 times
             TaskObjectType type = allTypes[UnityEngine.Random.Range(0, allTypes.Count)];
             if (!taskObjectTypes.ContainsKey(type))
             {
@@ -144,6 +161,7 @@ public class TaskList : MonoBehaviour
         }*/
     }
 
+    //when a task is completed, the counter is incremented to reflect that on the task list interface
     void UpdateText()
     {
         List<string> list = new List<string>();
@@ -151,10 +169,12 @@ public class TaskList : MonoBehaviour
         {
             list.Add($"{taskStrings[kvp.Key]} ({kvp.Value[0]}/{kvp.Value[1]})");
         }
-        if(list.Count > 0)
-             taskListText.text = string.Join("\n", list);
+        if (list.Count > 0)
+            taskListText.text = string.Join("\n", list);
     }
 
+    //checks which task has been won and if a task type has been completed, or if the entire task list has been completed
+    //and awards sustainability points based on that
     public void TaskWon(InteractableTaskStatusModels task)
     {
         //if conditions below need to check what task is being completed, as task.tag is already destroyed when checking after the task completes
@@ -162,6 +182,8 @@ public class TaskList : MonoBehaviour
 
         if (Enum.TryParse(task.tag, out TaskObjectType objectType) && taskObjectTypes.ContainsKey(objectType))
         {
+            //depending on the type of task,the task type counter in the task object types dictionary is incremented unless it
+            //is greater than the total number of task type assigned
             if (task.tag == "SolarPanel")
             {
 
@@ -184,7 +206,10 @@ public class TaskList : MonoBehaviour
                 if (taskObjectTypes[TaskObjectType.StreetLamp][0] + 1 <= taskObjectTypes[TaskObjectType.StreetLamp][1])
                     taskObjectTypes[TaskObjectType.StreetLamp][0]++;
             }
+            //updates text of the task list
             UpdateText();
+            //if the task list is complete and the sustainability points have not been awared, they are awarded to the player
+            //and the sustainability of the level is increased
             if (IsTaskListComplete && !bonusSusPointsAwarded)
             {
                 ProgressBar.Instance.ChangeSustainibility(bonusSusPoints, true);
