@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsCurrentlyInMission: 0
+  IsInDistrictName: 
   IsInDistrict: 0
   IsInGameMode: 0
   GoalText: 
