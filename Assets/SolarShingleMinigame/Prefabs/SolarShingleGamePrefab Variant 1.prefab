@@ -588,7 +588,9 @@ MonoBehaviour:
   successText: {fileID: 8607497813594481715}
   descriptionText: {fileID: 6570330215494645004}
   infoCanvas: {fileID: 4775885059660320283}
+  gameDifficulty: 0
   TutorialCanvas: {fileID: 6192043180979989486}
+  WaitTime: 0
   localizedStringEventDescription: {fileID: 5380884621486825119}
   localizedStringHint:
     m_TableReference:
@@ -631,7 +633,7 @@ AudioSource:
   m_GameObject: {fileID: 6418118427772936154}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
