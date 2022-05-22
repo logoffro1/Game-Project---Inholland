@@ -621,7 +621,7 @@ MonoBehaviour:
   - m_Id: 16619958447411200
     m_Localized: 'Sorteer het afval!
 
-      
+
 
       Sleutels
 
@@ -681,6 +681,43 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 16628191144742912
     m_Localized: 'Hardware lijnen nodig: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119812092825600
+    m_Localized: Loopsnelheid verhogen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119878778064896
+    m_Localized: Punten voor minigames stijgen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119871287037952
+    m_Localized: De moeilijkheidsgraad van minigames neemt af
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119905973932032
+    m_Localized: Tijd toegevoegd na minigame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120065000968192
+    m_Localized: Je kunt sneller lopen, misschien zelfs tot een sprint?!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120095027990528
+    m_Localized: Alle minigames worden eenvoudiger en je verdient hetzelfde aantal
+      punten!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120106834956288
+    m_Localized: Krijg meer punten als je een minigame met succes voltooit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120117018726400
+    m_Localized: Je krijgt wat tijd als je een minigame met succes voltooit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18151279816642560
+    m_Localized: Je kunt elke upgrade kiezen om je te helpen bij je missie!
     m_Metadata:
       m_Items: []
   references:

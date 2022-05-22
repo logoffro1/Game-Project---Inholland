@@ -624,16 +624,16 @@ MonoBehaviour:
   - m_Id: 16619958447411200
     m_Localized: 'Sort the litter!
 
-      
+
 
       Keys
 
       A: Plastic
 
-      S:
-      Paper
+      S: Paper
 
-      D: Foods
+      D:
+      Foods
 
       F: Glass'
     m_Metadata:
@@ -684,6 +684,43 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 16628191144742912
     m_Localized: 'Hardware lines needed: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119812092825600
+    m_Localized: Walking speed increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119871287037952
+    m_Localized: Minigames' difficulty decrease
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119878778064896
+    m_Localized: Minigames' points increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119905973932032
+    m_Localized: Added time after minigame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120065000968192
+    m_Localized: You get to walk faster, maybe even up to a sprint?!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120095027990528
+    m_Localized: All minigames will get easier, and you'll earn the same amount of
+      points!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120106834956288
+    m_Localized: Get more points when you successfully complete a minigame!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120117018726400
+    m_Localized: You get some time if you finish a minigame successfully!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18151279816642560
+    m_Localized: You can choose any upgrade to help you out on your mission!
     m_Metadata:
       m_Items: []
   references:

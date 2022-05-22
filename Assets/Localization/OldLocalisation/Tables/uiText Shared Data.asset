@@ -575,6 +575,42 @@ MonoBehaviour:
     m_Key: hardwareLines
     m_Metadata:
       m_Items: []
+  - m_Id: 18119812092825600
+    m_Key: oneOffUpgradeOption1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119871287037952
+    m_Key: oneOffUpgradeOption2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119878778064896
+    m_Key: oneOffUpgradeOption3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119905973932032
+    m_Key: oneOffUpgradeOption4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120065000968192
+    m_Key: oneOffUpgradeDescription1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120095027990528
+    m_Key: oneOffUpgradeDescription2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120106834956288
+    m_Key: oneOffUpgradeDescription3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120117018726400
+    m_Key: oneOffUpgradeDescription4
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18151279816642560
+    m_Key: oneOffDefaultExplanation
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -630,6 +630,46 @@ MonoBehaviour:
     m_Localized: 'Liniile hardware necesare: '
     m_Metadata:
       m_Items: []
+  - m_Id: 18119812092825600
+    m_Localized: "Cre\u0219terea vitezei de mers"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119871287037952
+    m_Localized: Dificultatea minijocurilor scade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119878778064896
+    m_Localized: Punctele minijocurilor cresc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119905973932032
+    m_Localized: "Timp ad\u0103ugat dup\u0103 minijoc"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120065000968192
+    m_Localized: "Ajungi s\u0103 mergi mai repede, poate chiar p\xE2n\u0103 la un
+      sprint?!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120095027990528
+    m_Localized: "Toate minijocurile vor deveni mai u\u0219oare \u0219i vei c\xE2\u0219tiga
+      aceea\u0219i sum\u0103 de puncte!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120106834956288
+    m_Localized: "Ob\u021Bine\u021Bi mai multe puncte c\xE2nd finaliza\u021Bi cu
+      succes un minijoc!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120117018726400
+    m_Localized: "Ai ceva timp dac\u0103 termini un minijoc cu succes!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18151279816642560
+    m_Localized: "Pute\u021Bi alege orice upgrade pentru a v\u0103 ajuta s\u0103
+      v\u0103 \xEEndeplini\u021Bi misiunea!"
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
