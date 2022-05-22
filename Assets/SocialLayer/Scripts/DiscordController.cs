@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Discord;
+using System;
 
 public class DiscordController : MonoBehaviour
 {
@@ -55,8 +56,7 @@ public class DiscordController : MonoBehaviour
             UpdateDiscordStatus(status);
         }
 
-    }
-   
+    }  
     public void UpdateDiscordStatus(StatusType status)
     {
         this.status = status;
@@ -64,30 +64,36 @@ public class DiscordController : MonoBehaviour
     }
     void UpdateActivity()
     {
-        UpdateVariables();
-        var activity = new Discord.Activity
+        try
         {
-
-            Name = name,
-            Details = details,
-            State = state,
-            Assets = { LargeImage = imageKey }
-        };
-        var activityManager = discord.GetActivityManager();
-
-        activityManager.UpdateActivity(activity, (res) =>
-        {
-            if (res == Discord.Result.Ok)
+            UpdateVariables();
+            var activity = new Discord.Activity
             {
-                Debug.Log($"status is updated: {status}");
-            }
-            else
+
+                Name = name,
+                Details = details,
+                State = state,
+                Assets = { LargeImage = imageKey }
+            };
+            var activityManager = discord.GetActivityManager();
+
+            activityManager.UpdateActivity(activity, (res) =>
             {
-                Debug.LogError("Discord status failed!!");
-            }
-        });
+                if (res == Discord.Result.Ok)
+                {
+                    Debug.Log($"status is updated: {status}");
+                }
+                else
+                {
+                    Debug.LogError("Discord status failed!!");
+                }
+            });
+        }
+        catch (NullReferenceException exception) {
+            isDiscordRunning = false;
+            Debug.Log("Discord messed up in update but its ok");
+        }
     }
-
     void UpdateVariables()
     {
         switch (status) {
@@ -125,7 +131,6 @@ public class DiscordController : MonoBehaviour
                 break;
         }
     }
-
     private string RandomizeOfficeReplies()
     {
         List<string> officereplies = new List<string> { 
@@ -142,15 +147,22 @@ public class DiscordController : MonoBehaviour
             "Cleaning the equipments",
             "Making cocktails for friday",
         };
-
-            return officereplies[Random.Range(0, officereplies.Count)];
+            return officereplies[UnityEngine.Random.Range(0, officereplies.Count)];
     }
 
     void Update()
     {
-        if (isDiscordRunning)
+        try
         {
-            discord.RunCallbacks();
+            if (isDiscordRunning)
+            {
+                discord.RunCallbacks();
+            }
+        }
+        catch (NullReferenceException exception)
+        {
+            isDiscordRunning = false;
+            Debug.Log("Discord messed up in update but its ok" + exception.Message);
         }
     }
 }

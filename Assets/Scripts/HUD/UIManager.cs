@@ -74,11 +74,13 @@ public class UIManager : MonoBehaviour
         hoverText.text = $"(E) {text}";
        // hoverText.enabled = isHovered;
     }
-    public void ChangeCanvasShown()
+    public void TurnOnCanvas(bool turnOn)
     {
-        canvas.enabled = !canvas.enabled;
-        playerCanvas.enabled = canvas.enabled;
+        canvas.enabled = turnOn;
+        playerCanvas.enabled = turnOn;
     }
+
+
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit)
     {
