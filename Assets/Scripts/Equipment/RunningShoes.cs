@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -36,9 +34,11 @@ public class RunningShoes : Equipment
         }
         SetLocked(playerRep.IsShoeLocked);
     }
-
-    // Start is called before the first frame update
     void Start()
+    {
+        InitInfo();
+    }
+    private void InitInfo()
     {
         playerRep = FindObjectOfType<PlayerReputation>();
         this.SetLocked(playerRep.IsShoeLocked);
@@ -50,8 +50,6 @@ public class RunningShoes : Equipment
         maxCooldown = 30f;
         cooldown = maxCooldown;
     }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -64,6 +62,8 @@ public class RunningShoes : Equipment
             else if (isActive)
                 DoAction();
         }
+
+        // control cooldown
         if (!isActive)
         {
             if (cooldown > 0)

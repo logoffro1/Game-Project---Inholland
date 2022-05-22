@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 
 //spaghetti code
-//dont take examples from this
-public class SpawnButton : MiniGameBase
+public class SpawnButton : MiniGameBase // whole code for color beep mini game
 {
     public GameObject buttonPrefab;
     private SpriteRenderer buttonSprite;
-    [SerializeField] private int width = 4;
+    
+    // rows / columns
+    [SerializeField] private int width = 4; 
     [SerializeField] private int height = 3;
+
     private bool canSelect = false;
     private bool gameOver = false;
     private GameObject[,] buttons;
     private List<GameObject> colorSequence;
     private int selectedCount = 0;
-    List<GameObject> selectedSprites = new List<GameObject>();
+
+    List<GameObject> selectedSprites = new List<GameObject>(); // current input pattern
     public Camera cam;
     public AudioClip playerClick;
     public AudioClip wrongPlayerClick;
@@ -25,14 +26,13 @@ public class SpawnButton : MiniGameBase
     public AudioClip winSound;
     private AudioSource audioSource;
 
-    private float sequenceWaitTime = 1f;
-    // Start is called before the first frame update
+    private float sequenceWaitTime = 1f; // wait time between showing new button in sequence
     void Start()
     {
         StartCoroutine(WaitBeforeStarting(WaitTime));
     }
 
-    private IEnumerator WaitBeforeStarting(float time)
+    private IEnumerator WaitBeforeStarting(float time)// initialize buttons and prepare sequence
     {
         buttons = new GameObject[width, height];
         buttonSprite = buttonPrefab.GetComponent<SpriteRenderer>();
@@ -48,15 +48,17 @@ public class SpawnButton : MiniGameBase
 
         StartCoroutine(ShowSequence(sequenceWaitTime));
 
-        yield return null;
     }
 
     private void InitButtons()
     {
         Vector2 spriteSize = buttonSprite.bounds.size;
+
+        //start pos
         float startX = -0.7f;
         float startY = 0.5f;
         float offset = 1.2f;
+
         for (int i = 0; i < buttons.GetLength(0); i++)
         {
             float spawnX = startX + i * spriteSize.x * offset;
@@ -64,21 +66,23 @@ public class SpawnButton : MiniGameBase
             {
                 float spawnY = startY - j * spriteSize.y * offset;
                 Vector3 spawnPos = new Vector3(spawnX, spawnY, transform.position.z);
-                var buttonTemp = Instantiate(buttonPrefab, spawnPos, buttonPrefab.transform.rotation, transform);
+                var buttonTemp = Instantiate(buttonPrefab, spawnPos, buttonPrefab.transform.rotation, transform); // spawned button
                 if (buttonTemp.TryGetComponent(out Button btn))
                 {
-                    btn.onClick += ButtonClicked;
+                    btn.onClick += ButtonClicked; // subscribe to clicking event
                 }
-                buttons[i, j] = buttonTemp;
+                buttons[i, j] = buttonTemp; // set button in 2D array
             }
         }
     }
 
     private void ButtonClicked(GameObject button)
     {
+        // make sure the player is allowed to click
         if (Time.timeScale == 0) return;
         if (!canSelect || gameOver) return;
         selectedSprites.Add(button);
+        //check if button clicked is in the correct sequence
         if (!selectedSprites[selectedCount].Equals(colorSequence[selectedCount]))
         {
             audioSource.PlayOneShot(wrongPlayerClick);
@@ -104,6 +108,8 @@ public class SpawnButton : MiniGameBase
     }
     private bool CheckListMatch()
     {
+        // check if the color sequence and the player input sequence are the same
+
         if (selectedSprites.Count != colorSequence.Count)
             return false;
         for (int i = 0; i < selectedSprites.Count; i++)
@@ -113,12 +119,13 @@ public class SpawnButton : MiniGameBase
         }
         return true;
     }
-    private IEnumerator ButtonFlash(GameObject button, bool correctBtn)
+    private IEnumerator ButtonFlash(GameObject button, bool correctBtn) // change button color, press button
     {
         GameObject buttonUnpressed = button.transform.Find("ButtonUnpressed").gameObject;
         GameObject buttonPressed = button.transform.Find("ButtonPressed").gameObject;
         SpriteRenderer sprite = buttonPressed.GetComponent<SpriteRenderer>();
 
+        // set button color
         if (correctBtn) sprite.color = Color.green;
         else
             sprite.color = Color.red;
@@ -127,11 +134,12 @@ public class SpawnButton : MiniGameBase
         buttonUnpressed.SetActive(false);
 
         yield return new WaitForSeconds(0.15f);
+        // unpress button
         sprite.color = Color.white;
         buttonPressed.SetActive(false);
         buttonUnpressed.SetActive(true);
     }
-    private void SetSequence()
+    private void SetSequence() // set the initial collor sequence
     {
 
         int sequenceLength = Random.Range(4, 6);
@@ -140,12 +148,13 @@ public class SpawnButton : MiniGameBase
             colorSequence.Add(buttons[Random.Range(0, buttons.GetLength(0)), Random.Range(0, buttons.GetLength(1))]);
         }
     }
-    private IEnumerator ShowSequence(float waitTime)
+    private IEnumerator ShowSequence(float waitTime) // show the initial color sequence
     {
         canSelect = false;
         yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < colorSequence.Count; i++)
         {
+            // press buttons
             GameObject buttonUnpressed = colorSequence[i].transform.Find("ButtonUnpressed").gameObject;
             GameObject buttonPressed = colorSequence[i].transform.Find("ButtonPressed").gameObject;
             if(buttonPressed != null && buttonUnpressed != null)
@@ -158,7 +167,7 @@ public class SpawnButton : MiniGameBase
         }
         canSelect = true;
     }
-    public override void CoordinateLevel()
+    public override void CoordinateLevel() // change wait time based on difficulty
     {
         if (this.Level <= 40f) sequenceWaitTime = 1f;
         else if (this.Level <= 65f) sequenceWaitTime = 0.7f;
@@ -166,7 +175,7 @@ public class SpawnButton : MiniGameBase
     }
     private IEnumerator SequencePressButton(GameObject buttonUnpressed, GameObject buttonPressed, Color color)
     {
-
+        // press and unpress button
         audioSource.PlayOneShot(buttonSound);
         buttonUnpressed.SetActive(false);
         buttonPressed.SetActive(true);

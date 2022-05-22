@@ -15,8 +15,7 @@ public class TrashBag : MonoBehaviourPun
         playerData = FindObjectOfType<PlayerReportData>();
     }
 
-
-    public void AddTrash(Trash trash)
+    public void AddTrash(Trash trash) // if the player can still collect trash, add it to the bag
     {
         if (!CanCollect())
         {
@@ -24,15 +23,15 @@ public class TrashBag : MonoBehaviourPun
             return;
 
         }
-
-
         items.Add(trash);
+
+        //increase achievement
         Achievement achPickupTrash = FindObjectOfType<GlobalAchievements>().GetAchievement("Stop Littering");
         achPickupTrash.CurrentCount++;
 
-        photonView.RPC("ActivateTrash", RpcTarget.AllViaServer, trash.gameObject.GetPhotonView().ViewID, false);
+        photonView.RPC("ActivateTrash", RpcTarget.AllViaServer, trash.gameObject.GetPhotonView().ViewID, false); // send RPC to all clients
 
-        if (items.Count >= bagCapacity / 2)
+        if (items.Count >= bagCapacity / 2) // the fuller the bag is, the more chances that it will break
         {
             if (Random.Range(0, 12f) == 1)
             {
@@ -42,7 +41,7 @@ public class TrashBag : MonoBehaviourPun
         UIManager.Instance.SetTrashText(items.Count, bagCapacity);
     }
     [PunRPC]
-    private void ActivateTrash(int ID, bool active)
+    private void ActivateTrash(int ID, bool active) // set the trash active for the specific client
     {
         PhotonView.Find(ID).gameObject.SetActive(active);
     }
@@ -51,20 +50,19 @@ public class TrashBag : MonoBehaviourPun
         playerData.IncreaseTheNumberOfTrashDisposed(items.Count);
         StartCoroutine(StartEmptyBag());
     }
-    private IEnumerator StartEmptyBag()
+    private IEnumerator StartEmptyBag() // empty the trash bag over time
     {
         int count = items.Count;
         while (items.Count > 0)
         {
             items.RemoveAt(0);
-            Debug.Log(items.Count);
             UIManager.Instance.SetTrashText(items.Count, bagCapacity);
             yield return new WaitForSeconds(0.15f);
         }
-        ProgressBar.Instance.ChangeSustainibility(0.5f * count, false);
+        ProgressBar.Instance.ChangeSustainibility(0.5f * count, false); // change sustainability based on how much trash thrown away
 
     }
-    private void BreakBag()
+    private void BreakBag() // break the bag and spill all the trash around the player
     {
         foreach (Trash trash in items)
         {

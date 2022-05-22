@@ -1,12 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using Photon.Pun;
-using UnityEngine.UI;
-
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject[] lobbyActivation;
@@ -14,31 +9,27 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("nickname"))
-        {
-            Debug.Log("NICKNAME");
+        if (PlayerPrefs.HasKey("nickname")) // set the nickname if nickname exists
             nicknameInput.text = PlayerPrefs.GetString("nickname");
-        }
+
     }
 
 
     public void NewGame()
     {
-        //TODO: If save file exists, ask if it can be deleted (no --> go back to main menu)
-        // Yes --> create new save file, start tutorial
+        //set player nickname and show lobby canvas
         PhotonNetwork.LocalPlayer.NickName = nicknameInput.text;
-        //LevelManager.Instance.LoadScene("Office");
         foreach (GameObject go in lobbyActivation)
             go.SetActive(true);
 
         gameObject.SetActive(false);
         PhotonNetwork.NickName = nicknameInput.text;
     }
-    public void OnLanguageChange(TMP_Dropdown dropdown)
+    public void OnLanguageChange(TMP_Dropdown dropdown) // change localization settings based on language
     {
         LocalizationSettings.SelectedLocale = LocalizationSettings.AvailableLocales.Locales[dropdown.value];
     }
-    public void OnUserNameChange(TextMeshProUGUI nickname)
+    public void OnUserNameChange(TextMeshProUGUI nickname) // constantly update the nickname and save it
     {
         if (nickname.text.Length <= 1)
             PhotonNetwork.NickName = MasterManager.GameSettings.NickName;
@@ -48,7 +39,6 @@ public class MainMenu : MonoBehaviour
     }
     public void QuitGame()
     {
-        Debug.Log("Quit!");
         Application.Quit();
     }
 

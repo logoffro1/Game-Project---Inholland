@@ -41,12 +41,13 @@ public class MouseLook : MonoBehaviourPun
 
 
     }
-    private void LookAround()
+    private void LookAround() // use mouse input to look around in 3D
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
+        // clamp the rotation so the player can't look too up/down
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -28,7 +26,7 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance = null;
     public static UIManager Instance { get { return _instance; } }
     private Canvas canvas;
-    private void Awake()
+    private void Awake() // singleton
     {
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -56,6 +54,8 @@ public class UIManager : MonoBehaviour
         if (manager != null) manager.OnGameWon += ShowPopUp;
 
     }
+
+    // set player inventory
     public void SetPlayerInfo(TextMeshProUGUI trashText, TextMeshProUGUI flyersText, Canvas playerCanvas, Image trashFillImage)
     {
         this.trashText = trashText;
@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
         this.trashFillImage = trashFillImage;
     }
 
-    public void SetHoverText(string text)
+    public void SetHoverText(string text) // set the text when hovering over object
     {
         if(text == null)
         {
@@ -72,7 +72,6 @@ public class UIManager : MonoBehaviour
             return;
         }
         hoverText.text = $"(E) {text}";
-       // hoverText.enabled = isHovered;
     }
     public void ChangeCanvasShown()
     {
@@ -80,16 +79,16 @@ public class UIManager : MonoBehaviour
         playerCanvas.enabled = canvas.enabled;
     }
     public bool IsCanvasEnabled() => canvas.enabled;
-    public void SetTrashText(int currentAmount, int limit)
+    public void SetTrashText(int currentAmount, int limit) // set player trash count
     {
         trashText.text = $"{currentAmount} / {limit}";
         trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
     }
-    public void SetFlyersText(int currentAmount, int limit)
+    public void SetFlyersText(int currentAmount, int limit) // set player flyer count
     {
         flyersText.text = $"{currentAmount} / {limit}";
     }
-    public void BagFullAnim()
+    public void BagFullAnim() // show animation when the trash bag is full
     {
         Animator anim = trashText.gameObject.GetComponent<Animator>();
         anim.SetTrigger("BagFull");

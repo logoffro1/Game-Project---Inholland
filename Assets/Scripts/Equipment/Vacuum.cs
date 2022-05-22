@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -76,7 +75,7 @@ public class Vacuum : Equipment
         if (isActive)
         {
             audioSource.PlayOneShot(vacuumON);
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The cleaning lady").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("The cleaning lady").CurrentCount++; // increase achievement
         }
         else
             audioSource.PlayOneShot(vacuumOFF);
@@ -93,10 +92,10 @@ public class Vacuum : Equipment
     private void VacuumTrash(Collider other)
     {
         if (!isActive) return;
-        if (other.gameObject.TryGetComponent(out Trash trash))
+        if (other.gameObject.TryGetComponent(out Trash trash)) // check if trash is inside collider
         {
             if (trash.collected) return;
-            if (player.TryGetComponent(out TrashBag bag))
+            if (player.TryGetComponent(out TrashBag bag))// check if player has trash bag
             {
                 if (!bag.CanCollect())
                 {
@@ -110,11 +109,11 @@ public class Vacuum : Equipment
         }
     }
    
-    private IEnumerator VacuumTrash(Trash trash, TrashBag bag)
+    private IEnumerator VacuumTrash(Trash trash, TrashBag bag) // start vacuuming the trash
     {
         Transform camerTransform = player.transform.Find("Camera").transform;
 
-        while (true)
+        while (true) // move the trash towards the player 
         {
             float trashDistance = Vector3.Distance(trash.transform.position, camerTransform.position);
             if (trashDistance > 2f)
@@ -126,7 +125,7 @@ public class Vacuum : Equipment
             else
                 break;
         }
-        bag.AddTrash(trash);
+        bag.AddTrash(trash); // add trash in the bag
     }
 
 }
