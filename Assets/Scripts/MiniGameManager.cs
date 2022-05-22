@@ -69,7 +69,7 @@ public class MiniGameManager : MonoBehaviour
         if (IsPlaying) return;
         miniGameTime = TimerCountdown.Instance.GetRemainingTime();
         PlayerData.AddPlayedGames(miniGamePrefab);
-        UIManager.Instance.ChangeCanvasShown();
+        UIManager.Instance.TurnOnCanvas(false);
         miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 1000), miniGamePrefab.transform.rotation);
         MiniGameBase miniGameBase = miniGame.GetComponent<MiniGameBase>();
         miniGameBase.SetLevel();
@@ -101,7 +101,7 @@ public class MiniGameManager : MonoBehaviour
         MiniGameBase miniGameBase = go.GetComponent<MiniGameBase>();
         Destroy(go);
         IsPlaying = false;
-        UIManager.Instance.ChangeCanvasShown();
+        UIManager.Instance.TurnOnCanvas(true);
 
         //achievements
         FindObjectOfType<GlobalAchievements>().GetAchievement("Task Beginner").CurrentCount++;
@@ -135,7 +135,7 @@ public class MiniGameManager : MonoBehaviour
 
     public void FreezeScreen(bool wantToFreeze)
     {
-        UIManager.Instance.ChangeCanvasShown();
+        UIManager.Instance.TurnOnCanvas(!wantToFreeze);
         IsPlaying = wantToFreeze;
     }
 }
