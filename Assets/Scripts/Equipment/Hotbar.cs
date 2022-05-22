@@ -14,7 +14,6 @@ public class Hotbar : MonoBehaviour
     }
     private void Init()
     {
-        Debug.Log("Hotbar init");
         equipmentList.Add(playerGameObject.GetComponentInChildren<XrayGoggles>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<Vacuum>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<RunningShoes>());
