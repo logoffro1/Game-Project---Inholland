@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
+//This class is used to calculate player exp. Player exp determines which tools player can unlock.
 public class PlayerReputation : MonoBehaviourPun
 {
     public float CurrentReputationExp { get; private set; }
@@ -31,6 +32,7 @@ public class PlayerReputation : MonoBehaviourPun
         DontDestroyOnLoad(this.gameObject);
     }
 
+    //Check the rep level of the player. if player has enough rep level, propmt the pop up to inform player about unlocking the new tools.
     private void DetermineReputationLevel()
     {
         CurrentReputationExp += IncreaseExpAmount;
@@ -67,6 +69,8 @@ public class PlayerReputation : MonoBehaviourPun
         DetermineToolProgression();
     }
 
+    //Only use the rep popups on office for coherency.
+
     private void OnLevelWasLoaded(int level)
     {
         if (SceneManager.GetActiveScene().name == "NewOffice")
@@ -75,6 +79,7 @@ public class PlayerReputation : MonoBehaviourPun
         }
     }
 
+    //Simple switch case to see what is locked and what isnt per reputation level.
     private void DetermineToolProgression()
     {
         switch (CurrentRepLevel)
@@ -111,7 +116,7 @@ public class PlayerReputation : MonoBehaviourPun
     }
 
 
-
+    //This is used for increasing the exp for each players reputation level. every 100 points is 1 level.
     public void IncreaseEXP(int remainingSeconds, int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
         float increaseAmount = 5f;

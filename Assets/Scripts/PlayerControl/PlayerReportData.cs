@@ -4,11 +4,11 @@ using UnityEngine;
 using Photon.Pun;
 
 
-
+//This class is used for tracking each individual players data per game.
 public class PlayerReportData : MonoBehaviourPun
 {
 
-    //In the future,tracking of mission upgrades has to be done once that feature is available.
+    
 
     //Value of the progress bar when the day is over.
     public float FinalProgress { get; private set; }
@@ -27,11 +27,7 @@ public class PlayerReportData : MonoBehaviourPun
     public Vector3 startPosition;
     public int nrOfTrashDisposed { get; private set; }
 
-    //SewageMiniGame
-    //ColorBeepMiniGame
-    //DigTime Variant
-    //SolarShingleGamePrefab
-    //RewireMiniGame
+    
     void Start()
     {
         PlayedMinigames = new Dictionary<string, int>();
@@ -58,6 +54,7 @@ public class PlayerReportData : MonoBehaviourPun
     {
         this.nrOfTrashDisposed += nr;
     }
+    //Calculating the successful mini game number
     public int GetTheSuccessfulMinigameNumber()
     {
         int totalNumber = 0;
@@ -67,6 +64,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return totalNumber;
     }
+    //Calculating the failed mini game number
     public int GetTheFailedMinigameNumber()
     {
         int totalNumber = 0;
@@ -76,7 +74,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return totalNumber;
     }
-
+    //Calculating the total mini game number
     public int GetTotalTaskNumber()
     {
         int totalNumber = 0;
@@ -86,7 +84,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return totalNumber;
     }
-
+    //Calculating the most played mini game name
     public string GetTheMostPlayedMiniGameName(out int numberPlayed)
     {
         string mostPlayedMinigame = "";
@@ -102,6 +100,8 @@ public class PlayerReportData : MonoBehaviourPun
         numberPlayed = topPlayNumber;
         return returnPrefabTaskName(mostPlayedMinigame);
     }
+
+    //Calculation of map exp per game. minimum 2.7f and maximum 5f that gets added to the completion percentage of each map.
     public float calculateIncreaseAmount(int remainingSeconds ,int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
         float increaseAmount = 2.7f;
@@ -148,6 +148,7 @@ public class PlayerReportData : MonoBehaviourPun
             Debug.Log($"{minigamePrefab.name} added current wins : {NrOfTasksSuccess[minigamePrefab.name]}");
         }
     }
+    //Get Game numbers based on easy difficulty
     public int GetEasyGameNumbers()
     {
         int totalNumber = 0;
@@ -158,6 +159,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return totalNumber;
     }
+    //Get Game numbers based on medium difficulty
     public int GetMediumGameNumbers()
     {
         int totalNumber = 0;
@@ -168,6 +170,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return totalNumber;
     }
+    //Get Game numbers based on hard difficulty
     public int GetHardGameNumbers()
     {
         int totalNumber = 0;
@@ -195,6 +198,8 @@ public class PlayerReportData : MonoBehaviourPun
         }
     }
 
+
+    //Prefab name calculation for cleaning purposes that will be in end of the day report.
     public string returnPrefabTaskName(string prefabname)
     {
         string value = "";
@@ -225,7 +230,8 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return value;
     }
-    //Add calculateDifficulty methods later on
+ 
+    //Returning game difficulties based on prefabs.
     private MiniGameDifficulty returnDifficulty(string prefabname)
     {
         MiniGameDifficulty value;
@@ -256,9 +262,7 @@ public class PlayerReportData : MonoBehaviourPun
         }
         return value;
     }
-
-
-
+        
     public void AddPlayedGames(GameObject minigamePrefab)
     {
         if (PlayedMinigames.ContainsKey(minigamePrefab.name.ToString()))

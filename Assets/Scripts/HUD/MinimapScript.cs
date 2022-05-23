@@ -3,17 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//This script enables the mini map to notice mini games and give exact locations to the user.
 public class MinimapScript : MonoBehaviour
 {
-    //Needs to be private after pitch
+    
     private List<InteractableTaskObject> allInteractableObjects;
     public List<GameObject> allPrefabLocations;
     public Transform player;
     public GameObject imagePrefab;
     public GameObject minimap;
-    //This class still needs implementation for deleting the icons.
-    //InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>()
+
+
     private void Start()
     {
 
@@ -32,6 +32,7 @@ public class MinimapScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
     }
 
+    //This icon loops through all interactable objects and create an icon on the minimap in the same location.
     private void PlantAllQuestIcons()
     {
         foreach (InteractableTaskObject obj in allInteractableObjects)
@@ -44,7 +45,7 @@ public class MinimapScript : MonoBehaviour
             }
         }
     }
-
+    //Getting all interactable task objects into the list
     private void initializeTaskList()
     {
         foreach (InteractableTaskObject interactableContainers in FindObjectsOfType<InteractableTaskObject>())
@@ -68,7 +69,7 @@ public class MinimapScript : MonoBehaviour
         }
         return null;
     }
-
+    //After successfuly finishing a mini game, the icon has to be deleted.
     public void DeleteIcon(GameObject obj)
     {
         Destroy(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y + 20, obj.transform.position.z)));

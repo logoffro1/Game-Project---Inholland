@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WindTurbineMinigame : MiniGameBase
 {
+    //General class for controlling the win lose condition, styling and audio effects of the solar wind turbine welding mini game.
     public AudioSource audioSource;
     public AudioClip winClip;
     public AudioClip loseClip;

@@ -13,7 +13,7 @@ public enum Tetromino
     S,
     Z,
 }
-
+//Simple Data holder for tetris pieces. Every Tetromino type should have the following objects initialized and set.
 [System.Serializable]
 public struct TetrominoData
 {
