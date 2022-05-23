@@ -59,7 +59,6 @@ public class XrayGoggles : Equipment
                 playerRep = pr;
         }
         SetLocked(playerRep.IsXrayLocked);
-        Debug.Log("XRAY LOCKED: " + playerRep.IsXrayLocked);
     }
   
 

@@ -64,7 +64,7 @@ public class XRayVision : MonoBehaviour
         trashRenderer.SetActive(!trashRenderer.isActive);
         //canvas.enabled = xrayRenderer.isActive;
 
-        UIManager.Instance.ChangeCanvasShown();
+        UIManager.Instance.TurnOnCanvas(!xrayRenderer.isActive);
 
         if (xrayRenderer.isActive)
             StartCoroutine(AnimateVignette(1f, 0.4f));

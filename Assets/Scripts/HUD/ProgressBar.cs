@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon;
 
 public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallbacks
 {
@@ -112,8 +113,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
     {
         base.photonView.RequestOwnership();
-        /*        slider.value += sustainabilityChange;
-                fill.color = gradient.Evaluate(slider.normalizedValue);*/
+
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
         UpdateProgressPercent();
     }
@@ -128,7 +128,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(GetSlideValue());
+            stream.SendNext(slider.value);
         }
         else if(stream.IsReading)
         {
@@ -154,5 +154,6 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     public void OnOwnershipTransferFailed(PhotonView targetView, Photon.Realtime.Player senderOfFailedRequest)
     {
         //throw new System.NotImplementedException();
+        Debug.Log("FAILED OWNERSHIP TRANSFER - PROGRESS BAR");
     }
 }

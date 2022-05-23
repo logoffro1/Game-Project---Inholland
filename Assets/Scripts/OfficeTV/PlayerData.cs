@@ -6,6 +6,7 @@ using Photon.Pun;
 public class PlayerData : MonoBehaviourPun
 {
     public bool IsCurrentlyInMission;
+    public string IsInDistrictName;
     public DistrictEnum IsInDistrict;
     public GameMode IsInGameMode;
     public string GoalText;
