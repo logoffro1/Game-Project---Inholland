@@ -156,14 +156,13 @@ public class TaskList : MonoBehaviour
         List<TaskObjectType> allTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
         List<TaskObjectType> cityTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
         cityTypes.Remove(TaskObjectType.WindTurbine);
+        
 
+        //randomly picks a type of task, then randomly assigns an amount of them to do between 2 and 6
+        //which is then removed from the list and done again 3 times
         for (int i = 0; i < 3; i++)
         {
             if (SceneManager.GetActiveScene().name == "CityCenter" || SceneManager.GetActiveScene().name == "GameUKDay")
-            //randomly picks a type of task, then randomly assigns an amount of them to do between 2 and 6
-            //which is then removed from the list and done again 3 times
-            TaskObjectType type = allTypes[UnityEngine.Random.Range(0, allTypes.Count)];
-            if (!taskObjectTypes.ContainsKey(type))
             {
                 TaskObjectType type = cityTypes[UnityEngine.Random.Range(0, cityTypes.Count)];
                 if (!taskObjectTypes.ContainsKey(type))

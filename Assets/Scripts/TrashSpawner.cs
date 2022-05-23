@@ -28,6 +28,7 @@ public class TrashSpawner : MonoBehaviour
             GameObject trash = trashList[Random.Range(0, trashList.Length)];
 
             GameObject spawnedTrash = PhotonNetwork.Instantiate(trash.name, spawnPos, trash.transform.rotation);
+
             spawnedTrash.GetComponent<Trash>().SetLocalizedString(localizedStringEvent);
             yield return null;
             amount++;

@@ -53,6 +53,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
+            p.GetComponentInChildren<Canvas>().enabled = true;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = true;
@@ -66,6 +67,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         CloseHowToPlay();
+        CloseVolumeUI();
         isPaused = false;
     }
     //This method is the opposite of resume, it pauses the game,
@@ -76,9 +78,11 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
+            p.GetComponentInChildren<Canvas>().enabled = false;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = false;
+                
                 break;
             }
         }

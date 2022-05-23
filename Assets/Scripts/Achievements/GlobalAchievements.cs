@@ -32,7 +32,7 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         achievements.Add(new Achievement("Detour around Alkmaar","detour", "Travel a total of 5km in the city center", 5));
         achievements.Add(new Achievement("Task Beginner","taskbeginner", "Complete 10 tasks", 10));
         achievements.Add(new Achievement("Task Enthusiast","taskenthusiast", "Complete 25 tasks", 25));
-        achievements.Add(new Achievement("Task Expert","theexpert", "Complete 50 tasks", 50));
+        achievements.Add(new Achievement("Task Expert","taskexpert", "Complete 50 tasks", 50));
         achievements.Add(new Achievement("Task Master","taskmaster", "Complete 100 tasks", 100));
         achievements.Add(new Achievement("Wallhacks","wallhacks", "Use the XRay Goggles for the first time", 1));
         achievements.Add(new Achievement("Run Forest, Run!","forest", "Use the Running Shoes for the first time", 1));
