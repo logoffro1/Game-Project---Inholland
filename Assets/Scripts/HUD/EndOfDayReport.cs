@@ -22,7 +22,6 @@ public class EndOfDayReport : MonoBehaviour
     public Text TotalTasknumber;
     public Text DayCondition;
     public Text timeBonus;
-    public Text Income;
     private PlayFabManager playFabManager;
     public AudioClip DayReportAudio;
     public GameObject ReturnLobbyButton;
@@ -123,7 +122,6 @@ public class EndOfDayReport : MonoBehaviour
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
         SliderValue.text += $"{ProgressBar.Instance.GetSlideValue().ToString("F2")}%";
         TotalTasknumber.text += $"{playerReportData.GetTotalTaskNumber()}";
-        Income.text = $"{GetIncome()} SP"; //SP == Sustainability Points -> change
 
         writePlayFabData();
         MostPlayedMinigame.text += $"{playerReportData.GetTheMostPlayedMiniGameName(out playNr)} : {playNr} times";
@@ -137,7 +135,7 @@ public class EndOfDayReport : MonoBehaviour
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }
 
-   
+
     private string GetSecondsRemainingText()
     {
         int remainingTime;
@@ -295,25 +293,4 @@ public class EndOfDayReport : MonoBehaviour
             return " Failed";
         }
     }
-
-    //This is just for demonstration purposes. It will be deleted prior to goldmaster.
-    private string GetIncome()
-    {
-        if (ProgressBar.Instance.GetSlideValue() <= 80)
-        {
-            return "0";
-        }
-
-        return String.Format("{0:0.0}",
-            ProgressBar.Instance.GetSlideValue()
-            + TimerCountdown.Instance.GetRemainingTime()
-            + playerReportData.GetTotalTaskNumber()
-            + playerReportData.GetTheSuccessfulMinigameNumber()
-            - playerReportData.GetTheFailedMinigameNumber());
-    }
-
-
-
-
-
 }

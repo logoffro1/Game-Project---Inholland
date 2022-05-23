@@ -56,7 +56,7 @@ public class SetupMission : MonoBehaviour
                 break;
             case GameMode.Crazy:
                 TimerCountdown.Instance.SecondsLeft = (40);
-                player.OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame = 15; //gives ten secs after a minigame
+                StartCoroutine(UpgradeSet(player));
                 break;
             default:
                 break;
@@ -64,5 +64,9 @@ public class SetupMission : MonoBehaviour
         yield return null;
 
     }
-
+    private IEnumerator UpgradeSet(Player player)
+    {
+        yield return new WaitForSeconds(2f);
+        player.OneOffUpgradeList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).FirstOrDefault().TimeAddAfterMiniGame = 15; //gives ten secs after a minigame
+    }
 }

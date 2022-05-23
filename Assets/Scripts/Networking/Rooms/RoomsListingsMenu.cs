@@ -49,7 +49,7 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
         if (roomListing.RoomInfo.PlayerCount < roomListing.RoomInfo.MaxPlayers)
         { // if there is room, load the new scene and join room
             PhotonNetwork.JoinRoom(roomListing.RoomInfo.Name);
-            LevelManager.Instance.LoadScenePhoton("Office",false);
+            LevelManager.Instance.LoadScenePhoton("NewOffice",false);
         }
         
 

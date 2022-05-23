@@ -41,6 +41,14 @@ public class Player : MonoBehaviourPun
     }
     private void OnLevelWasLoaded()
     {
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            if(PhotonNetwork.NetworkClientState != Photon.Realtime.ClientState.Leaving)
+                PhotonNetwork.LeaveRoom();
+            DestroyImmediate(gameObject);
+            return;
+        }
         CastRay.Instance.CanInteract = true;
         //Discord status change happens on every scene change before LoadSceneAsync();
         if (DiscordController.Instance.IsDiscordRunning())

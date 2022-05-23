@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class GlobalAchievements : MonoBehaviour // manage all achievements
 {
@@ -8,8 +9,11 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
     private AudioSource audioSource;
     private List<Achievement> achievements = new List<Achievement>();
 
+    private LocalizationSettings locSettings;
+
     private void Awake() // persistent singleton
     {
+        PlayerPrefs.DeleteAll();
         if (Instance == null)
         {
             Instance = this;
@@ -67,6 +71,12 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         }
         return null;
     }
+    private async void InitLoc()
+    {
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        locSettings = handle.Result;
+    }
     public List<Achievement> GetAllAchievements() => achievements;
     private IEnumerator TriggerAchievement(Achievement ach) // achievement unlocked
     {
@@ -75,7 +85,19 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         audioSource.Play();
         if(UIManager.Instance != null)
         {
-            UIManager.Instance.ShowPopUp($"Achievement Unlocked: {ach.Title}");
+            InitLoc();
+            switch (locSettings.GetSelectedLocale().Identifier.Code.ToString().ToLower())
+            {
+                case "nl":
+                    UIManager.Instance.ShowPopUp($"Prestatie ontgrendeld: {ach.Title}");
+                    break;
+                case "ro":
+                    UIManager.Instance.ShowPopUp($"Realizare deblocata: {ach.Title}");
+                    break;
+                default:
+                    UIManager.Instance.ShowPopUp($"Achievement Unlocked: {ach.Title}");
+                    break;
+            }
         }
         yield return null;
 
