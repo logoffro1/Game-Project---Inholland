@@ -167,6 +167,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.7735849
       objectReference: {fileID: 0}
+    - target: {fileID: 7150216075566228104, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
+    - target: {fileID: 7834920513173074660, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
     - target: {fileID: 7268036113774713522, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_IsActive
       value: 0

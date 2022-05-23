@@ -23,9 +23,5 @@ public class OfficeTV : InteractableObject
     public override void DoAction(GameObject player)
     {
         officeLevels.ShowPanel(true);
-        GameObject.FindObjectOfType<MouseLook>().canRotate = false;
-        GameObject.FindObjectOfType<PlayerMovement>().canMove = false;
-        UIManager.Instance.ChangeCanvasShown();
-
     }
 }

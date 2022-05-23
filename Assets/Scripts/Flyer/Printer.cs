@@ -5,7 +5,6 @@ public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
 
-    private bool isPanelActive = false;
     public GameObject PrinterCanvas;
     public GameObject ChoicePanel;
     public GameObject NoPanel;
@@ -25,11 +24,21 @@ public class Printer : InteractableObject
 
     private void ShowPanel(bool show)
     {
-        isPanelActive = !isPanelActive;
+        CastRay.Instance.CanInteract = !show;
+
         PrinterCanvas.SetActive(show);
+
+        Cursor.visible = show;
+
+        GameObject.FindObjectOfType<MouseLook>().canRotate = !show;
+        GameObject.FindObjectOfType<PlayerMovement>().canMove = !show;
+
+        UIManager.Instance.TurnOnCanvas(!show);
 
         if (show)
         {
+            Cursor.lockState = CursorLockMode.None;
+
             if (PrinterCanvas.GetComponent<FlyerMaking>().IsDoneForToday)
             {
                 NoPanel.SetActive(true);
@@ -39,12 +48,11 @@ public class Printer : InteractableObject
                 ChoicePanel.SetActive(true);
             }
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = show;
-        GameObject.FindObjectOfType<MouseLook>().canRotate = !show;
-        GameObject.FindObjectOfType<PlayerMovement>().canMove = !show;
-        UIManager.Instance.ChangeCanvasShown();
     }
 
     public void ReturnToOpenWorld()

@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject howToPlayBtn;
     public GameObject returnToOfficeBtn;
     public GameObject returntoMainMenuBtn;
+    public GameObject volumeUI;
+    public GameObject volumeButton;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +86,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         howToPlayBtn.SetActive(false);
         returnToOfficeBtn.SetActive(false);
         returntoMainMenuBtn.SetActive(false);
+        volumeButton.SetActive(false);
     }
 
     public void CloseHowToPlay()
@@ -92,6 +95,23 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         howToPlayBtn.SetActive(true);
         returnToOfficeBtn.SetActive(true);
         returntoMainMenuBtn.SetActive(true);
+        volumeButton.SetActive(true);
+    }
+    public void OpenVolumeUI()
+    {
+        volumeUI.SetActive(true);
+        howToPlayBtn.SetActive(false);
+        returnToOfficeBtn.SetActive(false);
+        returntoMainMenuBtn.SetActive(false);
+        volumeButton.SetActive(false);
+    }
+    public void CloseVolumeUI()
+    {
+        volumeUI.SetActive(false);
+        howToPlayBtn.SetActive(true);
+        returnToOfficeBtn.SetActive(true);
+        returntoMainMenuBtn.SetActive(true);
+        volumeButton.SetActive(true);
     }
 
     public void ReturnToOffice()
@@ -118,6 +138,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
 
     }
+  
 
 
 

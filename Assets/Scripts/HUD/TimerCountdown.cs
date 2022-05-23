@@ -6,9 +6,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 using Photon.Pun;
-public class TimerCountdown : MonoBehaviourPun
+public class TimerCountdown : MonoBehaviourPun, IPunObservable
 {
-    private int secondsMax = 8 * 60; 
+    private int secondsMax = 8 * 60;
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
@@ -55,23 +55,27 @@ public class TimerCountdown : MonoBehaviourPun
     public event EventHandler OnCountdownEnd;
     private GameMode gameMode;
 
-/*    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
         {
             stream.SendNext(secondsLeft);
+            stream.SendNext(startCountDownLeft);
         }
         else if (stream.IsReading)
         {
             secondsLeft = (int)stream.ReceiveNext();
             OnSecondChange?.Invoke(secondsLeft);
+
+            startCountDownLeft = (int)stream.ReceiveNext();
+            OnStartCountdownChange?.Invoke(startCountDownLeft.ToString());
         }
-    }*/
+    }
     void Start()
     {
         secondsLeft = secondsMax;
         MiniGameManager.Instance.FreezeScreen(true);
-        foreach(PlayerData pd in FindObjectsOfType<PlayerData>())
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
         {
             if (pd.photonView.IsMine)
             {
@@ -83,11 +87,6 @@ public class TimerCountdown : MonoBehaviourPun
     }
     private IEnumerator StartCountDown()
     {
-        /*        bool allPlayersReady = (bool)PhotonNetwork.LocalPlayer.CustomProperties["ready"];
-                while (!allPlayersReady)
-                {
-                    yield return new WaitForSeconds(0f);
-                }*/
         while (startCountDownLeft > 0)
         {
             yield return new WaitForSeconds(1);
@@ -118,7 +117,8 @@ public class TimerCountdown : MonoBehaviourPun
                 break;
             }
             yield return new WaitForSeconds(1);
-            if (gameMode != GameMode.Chill) secondsLeft -= 1;
+            if (PhotonNetwork.IsMasterClient)
+                if (gameMode != GameMode.Chill) secondsLeft -= 1;
             OnSecondChange?.Invoke(secondsLeft);
 
             VisualPollution.Instance.UpdateVisualPollution(ProgressBar.Instance.GetSlideValue());
@@ -130,5 +130,4 @@ public class TimerCountdown : MonoBehaviourPun
     {
         return secondsLeft;
     }
-
 }

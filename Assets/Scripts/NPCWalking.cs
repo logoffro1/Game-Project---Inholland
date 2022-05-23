@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-public class NPCWalking : MonoBehaviour
+using Photon.Pun;
+public class NPCWalking : MonoBehaviourPun
 {
 
     [SerializeField] private Transform[] targetPositions;
@@ -12,11 +13,13 @@ public class NPCWalking : MonoBehaviour
 
     private void Awake()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
         navMeshAgent = GetComponent<NavMeshAgent>();
         HeadToNextWaypoint();
     }
     void Update()
     {
+        if (!PhotonNetwork.IsMasterClient) return;
         if (!navMeshAgent.pathPending || Vector3.Distance(navMeshAgent.destination,transform.position) <= 3f)
         {
             HeadToNextWaypoint();
