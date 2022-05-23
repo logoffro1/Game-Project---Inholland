@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 //ADD NEW UPGRADE TO SWITCH CASE OF CONSTRUCTOR, AND ADD CORREDONPOSING METHOD
-public class OneOffUpgrade 
+public class OneOffUpgrade
 {
+    private OneOffUpgradeContent[] contentList;
     private OneOffUpgradesEnum upgrade;
     public OneOffUpgradesEnum Upgrade { get { return upgrade; } private set { upgrade = value; } }
 
@@ -38,8 +40,8 @@ public class OneOffUpgrade
         level = 0;
     }
 
-    public OneOffUpgrade(OneOffUpgradesEnum upgrade, Player player, PlayerMovement playerMovement, MiniGameBase miniGameBase) 
-        :this(upgrade)
+    public OneOffUpgrade(OneOffUpgradesEnum upgrade, OneOffUpgradeContent[] oneOffUpgradeContentArray,Player player, PlayerMovement playerMovement, MiniGameBase miniGameBase) 
+        :this(upgrade, oneOffUpgradeContentArray)
     {
         this.player = player;
         this.playerMovement = playerMovement;
@@ -47,39 +49,38 @@ public class OneOffUpgrade
     }
 
 
-    public OneOffUpgrade(OneOffUpgradesEnum upgrade)
+    public OneOffUpgrade(OneOffUpgradesEnum upgrade, OneOffUpgradeContent[] oneOffUpgradeContentArray)
     {
+        this.contentList = oneOffUpgradeContentArray;
         this.upgrade = upgrade;
         level = 0;
         LevelOffSet = 0f;
         PointsOffSet = 0f;
-
+        OneOffUpgradeContent[] array = null;
         //ADD NEW UPGRADE TO SWITCH CASE
         switch (upgrade)
         {
             case OneOffUpgradesEnum.Speed:
                 levelUpFunction = SpeedLevelUp;
-                title = "Walking speed increase";
-                description = "You get to walk faster, maybe even up to a sprint?!";
+                array = contentList.Where(x => x.Upgrade == OneOffUpgradesEnum.Speed).ToArray();
                 break;
             case OneOffUpgradesEnum.MinigameDifficultyDecrease:
                 levelUpFunction = MinigameDifficultyDecreaseLevelUp;
-                title = "Minigames' difficulty decrease";
-                description = "All minigames will get easier, and you'll earn the same amount of points!";
+                array = contentList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigameDifficultyDecrease).ToArray();
                 break;
             case OneOffUpgradesEnum.MinigamePointsIncrease:
                 levelUpFunction = MinigamePointsIncreaseLevelUp;
-                title = "Minigames' points increase";
-                description = "Get more points when you successfully complete a minigame!";
+                array = contentList.Where(x => x.Upgrade == OneOffUpgradesEnum.MinigamePointsIncrease).ToArray();
                 break;
             case OneOffUpgradesEnum.AddedTimeAfterMinigame:
                 levelUpFunction = AddedTimeAfterMinigameLevelUp;
-                title = "Added time after minigame";
-                description = "You get some time if you finish a minigame successfully!";
+                array = contentList.Where(x => x.Upgrade == OneOffUpgradesEnum.AddedTimeAfterMinigame).ToArray();
                 break;
             default:
                 break;
         }
+        title = array[0].isTitle ? array[0].gameObject.GetComponent<Text>().text : array[1].gameObject.GetComponent<Text>().text;
+        description = array[0].isTitle ? array[1].gameObject.GetComponent<Text>().text : array[0].gameObject.GetComponent<Text>().text;
     }
 
     public void PerformLevelUp()

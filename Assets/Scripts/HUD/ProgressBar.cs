@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using Photon;
 
+//This class is used for the proggress bar slider to determine the progression of the game. It is used in many classes for tracking the state of the game.
 public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallbacks
 {
 
+    
     [SerializeField] private Text _SliderText;
 
     [SerializeField] private Slider slider;
@@ -22,6 +25,8 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     public static ProgressBar Instance { get { return _instance; } }
 
     private bool inCoroutine = false;
+
+    //Initialize the fields
     private void Start()
     {
         slider = gameObject.GetComponent<Slider>();
@@ -49,7 +54,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     {
         return slider.maxValue;
     }
-
+    //These values are optimal for a good gaming experience. However, it can be changed for different purposes.
     private void SliderInit()
     {
         slider.maxValue = 100f;
@@ -60,9 +65,10 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
         _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
+   
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        if (photonView == null || !photonView.IsMine) return;
         if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(AmountDecreasingPerSecond);
@@ -74,6 +80,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
         _SliderText.text = slider.value.ToString("0.00") + "%";
     }
 
+    //This method allows for sustainibility bar to  decrease a small amount. 
     private void DecreaseSustainibilityPerSecond(float sustainibilityValue)
     {
         if (inCoroutine) return;
@@ -85,7 +92,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
         }
         UpdateProgressPercent();
     }
-
+    //Animation for slider. It only waits for mini games because of the success fail animation they would miss the progress bar animation. isMiniGame check is done for better user experience.
     private IEnumerator ApplySliderAnimation(float target, bool isMiniGame)
     {
         inCoroutine = true;
@@ -108,12 +115,11 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
         }
         inCoroutine = false;
     }
-
+    //Main method for changing the sustainibility. Often used upon win or lose conditions, soft tasks.
     public void ChangeSustainibility(float sustainabilityChange, bool isMiniGame)
     {
         base.photonView.RequestOwnership();
-        /*        slider.value += sustainabilityChange;
-                fill.color = gradient.Evaluate(slider.normalizedValue);*/
+
         StartCoroutine(ApplySliderAnimation(slider.value + sustainabilityChange, isMiniGame));
         UpdateProgressPercent();
     }
@@ -128,7 +134,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(GetSlideValue());
+            stream.SendNext(slider.value);
         }
         else if(stream.IsReading)
         {
@@ -154,5 +160,6 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
     public void OnOwnershipTransferFailed(PhotonView targetView, Photon.Realtime.Player senderOfFailedRequest)
     {
         //throw new System.NotImplementedException();
+        Debug.Log("FAILED OWNERSHIP TRANSFER - PROGRESS BAR");
     }
 }

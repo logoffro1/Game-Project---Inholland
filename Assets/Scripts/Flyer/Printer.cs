@@ -6,8 +6,6 @@ public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
 
-    //All teh different canvas/panels that changes according to printer path
-    private bool isPanelActive = false;
     public GameObject PrinterCanvas;
     public GameObject ChoicePanel;
     public GameObject NoPanel;
@@ -29,11 +27,21 @@ public class Printer : InteractableObject
     //Shows the panel from the editor
     private void ShowPanel(bool show)
     {
-        isPanelActive = !isPanelActive;
+        CastRay.Instance.CanInteract = !show;
+
         PrinterCanvas.SetActive(show);
+
+        Cursor.visible = show;
+
+        GameObject.FindObjectOfType<MouseLook>().canRotate = !show;
+        GameObject.FindObjectOfType<PlayerMovement>().canMove = !show;
+
+        UIManager.Instance.TurnOnCanvas(!show);
 
         if (show)
         {
+            Cursor.lockState = CursorLockMode.None;
+
             //If already printed, don't let them print more
             if (PrinterCanvas.GetComponent<FlyerMaking>().IsDoneForToday)
             {
@@ -44,12 +52,11 @@ public class Printer : InteractableObject
                 ChoicePanel.SetActive(true);
             }
         }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = show;
-        GameObject.FindObjectOfType<MouseLook>().canRotate = !show;
-        GameObject.FindObjectOfType<PlayerMovement>().canMove = !show;
-        UIManager.Instance.ChangeCanvasShown();
     }
 
     //Sets the correct panel if player goes back to office

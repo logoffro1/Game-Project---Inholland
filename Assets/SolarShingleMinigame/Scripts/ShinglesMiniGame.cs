@@ -6,6 +6,7 @@ using UnityEngine.Localization.Settings;
 
 public class ShinglesMiniGame : MiniGameBase
 {
+    //General class for controlling the win lose condition, styling and audio effects of the solar shingle tetris mini game.
     public AudioSource audioSource;
     public AudioClip winClip;
     public AudioClip loseClip;
@@ -20,12 +21,13 @@ public class ShinglesMiniGame : MiniGameBase
 
     }
 
-
+    //Its a hard difficulty game
     public override void DetermineGameDifficulty()
     {
         this.gameDifficulty = MiniGameDifficulty.Hard;
     }
     //abstract methods
+    //Level configuration is made and image and required lines are edited accordingly.
     public override void CoordinateLevel()
     {
         Debug.Log(((int)this.Level / 14));

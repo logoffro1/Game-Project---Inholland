@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-public class SpawnManager : MonoBehaviour
+public class SpawnManager : MonoBehaviour // spawn trash
 {
     [SerializeField] private GameObject[] toxicPrefab;
 
@@ -19,15 +18,15 @@ public class SpawnManager : MonoBehaviour
     {
         this.corridorSpeed = corridorSpeed;
     }
-    private void SpawnToxic()
+    private void SpawnToxic() // spawn trash prefab
     {
-        GameObject go = toxicPrefab[Random.Range(0, toxicPrefab.Length)];
-        Vector3 spawnPos = new Vector3(xSpawn, Random.Range(-0.5f, 0.17f), transform.parent.position.z);
-       GameObject trash = Instantiate(go, spawnPos, go.transform.rotation, transform);
-        trash.GetComponent<Collectible>().ChangeCoridorSpeed(corridorSpeed);
+        GameObject go = toxicPrefab[Random.Range(0, toxicPrefab.Length)]; // get random trash
+        Vector3 spawnPos = new Vector3(xSpawn, Random.Range(-0.5f, 0.17f), transform.parent.position.z); // set random position
+       GameObject trash = Instantiate(go, spawnPos, go.transform.rotation, transform); // spawn
+        trash.GetComponent<Collectible>().ChangeCoridorSpeed(corridorSpeed); // set trash speed
     }
 
-    private IEnumerator SpawnLoop()
+    private IEnumerator SpawnLoop() // continous spawn
     {
         while (true)
         {

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
+using UnityEngine.Localization.Settings;
 
+//This class is used to calculate player exp. Player exp determines which tools player can unlock.
 public class PlayerReputation : MonoBehaviourPun
 {
     public float CurrentReputationExp { get; private set; }
@@ -12,9 +14,13 @@ public class PlayerReputation : MonoBehaviourPun
     public float IncreaseExpAmount { get; private set; }
     public int CurrentRepLevel { get; private set; }
 
+
     [SerializeField] public bool IsXrayLocked { get; private set; }
     [SerializeField] public bool IsVacuumLocked { get; private set; }
     [SerializeField] public bool IsShoeLocked { get; private set; }
+
+    private LocalizationSettings locSettings;
+
 
     private void Awake()
     {
@@ -29,8 +35,17 @@ public class PlayerReputation : MonoBehaviourPun
     private void Start()
     {
         DontDestroyOnLoad(this.gameObject);
+        InitLoc();
     }
 
+    private async void InitLoc()
+    {
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        locSettings = handle.Result;
+    }
+
+    //Check the rep level of the player. if player has enough rep level, propmt the pop up to inform player about unlocking the new tools.
     private void DetermineReputationLevel()
     {
         CurrentReputationExp += IncreaseExpAmount;
@@ -46,26 +61,59 @@ public class PlayerReputation : MonoBehaviourPun
 
             DetermineToolProgression();
 
-
             Debug.Log($"old locked {oldShoe}, new lock {IsShoeLocked}");
             if (oldShoe && !IsShoeLocked)
             {
-                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked running shoes! Now you are able to run faster for a period of time!!");
+                switch (locSettings.GetSelectedLocale().Identifier.Code.ToString().ToLower())
+                {
+                    case "nl":
+                        UIManager.Instance.ShowPopUp("Gefeliciteerd!! Je hebt hardloopschoenen ontgrendeld! Nu kun je een tijdje sneller rennen!!");
+                        break;
+                    case "ro":
+                        UIManager.Instance.ShowPopUp("Felicit?ri!! Ai deblocat pantofi de alergare! Acum po?i s? alergi mai repede pentru o perioad? de timp!!");
+                        break;
+                    default:
+                        UIManager.Instance.ShowPopUp("Congratulations!! You have unlocked running shoes! Now you are able to run faster for a period of time!!");
+                        break;
+                }
             }
             else if (oldVacuum && !IsVacuumLocked)
             {
-                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked Vacuum cleaner! Now you are able to pickup trash faster and easier!!");
+                switch (locSettings.GetSelectedLocale().Identifier.Code.ToString().ToLower())
+                {
+                    case "nl":
+                        UIManager.Instance.ShowPopUp("Gefeliciteerd!! Je hebt Stofzuiger ontgrendeld! Nu kunt u afval sneller en gemakkelijker ophalen!!");
+                        break;
+                    case "ro":
+                        UIManager.Instance.ShowPopUp("Felicit?ri!! Ai deblocat Aspiratorul! Acum po?i ridica gunoiul mai repede ?i mai u?or!!");
+                        break;
+                    default:
+                        UIManager.Instance.ShowPopUp("Congratulations!! You have unlocked Vacuum cleaner! Now you are able to pickup trash faster and easier!!");
+                        break;
+                }
             }
             else if (oldXray && !IsXrayLocked)
             {
-                UIManager.Instance.ShowPopUp("Congrats!! You have unlocked the XRay goggles. Now you are able to see all the games you can play around you!!");
+                switch (locSettings.GetSelectedLocale().Identifier.Code.ToString().ToLower())
+                {
+                    case "nl":
+                        UIManager.Instance.ShowPopUp("Gefeliciteerd!! Je hebt de X Ray-bril ontgrendeld. Nu kun je alle spellen zien die je om je heen kunt spelen!!");
+                        break;
+                    case "ro":
+                        UIManager.Instance.ShowPopUp("Felicit?ri!! Ai deblocat ochelarii cu raze X. Acum po?i vedea toate jocurile pe care le po?i juca în jurul t?u!!");
+                        break;
+                    default:
+                        UIManager.Instance.ShowPopUp("Congratulations!! You have unlocked the X Ray goggles. Now you are able to see all the games you can play around you!!");
+                        break;
+                }
             }
-
         }
         //Debug.Log($"Current exp : {CurrentReputationExp} , Current Level : {CurrentRepLevel} ");
         IncreaseExpAmount = 0;
         DetermineToolProgression();
     }
+
+    //Only use the rep popups on office for coherency.
 
     private void OnLevelWasLoaded(int level)
     {
@@ -75,6 +123,7 @@ public class PlayerReputation : MonoBehaviourPun
         }
     }
 
+    //Simple switch case to see what is locked and what isnt per reputation level.
     private void DetermineToolProgression()
     {
         switch (CurrentRepLevel)
@@ -111,7 +160,7 @@ public class PlayerReputation : MonoBehaviourPun
     }
 
 
-
+    //This is used for increasing the exp for each players reputation level. every 100 points is 1 level.
     public void IncreaseEXP(int remainingSeconds, int nrOfHardGames, int nrOfMediumGames, int nrOfEasyGames, bool dayFailed)
     {
         float increaseAmount = 5f;

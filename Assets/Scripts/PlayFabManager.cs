@@ -7,13 +7,13 @@ using System;
 
 public  class PlayFabManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // This class helps tracking play fab data and sharing it with developers and stakeholders for development purposes.
     void Start()
     {
         Login();
         /*PlayFabSettings.staticPlayer;*/
     }
-
+    //For logging into play fab
   void Login()
     {
         var request = new LoginWithCustomIDRequest
@@ -37,10 +37,9 @@ public  class PlayFabManager : MonoBehaviour
     void OnLeaderBoardSent(UpdatePlayerStatisticsResult result)
     {
     }
-   /* void OnEndOfDayReportSuccess(UpdatePlayerStatisticsResult result)
-    {
-        Debug.Log("End of the day report is sent from End of the day report.");
-    }*/
+    //For leaderboard implementation
+    //(if its neededyou can change the minigameswon part with a string variable and have a dynamic method for all leaderboards)
+    //This is just a simple implementation to make the game leaderboard scalable for future.
     public void SendLeaderBoard(int score)
     {
         var request = new UpdatePlayerStatisticsRequest()
@@ -56,7 +55,8 @@ public  class PlayFabManager : MonoBehaviour
         };
         PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderBoardSent, OnError);
     }
-
+    //This is used for almost all of the data tracking of the game. It simply has an event name as a key and a dictionary of collective data that is to be sent to playfab. 
+    //Rest is handled by the playfab api
     public void WriteCustomPlayerEvent(string eventName,Dictionary<string,object> playerData)
     {
         PlayFabClientAPI.WritePlayerEvent(new WriteClientPlayerEventRequest
@@ -66,23 +66,23 @@ public  class PlayFabManager : MonoBehaviour
         }, (e) => Debug.Log("Event Successfully recorded"),
         (error) => Debug.Log(error.GenerateErrorReport()));
 }
-
+    //Event for getting user data
     public void GetUserData()
     {
         PlayFabClientAPI.GetUserData(new GetUserDataRequest(), OnReceivedData, OnError);
     }
-
+    //Event for receiving user data
     private void OnReceivedData(GetUserDataResult obj)
     {
         Debug.Log("Data Received");
     }
-
+    //Event for sending user data
     private void OnEndOfReportSent(UpdateUserDataResult obj)
     {
         Debug.Log("Data sent from end of day report");
     }
 
-    //This code is an abomination. It has to be eradicated from the face of the earth. It will be gone by beta.
+    //This is simply for writing custom event names.
     public string returnPrefabTaskName(string prefabname)
     {
         string value = "";

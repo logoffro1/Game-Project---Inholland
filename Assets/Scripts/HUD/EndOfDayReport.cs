@@ -9,6 +9,9 @@ using Photon.Pun;
 
 public class EndOfDayReport : MonoBehaviour
 {
+    //This is a class for prompting all the collected data per match to the user. This data is shown separately for each user.
+
+    //Text values for each data type collected
     public Text DistanceTraveled;
     public Text Location;
     public Text PlayerName;
@@ -25,7 +28,7 @@ public class EndOfDayReport : MonoBehaviour
     public GameObject ReturnLobbyButton;
 
 
-
+    //Objects for data tracking
     private PlayerReportData playerReportData;
     private PlayerReputation playerRep;
     private bool dayFailed = false;
@@ -35,12 +38,15 @@ public class EndOfDayReport : MonoBehaviour
 
     void Start()
     {
+        //Only the lobby leader can return to lobby
         if (PhotonNetwork.IsMasterClient)
         {
             ReturnLobbyButton.SetActive(true);
         }
+
         GetLanguage();
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        //For all players get the playerReportData object to track their data
         foreach (GameObject p in players)
         {
             if (p.GetComponent<Player>().photonView.IsMine)
@@ -50,6 +56,7 @@ public class EndOfDayReport : MonoBehaviour
                 break;
             }
         }
+
         foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
         {
             if (pd.photonView.IsMine)
@@ -76,12 +83,14 @@ public class EndOfDayReport : MonoBehaviour
         }
         dayFailed = GetWinCondition();
 
+        //Calculate the exp that is gained for this match
         playerRep.IncreaseEXP(TimerCountdown.Instance.SecondsLeft,
             playerReportData.GetHardGameNumbers(),
             playerReportData.GetMediumGameNumbers(),
             playerReportData.GetEasyGameNumbers(),
             dayFailed);
 
+        //Calculate the current map progress for this match
 
         playerData.NewSustainabilityPoints =
             playerReportData.calculateIncreaseAmount(
@@ -97,17 +106,18 @@ public class EndOfDayReport : MonoBehaviour
         playFabManager = FindObjectOfType<PlayFabManager>();
 
 
+        //Calculate the data shown to the player and save it to the text objects
 
         //  playerReportData = FindObjectOfType<PlayerReportData>();
         string distance = (playerReportData.totalDistance - (Math.Abs(playerReportData.startPosition.x))).ToString("F2");
         DistanceTraveled.text += $"{distance} m";
         //achievements
         int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("detour").CurrentCount += distanceM;
 
         int playNr;
 
-        Location.text = playerData.IsInDistrict.ToString();
+        Location.text = playerData.IsInDistrictName;
         PlayerName.text = PhotonNetwork.LocalPlayer.NickName;
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";
@@ -126,6 +136,8 @@ public class EndOfDayReport : MonoBehaviour
 
         GetComponent<AudioSource>().PlayOneShot(DayReportAudio);
     }
+
+   
     private string GetSecondsRemainingText()
     {
         int remainingTime;
@@ -177,6 +189,7 @@ public class EndOfDayReport : MonoBehaviour
                     return "Fail.";
             }
     }
+    //This is to determine if the game was won
     private bool GetWinCondition()
     {
         return !(ProgressBar.Instance.GetSlideValue() >= 80f);
@@ -190,6 +203,7 @@ public class EndOfDayReport : MonoBehaviour
 
         lang = locSettings.GetSelectedLocale().Identifier.Code;
     }
+    //This is for the data that goes to playfab
     private void writePlayFabData()
     {
         playFabManager.SendLeaderBoard(playerReportData.GetTheSuccessfulMinigameNumber());
@@ -282,7 +296,7 @@ public class EndOfDayReport : MonoBehaviour
         }
     }
 
-    //TODO: VERY TEMP, REDO
+    //This is just for demonstration purposes. It will be deleted prior to goldmaster.
     private string GetIncome()
     {
         if (ProgressBar.Instance.GetSlideValue() <= 80)

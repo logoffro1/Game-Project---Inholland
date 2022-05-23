@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,9 +11,8 @@ public class Hotbar : MonoBehaviour
     {
         Init();
     }
-    private void Init()
+    private void Init() // initialize the equipment
     {
-        Debug.Log("Hotbar init");
         equipmentList.Add(playerGameObject.GetComponentInChildren<XrayGoggles>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<Vacuum>());
         equipmentList.Add(playerGameObject.GetComponentInChildren<RunningShoes>());
@@ -26,7 +24,7 @@ public class Hotbar : MonoBehaviour
             equipment.SetPlayerRep();
         }
     }
-    private void LockItem(Equipment item, bool locked)
+    private void LockItem(Equipment item, bool locked) // change item picture to locked / unlocked
     {
 
         int itemIndex = equipmentList.IndexOf(item);
@@ -43,11 +41,12 @@ public class Hotbar : MonoBehaviour
             itemCooldown.SetActive(true);
         }
     }
-    private void SetCooldownFill(Equipment item)
+    private void SetCooldownFill(Equipment item) // set the cooldown fill amount (360)
     {
         int itemIndex = equipmentList.IndexOf(item);
         GameObject itemCooldown = itemSlots[itemIndex].transform.Find("Cooldown").gameObject;
         Image cooldownFill = itemCooldown.transform.Find("CooldownFill").gameObject.GetComponent<Image>();
-        cooldownFill.fillAmount = ((float)item.cooldown / (float)item.maxCooldown);
+
+        cooldownFill.fillAmount = ((float)item.cooldown / (float)item.maxCooldown); // calculate percentage
     }
 }

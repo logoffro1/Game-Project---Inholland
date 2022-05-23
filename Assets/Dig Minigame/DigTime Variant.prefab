@@ -795,10 +795,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 7150216075566228104, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
     - target: {fileID: 7785546617302847842, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7834920513173074660, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
     m_RemovedComponents:
     - {fileID: 6949526256883081615, guid: 4d5355390264da34da189a30a21277c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
@@ -881,7 +889,9 @@ MonoBehaviour:
   successText: {fileID: 1153135874355663379}
   descriptionText: {fileID: 6165266079989088706}
   infoCanvas: {fileID: 7433934659410218347}
+  gameDifficulty: 0
   TutorialCanvas: {fileID: 154010103162594815}
+  WaitTime: 0
   localizedStringEventDescription: {fileID: 3978705172704061614}
   localizedStringHint:
     m_TableReference:

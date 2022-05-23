@@ -3,25 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//This script enables the mini map to notice mini games and give exact locations to the user.
 public class MinimapScript : MonoBehaviour
 {
-    //Needs to be private after pitch
+    
     private List<InteractableTaskObject> allInteractableObjects;
     public List<GameObject> allPrefabLocations;
     public Transform player;
     public GameObject imagePrefab;
     public GameObject minimap;
-    //This class still needs implementation for deleting the icons.
-    //InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>()
+
+
     private void Start()
     {
-
+        
+        Debug.Log("This actually runs in start method");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         allInteractableObjects = new List<InteractableTaskObject>();
         allPrefabLocations = new List<GameObject>();
-        initializeTaskList();
-        PlantAllQuestIcons();
+        StartCoroutine(initializeTaskList());
     }
     private void LateUpdate()
     {
@@ -32,6 +32,7 @@ public class MinimapScript : MonoBehaviour
         transform.rotation = Quaternion.Euler(90f, player.eulerAngles.y, 0f);
     }
 
+    //This icon loops through all interactable objects and create an icon on the minimap in the same location.
     private void PlantAllQuestIcons()
     {
         foreach (InteractableTaskObject obj in allInteractableObjects)
@@ -45,12 +46,14 @@ public class MinimapScript : MonoBehaviour
         }
     }
 
-    private void initializeTaskList()
+    private IEnumerator initializeTaskList()
     {
+        yield return new WaitForSeconds(2);
         foreach (InteractableTaskObject interactableContainers in FindObjectsOfType<InteractableTaskObject>())
         {
             allInteractableObjects.Add(interactableContainers);
         }
+        PlantAllQuestIcons();
     }
 
     private GameObject GetPrefabByVector(Vector3 vector)
@@ -60,15 +63,13 @@ public class MinimapScript : MonoBehaviour
             if (prefab.gameObject.transform.position.x.ToString("F2") == vector.x.ToString("F2") &&
                 prefab.gameObject.transform.position.y.ToString("F2") == vector.y.ToString("F2") &&
                 prefab.gameObject.transform.position.z.ToString("F2") == vector.z.ToString("F2"))
-
             {
-
                 return prefab;
             }
         }
         return null;
     }
-
+    //After successfuly finishing a mini game, the icon has to be deleted.
     public void DeleteIcon(GameObject obj)
     {
         Destroy(GetPrefabByVector(new Vector3(obj.transform.position.x, obj.transform.position.y + 20, obj.transform.position.z)));

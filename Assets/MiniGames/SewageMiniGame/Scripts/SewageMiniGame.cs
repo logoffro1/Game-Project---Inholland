@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
 
-public class SewageMiniGame : MiniGameBase //remove the singleton
+public class SewageMiniGame : MiniGameBase
 {
     private int lives = 3;
     private int score = 0;
@@ -12,7 +8,7 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
     private static SewageMiniGame _instance = null;
     public static SewageMiniGame Instance { get { return _instance; } }
     private SewageUIManager sewageUIManager;
-    private void Awake()
+    private void Awake() // singleton
     {
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -24,7 +20,6 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
 
         SetLocalizedString();
-
     }
 
     public override void DetermineGameDifficulty()
@@ -51,9 +46,8 @@ public class SewageMiniGame : MiniGameBase //remove the singleton
 
         sewageUIManager.ChangeScoreText(score, maxScore);
     }
-    public override void CoordinateLevel()
+    public override void CoordinateLevel() // change speed based on game difficulty
     {
-        Debug.Log(this.Level);
         float newSpeed = this.Level / 150;
         FindObjectOfType<SpawnManager>().SetCorridorSpeed(newSpeed);
     }

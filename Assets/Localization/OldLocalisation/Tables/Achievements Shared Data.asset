@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Achievements Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Achievements
+  m_TableCollectionNameGuidString: a9dfc6c274f3f9845aaed295127be1dd
+  m_Entries:
+  - m_Id: 7480684544
+    m_Key: literringTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20805988352
+    m_Key: churchTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24312426496
+    m_Key: explorerTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31409188864
+    m_Key: activistTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33971908608
+    m_Key: detourTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36329107456
+    m_Key: taskBeginnerTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39059599360
+    m_Key: taskEnthusiastTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42113052672
+    m_Key: taskExpertTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44835155968
+    m_Key: taskMasterTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125655199744
+    m_Key: wallhacksTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129211969536
+    m_Key: runTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 132177342464
+    m_Key: cleaningTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135272738816
+    m_Key: failTasksTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140016496640
+    m_Key: recycleTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141866184704
+    m_Key: gardeningTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 142579216384
+    m_Key: cableTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 143292248064
+    m_Key: sewageTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 143992696832
+    m_Key: solarPanelsTitl
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3979557875712
+    m_Key: literringDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4045752381440
+    m_Key: churchDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4047094558720
+    m_Key: explorerDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4047769841664
+    m_Key: activistDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4048428347392
+    m_Key: detourDescription
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4049141379072
+    m_Key: taskBeginnerDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4049799884800
+    m_Key: taskEnthusiastDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4050525499392
+    m_Key: "taskExpertDesc\t"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051184005120
+    m_Key: taskMasterDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051926396928
+    m_Key: wallhacksDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4052643622912
+    m_Key: runDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4053344071680
+    m_Key: cleaningDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4241014009856
+    m_Key: taskFailDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4242964361216
+    m_Key: recycleDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4243660615680
+    m_Key: gardeningDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4244340092928
+    m_Key: cableDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4245036347392
+    m_Key: sewageDesc
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4245623549952
+    m_Key: solarDesc
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    id: 0
+  references:
+    version: 1
+    00000000:
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1653304382156

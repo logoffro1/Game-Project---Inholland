@@ -8,11 +8,10 @@ using UnityEngine.Assertions;
 using Photon.Pun;
 
 //Timer countdown
-public class TimerCountdown : MonoBehaviourPun
+public class TimerCountdown : MonoBehaviourPun, IPunObservable
 {
-
     //Default amount of seconds
-    private int secondsMax = 8 * 60; 
+    private int secondsMax = 8 * 60;
 
     private static TimerCountdown _instance;
     public static TimerCountdown Instance { get { return _instance; } }
@@ -62,13 +61,29 @@ public class TimerCountdown : MonoBehaviourPun
     public event EventHandler OnCountdownEnd;
     private GameMode gameMode;
 
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(secondsLeft);
+            stream.SendNext(startCountDownLeft);
+        }
+        else if (stream.IsReading)
+        {
+            secondsLeft = (int)stream.ReceiveNext();
+            OnSecondChange?.Invoke(secondsLeft);
+
+            startCountDownLeft = (int)stream.ReceiveNext();
+            OnStartCountdownChange?.Invoke(startCountDownLeft.ToString());
+        }
+    }
     void Start()
     {
         secondsLeft = secondsMax;
 
         //Checking the gamemode & multiplayer
         MiniGameManager.Instance.FreezeScreen(true);
-        foreach(PlayerData pd in FindObjectsOfType<PlayerData>())
+        foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
         {
             if (pd.photonView.IsMine)
             {
@@ -119,10 +134,10 @@ public class TimerCountdown : MonoBehaviourPun
 
             //Waits a second
             yield return new WaitForSeconds(1);
-
+            
             //If the gamemode is not chill, it should subtract a second. Else, it doesn;t, as chill mode doesnt have a timer
-            if (gameMode != GameMode.Chill) secondsLeft -= 1;
-
+            if (PhotonNetwork.IsMasterClient)
+                if (gameMode != GameMode.Chill) secondsLeft -= 1;
             //Changes the UI
             OnSecondChange?.Invoke(secondsLeft);
 
@@ -136,5 +151,4 @@ public class TimerCountdown : MonoBehaviourPun
     {
         return secondsLeft;
     }
-
 }

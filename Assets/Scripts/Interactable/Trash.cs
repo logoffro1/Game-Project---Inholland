@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
-
-public class Trash : InteractableObject
+public class Trash : InteractableObject // collectable trash
 {
     public bool collected { get; set; } = false;
     private void Awake()
@@ -13,10 +8,10 @@ public class Trash : InteractableObject
     }
     private void Update()
     {
-        if (transform.position.y < -50)
+        if (transform.position.y < -50) // destroy if falls out of bounds
             Destroy(gameObject);
     }
-    public override void DoAction(GameObject player)
+    public override void DoAction(GameObject player) // if the player has trash bag, pick up trash
     {
         if (player.transform.parent.TryGetComponent(out TrashBag bag))
         {

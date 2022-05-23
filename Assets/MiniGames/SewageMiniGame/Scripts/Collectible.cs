@@ -31,23 +31,24 @@ public class Collectible : MonoBehaviour
     {
         if (!SewageMiniGame.Instance.IsPlaying) return;
 
-        if (!attached)
+        if (!attached) // continous movement if not attached
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime, Space.World);
             transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
         }
 
 
-        if (transform.localPosition.x <= -1.7f)
+        if (transform.localPosition.x <= -1.7f) // destroy
             OutOfBounds();
 
-        if (Physics2D.OverlapCircle(transform.position, 0.005f, boatMask))
+        // if overlapping with the boat, destroy object
+        if (Physics2D.OverlapCircle(transform.position, 0.005f, boatMask)) 
         {
             PickUp();
         }
 
     }
-    private void Collect()
+    private void Collect() 
     {
         SewageMiniGame.Instance.IncreaseScore();
         transform.localPosition = Vector2.zero;
@@ -57,7 +58,7 @@ public class Collectible : MonoBehaviour
     {
         Destroy(gameObject, 0.2f);
     }
-    private void OutOfBounds()
+    private void OutOfBounds() // gc
     {
         if (isDestroyed) return;
 
@@ -66,7 +67,7 @@ public class Collectible : MonoBehaviour
         audioSource.PlayOneShot(passedClip);
         Destroy(gameObject, 0.5f);
     }
-    public void ChangeCoridorSpeed(float speed)
+    public void ChangeCoridorSpeed(float speed) // change trash speed
     {
 
         if (speed < minSpeed) this.speed = minSpeed;

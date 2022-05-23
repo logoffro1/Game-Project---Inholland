@@ -1,9 +1,7 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 public class RoomsListingsMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private RoomListing roomListing;
@@ -12,12 +10,12 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
     private List<RoomListing> listings = new List<RoomListing>();
     private List<RoomInfo> roomList;
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    public override void OnRoomListUpdate(List<RoomInfo> roomList) // whenever new room is added / removed
     {
         this.roomList = roomList;
         UpdateRoom();
     }
-    private void UpdateRoom()
+    private void UpdateRoom() // Update room listings
     {
         listings.Clear();
         foreach (RoomInfo info in this.roomList)
@@ -44,27 +42,16 @@ public class RoomsListingsMenu : MonoBehaviourPunCallbacks
 
         }
     }
-    public void OnClick_JoinGame(RoomListing roomListing)
+    public void OnClick_JoinGame(RoomListing roomListing) // when client joins another room
     {
         if (!PhotonNetwork.IsConnected) return;
 
         if (roomListing.RoomInfo.PlayerCount < roomListing.RoomInfo.MaxPlayers)
-        {
+        { // if there is room, load the new scene and join room
             PhotonNetwork.JoinRoom(roomListing.RoomInfo.Name);
             LevelManager.Instance.LoadScenePhoton("Office",false);
         }
         
 
     }
-    public override void OnJoinedRoom()
-    {
-
-    }
-    public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-    {
-        Debug.Log("Entered room...");
-
-    }
-
-
 }
