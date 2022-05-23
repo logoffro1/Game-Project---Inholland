@@ -6,6 +6,7 @@ public class PhotonConnect : MonoBehaviourPunCallbacks
 {
     private void Start()
     {
+        if (PhotonNetwork.IsConnected) return;
         PhotonNetwork.AutomaticallySyncScene = true; // always sync the client scenes with the master client's scene
 
         // set the Photon Settings with the scriptable object game settings

@@ -24,7 +24,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-
+        PhotonNetwork.EnableCloseConnection = true;
     }
 
     // Update is called once per frame
@@ -147,8 +147,14 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     //Return to Main Menu button that switches scenes
     public void LoadMenu()
     {
-       // PhotonNetwork.LeaveRoom(true);
-        //LevelManager.Instance.LoadScenePhoton("MainMenu",false);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            LevelManager.Instance.LoadScenePhoton("MainMenu", true);
+        }
+        else
+        {
+            LevelManager.Instance.LoadScenePhoton("MainMenu", false);
+        }
     }
 
     public override void OnLeftRoom()
