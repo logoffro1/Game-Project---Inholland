@@ -103,7 +103,7 @@ public class EndOfDayReport : MonoBehaviour
         DistanceTraveled.text += $"{distance} m";
         //achievements
         int distanceM = (int)(playerReportData.totalDistance - Math.Abs(playerReportData.startPosition.x)) / 1000;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Detour around Alkmaar").CurrentCount += distanceM;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("detour").CurrentCount += distanceM;
 
         int playNr;
 

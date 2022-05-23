@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+// All player equipment inherits from this class
 public abstract class Equipment : MonoBehaviour
 {
     protected float activeTime;
@@ -21,12 +21,12 @@ public abstract class Equipment : MonoBehaviour
 
     public abstract void DoAction();
     public abstract void SetPlayerRep();
-    public virtual void SetLocked(bool locked)
+    public virtual void SetLocked(bool locked) // set locked state
     {
         IsLocked = locked;
         onLockedChange(this,IsLocked);
     }
-    public virtual void DrainTime()
+    public virtual void DrainTime() // drain the active time
     {
         if (activeTime > 0)
             drainOverTime = true;
@@ -34,7 +34,7 @@ public abstract class Equipment : MonoBehaviour
         {
             activeTime -= Time.deltaTime;
 
-            if (activeTime <= 0)
+            if (activeTime <= 0) // if the active time is 0, turn off device
             {
                 activeTime = 0;
                 drainOverTime = false;

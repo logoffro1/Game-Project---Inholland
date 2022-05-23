@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,11 +9,8 @@ public class FlyerBag : MonoBehaviour
     void Start()
     {
         flyers = new List<Flyer>();
-
     }
-
-
-    public void AddFlyer(Flyer flyer)
+    public void AddFlyer(Flyer flyer) // if can collect, add new flyer to bag
     {
         if (!CanCollect()) return;
 
@@ -23,12 +19,13 @@ public class FlyerBag : MonoBehaviour
         UIManager.Instance.SetFlyersText(flyers.Count, bagCapacity);
     }
     public List<Flyer> GetFlyers() => flyers;
-    public void RemoveFlyer(Flyer flyer)
+    public void RemoveFlyer(Flyer flyer) // Give flyer to NPC
     {
+
+        //remove flyer from bag and change sustainability
         flyers.Remove(flyer);
         ProgressBar.Instance.ChangeSustainibility(flyer.Points, false);
         UIManager.Instance.SetFlyersText(flyers.Count, bagCapacity);
-        Debug.Log("Flyers: " + flyers.Count);
     }
 
     public bool CanCollect() => flyers.Count < bagCapacity;

@@ -10,21 +10,17 @@ public class MiniGameManager : MonoBehaviour
 
     public PlayerReportData PlayerData { get; private set; }
 
-    //Todo: remove after implementation
-    public GameObject tetrisGamePrefab;
-
     private PlayFabManager playFabManager;
 
-    //TODO: might remove
     public InteractableTaskObject InteractableObject;
     public event Action<InteractableTaskObject> OnGameWon;
     public event Action<InteractableTaskObject> OnGameOver;
 
     public bool IsPlaying { get; private set; }
-    int miniGameTime;
+    private int miniGameTime;
     private GameObject miniGame;
     public GameObject miniGameScreen;
-    private void Awake()
+    private void Awake() // singleton
     {
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -52,15 +48,6 @@ public class MiniGameManager : MonoBehaviour
         foreach (GameObject gamePrefab in taskGenerator.GamePrefabs)
         {
             amountOfGameOccurence.Add(gamePrefab.name, 0);
-        }
-    }
-
-    //Delete This before merging to dev
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartGame(tetrisGamePrefab);
         }
     }
 
@@ -103,23 +90,28 @@ public class MiniGameManager : MonoBehaviour
         IsPlaying = false;
         UIManager.Instance.ChangeCanvasShown();
 
-        //achievements
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Beginner").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Enthusiast").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Expert").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Master").CurrentCount++;
-        if (miniGameBase.GetType() == typeof(SewageMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Sewage Cleaner").CurrentCount++;
-        else if (miniGameBase.GetType() == typeof(RewireMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The Cable Guy").CurrentCount++;
-        else if(miniGameBase.GetType() == typeof(DiggingMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Gardening Simulator").CurrentCount++;
-        else if(miniGameBase.GetType() == typeof(ShinglesMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("How did I even get up there?").CurrentCount++;
-        else if(miniGameBase.GetType() == typeof(RecycleMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("I like the way you recycle, boy!").CurrentCount++;
+        SetAchievements(miniGameBase);
     }
+    private void SetAchievements(MiniGameBase miniGameBase) // increases the minigame related achievements
+    {
+        //task count
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskbeginner").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskenthusiast").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskexpert").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskmaster").CurrentCount++;
 
+        //specific tasks
+        if (miniGameBase.GetType() == typeof(SewageMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("sewage").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(RewireMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("cable").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(DiggingMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("gardening").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(ShinglesMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("solar").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(RecycleMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("recycle").CurrentCount++;
+    }
     public void GameOver()
     {
         OnGameOver?.Invoke(InteractableObject);
