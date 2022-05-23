@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//For when an option is clicked to create a flyer
 public class FlyerButton : MonoBehaviour
 {
-
     public bool IsTitle;
     private TextMeshProUGUI title;
     private TextMeshProUGUI body;
@@ -26,6 +26,7 @@ public class FlyerButton : MonoBehaviour
     {
         string text = GetComponentInChildren<TextMeshProUGUI>().text;
 
+        //Checks if the text is for the title
         if (IsTitle)
         {
             title.text = text;

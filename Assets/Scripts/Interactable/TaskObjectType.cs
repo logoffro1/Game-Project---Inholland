@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+//Enum for the tasks/minigames
 public enum TaskObjectType 
 {
     StreetLamp,

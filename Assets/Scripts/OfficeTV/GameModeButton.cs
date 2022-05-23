@@ -1,12 +1,8 @@
-using System.Collections;
-using System.Linq;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
-using UnityEngine.UI;
-using Photon.Pun;
 
+//For when the player pressed the gamnemode buttons
 public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public GameMode GameModeOfButton;
@@ -15,6 +11,8 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public TextMeshProUGUI CrazyText;
     public TextMeshProUGUI DefaultText;
     private PlayerData playerData;
+
+    //Sets for multiplayer
     private void Start()
     {
         foreach (PlayerData pd in FindObjectsOfType<PlayerData>())
@@ -26,6 +24,8 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
     }
 
+
+    //When mouse hovers above a mode, change the text
     public void OnPointerEnter(PointerEventData eventData)
     {
         NormalText.enabled = false;
@@ -47,10 +47,10 @@ public class GameModeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitH
                 NormalText.enabled = true;
                 playerData.GoalText = NormalText.text;
                 break;
-
         }
-
     }
+
+    //When is not hovering, reset everything
     public void OnPointerExit(PointerEventData eventData)
     {
         NormalText.enabled = false;

@@ -6,6 +6,8 @@ using UnityEngine.Localization.Settings;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+
+//The interactable objects, includes tasks, printers, etc
 public abstract class InteractableObject : MonoBehaviour
 {
     protected string hoverName;
@@ -19,6 +21,8 @@ public abstract class InteractableObject : MonoBehaviour
     [SerializeField] protected LocalizedString localizedString;
 
     private LocalizationSettings locSettings;
+
+    //Sets for the translation
     public async void SetLocalizedString(LocalizeStringEvent localizedStringEvent)
     {
         try
