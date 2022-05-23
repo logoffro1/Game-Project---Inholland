@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Linq;
 
+//Dragging logic of the rewire
 public class Dragger : MonoBehaviour
 {
     private Camera _cam;
@@ -18,11 +19,13 @@ public class Dragger : MonoBehaviour
 
     private void Awake()
     {
+        //gets the camera
         _cam = transform.root.GetComponentInChildren<Camera>();
     }
 
     private void OnMouseDrag()
     {
+        //changes position of the end wire
         if (Time.timeScale == 0) return;
         transform.position = GetMousePos();
     }
@@ -38,6 +41,7 @@ public class Dragger : MonoBehaviour
         return mousePos;
     }
 
+    //When you release the mouse
     private void OnMouseUp()
     {
         Collider2D[] colliders = Physics2D.OverlapBoxAll(GetComponent<RectTransform>().position, GetComponent<BoxCollider2D>().size, 0);
@@ -45,6 +49,7 @@ public class Dragger : MonoBehaviour
 
         if (colliderList.Any())
         {
+            //get the object, if the wire was correctly wired
             Collider2D collider = colliderList.Where(x => x.transform.parent == transform.parent).FirstOrDefault();
 
             //Locking in spot that they dropped on, for the endWire

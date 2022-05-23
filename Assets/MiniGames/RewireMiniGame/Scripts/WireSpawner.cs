@@ -76,7 +76,7 @@ public class WireSpawner : MonoBehaviour
 
         float middle;
 
-        //if even
+        //if there is an even amount of wires
         if (spawnPositions.Count % 2 == 0)
         {
             middle = (spawnPositions[spawnPositions.Count / 2].y + spawnPositions[(spawnPositions.Count / 2) -1].y)/2;
@@ -85,7 +85,6 @@ public class WireSpawner : MonoBehaviour
         {
             //odd
             middle = spawnPositions[Mathf.CeilToInt(spawnPositions.Count / 2f)].y;
-
         }
 
         middle -= 60;
@@ -102,11 +101,13 @@ public class WireSpawner : MonoBehaviour
 
     private void InstansiateAllWires(List<Vector3> spawnPositions)
     {
+        //Gets all the positions and colors
         List<Vector3> spawnPositionsEndPoint = new List<Vector3>(spawnPositions);
         List<Color> allColors = colors.ToList();
 
         for (int i = 0; i < amountWires; i++)
         {
+            //Gets random values and instantiates it
             int posIndex = UnityEngine.Random.Range(0, spawnPositions.Count);
             int colorIndex = UnityEngine.Random.Range(0, allColors.Count);
             Color color = allColors[colorIndex];
@@ -117,6 +118,7 @@ public class WireSpawner : MonoBehaviour
             allColors.RemoveAt(colorIndex);
         }
 
+        //Moves the end wire so it randomized where you should commect
         MoveEndWirePart(spawnPositionsEndPoint);
     }
 
@@ -124,7 +126,7 @@ public class WireSpawner : MonoBehaviour
     {
         foreach (GameObject wire in wires)
         {
-            //Changing the position of the EndWire and EndBackground
+            //Changing the position of the EndForeground and EndBackground
             int posIndex = UnityEngine.Random.Range(0, spawnPositionsEndPoint.Count);
             Vector3 spawnPos = spawnPositionsEndPoint[posIndex];
             spawnPos.x = spawnX;
@@ -151,6 +153,7 @@ public class WireSpawner : MonoBehaviour
     {
         amountCorrect++;
 
+        //checks if game is lost/won/continues
         if (amountFinished >= amountWires)
         {
             if (amountCorrect >= amountWires)
@@ -178,7 +181,9 @@ public class WireSpawner : MonoBehaviour
 
     private GameObject SpawnWire(Color color, Vector3 spawnPos)
     {
+        //Inmsantianted the wire
         GameObject wire = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
+        //Sets a random color to it
         wire.GetComponent<Wire>().color = color;
 
         return wire;
@@ -186,15 +191,8 @@ public class WireSpawner : MonoBehaviour
 
     public void InstantiateExplosion(Vector3 position, Color color)
     {
-        //var lightenFactor = 5f;
-
         var main = explosionParticleEffect.GetComponent<ParticleSystem>().main;
-        //color.r += lightenFactor;
-        //color.g += lightenFactor;
-        //color.b += lightenFactor;
-
         main.startColor = color;
-
         Instantiate(explosionParticleEffect, position, explosionParticleEffect.transform.rotation);
     }
 }

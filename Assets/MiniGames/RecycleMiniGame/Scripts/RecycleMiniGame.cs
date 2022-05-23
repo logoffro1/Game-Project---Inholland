@@ -83,13 +83,16 @@ public class RecycleMiniGame : MiniGameBase
         }
     }
 
+    //Calls when player pressed correct note at right moment
     public void CollectANote(NoteTypeEnum note)
     {
+        //Upgtades amount collect with the UI
         amountCollected++;
         ui.AddToCounter(amountCollected);
         activator.RemoveFirstNote();
         audioSource[0].PlayOneShot(GoodNote);
 
+        //PLays correct sound when correct trash is sorted
         switch(note)
         {
             case NoteTypeEnum.Plastic:
@@ -108,6 +111,7 @@ public class RecycleMiniGame : MiniGameBase
                 break;
         }
 
+        //Checks if game won
         if (amountCollected >= amountToCollect)
         {
             gameIsWon = true;

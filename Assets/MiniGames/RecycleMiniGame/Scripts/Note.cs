@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Individual trash items
 public class Note : MonoBehaviour
 {
     Rigidbody2D rb;
@@ -17,9 +18,11 @@ public class Note : MonoBehaviour
 
     private void Update()
     {
+        //goes down
         var step = Time.deltaTime * -speed;
         transform.position += transform.up * step;
 
+        //if a bin is set, it will go towards the bin. Else, it continues straight down
         if (Bin == null)
         {
             transform.position += transform.up * step;
@@ -32,6 +35,7 @@ public class Note : MonoBehaviour
 
 }
 
+//Different types of trash
 public enum NoteTypeEnum
 {
     Paper,

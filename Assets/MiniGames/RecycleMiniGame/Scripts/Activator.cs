@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+//The box that collides with the trash items
 public class Activator : MonoBehaviour
 {
     private List<GameObject> notes;
@@ -17,8 +18,10 @@ public class Activator : MonoBehaviour
 
     private void Update()
     {
+        //if any of teh correct keys are pressed
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.F))
         {
+            //if there still notes left
             if (notes.Count > 0)
             {
                 GameObject currentNode = notes[0]; ;
@@ -29,6 +32,7 @@ public class Activator : MonoBehaviour
                 }
                 catch
                 {
+                    //if the gameobject is gone, but key is pressed, lose a life
                     game.RemoveALife();
                     Destroy(currentNode);
                     return;
@@ -44,6 +48,7 @@ public class Activator : MonoBehaviour
                 }
                 else
                 {
+                    //if the wrong key was pressed, lose a life
                     game.RemoveALife();
                     Destroy(currentNode);
                 }
@@ -51,6 +56,7 @@ public class Activator : MonoBehaviour
         }
     }
 
+    //Add collision, so it can check with this when key is pressed
     private void OnTriggerEnter2D(Collider2D collision)
     {
         notes.Add(collision.gameObject);

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
+//Interaction with the upgrade buttons
 public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private OneOffUpgradesEnum upgrade;
@@ -14,9 +15,8 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private Player player;
     private UpgradeManager manager;
     public Text defaultExplanationText;
-
-    //
     private TextMeshProUGUI description;
+
     private void Start()
     {
         ui = GetComponentInParent<UpgradeUI>();
@@ -25,18 +25,20 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         description = gameObject.GetComponentInParent<UpgradeUI>().upgradeDescriptionText;
     }
 
+    //Normal upgrdae button was clicked
     public void ClickButton()
     {
         //shut off UI
         ui.TurnOff();
 
-        //add upgrade to playuer
+        //add upgrade to player
         player.GetUpgrade(upgrade).PerformLevelUp();
 
         manager.UpgradeSessionFInished();
 
     }
 
+    //Adds points if the last option was clicked
     public void ClickPointsButton()
     {
         ui.TurnOff();

@@ -11,6 +11,7 @@ public class RecycleBin : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Note>().type == type)
         {
+            //Destroy trash item when collided with the bin
             Destroy(collision.gameObject);
         }
     }

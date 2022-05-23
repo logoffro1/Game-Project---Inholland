@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Spawn the notes
 public class NoteSpawner : MonoBehaviour
 {
     public GameObject NoteContainer;
@@ -33,8 +34,10 @@ public class NoteSpawner : MonoBehaviour
 
         while (!gameFinished)
         {
+            //Instianciate the trash
             GameObject note = Instantiate(notePrefabs[Random.Range(0, notePrefabs.Count)], spawnPosition, transform.rotation, transform);
 
+            //Sets the correct background color to each item
             Color color;
             switch(note.GetComponent<Note>().type)
             {

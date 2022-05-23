@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+//UI of recycyle game
 public class RecycleUI : MonoBehaviour
 {
     public List<GameObject> lives;
@@ -12,6 +13,7 @@ public class RecycleUI : MonoBehaviour
 
     public void SetUp(int amountToCollect)
     {
+        //Starts it up
         this.amountToCollect = amountToCollect;
         ProgressText.text = $"0 / {amountToCollect}";
     }
@@ -20,17 +22,20 @@ public class RecycleUI : MonoBehaviour
     {
         if (lifes < 0) return;
 
+        //Shows animation of losing a heart
         GameObject life = lives[lifes];
         life.GetComponent<Animator>().SetTrigger("CollectiblePassed");
     }
 
     public void AddToCounter(int amountCollected)
     {
+        //Sets the correct string format
         ProgressText.text = $"{amountCollected} / {amountToCollect}";
     }
 
     public void ConvertToWonDesign(GameObject note)
     {
+        //shows ui elements for feedback of getting trash correct
         ExplodeParticles(note);
         MakeNoteTransparent(note);
         MakeNoteSmaller(note);

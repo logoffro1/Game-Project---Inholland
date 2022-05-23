@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.Localization;
 
+//regulated the ui of the upgrade
 public class UpgradeUI : MonoBehaviour
 {
     public TextMeshProUGUI upgradeDescriptionText;
@@ -24,21 +25,27 @@ public class UpgradeUI : MonoBehaviour
         GenerateUpgradeOptions();
         this.gameObject.GetComponent<Canvas>().enabled = true;
         SetUpUi(true);
-
-        //freeze
     }
 
     private void GenerateUpgradeOptions()
     {
-        Player player = FindObjectsOfType<Player>().Where(x => x.Host).FirstOrDefault(); //chck if done correctlyu
+        //Gets the player
+        Player player = FindObjectsOfType<Player>().Where(x => x.Host).FirstOrDefault(); 
+
+        //Gets the player's upgrades list
         List<OneOffUpgrade> list = new List<OneOffUpgrade>(FindObjectsOfType<Player>().Where(x => x.Host).FirstOrDefault().OneOffUpgradeList);
+
+        //For each upgrade button, assign a button to it with the correct level and correct feedback UI
         foreach(TextMeshProUGUI textButton in buttonOptions)
         {
+            //Gets random upgrade from list and remove from tmp list afterwards
             int randomIndex = Random.Range(0, list.Count);
             OneOffUpgrade upgrade = list[randomIndex];
             list.RemoveAt(randomIndex);
             UnityEngine.UI.Button button = textButton.gameObject.GetComponentInParent<UnityEngine.UI.Button>();
 
+            //If upgrade level is at max level,change the UI and back that button can not be clicked
+            //Else, have a nice image
             if (upgrade.Level >= upgrade.MaxLevel)
             {
                 //Editting the button itself
@@ -70,10 +77,13 @@ public class UpgradeUI : MonoBehaviour
                 UpgradeButton u = textButton.gameObject.GetComponentInParent<UpgradeButton>();
                 u.Upgrade = upgrade.Upgrade;
             }
+
+            //Set the correct description
             upgradeDescriptionText.text = upgrade.Description;
         }
     }
 
+    //Set to the correct UI and correct mouse movement
     private void SetUpUi(bool setUp)
     {
         MiniGameManager minigameManager = FindObjectOfType<MiniGameManager>();

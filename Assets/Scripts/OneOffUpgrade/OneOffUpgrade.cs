@@ -51,13 +51,17 @@ public class OneOffUpgrade
 
     public OneOffUpgrade(OneOffUpgradesEnum upgrade, OneOffUpgradeContent[] oneOffUpgradeContentArray)
     {
+        //Sets all the content of the upgrades
         this.contentList = oneOffUpgradeContentArray;
         this.upgrade = upgrade;
+
+        //sets to the default
         level = 0;
         LevelOffSet = 0f;
         PointsOffSet = 0f;
         OneOffUpgradeContent[] array = null;
-        //ADD NEW UPGRADE TO SWITCH CASE
+
+        //Gets the correct text for each type of upgrade
         switch (upgrade)
         {
             case OneOffUpgradesEnum.Speed:
@@ -83,11 +87,14 @@ public class OneOffUpgrade
         description = array[0].isTitle ? array[1].gameObject.GetComponent<Text>().text : array[0].gameObject.GetComponent<Text>().text;
     }
 
+    //Levels up the upgrade
     public void PerformLevelUp()
     {
         this.levelUpFunction();
         level++;
     }
+
+    //Below is the logic to how each upgrade is levels up
 
     public void SpeedLevelUp()
     {
@@ -116,6 +123,7 @@ public class OneOffUpgrade
 
 }
 
+//Each uypgrade as anenum
 public enum OneOffUpgradesEnum
 {
     Speed,
