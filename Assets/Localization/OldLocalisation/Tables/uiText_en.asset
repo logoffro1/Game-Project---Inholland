@@ -357,7 +357,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839167805018112
-    m_Localized: Third map
+    m_Localized: Suburbs
     m_Metadata:
       m_Items: []
   - m_Id: 11839357672771584
@@ -375,7 +375,10 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11840131802877952
-    m_Localized: Third map description
+    m_Localized: 'Explore through the suburbs of Alkmaar! You have a glance of what
+
+      the
+      suburban life is like in Alkmaar while increasing sustainibility!'
     m_Metadata:
       m_Items: []
   - m_Id: 11840374225260544

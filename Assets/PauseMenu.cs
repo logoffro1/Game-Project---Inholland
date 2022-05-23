@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
+
 public class PauseMenu : MonoBehaviourPunCallbacks
 {
     //Declaring variables
@@ -21,10 +22,13 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject volumeUI;
     public GameObject volumeButton;
 
+    private bool isInOffice;
+
     // Start is called before the first frame update
     void Start()
     {
         PhotonNetwork.EnableCloseConnection = true;
+         isInOffice = SceneManager.GetActiveScene().name == "NewOffice";
     }
 
     // Update is called once per frame
@@ -32,7 +36,20 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         //Checks if escape is pressed to bring up or close the pause menu,
         //and ensures that you cannot pause in the middle of a minigame
-        if (Input.GetKeyUp(KeyCode.Escape) && MiniGameManager.Instance.IsPlaying == false)
+        if (!isInOffice) {
+            if (MiniGameManager.Instance.IsPlaying == false) {
+                HandlePauseButton();
+            }
+        }
+        else
+        {
+            HandlePauseButton();
+        } 
+    }
+
+    void HandlePauseButton()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             if (isPaused)
             {
