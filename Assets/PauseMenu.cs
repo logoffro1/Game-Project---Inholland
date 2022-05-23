@@ -66,6 +66,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         CloseHowToPlay();
+        CloseVolumeUI();
         isPaused = false;
     }
     //This method is the opposite of resume, it pauses the game,
