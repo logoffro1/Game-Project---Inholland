@@ -7166,6 +7166,298 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1870270456}
   achievementInfoPrefab: {fileID: 3682617534497713396, guid: 9d853cf86b87d054da41333af656629b, type: 3}
+  localizedTitles:
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 7480684544
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 20805988352
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 24312426496
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 31409188864
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 33971908608
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 36329107456
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 39059599360
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 42113052672
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 44835155968
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 125655199744
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 129211969536
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 132177342464
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 135272738816
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 140016496640
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 141866184704
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 142579216384
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 143292248064
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 143992696832
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  localizedDescriptions:
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 3979557875712
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4045752381440
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4047094558720
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4047769841664
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4048428347392
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4049141379072
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4049799884800
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4050525499392
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4051184005120
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4051926396928
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4052643622912
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4053344071680
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4241014009856
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4242964361216
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4243660615680
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4244340092928
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4245036347392
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  - m_TableReference:
+      m_TableCollectionName: GUID:a9dfc6c274f3f9845aaed295127be1dd
+    m_TableEntryReference:
+      m_KeyId: 4245623549952
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 1
 --- !u!1 &1503531529
 GameObject:
   m_ObjectHideFlags: 0
@@ -9727,7 +10019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 22.3, y: 0}
+  m_AnchoredPosition: {x: 22.300049, y: 0}
   m_SizeDelta: {x: 172.9938, y: 32.4363}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1971538051
@@ -10840,7 +11132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 22.3, y: -369}
+  m_AnchoredPosition: {x: 22.300049, y: -369}
   m_SizeDelta: {x: 173.37, y: 33.0491}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &340983365897029805
@@ -11704,7 +11996,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.1201172, y: -0.43667603}
+  m_AnchoredPosition: {x: 2.1201172, y: -0.4366455}
   m_SizeDelta: {x: 0, y: 0.10888672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &340983366690864632

@@ -95,22 +95,22 @@ public class MiniGameManager : MonoBehaviour
     private void SetAchievements(MiniGameBase miniGameBase) // increases the minigame related achievements
     {
         //task count
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Beginner").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Enthusiast").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Expert").CurrentCount++;
-        FindObjectOfType<GlobalAchievements>().GetAchievement("Task Master").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskbeginner").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskenthusiast").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskexpert").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskmaster").CurrentCount++;
 
         //specific tasks
         if (miniGameBase.GetType() == typeof(SewageMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Sewage Cleaner").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("sewage").CurrentCount++;
         else if (miniGameBase.GetType() == typeof(RewireMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The Cable Guy").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("cable").CurrentCount++;
         else if (miniGameBase.GetType() == typeof(DiggingMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Gardening Simulator").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("gardening").CurrentCount++;
         else if (miniGameBase.GetType() == typeof(ShinglesMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("How did I even get up there?").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("solar").CurrentCount++;
         else if (miniGameBase.GetType() == typeof(RecycleMiniGame))
-            FindObjectOfType<GlobalAchievements>().GetAchievement("I like the way you recycle, boy!").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("recycle").CurrentCount++;
     }
     public void GameOver()
     {

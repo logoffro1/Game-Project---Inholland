@@ -24,7 +24,7 @@ public class XrayGoggles : Equipment
         if (isActive) // play on / off sounds
         {
             audioSource.PlayOneShot(xrayOn);
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Wallhacks").CurrentCount++; // increase achievement
+            FindObjectOfType<GlobalAchievements>().GetAchievement("wallhacks").CurrentCount++; // increase achievement
         }
            
         else

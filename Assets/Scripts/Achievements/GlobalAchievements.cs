@@ -25,32 +25,32 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
     }
     private void InitAchievements() // create achievements & add to list
     {
-        achievements.Add(new Achievement("Stop Littering", "Pick up 100 trash from the ground", 100));
-        achievements.Add(new Achievement("The Holy Grail", "Visit the city center church", 1));
-        achievements.Add(new Achievement("Alkmaar Explorer", "Play in each region of Alkmaar at least once", 2));
-        achievements.Add(new Achievement("The Activist", "Give 30 flyers away", 30));
-        achievements.Add(new Achievement("Detour around Alkmaar", "Travel a total of 5km in the city center", 5));
-        achievements.Add(new Achievement("Task Beginner", "Complete 10 tasks", 10));
-        achievements.Add(new Achievement("Task Enthusiast", "Complete 25 tasks", 25));
-        achievements.Add(new Achievement("Task Expert", "Complete 50 tasks", 50));
-        achievements.Add(new Achievement("Task Master", "Complete 100 tasks", 100));
-        achievements.Add(new Achievement("Wallhacks", "Use the XRay Goggles for the first time", 1));
-        achievements.Add(new Achievement("Run Forest, Run!", "Use the Running Shoes for the first time", 1));
-        achievements.Add(new Achievement("The cleaning lady", "Use the Vacuum for the first time", 1));
-        achievements.Add(new Achievement("These are harder than they look", "Fail 5 tasks", 5));
-        achievements.Add(new Achievement("I like the way you recycle, boy!", "Complete 25 recycling tasks", 25));
-        achievements.Add(new Achievement("Gardening Simulator", "Complete 25 planting tree tasks", 25));
-        achievements.Add(new Achievement("The Cable Guy", "Complete 25 rewire lamp tasks", 25));
-        achievements.Add(new Achievement("Sewage Cleaner", "Complete 15 sewage cleaning tasks", 15));
-        achievements.Add(new Achievement("How did I even get up there?", "Complete 10 solar panel tasks", 10));
+        achievements.Add(new Achievement("Stop Littering","literring", "Pick up 100 trash from the ground", 100));
+        achievements.Add(new Achievement("The Holy Grail","church", "Visit the city center church", 1));
+        achievements.Add(new Achievement("Alkmaar Explorer","explorer", "Play in each region of Alkmaar at least once", 2));
+        achievements.Add(new Achievement("The Activist","activist", "Give 30 flyers away", 30));
+        achievements.Add(new Achievement("Detour around Alkmaar","detour", "Travel a total of 5km in the city center", 5));
+        achievements.Add(new Achievement("Task Beginner","taskbeginner", "Complete 10 tasks", 10));
+        achievements.Add(new Achievement("Task Enthusiast","taskenthusiast", "Complete 25 tasks", 25));
+        achievements.Add(new Achievement("Task Expert","theexpert", "Complete 50 tasks", 50));
+        achievements.Add(new Achievement("Task Master","taskmaster", "Complete 100 tasks", 100));
+        achievements.Add(new Achievement("Wallhacks","wallhacks", "Use the XRay Goggles for the first time", 1));
+        achievements.Add(new Achievement("Run Forest, Run!","forest", "Use the Running Shoes for the first time", 1));
+        achievements.Add(new Achievement("The cleaning lady","cleaning", "Use the Vacuum for the first time", 1));
+        achievements.Add(new Achievement("These are harder than they look","failtasks", "Fail 5 tasks", 5));
+        achievements.Add(new Achievement("I like the way you recycle, boy!","recycle", "Complete 25 recycling tasks", 25));
+        achievements.Add(new Achievement("Gardening Simulator","gardening", "Complete 25 planting tree tasks", 25));
+        achievements.Add(new Achievement("The Cable Guy","cable", "Complete 25 rewire lamp tasks", 25));
+        achievements.Add(new Achievement("Sewage Cleaner","sewage", "Complete 15 sewage cleaning tasks", 15));
+        achievements.Add(new Achievement("How did I even get up there?","solar", "Complete 10 solar panel tasks", 10));
     }
     void Update()
     {
         foreach (Achievement ach in achievements) // loop through all achievements
         {
-            if (PlayerPrefs.HasKey(ach.Title)) // if achievement exists in memory
+            if (PlayerPrefs.HasKey(ach.AchCodeName)) // if achievement exists in memory
             {
-                ach.AchCode = PlayerPrefs.GetInt(ach.Title); // get achievement code from memory
+                ach.AchCode = PlayerPrefs.GetInt(ach.AchCodeName); // get achievement code from memory
             }
             if (ach.CurrentCount == ach.TriggerCount && ach.AchCode != 12345) // achievement unlocked
             {
@@ -59,11 +59,11 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         }
 
     }
-    public Achievement GetAchievement(string title) // get achievement by title
+    public Achievement GetAchievement(string achCodeName) // get achievement by title
     {
         foreach (Achievement ach in achievements)
         {
-            if (ach.Title.Equals(title)) return ach;
+            if (ach.AchCodeName.Equals(achCodeName)) return ach;
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
     private IEnumerator TriggerAchievement(Achievement ach) // achievement unlocked
     {
         ach.AchCode = 12345;
-        PlayerPrefs.SetInt(ach.Title, ach.AchCode);
+        PlayerPrefs.SetInt(ach.AchCodeName, ach.AchCode);
         audioSource.Play();
         if(UIManager.Instance != null)
         {

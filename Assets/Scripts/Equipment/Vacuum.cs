@@ -75,7 +75,7 @@ public class Vacuum : Equipment
         if (isActive)
         {
             audioSource.PlayOneShot(vacuumON);
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The cleaning lady").CurrentCount++; // increase achievement
+            FindObjectOfType<GlobalAchievements>().GetAchievement("cleaning").CurrentCount++; // increase achievement
         }
         else
             audioSource.PlayOneShot(vacuumOFF);

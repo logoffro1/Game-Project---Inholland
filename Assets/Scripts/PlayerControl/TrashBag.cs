@@ -26,7 +26,7 @@ public class TrashBag : MonoBehaviourPun
         items.Add(trash);
 
         //increase achievement
-        Achievement achPickupTrash = FindObjectOfType<GlobalAchievements>().GetAchievement("Stop Littering");
+        Achievement achPickupTrash = FindObjectOfType<GlobalAchievements>().GetAchievement("literring");
         achPickupTrash.CurrentCount++;
 
         photonView.RPC("ActivateTrash", RpcTarget.AllViaServer, trash.gameObject.GetPhotonView().ViewID, false); // send RPC to all clients

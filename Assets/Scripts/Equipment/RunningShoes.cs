@@ -19,7 +19,7 @@ public class RunningShoes : Equipment
         if (isActive)
         {
             audioSource.PlayOneShot(shoesOn);
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Run Forest, Run!").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("forest").CurrentCount++;
         }
         else
             audioSource.PlayOneShot(shoesOff);

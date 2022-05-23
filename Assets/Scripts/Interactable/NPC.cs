@@ -18,7 +18,7 @@ public class NPC : InteractableObject // human NPC
             receivedFlyer = true;
 
             // increase achievement
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The Activist").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("activist").CurrentCount++;
         }
     }
 
