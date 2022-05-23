@@ -22,7 +22,7 @@ public class PlayerReputation : MonoBehaviourPun
         {
             CurrentReputationExp = PlayerPrefs.GetFloat("reputation");
         }
-        CurrentReputationExp = 400;//This should come from save/load later on.
+        //CurrentReputationExp = 395;//This should come from save/load later on.
         IncreaseExpAmount = 0;
         DetermineReputationLevel();
     }

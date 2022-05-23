@@ -16,12 +16,12 @@ public class MinimapScript : MonoBehaviour
     //InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>()
     private void Start()
     {
-
+        
+        Debug.Log("This actually runs in start method");
         player = GameObject.FindGameObjectWithTag("Player").transform;
         allInteractableObjects = new List<InteractableTaskObject>();
         allPrefabLocations = new List<GameObject>();
-        initializeTaskList();
-        PlantAllQuestIcons();
+        StartCoroutine(initializeTaskList());
     }
     private void LateUpdate()
     {
@@ -45,12 +45,14 @@ public class MinimapScript : MonoBehaviour
         }
     }
 
-    private void initializeTaskList()
+    private IEnumerator initializeTaskList()
     {
+        yield return new WaitForSeconds(2);
         foreach (InteractableTaskObject interactableContainers in FindObjectsOfType<InteractableTaskObject>())
         {
             allInteractableObjects.Add(interactableContainers);
         }
+        PlantAllQuestIcons();
     }
 
     private GameObject GetPrefabByVector(Vector3 vector)
@@ -60,9 +62,7 @@ public class MinimapScript : MonoBehaviour
             if (prefab.gameObject.transform.position.x.ToString("F2") == vector.x.ToString("F2") &&
                 prefab.gameObject.transform.position.y.ToString("F2") == vector.y.ToString("F2") &&
                 prefab.gameObject.transform.position.z.ToString("F2") == vector.z.ToString("F2"))
-
             {
-
                 return prefab;
             }
         }

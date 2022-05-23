@@ -122,6 +122,7 @@ public class LevelPreviewCity : MonoBehaviour,  IPointerEnterHandler, IPointerEx
         }
         startButton.SetActive(true);
         overallDistrictScreen.PlayerData.IsInDistrict = District;
+        overallDistrictScreen.PlayerData.IsInDistrictName = districtName.text;
         firstClick = true;
     }
 
