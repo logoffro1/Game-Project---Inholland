@@ -56,7 +56,7 @@ public class LevelManager : MonoBehaviourPun
         }
         else // if loading only for caller
         {
-            CoroutineLoading();
+            LoadSceneSP();
         }
         if (PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(sceneName);

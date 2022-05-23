@@ -44,7 +44,8 @@ public class Player : MonoBehaviourPun
 
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
-            PhotonNetwork.LeaveRoom();
+            if(PhotonNetwork.NetworkClientState != Photon.Realtime.ClientState.Leaving)
+                PhotonNetwork.LeaveRoom();
             DestroyImmediate(gameObject);
             return;
         }
