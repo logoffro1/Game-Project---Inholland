@@ -17,7 +17,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject hoverTextUI;
     public GameObject howToPlayUI;
     public GameObject howToPlayBtn;
-    public GameObject returnToOfficeBtn;
     public GameObject returntoMainMenuBtn;
     public GameObject volumeUI;
     public GameObject volumeButton;
@@ -40,11 +39,9 @@ public class PauseMenu : MonoBehaviourPunCallbacks
             if (MiniGameManager.Instance.IsPlaying == false) {
                 HandlePauseButton();
             }
-            returnToOfficeBtn.GetComponent<UnityEngine.UI.Button>().interactable = true;
         }
         else
         {
-            returnToOfficeBtn.GetComponent<UnityEngine.UI.Button>().interactable = false;
             HandlePauseButton();
         } 
     } 
@@ -120,7 +117,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         howToPlayUI.SetActive(true);
         howToPlayBtn.SetActive(false);
-        returnToOfficeBtn.SetActive(false);
         returntoMainMenuBtn.SetActive(false);
         volumeButton.SetActive(false);
     }
@@ -130,7 +126,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         howToPlayUI.SetActive(false);
         howToPlayBtn.SetActive(true);
-        returnToOfficeBtn.SetActive(true);
         returntoMainMenuBtn.SetActive(true);
         volumeButton.SetActive(true);
     }
@@ -138,7 +133,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         volumeUI.SetActive(true);
         howToPlayBtn.SetActive(false);
-        returnToOfficeBtn.SetActive(false);
         returntoMainMenuBtn.SetActive(false);
         volumeButton.SetActive(false);
     }
@@ -146,7 +140,6 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         volumeUI.SetActive(false);
         howToPlayBtn.SetActive(true);
-        returnToOfficeBtn.SetActive(true);
         returntoMainMenuBtn.SetActive(true);
         volumeButton.SetActive(true);
     }
