@@ -41,6 +41,7 @@ public class Player : MonoBehaviourPun
     }
     private void OnLevelWasLoaded()
     {
+        CastRay.Instance.CanInteract = true;
         //Discord status change happens on every scene change before LoadSceneAsync();
         if (DiscordController.Instance.IsDiscordRunning())
         {
