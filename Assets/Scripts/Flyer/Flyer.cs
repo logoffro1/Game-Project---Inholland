@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Flyer data class
 public class Flyer 
 {
     public string Title { get; set; }

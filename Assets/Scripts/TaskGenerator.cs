@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Localization.Components;
 using Photon.Pun;
 
+//Sets the tasks (minigames) to the models all around the map
 public class TaskGenerator : MonoBehaviourPun
 {
     private Dictionary<TaskObjectType, List<GameObject>> allInteractableObjects { get; set; }
@@ -33,7 +34,6 @@ public class TaskGenerator : MonoBehaviourPun
         SetUpEvents();
 
         ChooseAllTasksAtStart();
-
     }
 
 
@@ -48,11 +48,9 @@ public class TaskGenerator : MonoBehaviourPun
     {
         allInteractableObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
-        //foreach object that has InteractableTaskObject script in it
-
         foreach (InteractableTaskStatusModels interactableContainers in FindObjectsOfType<InteractableTaskStatusModels>())
         {
-            //Using tags
+            //Gets all the interactable task objects from the scene
             TaskObjectType task = (TaskObjectType)Enum.Parse(typeof(TaskObjectType), interactableContainers.gameObject.tag);
             if (allInteractableObjects.ContainsKey(task))
             {
@@ -60,9 +58,6 @@ public class TaskGenerator : MonoBehaviourPun
                 allInteractableObjects[task].Add(interactableContainers.gameObject);
             }
             else allInteractableObjects.Add(task, new List<GameObject>());
-
-            //Default is that nothing hasto be done //THIS IS WHERE THE NULL POINTER OCCURS
-            //interactable.ChangeModel(TaskStatus.Success);
         }
     }
 
@@ -70,9 +65,8 @@ public class TaskGenerator : MonoBehaviourPun
     {
         allGamesToObjects = new Dictionary<TaskObjectType, List<GameObject>>();
 
-        //Manually set which object is linked to which game
+        //Adds each type of game to the correct model enum
         allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("Rewire") || x.name.Contains("ColorBeep")).ToList());
-        //allGamesToObjects.Add(TaskObjectType.StreetLamp, GamePrefabs.Where(x => x.name.Contains("ColorBeep")).ToList());
         allGamesToObjects.Add(TaskObjectType.ManHole, GamePrefabs.Where(x => x.name.Contains("Sewage")).ToList());
         allGamesToObjects.Add(TaskObjectType.Tree, GamePrefabs.Where(x => x.name.Contains("Dig")).ToList());
         allGamesToObjects.Add(TaskObjectType.SolarPanel, GamePrefabs.Where(x => x.name.Contains("Solar")).ToList());
@@ -89,16 +83,8 @@ public class TaskGenerator : MonoBehaviourPun
         foreach (TaskObjectType objectType in Enum.GetValues(typeof(TaskObjectType)))
         {
             if (allInteractableObjects.ContainsKey(objectType))
-                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count / 3);
+                allGamesToAmountSpawn.Add(objectType, allInteractableObjects[objectType].Count / 3); //Makes a third interactable
         }
-
-        //Manual
-        /*
-        allGamesToAmountSpawn.Add(TaskObjectType.StreetLamp, 15);
-        allGamesToAmountSpawn.Add(TaskObjectType.ManHole, 8);
-        allGamesToAmountSpawn.Add(TaskObjectType.Tree, 20);
-        allGamesToAmountSpawn.Add(TaskObjectType.SolarPanel, 2);
-        */
     }
 
     private void SetUpEvents()
@@ -125,10 +111,6 @@ public class TaskGenerator : MonoBehaviourPun
 
     private void AddTaskToObject(GameObject interactableContainers, GameObject gamePrefab)
     {
-        //Enables the script component
-        //Get the InteractableTaskObject from the container
-        //InteractableTaskObject component = interactableContainers.GetComponentInChildren<InteractableTaskObject>();
-
         //Making it so that players can interact with it
         GameObject newTaskObject = interactableContainers.GetComponent<InteractableTaskStatusModels>().ChangeModel(TaskStatus.Untouched);
         newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
@@ -140,6 +122,7 @@ public class TaskGenerator : MonoBehaviourPun
             mesh.material = canSolveMaterial;
         }*/
 
+        //newTaskObject.GetComponent<InteractableTaskObject>().SetLocalizedString(localizedStringEvent);
     }
 
     private void ChooseAllTasksAtStart()
@@ -175,7 +158,7 @@ public class TaskGenerator : MonoBehaviourPun
 
     public void MiniGameManager_OnGameOver(InteractableTaskObject interactableObject)
     {
-        //TODO: Arbitrary number
+        //Makes it un-interactable after 3 tries
         if (interactableObject.AmountTries >= 2)
         {
             //GameIsOver(interactableObject, failedMaterial);
@@ -185,15 +168,12 @@ public class TaskGenerator : MonoBehaviourPun
 
     public void MiniGameManager_OnGameWon(InteractableTaskObject interactableObject)
     {
-        //TODO: Change to better stuff
-        //GameIsOver(interactableObject, fixedMaterial);
         interactableObject.ChangeModel(TaskStatus.Success);
 
     }
 
     private void GameIsOver(InteractableTaskObject interactableObject, Material material)
     {
-        //interactableObject.gameObject.GetComponent<MeshRenderer>().material = material;
         interactableObject.enabled = false;
         interactableObject.IsInteractable = false;
     }

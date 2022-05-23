@@ -20,6 +20,7 @@ public class UpgradeManager : MonoBehaviour
 
     void Start()
     {
+        //Sets the event
         TimerCountdown.Instance.OnSecondChange += TimerCountdown_OnSecondChange;
 
         player = FindObjectsOfType<Player>().Where(x => x.Host).FirstOrDefault();
@@ -29,12 +30,15 @@ public class UpgradeManager : MonoBehaviour
         amountTilNextOccurence = ProgressBar.Instance.GetSlideValue() + occurenceAmount;
     }
 
+    //Is called when timer goes down
     private void TimerCountdown_OnSecondChange(int countDown)
     {
+        //Gets the values
         int secondsPassed = TimerCountdown.Instance.SecondsMax - countDown;
         float sustainValue = ProgressBar.Instance.GetSlideValue();
         MiniGameManager manager = FindObjectOfType<MiniGameManager>();
 
+        //If condition is met, show the upgrade screen
         if (secondsPassed + sustainValue > amountTilNextOccurence && !canvasIsOn && !manager.IsPlaying)
         {
             canvasIsOn = true;

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Square under activator, it will destroy the item if it collides and will remove a life
 public class FailureSquare : MonoBehaviour
 {
     private RecycleMiniGame game;

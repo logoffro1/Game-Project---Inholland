@@ -1,6 +1,7 @@
 using UnityEngine.Localization.Components;
 using UnityEngine;
 
+//Script that goes on printer model, such that player can interact with it
 public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
@@ -17,11 +18,13 @@ public class Printer : InteractableObject
         SetLocalizedString(localizeStringEvent);
     }
 
+    //Shows choice panel if clicked
     public override void DoAction(GameObject player)
     {
         ShowPanel(true);
     }
 
+    //Shows the panel from the editor
     private void ShowPanel(bool show)
     {
         CastRay.Instance.CanInteract = !show;
@@ -39,6 +42,7 @@ public class Printer : InteractableObject
         {
             Cursor.lockState = CursorLockMode.None;
 
+            //If already printed, don't let them print more
             if (PrinterCanvas.GetComponent<FlyerMaking>().IsDoneForToday)
             {
                 NoPanel.SetActive(true);
@@ -55,6 +59,7 @@ public class Printer : InteractableObject
 
     }
 
+    //Sets the correct panel if player goes back to office
     public void ReturnToOpenWorld()
     {
         ChoicePanel.SetActive(false);
@@ -65,6 +70,7 @@ public class Printer : InteractableObject
         ShowPanel(false);
     }
 
+    //Sets the correct panel if player continues with 
     public void ChooseToContinue()
     {
         ChoicePanel.SetActive(false);

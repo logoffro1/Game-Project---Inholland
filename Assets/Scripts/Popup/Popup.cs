@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//This is the class that creates popups with the correct content in them
 public class Popup : MonoBehaviour
 {
     [HideInInspector] public TaskObjectType Task;
@@ -35,6 +36,7 @@ public class Popup : MonoBehaviour
 
     private Text GetRandomTextFrom(GameObject container)
     {
+        //Gets crandom text of correct container,for the content
         return container.transform.GetChild(Random.Range(0, container.transform.childCount)).GetComponent<Text>();
     }
 
@@ -44,8 +46,8 @@ public class Popup : MonoBehaviour
         if (InfoText.Equals(""))
             yield return new WaitForSeconds(2.5f);
 
-        //change image
 
+        //Get a random text from the correct container
         Text chosenText = null;
         if (InfoText.Equals(""))
         {
@@ -73,6 +75,7 @@ public class Popup : MonoBehaviour
         }
         else
         {
+            //Else its not a minigame popup
             isMinigamePopup = false;
             chosenText = gameObject.AddComponent<Text>();
             chosenText.text = InfoText;

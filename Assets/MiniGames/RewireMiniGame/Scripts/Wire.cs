@@ -12,6 +12,7 @@ public class Wire : MonoBehaviour
 
     void Start()
     {
+        //Sets the aestehtics colors of teh different parts of the wire
         foreach(Transform child in transform)
         {
             if (child.TryGetComponent(out SpriteRenderer childSprite))

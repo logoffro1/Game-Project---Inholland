@@ -2,16 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
 
-
+//Loads the proper scene when clicking the correct district in the map selection
 public class DistrictLoadScene : MonoBehaviour
 {
     [HideInInspector] public string SceneName;
 
     private PlayerData[] playerDatas;
-    private void Start()
-    {
-       
-    }
+
     private void LoadMyScene()
     {
         if (PhotonNetwork.IsMasterClient)

@@ -10,19 +10,19 @@ public class CharacterWobble : MonoBehaviour
 
     public float speedMultiplier = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         textMesh = GetComponent<TMP_Text>();
         originalFontSize = textMesh.fontSize;
     }
 
-    // Update is called once per frame
+    //Putting the beat
     void Update()
     {
         textMesh.fontSize = originalFontSize * Beat(Time.time * speedMultiplier);
     }
 
+    //The math behind the beat
     float Beat(float time)
     {
         return Mathf.Cos(10 * time) * 0.1f + 1f;

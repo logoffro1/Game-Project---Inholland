@@ -12,22 +12,6 @@ public class RewireUIManager : MonoBehaviour
 
     private void WireSpwawner_GameSuccess(bool isSuccess)
     {
-        /*
-        successText.SetActive(true);
 
-        TextMeshProUGUI text = successText.GetComponent<TextMeshProUGUI>();
-        if (isSuccess)
-        {
-            text.color = Color.green;
-            text.text = "SUCCESS";
-            Debug.Log("RewireMinigame: success");
-        }
-        else
-        {
-            text.color = Color.red;
-            text.text = "FAILURE";
-            Debug.Log("RewireMinigame: failure");
-        }
-        */
     }
 }
