@@ -542,7 +542,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839167805018112
-    m_Localized: derde kaart
+    m_Localized: Buitenwijken
     m_Metadata:
       m_Items: []
   - m_Id: 11839685034004480
@@ -556,7 +556,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11840131802877952
-    m_Localized: Derde kaartbeschrijving
+    m_Localized: "\rVerken de buitenwijken van Alkmaar! Je hebt een glimp van wat\r\nhet
+      leven in de buitenwijken is zoals in Alkmaar terwijl de duurzaamheid toeneemt!"
     m_Metadata:
       m_Items: []
   - m_Id: 11840374225260544
@@ -718,6 +719,10 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 18151279816642560
     m_Localized: Je kunt elke upgrade kiezen om je te helpen bij je missie!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18476058352324608
+    m_Localized: WIJZIG VOLUME
     m_Metadata:
       m_Items: []
   references:

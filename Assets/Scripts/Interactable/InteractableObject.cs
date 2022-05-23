@@ -22,13 +22,16 @@ public abstract class InteractableObject : MonoBehaviour
     //Sets for the translation
     public async void SetLocalizedString(LocalizeStringEvent localizedStringEvent)
     {
+        if (localizedStringEvent == null)
+        {
+            Debug.Log(this.GetType().ToString());
+        }
         try
         {
             // get localization settings
             var handle = LocalizationSettings.InitializationOperation;
             await handle.Task;
             locSettings = handle.Result;
-
 
             // set the hover text
             this.localizedStringEvent = localizedStringEvent;
@@ -40,11 +43,9 @@ public abstract class InteractableObject : MonoBehaviour
         }
         catch (Exception ex) //it gets here if localizedString is not set
         {
-            
             Debug.Log(ex.ToString());
         }
     }
-
     protected virtual void OnStringChanged(string s) // change hover text
     {
         if (locSettings == null) return;

@@ -115,7 +115,14 @@ public class TaskGenerator : MonoBehaviourPun
         GameObject newTaskObject = interactableContainers.GetComponent<InteractableTaskStatusModels>().ChangeModel(TaskStatus.Untouched);
         newTaskObject.GetComponent<InteractableTaskObject>().GamePrefab = gamePrefab;
         newTaskObject.GetComponent<InteractableTaskObject>().enabled = true;
-        newTaskObject.GetComponent<InteractableTaskObject>().SetLocalizedString(localizedStringEvent);
+        newTaskObject.GetComponent<InteractableTaskObject>().SetLocalizedString(GameObject.Find("HoverText").GetComponent<LocalizeStringEvent>());
+        //Changes the color TODO: REMOVE 
+        /*foreach (MeshRenderer mesh in interactableContainers.GetComponentsInChildren<MeshRenderer>())
+        {
+            mesh.material = canSolveMaterial;
+        }*/
+
+        //newTaskObject.GetComponent<InteractableTaskObject>().SetLocalizedString(localizedStringEvent);
     }
 
     private void ChooseAllTasksAtStart()

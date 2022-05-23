@@ -297,7 +297,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839167805018112
-    m_Localized: "A treia hart\u0103"
+    m_Localized: Suburbii
     m_Metadata:
       m_Items: []
   - m_Id: 11839685034004480
@@ -312,7 +312,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11840131802877952
-    m_Localized: "A treia descriere a h\u0103r\u021Bii"
+    m_Localized: "\rExplora\u021Bi prin suburbiile Alkmaar! Ai o privire despre ce\r\nvia\u021Ba
+      suburban\u0103 este ca \xEEn Alkmaar \xEEn timp ce cre\u0219te sustenabilitatea!"
     m_Metadata:
       m_Items: []
   - m_Id: 11840374225260544
@@ -668,6 +669,10 @@ MonoBehaviour:
   - m_Id: 18151279816642560
     m_Localized: "Pute\u021Bi alege orice upgrade pentru a v\u0103 ajuta s\u0103
       v\u0103 \xEEndeplini\u021Bi misiunea!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18476058352324608
+    m_Localized: MODIFICA VOLUMUL
     m_Metadata:
       m_Items: []
   references:

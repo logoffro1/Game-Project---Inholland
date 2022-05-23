@@ -115,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsInteractable: 1
+  localizedStringEvent: {fileID: 0}
   localizedString:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
@@ -127,6 +128,7 @@ MonoBehaviour:
   GamePrefab: {fileID: 0}
   AmountTries: 0
   CurrentModel: {fileID: 0}
+  interactableTaskStatusModels: {fileID: 0}
   Status: 0
   references:
     version: 1

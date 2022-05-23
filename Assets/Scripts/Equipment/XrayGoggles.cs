@@ -32,6 +32,7 @@ public class XrayGoggles : Equipment
     }
     private void OnLevelWasLoaded(int level)
     {
+        if (SceneManager.GetActiveScene().name == "MainMenu") return;
         SetPlayerRep();
         if(SceneManager.GetActiveScene().name != "NewOffice") // check scene before getting the post processing
             xrayVision = GameObject.FindGameObjectWithTag("xray").GetComponent<XRayVision>();

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 
+
 public class PauseMenu : MonoBehaviourPunCallbacks
 {
     //Declaring variables
@@ -21,10 +22,13 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     public GameObject volumeUI;
     public GameObject volumeButton;
 
+    private bool isInOffice;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        PhotonNetwork.EnableCloseConnection = true;
+         isInOffice = SceneManager.GetActiveScene().name == "NewOffice";
     }
 
     // Update is called once per frame
@@ -32,7 +36,20 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         //Checks if escape is pressed to bring up or close the pause menu,
         //and ensures that you cannot pause in the middle of a minigame
-        if (Input.GetKeyUp(KeyCode.Escape) && MiniGameManager.Instance.IsPlaying == false)
+        if (!isInOffice) {
+            if (MiniGameManager.Instance.IsPlaying == false) {
+                HandlePauseButton();
+            }
+        }
+        else
+        {
+            HandlePauseButton();
+        } 
+    }
+
+    void HandlePauseButton()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             if (isPaused)
             {
@@ -53,6 +70,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
+            p.GetComponentInChildren<Canvas>().enabled = true;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = true;
@@ -66,6 +84,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         CloseHowToPlay();
+        CloseVolumeUI();
         isPaused = false;
     }
     //This method is the opposite of resume, it pauses the game,
@@ -76,9 +95,11 @@ public class PauseMenu : MonoBehaviourPunCallbacks
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
+            p.GetComponentInChildren<Canvas>().enabled = false;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = false;
+                
                 break;
             }
         }
@@ -143,8 +164,14 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     //Return to Main Menu button that switches scenes
     public void LoadMenu()
     {
-       // PhotonNetwork.LeaveRoom(true);
-        //LevelManager.Instance.LoadScenePhoton("MainMenu",false);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            LevelManager.Instance.LoadScenePhoton("MainMenu", true);
+        }
+        else
+        {
+            LevelManager.Instance.LoadScenePhoton("MainMenu", false);
+        }
     }
 
     public override void OnLeftRoom()

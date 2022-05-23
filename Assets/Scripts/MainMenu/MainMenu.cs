@@ -2,19 +2,32 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Localization.Settings;
 using Photon.Pun;
-public class MainMenu : MonoBehaviour
+using System;
+
+public class MainMenu : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject[] lobbyActivation;
     [SerializeField] private TMP_InputField nicknameInput;
 
     private void Start()
     {
-        if (PlayerPrefs.HasKey("nickname")) // set the nickname if nickname exists
-            nicknameInput.text = PlayerPrefs.GetString("nickname");
-
+        if (PhotonNetwork.NetworkClientState == Photon.Realtime.ClientState.Leaving)
+        {
+            return;
+        }
+            if (PlayerPrefs.HasKey("nickname")) // set the nickname if nickname exists
+            {
+          
+                try
+                {
+                    nicknameInput.text = PlayerPrefs.GetString("nickname");
+                }
+                catch(Exception e)
+                {
+                    nicknameInput.text = "New Player";
+                }
+            }
     }
-
-
     public void NewGame()
     {
         //set player nickname and show lobby canvas

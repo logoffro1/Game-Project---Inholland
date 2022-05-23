@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization.Settings;
 
 public class GlobalAchievements : MonoBehaviour // manage all achievements
 {
@@ -8,8 +9,11 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
     private AudioSource audioSource;
     private List<Achievement> achievements = new List<Achievement>();
 
+    private LocalizationSettings locSettings;
+
     private void Awake() // persistent singleton
     {
+        PlayerPrefs.DeleteAll();
         if (Instance == null)
         {
             Instance = this;
@@ -32,7 +36,7 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         achievements.Add(new Achievement("Detour around Alkmaar","detour", "Travel a total of 5km in the city center", 5));
         achievements.Add(new Achievement("Task Beginner","taskbeginner", "Complete 10 tasks", 10));
         achievements.Add(new Achievement("Task Enthusiast","taskenthusiast", "Complete 25 tasks", 25));
-        achievements.Add(new Achievement("Task Expert","theexpert", "Complete 50 tasks", 50));
+        achievements.Add(new Achievement("Task Expert","taskexpert", "Complete 50 tasks", 50));
         achievements.Add(new Achievement("Task Master","taskmaster", "Complete 100 tasks", 100));
         achievements.Add(new Achievement("Wallhacks","wallhacks", "Use the XRay Goggles for the first time", 1));
         achievements.Add(new Achievement("Run Forest, Run!","forest", "Use the Running Shoes for the first time", 1));
@@ -67,6 +71,12 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         }
         return null;
     }
+    private async void InitLoc()
+    {
+        var handle = LocalizationSettings.InitializationOperation;
+        await handle.Task;
+        locSettings = handle.Result;
+    }
     public List<Achievement> GetAllAchievements() => achievements;
     private IEnumerator TriggerAchievement(Achievement ach) // achievement unlocked
     {
@@ -75,7 +85,19 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
         audioSource.Play();
         if(UIManager.Instance != null)
         {
-            UIManager.Instance.ShowPopUp($"Achievement Unlocked: {ach.Title}");
+            InitLoc();
+            switch (locSettings.GetSelectedLocale().Identifier.Code.ToString().ToLower())
+            {
+                case "nl":
+                    UIManager.Instance.ShowPopUp($"Prestatie ontgrendeld: {ach.Title}");
+                    break;
+                case "ro":
+                    UIManager.Instance.ShowPopUp($"Realizare deblocata: {ach.Title}");
+                    break;
+                default:
+                    UIManager.Instance.ShowPopUp($"Achievement Unlocked: {ach.Title}");
+                    break;
+            }
         }
         yield return null;
 
