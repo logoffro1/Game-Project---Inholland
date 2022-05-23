@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
+    //This class controls tetris mini game.
     public Tilemap tilemap { get; private set; }
 
     public Piece activePiece { get; private set; }
@@ -21,7 +22,7 @@ public class Board : MonoBehaviour
     public int amountOfLinesNeeded { get;  set; }
 
     public bool isGameOver = false;
-
+    //Declaring the bounds and the board size.
     public RectInt Bounds
     {
         get
@@ -44,6 +45,7 @@ public class Board : MonoBehaviour
 
 
     }
+    //This method spawns a piece from the middle top of the board and checks the win condition.
     public void SpawnPiece()
 
     {
@@ -70,6 +72,7 @@ public class Board : MonoBehaviour
         this.tilemap.ClearAllTiles();
     }
 
+    //This method simply spawns the tetris piece.
     public void SetPiece(Piece piece)
     {
         for (int i = 0; i < piece.cells.Length; i++)
@@ -78,6 +81,7 @@ public class Board : MonoBehaviour
             this.tilemap.SetTile(tilePosition, piece.data.tile);
         }
     }
+    //This method clears a certain tile.
     public void ClearTile(Piece piece)
     {
         for (int i = 0; i < piece.cells.Length; i++)
@@ -86,7 +90,7 @@ public class Board : MonoBehaviour
             this.tilemap.SetTile(tilePosition, null);
         }
     }
-
+    //Checks the validity of the position via the tetromino data and the bounds declared.
     public bool IsValidPosition(Piece piece, Vector3Int position)
     {
         RectInt bounds = this.Bounds;
@@ -106,7 +110,7 @@ public class Board : MonoBehaviour
         }
         return true;
     }
-
+    //Cleans the line once there is a perfect line.
     public void ClearLines()
     {
         RectInt bounds = this.Bounds;
@@ -163,7 +167,7 @@ public class Board : MonoBehaviour
             row++;
         }
     }
-
+    //Checking if the line is full, if there is a single tile with no tetris piece, return false.
     private bool isLineFull(int row)
     {
         RectInt bounds = this.Bounds;
@@ -178,6 +182,7 @@ public class Board : MonoBehaviour
         }
         return true;
     }
+    // Begin by spawning the first piece that creates the cycle.
     void Start()
     {
         SpawnPiece();
