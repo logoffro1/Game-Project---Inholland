@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class LineCollision : MonoBehaviour
 {
+    //This class handles the torch and line renderer collision to determine win lose condition
     LineRendererController lc;
     List<Vector2> colliderPoints = new List<Vector2>();
     PolygonCollider2D poly2d;
@@ -16,7 +17,7 @@ public class LineCollision : MonoBehaviour
         poly2d = GetComponent<PolygonCollider2D>();
 
     }
-
+    //Get all line renderer positions and  calculate the collider points to make sure torch is always inside the line
     private void LateUpdate()
     {
         Vector3[] positions = lc.GetPositions();
@@ -49,6 +50,7 @@ public class LineCollision : MonoBehaviour
             /*colliderPoints = CalculateColliderPoints();
             poly2d.SetPath(0, colliderPoints);*/
         }
+        //Mathematical calculation for the collider of line renderer. Not only the edge points but for all of it.
         private List<Vector2> CalculateColliderPoints(List<Vector2> positions)
         {
            

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Swing : InteractableObject
@@ -10,7 +8,7 @@ public class Swing : InteractableObject
         hoverName = "Push";
         anim = GetComponent<Animator>();
     }
-    public override void DoAction(GameObject player)
+    public override void DoAction(GameObject player) // set swing anim
     {
         anim.SetTrigger("PlayerPush");
     }

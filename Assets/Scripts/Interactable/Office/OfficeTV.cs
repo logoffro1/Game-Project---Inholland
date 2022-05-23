@@ -1,10 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
-using UnityEngine.Localization;
 using UnityEngine.Localization.Components;
-using UnityEngine.Localization.Settings;
 
 public class OfficeTV : InteractableObject
 {
@@ -17,10 +12,10 @@ public class OfficeTV : InteractableObject
     {
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
-        SetLocalizedString(localizeStringEvent);
+        SetLocalizedString(localizeStringEvent); // set hover text
     }
 
-    public override void DoAction(GameObject player)
+    public override void DoAction(GameObject player) // show level selection
     {
         officeLevels.ShowPanel(true);
     }

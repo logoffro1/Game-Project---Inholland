@@ -1,3 +1,5 @@
+
+// for object hovering 
 Shader "Outlines/HoverOutline"
 {
     Properties

@@ -1,33 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
 public class XrayGoggles : Equipment
 {
     [SerializeField]
-    private XRayVision xrayVision;
+    private XRayVision xrayVision; // xray post processing effects
 
     [SerializeField] private AudioClip xrayOn;
     [SerializeField] private AudioClip xrayOff;
 
     private AudioSource audioSource;
 
-    public override void DoAction()
+    public override void DoAction() // turn xray ON / OFF
     {
         activeTime = 15f;
 
         if (xrayVision == null) return;
-        CastRay.Instance.CanInteract = isActive;
+        CastRay.Instance.CanInteract = isActive; // set interacting off while in xray mode
         isActive = !isActive;
 
         drainOverTime = isActive;
         xrayVision.ActivateVision();
 
-        if (isActive)
+        if (isActive) // play on / off sounds
         {
             audioSource.PlayOneShot(xrayOn);
-            FindObjectOfType<GlobalAchievements>().GetAchievement("Wallhacks").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("wallhacks").CurrentCount++; // increase achievement
         }
            
         else
@@ -36,21 +33,24 @@ public class XrayGoggles : Equipment
     private void OnLevelWasLoaded(int level)
     {
         SetPlayerRep();
-        if(SceneManager.GetActiveScene().name != "NewOffice")
+        if(SceneManager.GetActiveScene().name != "NewOffice") // check scene before getting the post processing
             xrayVision = GameObject.FindGameObjectWithTag("xray").GetComponent<XRayVision>();
     }
     void Start()
-    {      
+    {
+        InitInfo();
+
+        audioSource = GetComponent<AudioSource>();
+    }
+   private void InitInfo()
+    {
         drainOverTime = false;
         isActive = false;
         equipmentName = "XRAY Goggles";
         activeTime = 15f;
         maxCooldown = 15f;
         cooldown = maxCooldown;
-
-        audioSource = GetComponent<AudioSource>();
     }
-
     public override void SetPlayerRep()
     {
         foreach(PlayerReputation pr in FindObjectsOfType<PlayerReputation>())
@@ -60,25 +60,22 @@ public class XrayGoggles : Equipment
         }
         SetLocked(playerRep.IsXrayLocked);
     }
-  
-
     void Update()
     {
-
-
         if (IsLocked) return;
-        if (SceneManager.GetActiveScene().name == "NewOffice") return;
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (SceneManager.GetActiveScene().name == "NewOffice") return; // dont allow use in the office
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) // if key '1' is pressed
         {
             if (!isActive && cooldown <= 0)
                 DoAction();
             else if (isActive)
                 DoAction();
         }
-        if(!isActive)
+        if(!isActive) // if its inactive
         {
             if(cooldown > 0)
-            {
+            { // decrease the cooldown until its's 0 and ready to use again
                 cooldown -= Time.deltaTime;
                 if (cooldown <= 0)
                     cooldown = 0;
@@ -86,8 +83,10 @@ public class XrayGoggles : Equipment
                 onCooldownChange(this);
             }
         }
-        else
+        else // if its active
         {
+            // increase the cooldown over time
+            // the cooldown is based on how much the player uses the goggles
             cooldown += (Time.deltaTime);
             if (cooldown >= maxCooldown)
                 cooldown = maxCooldown;

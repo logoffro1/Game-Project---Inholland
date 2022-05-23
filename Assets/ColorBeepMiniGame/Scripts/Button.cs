@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class Button : MonoBehaviour
+public class Button : MonoBehaviour // color beep button
 {
     public Action<GameObject> onClick = delegate { };
 

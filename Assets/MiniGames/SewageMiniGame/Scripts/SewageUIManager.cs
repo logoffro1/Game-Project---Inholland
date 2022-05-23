@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
-public class SewageUIManager : MonoBehaviour
+public class SewageUIManager : MonoBehaviour // sewage minigame only
 {
     public Image[] lifes;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI successText;
-    public void ChangeLifes(int lives)
+    public void ChangeLifes(int lives) // handle lifes sprites
     {
+        // show the correct number of lifes
         for (int i = 0; i < lifes.Length; i++)
         {
 
@@ -18,7 +19,7 @@ public class SewageUIManager : MonoBehaviour
                 StartCoroutine(ChangeLives(lifes[i]));
         }
     }
-    private IEnumerator ChangeLives(Image life)
+    private IEnumerator ChangeLives(Image life) // play life destroy animation
     {
 
         Animator animator = life.GetComponent<Animator>();

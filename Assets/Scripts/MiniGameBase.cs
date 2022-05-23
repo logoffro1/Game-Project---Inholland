@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.Linq;
-using System.Threading;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
@@ -18,7 +17,7 @@ public class MiniGameBase : MonoBehaviour
     public bool IsPlaying { get; set; } = true;
     public TextMeshProUGUI successText;
     public TextMeshProUGUI descriptionText;
-    public GameObject infoCanvas;
+    public GameObject infoCanvas; // canvas regarding HOW TO PLAY info
 
     public MiniGameDifficulty gameDifficulty;
 
@@ -46,10 +45,11 @@ public class MiniGameBase : MonoBehaviour
     {
         try
         {
+            //get localization settings (if they exist)
             var handle = LocalizationSettings.InitializationOperation;
             await handle.Task;
             locSettings = handle.Result;
-
+            //set the text to the correct language
             this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
 
             this.localizedStringEventDescription.StringReference = localizedStringHint;
@@ -61,7 +61,7 @@ public class MiniGameBase : MonoBehaviour
             Debug.Log(ex.ToString());
         }
     }
-    protected virtual void OnStringChanged(string s)
+    protected virtual void OnStringChanged(string s)// set the hint box based on the minigame and on the language
     {
         if (locSettings == null) return;
         this.description = locSettings.GetStringDatabase().GetLocalizedString(localizedStringHint.TableReference, localizedStringHint.TableEntryReference);
@@ -96,6 +96,7 @@ public class MiniGameBase : MonoBehaviour
     public event Action<InteractableTaskObject> OnGameOver;
     public void Update()
     {
+        //Only show the HINT box while pressing H
         if (Input.GetKeyDown(KeyCode.H))
         {
             ShowInfo(true);
@@ -105,34 +106,24 @@ public class MiniGameBase : MonoBehaviour
             ShowInfo(false);
         }
     }
-    private void ShowInfo(bool show)
+    private void ShowInfo(bool show) // show/hide the hint box
     {
-        Debug.Log("Method is called");
         if (infoCanvas.activeSelf == show) return;
-        CursorLockMode mode = Cursor.lockState;
-        bool cursorVisible = Cursor.visible;
-        /*if (show)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }*/
+
         descriptionText.text = description;
         infoCanvas.SetActive(show);
     }
-    protected void GameOver() //remove the duplicate
-    {
+    protected void GameOver()
+    { //stop the game
         MiniGameManager.Instance.GameOver();
 
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         ChangeSuccessText(false);
         IsPlaying = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(-SustainabilityPoints, true);
+        Cursor.lockState = CursorLockMode.Locked; // lock cursor
+        ProgressBar.Instance.ChangeSustainibility(-SustainabilityPoints, true); // decrease sustainability
     }
-    protected void GameWon() //remove the duplicate
+    protected void GameWon()
     {
         MiniGameManager.Instance.GameWon();
 
@@ -143,7 +134,7 @@ public class MiniGameBase : MonoBehaviour
         ProgressBar.Instance.ChangeSustainibility(SustainabilityPoints, true);
         TimerCountdown.Instance.SecondsLeft += GetAddedTime();
     }
-    private void ChangeSuccessText(bool successful)
+    private void ChangeSuccessText(bool successful) // show FAILURE / SUCCESS depending on the outcome of the game
     {
         LocalizedString locStr;
         successText.enabled = true;
@@ -161,7 +152,8 @@ public class MiniGameBase : MonoBehaviour
         }
 
         localizedStringEventResult.StringReference = locStr;
-
+        
+        // set the text in the correct language
         successText.text = locSettings.GetStringDatabase().GetLocalizedString(locStr.TableReference, locStr.TableEntryReference);
     }
 

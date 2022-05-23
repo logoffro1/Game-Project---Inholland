@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SingletonReferences : MonoBehaviour
+public class SingletonReferences : MonoBehaviour // for build mode a reference is needed
 {
-    [SerializeField] private MasterManager masterManager;
+    [SerializeField] private MasterManager masterManager; 
 }

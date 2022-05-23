@@ -101,7 +101,7 @@ public class Player : MonoBehaviourPun
     {
         if (other.CompareTag("Church"))
         {
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The Holy Grail").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("church").CurrentCount++;
         }
     }
 }

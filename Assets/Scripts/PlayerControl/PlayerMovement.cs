@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviourPun
     private CharacterController controller;
 
     [SerializeField]
-    private Transform groundCheck;
+    private Transform groundCheck; // to check if colliding with ground
     public LayerMask groundMask;
     private bool isGrounded;
 
@@ -44,9 +44,11 @@ public class PlayerMovement : MonoBehaviourPun
             }
         }
         
+        // get movement axis
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        if(!IsRunning(horizontal,vertical))
+
+        if(!IsRunning(horizontal,vertical)) // set running/idle anims
         {
             anim.SetBool("isRunning", false);
         }
@@ -55,16 +57,15 @@ public class PlayerMovement : MonoBehaviourPun
         {
             return;
         }
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask); // check if standing on the ground
 
         Movement(horizontal,vertical);
         Fall();
 
 
     }
-    public void SpeedBoost(bool activate)
+    public void SpeedBoost(bool activate) // apply a speed boost
     {
-        Debug.Log("HEY");
         if (activate)
         {
 
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviourPun
             speed -= 2.5f;
         }
     }
-    private void Fall()
+    private void Fall() // let the player fall due to gravity
     {
         if (isGrounded && velocity.y < 0f)
             velocity.y = -2f;
@@ -83,7 +84,7 @@ public class PlayerMovement : MonoBehaviourPun
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-    private void Movement(float horizontal, float vertical)
+    private void Movement(float horizontal, float vertical) // move the player with the controller and apply the animations
     {
         if (IsRunning(horizontal,vertical))
         {
@@ -92,5 +93,5 @@ public class PlayerMovement : MonoBehaviourPun
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * speed * Time.deltaTime);
     }
-    public bool IsRunning(float horizontal, float vertical) => horizontal != 0 || vertical != 0; 
+    public bool IsRunning(float horizontal, float vertical) => horizontal != 0 || vertical != 0; // check if running or standing
 }
