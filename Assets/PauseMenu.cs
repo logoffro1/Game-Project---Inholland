@@ -40,12 +40,14 @@ public class PauseMenu : MonoBehaviourPunCallbacks
             if (MiniGameManager.Instance.IsPlaying == false) {
                 HandlePauseButton();
             }
+            returnToOfficeBtn.GetComponent<UnityEngine.UI.Button>().interactable = true;
         }
         else
         {
+            returnToOfficeBtn.GetComponent<UnityEngine.UI.Button>().interactable = false;
             HandlePauseButton();
         } 
-    }
+    } 
 
     void HandlePauseButton()
     {

@@ -120,7 +120,6 @@ public class Vacuum : Equipment
             {
                 trash.transform.position = Vector3.MoveTowards(trash.transform.position, camerTransform.position, 1);
                 yield return new WaitForSeconds(0.1f);
-
             }
             else
                 break;
