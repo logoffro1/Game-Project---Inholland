@@ -117,7 +117,7 @@ public class EndOfDayReport : MonoBehaviour
 
         int playNr;
 
-        Location.text = playerData.IsInDistrict.ToString();
+        Location.text = playerData.IsInDistrictName;
         PlayerName.text = PhotonNetwork.LocalPlayer.NickName;
         Success.text += $"{playerReportData.GetTheSuccessfulMinigameNumber()}";
         Fail.text += $"{playerReportData.GetTheFailedMinigameNumber()}";

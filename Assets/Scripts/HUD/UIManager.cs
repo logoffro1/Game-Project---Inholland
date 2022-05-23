@@ -73,11 +73,13 @@ public class UIManager : MonoBehaviour
         }
         hoverText.text = $"(E) {text}";
     }
-    public void ChangeCanvasShown()
+    public void TurnOnCanvas(bool turnOn)
     {
-        canvas.enabled = !canvas.enabled;
-        playerCanvas.enabled = canvas.enabled;
+        canvas.enabled = turnOn;
+        playerCanvas.enabled = turnOn;
     }
+
+
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit) // set player trash count
     {
@@ -99,7 +101,6 @@ public class UIManager : MonoBehaviour
         if (ProgressBar.Instance.isGameOngoing)
         {
             ProgressBar.Instance.isGameOngoing = false;
-            Debug.Log("Countdownendrun");
             Instantiate(endOfTheDayReportPrefab);
         }
     }

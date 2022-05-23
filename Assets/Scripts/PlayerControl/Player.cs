@@ -32,7 +32,6 @@ public class Player : MonoBehaviourPun
 
     private void Awake()
     {
-        Debug.Log("AWAKE");
         
         if (photonView.IsMine)
         {
@@ -42,6 +41,14 @@ public class Player : MonoBehaviourPun
     }
     private void OnLevelWasLoaded()
     {
+        //Discord status change happens on every scene change before LoadSceneAsync();
+        if (DiscordController.Instance.IsDiscordRunning())
+        {
+            StatusType type = (StatusType)Enum.Parse(typeof(StatusType), SceneManager.GetActiveScene().name);
+            DiscordController.Instance.UpdateDiscordStatus(type);
+            Debug.Log(type);
+        }
+
         SpawnPlayer spawnPlayer = FindObjectOfType<SpawnPlayer>();
         transform.position = spawnPlayer.transform.position;
 
@@ -50,7 +57,7 @@ public class Player : MonoBehaviourPun
             GetComponent<PlayerMovement>().canMove = true;
         }
         else {
-
+            StartCoroutine(StartListDelay());
         }
         UIManager.Instance.SetPlayerInfo(trashText,flyersText,playerCanvas,trashFill);
         Cursor.lockState = CursorLockMode.Locked;
@@ -59,13 +66,17 @@ public class Player : MonoBehaviourPun
     }
     void Start()
     {
-        Debug.Log("PLAYER START");
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
-        oneOffUpgradeList = SetUpList();
         Hashtable hashtable = new Hashtable();
         hashtable.Add("ready", true);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
+    }
+
+    private IEnumerator StartListDelay()
+    {
+        yield return new WaitForSeconds(1);
+        oneOffUpgradeList = SetUpList();
     }
     public List<OneOffUpgrade> SetUpList()
     {
@@ -73,14 +84,14 @@ public class Player : MonoBehaviourPun
         MiniGameBase miniGameBase = FindObjectOfType<MiniGameBase>();
 
         List<OneOffUpgrade> list = new List<OneOffUpgrade>();
+        OneOffUpgradeContent[] contentList = FindObjectsOfType<OneOffUpgradeContent>();
         foreach (OneOffUpgradesEnum upgrade in (OneOffUpgradesEnum[])Enum.GetValues(typeof(OneOffUpgradesEnum)))
         {
-            list.Add(new OneOffUpgrade(upgrade, this, GetComponent<PlayerMovement>(), miniGameBase));
+            list.Add(new OneOffUpgrade(upgrade, contentList, this, GetComponent<PlayerMovement>(), miniGameBase));
         }
 
         return list;
     }
-
 
     public OneOffUpgrade GetUpgrade(OneOffUpgradesEnum upgrade)
     {

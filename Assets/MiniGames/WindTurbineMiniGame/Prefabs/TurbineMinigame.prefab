@@ -1040,6 +1040,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 7834920513173074660, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
 --- !u!4 &6719101568384424684 stripped
@@ -1110,7 +1114,7 @@ AudioSource:
   m_GameObject: {fileID: 6719101568384424685}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1212,7 +1216,9 @@ MonoBehaviour:
   successText: {fileID: 5306929150639224959}
   descriptionText: {fileID: 876603046627208110}
   infoCanvas: {fileID: 4507990155560412935}
+  gameDifficulty: 0
   TutorialCanvas: {fileID: 159047395291846898}
+  WaitTime: 0
   localizedStringEventDescription: {fileID: 7967446360518968002}
   localizedStringHint:
     m_TableReference:

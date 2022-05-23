@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine.Localization;
 using UnityEngine.Localization.Settings;
 using UnityEngine.Localization.Components;
+using UnityEngine.SceneManagement;
 
 public class TaskList : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class TaskList : MonoBehaviour
     int treeCounter = 0;
     int lampCounter = 0;
     int sewerCounter = 0;
+    int windTurbineCounter = 0;
+    int binCounter = 0;
     int totalObjects = 0;
     int bonusSusPoints = 5;
     //list of interactabletaskstatusmodels of assigned tasks and all possible tasks
@@ -132,6 +135,14 @@ public class TaskList : MonoBehaviour
                 {
                     lampCounter++;
                 }
+                if (task.tag == "WindTurbine")
+                {
+                    windTurbineCounter++;
+                }
+                if (task.tag == "Bin")
+                {
+                    binCounter++;
+                }
                 totalObjects++;
                 list.Add(task);
             }
@@ -143,16 +154,32 @@ public class TaskList : MonoBehaviour
     {
         //all types of tasks are fetched and are assigned per player
         List<TaskObjectType> allTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
+        List<TaskObjectType> cityTypes = ((TaskObjectType[])Enum.GetValues(typeof(TaskObjectType))).ToList();
+        cityTypes.Remove(TaskObjectType.WindTurbine);
 
         for (int i = 0; i < 3; i++)
         {
+            if (SceneManager.GetActiveScene().name == "CityCenter" || SceneManager.GetActiveScene().name == "GameUKDay")
             //randomly picks a type of task, then randomly assigns an amount of them to do between 2 and 6
             //which is then removed from the list and done again 3 times
             TaskObjectType type = allTypes[UnityEngine.Random.Range(0, allTypes.Count)];
             if (!taskObjectTypes.ContainsKey(type))
             {
-                taskObjectTypes.Add(type, new int[2] { 0, UnityEngine.Random.Range(2, 6) });
-                allTypes.Remove(type);
+                TaskObjectType type = cityTypes[UnityEngine.Random.Range(0, cityTypes.Count)];
+                if (!taskObjectTypes.ContainsKey(type))
+                {
+                    taskObjectTypes.Add(type, new int[2] { 0, UnityEngine.Random.Range(2, 6) });
+                    cityTypes.Remove(type);
+                }
+            }
+            else
+            {
+                TaskObjectType type = allTypes[UnityEngine.Random.Range(0, allTypes.Count)];
+                if (!taskObjectTypes.ContainsKey(type))
+                {
+                    taskObjectTypes.Add(type, new int[2] { 0, UnityEngine.Random.Range(2, 6) });
+                    allTypes.Remove(type);
+                }
             }
         }
         /*foreach(KeyValuePair<TaskObjectType, int> pair in taskObjectTypes)
@@ -205,6 +232,16 @@ public class TaskList : MonoBehaviour
             {
                 if (taskObjectTypes[TaskObjectType.StreetLamp][0] + 1 <= taskObjectTypes[TaskObjectType.StreetLamp][1])
                     taskObjectTypes[TaskObjectType.StreetLamp][0]++;
+            }
+            if (task.tag == "WindTurbine")
+            {
+                if (taskObjectTypes[TaskObjectType.WindTurbine][0] + 1 <= taskObjectTypes[TaskObjectType.WindTurbine][1])
+                    taskObjectTypes[TaskObjectType.WindTurbine][0]++;
+            }
+            if (task.tag == "Bin")
+            {
+                if (taskObjectTypes[TaskObjectType.Bin][0] + 1 <= taskObjectTypes[TaskObjectType.Bin][1])
+                    taskObjectTypes[TaskObjectType.Bin][0]++;
             }
             //updates text of the task list
             UpdateText();

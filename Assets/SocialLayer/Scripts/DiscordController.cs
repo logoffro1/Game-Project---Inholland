@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Discord;
+using System;
 
 public class DiscordController : MonoBehaviour
 {
@@ -70,28 +71,35 @@ public class DiscordController : MonoBehaviour
     //Using discord sdk to change the users rich presence with the current data.
     void UpdateActivity()
     {
-        UpdateVariables();
-        var activity = new Discord.Activity
+        try
         {
-
-            Name = name,
-            Details = details,
-            State = state,
-            Assets = { LargeImage = imageKey }
-        };
-        var activityManager = discord.GetActivityManager();
-
-        activityManager.UpdateActivity(activity, (res) =>
-        {
-            if (res == Discord.Result.Ok)
+            UpdateVariables();
+            var activity = new Discord.Activity
             {
-                Debug.Log($"status is updated: {status}");
-            }
-            else
+
+                Name = name,
+                Details = details,
+                State = state,
+                Assets = { LargeImage = imageKey }
+            };
+            var activityManager = discord.GetActivityManager();
+
+            activityManager.UpdateActivity(activity, (res) =>
             {
-                Debug.LogError("Discord status failed!!");
-            }
-        });
+                if (res == Discord.Result.Ok)
+                {
+                    Debug.Log($"status is updated: {status}");
+                }
+                else
+                {
+                    Debug.LogError("Discord status failed!!");
+                }
+            });
+        }
+        catch (NullReferenceException exception) {
+            isDiscordRunning = false;
+            Debug.Log("Discord messed up in update but its ok");
+        }
     }
     //Some colorful rich presence data. Note that if this is not liked, it is easily changable. Or it can be added new events for christmas or halloween with fun messages.
     void UpdateVariables()
@@ -148,15 +156,22 @@ public class DiscordController : MonoBehaviour
             "Cleaning the equipments",
             "Making cocktails for friday",
         };
-
-            return officereplies[Random.Range(0, officereplies.Count)];
+            return officereplies[UnityEngine.Random.Range(0, officereplies.Count)];
     }
 
     void Update()
     {
-        if (isDiscordRunning)
+        try
         {
-            discord.RunCallbacks();
+            if (isDiscordRunning)
+            {
+                discord.RunCallbacks();
+            }
+        }
+        catch (NullReferenceException exception)
+        {
+            isDiscordRunning = false;
+            Debug.Log("Discord messed up in update but its ok" + exception.Message);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -12,6 +13,7 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private UpgradeUI ui;
     private Player player;
     private UpgradeManager manager;
+    public Text defaultExplanationText;
 
     //
     private TextMeshProUGUI description;
@@ -49,6 +51,6 @@ public class UpgradeButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        description.text = "You can choose any upgrade to help you out on your mission!";
+        description.text = defaultExplanationText.text;
     }
 }
