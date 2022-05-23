@@ -63,7 +63,7 @@ public class ProgressBar : MonoBehaviourPun, IPunObservable, IPunOwnershipCallba
 
     private void Update()
     {
-        if (!photonView.IsMine) return;
+        if (photonView == null || !photonView.IsMine) return;
         if (isGameOngoing)
         {
             DecreaseSustainibilityPerSecond(AmountDecreasingPerSecond);
