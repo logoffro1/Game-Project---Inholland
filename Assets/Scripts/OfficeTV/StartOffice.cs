@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+//Instantiates the playerdata when the player first loads the game
 public class StartOffice : MonoBehaviourPun
 {
-
     public GameObject PlayerData;
     // Start is called before the first frame update
     void Awake()
@@ -17,11 +17,5 @@ public class StartOffice : MonoBehaviourPun
         }
 
         Destroy(this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

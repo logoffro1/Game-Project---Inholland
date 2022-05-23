@@ -1,10 +1,12 @@
 using UnityEngine.Localization.Components;
 using UnityEngine;
 
+//Script that goes on printer model, such that player can interact with it
 public class Printer : InteractableObject
 {
     [SerializeField] private LocalizeStringEvent localizeStringEvent;
 
+    //All teh different canvas/panels that changes according to printer path
     private bool isPanelActive = false;
     public GameObject PrinterCanvas;
     public GameObject ChoicePanel;
@@ -18,11 +20,13 @@ public class Printer : InteractableObject
         SetLocalizedString(localizeStringEvent);
     }
 
+    //Shows choice panel if clicked
     public override void DoAction(GameObject player)
     {
         ShowPanel(true);
     }
 
+    //Shows the panel from the editor
     private void ShowPanel(bool show)
     {
         isPanelActive = !isPanelActive;
@@ -30,6 +34,7 @@ public class Printer : InteractableObject
 
         if (show)
         {
+            //If already printed, don't let them print more
             if (PrinterCanvas.GetComponent<FlyerMaking>().IsDoneForToday)
             {
                 NoPanel.SetActive(true);
@@ -47,6 +52,7 @@ public class Printer : InteractableObject
         UIManager.Instance.ChangeCanvasShown();
     }
 
+    //Sets the correct panel if player goes back to office
     public void ReturnToOpenWorld()
     {
         ChoicePanel.SetActive(false);
@@ -57,6 +63,7 @@ public class Printer : InteractableObject
         ShowPanel(false);
     }
 
+    //Sets the correct panel if player continues with 
     public void ChooseToContinue()
     {
         ChoicePanel.SetActive(false);

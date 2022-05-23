@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+//Data that the player will need between scenes
 public class PlayerData : MonoBehaviourPun
 {
     public bool IsCurrentlyInMission;
