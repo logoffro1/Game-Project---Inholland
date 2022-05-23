@@ -102,7 +102,6 @@ public class UIManager : MonoBehaviour
         if (ProgressBar.Instance.isGameOngoing)
         {
             ProgressBar.Instance.isGameOngoing = false;
-            Debug.Log("Countdownendrun");
             Instantiate(endOfTheDayReportPrefab);
         }
     }
