@@ -542,7 +542,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839167805018112
-    m_Localized: derde kaart
+    m_Localized: Buitenwijken
     m_Metadata:
       m_Items: []
   - m_Id: 11839685034004480
@@ -556,7 +556,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11840131802877952
-    m_Localized: Derde kaartbeschrijving
+    m_Localized: "\rVerken de buitenwijken van Alkmaar! Je hebt een glimp van hoe
+      het leven in de buitenwijken in Alkmaar is, ervaar het stadsleven en verduurzaming!"
     m_Metadata:
       m_Items: []
   - m_Id: 11840374225260544

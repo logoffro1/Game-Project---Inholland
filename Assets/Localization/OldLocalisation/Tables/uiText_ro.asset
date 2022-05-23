@@ -297,7 +297,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11839167805018112
-    m_Localized: "A treia hart\u0103"
+    m_Localized: Suburbii
     m_Metadata:
       m_Items: []
   - m_Id: 11839685034004480
@@ -312,7 +312,9 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 11840131802877952
-    m_Localized: "A treia descriere a h\u0103r\u021Bii"
+    m_Localized: "Explora\u021Bi prin suburbiile Alkmaar! Ave\u021Bi o privire despre
+      cum este via\u021Ba suburban\u0103 \xEEn Alkmaar, experimenta\u021Bi via\u021Ba
+      ora\u0219ului \xEEn timp ce cre\u0219te\u021Bi sustenabilitatea!"
     m_Metadata:
       m_Items: []
   - m_Id: 11840374225260544
