@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: TempLevel
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3801274753714765687, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4607273727427805381, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_fontColor.b
       value: 0.13207549
@@ -111,6 +115,42 @@ PrefabInstance:
       propertyPath: NoteContainer
       value: 
       objectReference: {fileID: 6027342244601485418, guid: 1250581790637134580b681a3f4edd78, type: 3}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_StringReference.m_TableEntryReference.m_KeyId
+      value: 16619958447411200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_StringReference.m_TableReference.m_TableCollectionName
+      value: GUID:da94c565f8ff38849b53db7b3e21e305
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6165266079989088706}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_text
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TMPro.TMP_Text, Unity.TextMeshPro
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052009233548368294, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_UpdateString.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6404359673798016131, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Color.a
       value: 0.79607844
@@ -135,9 +175,24 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
+    - target: {fileID: 7268036113774713522, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8105558190894956838, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+--- !u!114 &6165266079989088706 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6230880358567450139, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+  m_PrefabInstance: {fileID: 285948313358620633}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

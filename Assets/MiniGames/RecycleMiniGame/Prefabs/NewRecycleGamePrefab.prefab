@@ -312,13 +312,15 @@ MonoBehaviour:
   successText: {fileID: 1095214177780122220}
   descriptionText: {fileID: 5385554598477369789}
   infoCanvas: {fileID: 8653840018313878804}
+  gameDifficulty: 0
   TutorialCanvas: {fileID: 5105619906281717978}
+  WaitTime: 0
   localizedStringEventDescription: {fileID: 2883723009539717329}
   localizedStringHint:
     m_TableReference:
       m_TableCollectionName: GUID:da94c565f8ff38849b53db7b3e21e305
     m_TableEntryReference:
-      m_KeyId: 6551242266521600
+      m_KeyId: 16619958447411200
       m_Key: 
     m_FallbackState: 0
     m_WaitForCompletion: 0
