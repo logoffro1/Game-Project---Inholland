@@ -21,26 +21,36 @@ public class DistrictLoadScene : MonoBehaviour
 
     public void ChoseNormalMode()
     {
-        playerDatas = FindObjectsOfType<PlayerData>();
-        foreach (PlayerData pd in playerDatas)
-            pd.IsInGameMode = GameMode.Normal;
-        LoadMyScene();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playerDatas = FindObjectsOfType<PlayerData>();
+            foreach (PlayerData pd in playerDatas)
+                pd.IsInGameMode = GameMode.Normal;
+            LoadMyScene();
+        }
     }
 
     public void ChoseChillMode()
     {
-        playerDatas = FindObjectsOfType<PlayerData>();
-        foreach (PlayerData pd in playerDatas)
-            pd.IsInGameMode = GameMode.Chill;
-        LoadMyScene();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playerDatas = FindObjectsOfType<PlayerData>();
+            foreach (PlayerData pd in playerDatas)
+                pd.IsInGameMode = GameMode.Chill;
+            LoadMyScene();
+        }
+        
     }
 
     public void ChoseCrazyMode()
     {
-        playerDatas = FindObjectsOfType<PlayerData>();
-        foreach (PlayerData pd in playerDatas)
-            pd.IsInGameMode = GameMode.Crazy;
-        LoadMyScene();
+        if (PhotonNetwork.IsMasterClient)
+        {
+            playerDatas = FindObjectsOfType<PlayerData>();
+            foreach (PlayerData pd in playerDatas)
+                pd.IsInGameMode = GameMode.Crazy;
+            LoadMyScene();
+        }
     }
 
 
