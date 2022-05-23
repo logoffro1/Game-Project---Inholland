@@ -670,6 +670,10 @@ MonoBehaviour:
       v\u0103 \xEEndeplini\u021Bi misiunea!"
     m_Metadata:
       m_Items: []
+  - m_Id: 18476058352324608
+    m_Localized: MODIFICA VOLUMUL
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:

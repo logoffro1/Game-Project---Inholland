@@ -116,7 +116,7 @@ public class MiniGameManager : MonoBehaviour
     {
         OnGameOver?.Invoke(InteractableObject);
         PlayerData.AddLostGames(InteractableObject.GamePrefab);
-        FindObjectOfType<GlobalAchievements>().GetAchievement("These are harder than they look").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("failtasks").CurrentCount++;
     }
 
     public void GameWon()
