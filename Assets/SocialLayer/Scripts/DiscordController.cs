@@ -6,6 +6,7 @@ using System;
 
 public class DiscordController : MonoBehaviour
 {
+    //This class is used for rich presence feature we have in discord. It simply shows what is each individual player is doing in the game: Being in lobby, in farm map etc...
     public Discord.Discord discord;
     public StatusType status;
   
@@ -33,6 +34,7 @@ public class DiscordController : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    //An essential method to enable/disable the feature to not to enforce the user to have discord open for our game.
     public bool IsDiscordRunning()
     {
          isDiscordRunning = false;
@@ -48,6 +50,8 @@ public class DiscordController : MonoBehaviour
         }
         return isDiscordRunning;
     }
+
+  
     void Start()
     {
         if (IsDiscordRunning())
@@ -56,12 +60,15 @@ public class DiscordController : MonoBehaviour
             UpdateDiscordStatus(status);
         }
 
-    }  
+    }
+   
+    //Changing the status and the activity
     public void UpdateDiscordStatus(StatusType status)
     {
         this.status = status;
         UpdateActivity();
     }
+    //Using discord sdk to change the users rich presence with the current data.
     void UpdateActivity()
     {
         try
@@ -94,6 +101,7 @@ public class DiscordController : MonoBehaviour
             Debug.Log("Discord messed up in update but its ok");
         }
     }
+    //Some colorful rich presence data. Note that if this is not liked, it is easily changable. Or it can be added new events for christmas or halloween with fun messages.
     void UpdateVariables()
     {
         switch (status) {
@@ -131,6 +139,7 @@ public class DiscordController : MonoBehaviour
                 break;
         }
     }
+    //Some fun options for the office.
     private string RandomizeOfficeReplies()
     {
         List<string> officereplies = new List<string> { 

@@ -5,21 +5,19 @@ using UnityEngine;
 
 public class LineRendererController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // This class is used for rendering different lines for wind turbine welding game.
     public LineRenderer lr;
-    //EdgeCollider2D ed2d;
+   
     WeldingLine torch;
     public Transform[] points { get; private set; }
     public int difficultyLevel;
 
     WindTurbineMinigame minigame;
    
-    //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z,  
-    //Canvas Limits top -0.004 x , -0.347 y ,300.009 z, 
-   
+    
     private void Start()
     {
-        //ed2d = this.GetComponent<EdgeCollider2D>();
+       
         lr = GetComponent<LineRenderer>();
         minigame = GetComponentInParent<WindTurbineMinigame>();
         lr.sortingOrder = 1;
@@ -33,6 +31,7 @@ public class LineRendererController : MonoBehaviour
 
     }
 
+    //Getting all the transforms in line renderer to create colliders.
      public Vector3[] GetPositions()
     {
         Vector3[] positions = new Vector3[lr.positionCount];
@@ -46,6 +45,7 @@ public class LineRendererController : MonoBehaviour
     }
 
   
+    //Setting random points to make a unique looking welding line according to game difficulty.
     private void setPoints()
     {
         points = AddRandomPoints(minigame.difficultyLevel);
@@ -57,6 +57,7 @@ public class LineRendererController : MonoBehaviour
     }
 
 
+    //Adding random points based between two locations. Canvas limits are presented below so that line can be customizable without going out of those limits.
     private Transform[] AddRandomPoints(int difficultyLevel)
     {
         //Canvas Limits bottom -0.012 x , 0.307 y ,300.009 z  

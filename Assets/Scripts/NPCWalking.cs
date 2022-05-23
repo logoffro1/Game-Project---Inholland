@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
@@ -8,7 +6,7 @@ public class NPCWalking : MonoBehaviourPun
 
     [SerializeField] private Transform[] targetPositions;
     private NavMeshAgent navMeshAgent;
-    [SerializeField] private Transform currentWaypoint;
+    private Transform currentWaypoint;
 
 
     private void Awake()
@@ -17,7 +15,7 @@ public class NPCWalking : MonoBehaviourPun
         navMeshAgent = GetComponent<NavMeshAgent>();
         HeadToNextWaypoint();
     }
-    void Update()
+    void Update() // if the NPC does not have a path, give it a new path
     {
         if (!PhotonNetwork.IsMasterClient) return;
         if (!navMeshAgent.pathPending || Vector3.Distance(navMeshAgent.destination,transform.position) <= 3f)
@@ -25,14 +23,12 @@ public class NPCWalking : MonoBehaviourPun
             HeadToNextWaypoint();
         }
     }
-    private void HeadToNextWaypoint()
+    private void HeadToNextWaypoint() // Set the NPC agent current destination to a random position
     {
         if (targetPositions.Length > 0)
         {
             currentWaypoint = targetPositions[Random.Range(0, targetPositions.Length)].transform;
             navMeshAgent.destination = currentWaypoint.position;
-            
-
         }
             
     }

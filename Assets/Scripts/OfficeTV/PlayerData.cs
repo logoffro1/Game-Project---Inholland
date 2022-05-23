@@ -77,23 +77,23 @@ public class PlayerData : MonoBehaviourPun
         {
             case DistrictEnum.CityCenter:
                 SetCityCenterSustainability(CityCenterSustainability + value);
-                if (CityCenterSustainability > 100f)
+                if (PlayerPrefs.GetFloat("citySus") > 100f)
                 {
-                    CityCenterSustainability = 100f;
+                    PlayerPrefs.SetFloat("citySus", 100f);
                 }
                 break;
             case DistrictEnum.FarmLand:
                 SetFarmSustainability(FarmSustainability + value);
-                if (FarmSustainability > 100f)
+                if (PlayerPrefs.GetFloat("farmSus") > 100f)
                 {
-                    FarmSustainability = 100f;
+                    PlayerPrefs.SetFloat("farmSus", 100f);
                 }
                 break;
             case DistrictEnum.ThirdMap:
                 SetLastMapSustainability(LastMapSustainability + value);
-                if (LastMapSustainability > 100f)
+                if (PlayerPrefs.GetFloat("lastMapSus") > 100f)
                 {
-                    LastMapSustainability = 100f;
+                    PlayerPrefs.SetFloat("lastMapSus", 100f);
                 }
                 break;
         }

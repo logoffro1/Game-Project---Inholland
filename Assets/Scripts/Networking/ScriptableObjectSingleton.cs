@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScriptableObjectSingleton<T> : ScriptableObject where T : ScriptableObject
@@ -10,8 +8,9 @@ public class ScriptableObjectSingleton<T> : ScriptableObject where T : Scriptabl
     {
         get
         {
-            if (_instance == null)
+            if (_instance == null) // singleton
             {
+                // check if the Scriptable object exists and return it
                 T[] results = Resources.FindObjectsOfTypeAll<T>();
                 if (results.Length == 0)
                 {

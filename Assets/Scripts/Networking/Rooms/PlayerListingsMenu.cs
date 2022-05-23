@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Realtime;
 
-public class PlayerListingsMenu : MonoBehaviourPunCallbacks
+public class PlayerListingsMenu : MonoBehaviourPunCallbacks // the players shown on screen in the office/lobby
 {
     [SerializeField] private PlayerListing playerListing;
     [SerializeField] private Transform content;
@@ -13,11 +12,12 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
     private void Start()
     {
         int count = 1;
-        if(PhotonNetwork.CurrentRoom != null)
+        if (PhotonNetwork.CurrentRoom != null)
         {
+            // loop through all players currently in the room
             foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
             {
-
+                // set the player listing information and add to the list
                 PlayerListing listing = Instantiate(this.playerListing, content);
                 if (listing != null)
                 {
@@ -31,7 +31,10 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
     }
     public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
     {
-        foreach(PlayerListing l in listings)
+        // update players listing when new player joins
+
+        // destroy and clear all listings
+        foreach (PlayerListing l in listings)
         {
             Destroy(l.gameObject);
         }
@@ -40,6 +43,8 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
         foreach (KeyValuePair<int, Photon.Realtime.Player> player in PhotonNetwork.CurrentRoom.Players)
         {
 
+
+            // set the player listing information and add to the list
             PlayerListing listing = Instantiate(this.playerListing, content);
             if (listing != null)
             {
@@ -51,10 +56,11 @@ public class PlayerListingsMenu : MonoBehaviourPunCallbacks
     }
     public override void OnLeftRoom()
     {
-        content.DestroyChildren();
+        content.DestroyChildren(); // clear the employees canvas
     }
     public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
-    {
+    { // update the players listing when player leaves
+
         int index = listings.FindIndex(x => x.Player == otherPlayer);
         if (index != -1)
         {

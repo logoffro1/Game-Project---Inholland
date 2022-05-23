@@ -57,7 +57,7 @@ public class Player : MonoBehaviourPun
             GetComponent<PlayerMovement>().canMove = true;
         }
         else {
-
+            StartCoroutine(StartListDelay());
         }
         UIManager.Instance.SetPlayerInfo(trashText,flyersText,playerCanvas,trashFill);
         Cursor.lockState = CursorLockMode.Locked;
@@ -68,10 +68,15 @@ public class Player : MonoBehaviourPun
     {
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
-        oneOffUpgradeList = SetUpList();
         Hashtable hashtable = new Hashtable();
         hashtable.Add("ready", true);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
+    }
+
+    private IEnumerator StartListDelay()
+    {
+        yield return new WaitForSeconds(1);
+        oneOffUpgradeList = SetUpList();
     }
     public List<OneOffUpgrade> SetUpList()
     {
@@ -79,14 +84,14 @@ public class Player : MonoBehaviourPun
         MiniGameBase miniGameBase = FindObjectOfType<MiniGameBase>();
 
         List<OneOffUpgrade> list = new List<OneOffUpgrade>();
+        OneOffUpgradeContent[] contentList = FindObjectsOfType<OneOffUpgradeContent>();
         foreach (OneOffUpgradesEnum upgrade in (OneOffUpgradesEnum[])Enum.GetValues(typeof(OneOffUpgradesEnum)))
         {
-            list.Add(new OneOffUpgrade(upgrade, this, GetComponent<PlayerMovement>(), miniGameBase));
+            list.Add(new OneOffUpgrade(upgrade, contentList, this, GetComponent<PlayerMovement>(), miniGameBase));
         }
 
         return list;
     }
-
 
     public OneOffUpgrade GetUpgrade(OneOffUpgradesEnum upgrade)
     {
@@ -96,7 +101,7 @@ public class Player : MonoBehaviourPun
     {
         if (other.CompareTag("Church"))
         {
-            FindObjectOfType<GlobalAchievements>().GetAchievement("The Holy Grail").CurrentCount++;
+            FindObjectOfType<GlobalAchievements>().GetAchievement("church").CurrentCount++;
         }
     }
 }

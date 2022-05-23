@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Photon.Realtime;
 
-public class RoomListing : MonoBehaviour
+public class RoomListing : MonoBehaviour // store room listing information
 {
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI text; // show on screen
 
     public RoomInfo RoomInfo { get; private set; }
 

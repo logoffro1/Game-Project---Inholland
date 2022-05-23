@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WeldingLine : MonoBehaviour
 {
-
+    //This class is used for torch movements of the welding mini game.
     LineRenderer lr;
     public bool isStarted;
     public AudioSource audioSource;
@@ -20,13 +20,13 @@ public class WeldingLine : MonoBehaviour
         minigame = GetComponentInParent<WindTurbineMinigame>();
         speed = minigame.lineSpeed;
     }
-
+    //Updating and setting the position of the torch
     public void SetPosition(Vector3 pos)
     {
         gameObject.transform.position = pos;
         isStarted = true;
     }
-
+    //Start the game by pressing space and handle the movement per frame
     void Update()
     {
         if (Input.GetKey(KeyCode.Space)) {
@@ -34,7 +34,7 @@ public class WeldingLine : MonoBehaviour
         }
         handleMovement(isObjMoving);      
     }
-
+    //Simple torch movement
     private void handleMovement(bool isMoving)
     {
         if (isMoving)

@@ -16,7 +16,7 @@ public class BoatControl : MonoBehaviour
         if (!SewageMiniGame.Instance.IsPlaying) return;
             Drive();
     }
-    private void Drive()
+    private void Drive() // control the boat only on the horizontal axis
     {
         float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
         transform.Translate(Vector3.right * horizontal);

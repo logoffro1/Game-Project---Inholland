@@ -1,7 +1,7 @@
 using UnityEngine;
 public static class Transforms
 {
-    public static void DestroyChildren(this Transform t, bool destroyImmediately = false)
+    public static void DestroyChildren(this Transform t, bool destroyImmediately = false) // Destroy all childs of given transform
     {
         foreach (Transform child in t)
         {

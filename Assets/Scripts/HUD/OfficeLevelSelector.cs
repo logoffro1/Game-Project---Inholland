@@ -9,6 +9,8 @@ public class OfficeLevelSelector : MonoBehaviour
 
     public void ShowPanel(bool show)
     {
+        CastRay.Instance.CanInteract = !show;
+
         LevelsPanel.SetActive(show);
         Cursor.visible = show;
 

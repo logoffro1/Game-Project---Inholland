@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using System;
+
+// hook to collect trash with
 public class BoatHook : MonoBehaviour
 {
 
-    private LineRenderer lr;
+    private LineRenderer lr; // hook line
     private CircleCollider2D circleCollider;
 
     public GameObject HookOpenPrefab;
@@ -12,7 +14,7 @@ public class BoatHook : MonoBehaviour
     public AudioClip hookCollectSound;
     private AudioSource audioSource;
     private float speed = .7f;
-    private float hookDistance = 0.7f;
+    private float hookDistance = 0.7f; // total hook length
     private bool trashAttached = false;
     private void Awake()
     {
@@ -26,23 +28,22 @@ public class BoatHook : MonoBehaviour
         if (!SewageMiniGame.Instance.IsPlaying) return;
         if (Input.GetKeyDown(KeyCode.Space)) { StartCoroutine(ShootHookDown()); }
     }
-    private IEnumerator ShootHookDown()
+    private IEnumerator ShootHookDown() // send hook down
     {
         HookOpenPrefab.SetActive(true);
         HookClosedPrefab.SetActive(false);
         float startTime = Time.time;
-        while (true)
+        while (true) // smoothly increase the size of the hook line
         {
             if (trashAttached) break;
 
-            float distCovered = (Time.time - startTime) * speed;
+            float distCovered = (Time.time - startTime) * speed; // current
 
             lr.SetPosition(0, transform.position);
-            Vector3 newPos = Vector3.Lerp(lr.GetPosition(0), lr.GetPosition(1) + new Vector3(0, -0.5f, 0), distCovered);
-
+            Vector3 newPos = Vector3.Lerp(lr.GetPosition(0), lr.GetPosition(1) + new Vector3(0, -0.5f, 0), distCovered); // hook position
 
             Vector2 offsetPos = new Vector2(0, (lr.GetPosition(1).y - lr.GetPosition(0).y));
-            circleCollider.offset = offsetPos;
+            circleCollider.offset = offsetPos; // collider to pick up trash
             HookOpenPrefab.transform.position = newPos;
             lr.SetPosition(1, newPos);
             if (distCovered >= hookDistance)
@@ -54,7 +55,7 @@ public class BoatHook : MonoBehaviour
         trashAttached = true;
         StartCoroutine(RetractHook(null));
     }
-    private IEnumerator RetractHook(GameObject item)
+    private IEnumerator RetractHook(GameObject item) // reverse the hook
     {
         HookClosedPrefab.SetActive(true);
         HookOpenPrefab.SetActive(false);
@@ -87,14 +88,14 @@ public class BoatHook : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-
+        // if entered trash trigger, collect
         if (other.TryGetComponent(out Collectible collectible) && !trashAttached)
         {
             collectible.onCollect();
             Collect(collectible.gameObject);
         }
     }
-    private void Collect(GameObject item)
+    private void Collect(GameObject item) // collect trash and retract hook
     {
         audioSource.PlayOneShot(hookCollectSound);
         trashAttached = true;
