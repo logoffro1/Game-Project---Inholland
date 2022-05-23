@@ -13,7 +13,6 @@ public class GlobalAchievements : MonoBehaviour // manage all achievements
 
     private void Awake() // persistent singleton
     {
-        PlayerPrefs.DeleteAll();
         if (Instance == null)
         {
             Instance = this;
