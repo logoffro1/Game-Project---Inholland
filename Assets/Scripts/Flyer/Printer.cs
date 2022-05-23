@@ -24,6 +24,8 @@ public class Printer : InteractableObject
 
     private void ShowPanel(bool show)
     {
+        CastRay.Instance.CanInteract = !show;
+
         PrinterCanvas.SetActive(show);
 
         Cursor.visible = show;
