@@ -16,6 +16,7 @@ public class ShinglesMiniGame : MiniGameBase
         audioSource = GetComponent<AudioSource>();
         // description = "Build rows to complete the solar panel!\nKEYS\nA,D-Move left / right\nS-Drop\nSPACE-Hard Drop\nQ,E-Rotate left /right";
         SetLocalizedString();
+        DetermineGameDifficulty();
 
         //  description = "Bouw twee rijen om het zonnepaneel te voltooien!\n\nKEYS\nA,D - Ga naar links / Rechtsaf\nS - Val\nSPACE - Harde val\nQ,E - Draai naar links / Rechtsaf";
 

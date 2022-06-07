@@ -9,6 +9,7 @@ public class RewireMiniGame : MiniGameBase
     private void Start()
     {
         SetLocalizedString();
+        DetermineGameDifficulty();
     }
     public override void GameFinish(bool success)
     {

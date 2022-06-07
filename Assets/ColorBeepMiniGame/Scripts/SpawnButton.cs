@@ -30,8 +30,12 @@ public class SpawnButton : MiniGameBase // whole code for color beep mini game
     void Start()
     {
         StartCoroutine(WaitBeforeStarting(WaitTime));
+        DetermineGameDifficulty();
     }
-
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Medium;
+    }
     private IEnumerator WaitBeforeStarting(float time)// initialize buttons and prepare sequence
     {
         buttons = new GameObject[width, height];

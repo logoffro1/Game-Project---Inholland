@@ -121,7 +121,22 @@ public class MiniGameBase : MonoBehaviour
         ChangeSuccessText(false);
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked; // lock cursor
-        ProgressBar.Instance.ChangeSustainibility(-SustainabilityPoints, true); // decrease sustainability
+        ProgressBar.Instance.ChangeSustainibility(-DeterMineSustainibilityPoints(), true); // decrease sustainability
+    }
+    //Sets the sustainibility point amount for mini games.
+    private  float DeterMineSustainibilityPoints()
+    {
+        switch (gameDifficulty)
+        {
+            case MiniGameDifficulty.Hard:
+                return 6f;
+                break;
+            case MiniGameDifficulty.Medium:
+                return 3.5f;
+                break;
+            default:
+                return 2f;
+        }
     }
     protected void GameWon()
     {
@@ -131,7 +146,7 @@ public class MiniGameBase : MonoBehaviour
         StartCoroutine(MiniGameManager.Instance.StopGame(gameObject));
         IsPlaying = false;
         Cursor.lockState = CursorLockMode.Locked;
-        ProgressBar.Instance.ChangeSustainibility(SustainabilityPoints, true);
+        ProgressBar.Instance.ChangeSustainibility(DeterMineSustainibilityPoints(), true);
         TimerCountdown.Instance.SecondsLeft += GetAddedTime();
     }
     private void ChangeSuccessText(bool successful) // show FAILURE / SUCCESS depending on the outcome of the game

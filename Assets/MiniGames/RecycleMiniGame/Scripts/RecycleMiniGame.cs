@@ -32,6 +32,7 @@ public class RecycleMiniGame : MiniGameBase
         ui = GetComponent<RecycleUI>();
         ui.SetUp(amountToCollect);
         SetLocalizedString();
+        DetermineGameDifficulty();
     }
     public override void GameFinish(bool success)
     {
