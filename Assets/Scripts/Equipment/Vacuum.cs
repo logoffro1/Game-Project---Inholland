@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class Vacuum : Equipment
 {
@@ -19,6 +20,15 @@ public class Vacuum : Equipment
         activeTime = 10;
         maxCooldown = 15;
         cooldown = maxCooldown;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                player = p;
+                break;
+            }
+        }
     }
 
 

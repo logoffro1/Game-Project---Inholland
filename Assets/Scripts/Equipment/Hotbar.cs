@@ -1,21 +1,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Hotbar : MonoBehaviour
+public class Hotbar : MonoBehaviourPunCallbacks
 {
     private List<Equipment> equipmentList = new List<Equipment>();
     [SerializeField] private GameObject[] itemSlots;
     [SerializeField] private GameObject playerGameObject;
     private void Start()
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                playerGameObject = p;
+                break;
+            }
+        }
+       
         Init();
     }
     private void Init() // initialize the equipment
     {
-        equipmentList.Add(playerGameObject.GetComponentInChildren<XrayGoggles>());
-        equipmentList.Add(playerGameObject.GetComponentInChildren<Vacuum>());
-        equipmentList.Add(playerGameObject.GetComponentInChildren<RunningShoes>());
+        equipmentList.Add(GameObject.FindObjectOfType<XrayGoggles>());
+        equipmentList.Add(GameObject.FindObjectOfType<Vacuum>());
+        equipmentList.Add(GameObject.FindObjectOfType<RunningShoes>());
 
         foreach(Equipment equipment in equipmentList)
         {

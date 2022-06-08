@@ -24,6 +24,10 @@ TagManager:
   - Church
   - Bullet
   - xray
+  - TrashText
+  - FlyerText
+  - TrashFill
+  - Equipment
   layers:
   - Default
   - TransparentFX

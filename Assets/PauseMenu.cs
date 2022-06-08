@@ -27,7 +27,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     void Start()
     {
         PhotonNetwork.EnableCloseConnection = true;
-         isInOffice = SceneManager.GetActiveScene().name == "NewOffice";
+        isInOffice = SceneManager.GetActiveScene().name == "NewOffice";
     }
 
     // Update is called once per frame
@@ -35,16 +35,18 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         //Checks if escape is pressed to bring up or close the pause menu,
         //and ensures that you cannot pause in the middle of a minigame
-        if (!isInOffice) {
-            if (MiniGameManager.Instance.IsPlaying == false) {
+        if (!isInOffice)
+        {
+            if (MiniGameManager.Instance.IsPlaying == false)
+            {
                 HandlePauseButton();
             }
         }
         else
         {
             HandlePauseButton();
-        } 
-    } 
+        }
+    }
 
     void HandlePauseButton()
     {
@@ -98,7 +100,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = false;
-                
+
                 break;
             }
         }
@@ -150,10 +152,10 @@ public class PauseMenu : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.IsMasterClient)
         {
-            
+
             LevelManager.Instance.LoadScenePhoton("NewOffice", true);
         }
-            
+
     }
 
     //Return to Main Menu button that switches scenes
@@ -178,7 +180,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
 
     }
-  
+
 
 
     //Exit game button, disconnects clients and players,
@@ -187,7 +189,7 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            foreach(KeyValuePair<int,Photon.Realtime.Player> p in PhotonNetwork.CurrentRoom.Players)
+            foreach (KeyValuePair<int, Photon.Realtime.Player> p in PhotonNetwork.CurrentRoom.Players)
             {
                 PhotonNetwork.CloseConnection(p.Value);
                 PhotonNetwork.SendAllOutgoingCommands();

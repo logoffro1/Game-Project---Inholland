@@ -24,7 +24,7 @@ public abstract class InteractableObject : MonoBehaviour
     {
         if (localizedStringEvent == null)
         {
-            Debug.Log(this.GetType().ToString());
+            //Debug.Log(this.GetType().ToString());
         }
         try
         {
@@ -43,7 +43,7 @@ public abstract class InteractableObject : MonoBehaviour
         }
         catch (Exception ex) //it gets here if localizedString is not set
         {
-            Debug.Log(ex.ToString());
+           // Debug.Log(ex.ToString());
         }
     }
     protected virtual void OnStringChanged(string s) // change hover text

@@ -29,6 +29,7 @@ public class Player : MonoBehaviourPun
     [SerializeField] private TextMeshProUGUI flyersText;
     [SerializeField] private Image trashFill;
     [SerializeField] private Canvas playerCanvas;
+    [SerializeField] private GameObject equipment;
 
     private void Awake()
     {
@@ -75,11 +76,17 @@ public class Player : MonoBehaviourPun
     }
     void Start()
     {
+        Instantiate(equipment);
+        Instantiate(playerCanvas);
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
         Hashtable hashtable = new Hashtable();
         hashtable.Add("ready", true);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hashtable);
+
+        trashText = GameObject.FindGameObjectWithTag("TrashText").GetComponent<TextMeshProUGUI>();
+        flyersText = GameObject.FindGameObjectWithTag("FlyerText").GetComponent<TextMeshProUGUI>();
+        trashFill = GameObject.FindGameObjectWithTag("TrashFill").GetComponent<Image>();
     }
 
     private IEnumerator StartListDelay()

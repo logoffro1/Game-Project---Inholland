@@ -39,6 +39,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        playerCanvas = GameObject.FindObjectOfType<PlayerCanvas>().GetComponent<Canvas>();
         TimerCountdown timerCountdown = GetComponent<TimerCountdown>();
         if(TryGetComponent<TimerCountdown>(out timerCountdown)){
             timerCountdown.OnCountdownEnd += TimerCountdown_OnCountdownEnd;
@@ -78,8 +79,6 @@ public class UIManager : MonoBehaviour
         canvas.enabled = turnOn;
         playerCanvas.enabled = turnOn;
     }
-
-
     public bool IsCanvasEnabled() => canvas.enabled;
     public void SetTrashText(int currentAmount, int limit) // set player trash count
     {
