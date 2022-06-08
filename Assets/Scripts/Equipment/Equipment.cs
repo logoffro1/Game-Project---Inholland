@@ -1,9 +1,10 @@
 using UnityEngine;
 using System;
+using Photon.Pun;
 
 
 // All player equipment inherits from this class
-public abstract class Equipment : MonoBehaviour
+public abstract class Equipment : MonoBehaviourPunCallbacks
 {
     protected float activeTime;
     public float cooldown { get; protected set; }
@@ -28,6 +29,7 @@ public abstract class Equipment : MonoBehaviour
     }
     public virtual void DrainTime() // drain the active time
     {
+
         if (activeTime > 0)
             drainOverTime = true;
         if (drainOverTime && isActive)

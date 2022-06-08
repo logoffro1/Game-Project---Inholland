@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class RunningShoes : Equipment
 {
@@ -49,10 +50,18 @@ public class RunningShoes : Equipment
         activeTime = 7;
         maxCooldown = 30f;
         cooldown = maxCooldown;
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                playerMovement = p.GetComponent<PlayerMovement>();
+                break;
+            }
+        }
     }
     void Update()
     {
-
         if (IsLocked) return;
         if (SceneManager.GetActiveScene().name == "NewOffice") return;
         if (Input.GetKeyDown(KeyCode.Alpha3))
