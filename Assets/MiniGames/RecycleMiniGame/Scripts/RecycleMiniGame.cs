@@ -32,6 +32,7 @@ public class RecycleMiniGame : MiniGameBase
         ui = GetComponent<RecycleUI>();
         ui.SetUp(amountToCollect);
         SetLocalizedString();
+        DetermineGameDifficulty();
     }
     public override void GameFinish(bool success)
     {
@@ -49,8 +50,8 @@ public class RecycleMiniGame : MiniGameBase
         int minAmountToCollect = 2;
         int maxAmountToCollect = 20;
         //Speed
-        float minSpeed = 0.08f;
-        float maxSpeed = 0.3f;
+        float minSpeed = 0.04f;
+        float maxSpeed = 0.18f;
         //Min wait time
         float minMinWaitTime = 0.6f;
         float maxMinWaitTime = 1.4f;

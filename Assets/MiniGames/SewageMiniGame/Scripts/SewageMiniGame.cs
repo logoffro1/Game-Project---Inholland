@@ -18,7 +18,7 @@ public class SewageMiniGame : MiniGameBase
     private void Start()
     {
         sewageUIManager = GameObject.FindObjectOfType<SewageUIManager>();
-
+        DetermineGameDifficulty();
         SetLocalizedString();
     }
 

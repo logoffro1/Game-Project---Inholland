@@ -15,6 +15,11 @@ public class WindTurbineMinigame : MiniGameBase
     {
         SetLocalizedString();
         line = GetComponentInChildren<WeldingLine>();
+        DetermineGameDifficulty();
+    }
+    public override void DetermineGameDifficulty()
+    {
+        this.gameDifficulty = MiniGameDifficulty.Medium;
     }
     public override void CoordinateLevel()
     {
