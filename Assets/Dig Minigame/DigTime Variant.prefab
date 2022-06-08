@@ -249,7 +249,7 @@ AudioSource:
   m_GameObject: {fileID: 1181145333}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -804,6 +804,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7834920513173074660, guid: 4d5355390264da34da189a30a21277c6, type: 3}
+      propertyPath: m_Volume
+      value: 0.574
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834920513173074660, guid: 4d5355390264da34da189a30a21277c6, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: f83e0fd362bdfd54dac8e034833b8bf2, type: 2}
@@ -1047,6 +1051,10 @@ PrefabInstance:
     - target: {fileID: 4611903926565639141, guid: e0525fbc4efdb3a4ead3686ceb150cc0, type: 3}
       propertyPath: m_Alpha
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4645659646735956587, guid: e0525fbc4efdb3a4ead3686ceb150cc0, type: 3}
+      propertyPath: m_text
+      value: Click at the right moment
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0525fbc4efdb3a4ead3686ceb150cc0, type: 3}
