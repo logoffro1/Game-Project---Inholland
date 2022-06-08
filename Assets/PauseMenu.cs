@@ -68,10 +68,10 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     //and closes the how to play panel in the case that it was open.
     public void Resume()
     {
+        GameObject.FindObjectOfType<PlayerCanvas>().GetComponent<Canvas>().enabled = true;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
-            p.GetComponentInChildren<Canvas>().enabled = true;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = true;
@@ -93,10 +93,10 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     //and hides UI elements that obstruct the pause menu
     void Pause()
     {
+        GameObject.FindObjectOfType<PlayerCanvas>().GetComponent<Canvas>().enabled = false;
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (GameObject p in players)
         {
-            p.GetComponentInChildren<Canvas>().enabled = false;
             if (p.GetComponent<Player>().photonView.IsMine)
             {
                 p.GetComponentInChildren<MouseLook>().canR = false;
