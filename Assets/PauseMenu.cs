@@ -163,6 +163,9 @@ public class PauseMenu : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsMasterClient)
         {
+            isPaused = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             LevelManager.Instance.LoadScenePhoton("MainMenu", true);
         }
         else

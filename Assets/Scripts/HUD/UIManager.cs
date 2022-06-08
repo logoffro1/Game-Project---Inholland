@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour
         canvas = GetComponent<Canvas>();
 
     }
-
     private void Start()
     {
         playerCanvas = GameObject.FindObjectOfType<PlayerCanvas>().GetComponent<Canvas>();
@@ -50,6 +49,8 @@ public class UIManager : MonoBehaviour
             countDownText.text = CountdownString(TimerCountdown.Instance.SecondsMax);
             countDownText.gameObject.SetActive(false);
         }
+
+        flyersText = GameObject.FindGameObjectWithTag("FlyerText").GetComponent<TextMeshProUGUI>();
 
         MiniGameManager manager = FindObjectOfType<MiniGameManager>();
         if (manager != null) manager.OnGameWon += ShowPopUp;
@@ -77,6 +78,7 @@ public class UIManager : MonoBehaviour
     public void TurnOnCanvas(bool turnOn)
     {
         canvas.enabled = turnOn;
+        if (playerCanvas == null) return;
         playerCanvas.enabled = turnOn;
     }
     public bool IsCanvasEnabled() => canvas.enabled;
