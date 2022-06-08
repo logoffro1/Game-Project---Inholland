@@ -21,7 +21,6 @@ public class FillAchievementsView : MonoBehaviour
 
     private void Fill()
     {
-
         // fill the achievements view in the main menu
         achievements = FindObjectOfType<GlobalAchievements>().GetAllAchievements();
         int count = 0;

@@ -12,7 +12,7 @@ public class PlayerReputation : MonoBehaviourPun
     public float CurrentReputationExp { get; private set; }
 
     public float IncreaseExpAmount { get; private set; }
-    public int CurrentRepLevel { get; private set; }
+    public int CurrentRepLevel { get; private set; } = 1;
 
 
     [SerializeField] public bool IsXrayLocked { get; private set; }
@@ -28,7 +28,7 @@ public class PlayerReputation : MonoBehaviourPun
         {
             CurrentReputationExp = PlayerPrefs.GetFloat("reputation");
         }
-        //CurrentReputationExp = 395;//This should come from save/load later on.
+         //CurrentReputationExp = 395;//This should come from save/load later on.
         IncreaseExpAmount = 0;
         DetermineReputationLevel();
     }
@@ -53,6 +53,7 @@ public class PlayerReputation : MonoBehaviourPun
         //Debug.Log($"Old exp : {CurrentReputationExp} , old Level : {CurrentRepLevel} ");
         int oldLevel = CurrentRepLevel;
         CurrentRepLevel = (int)(CurrentReputationExp / 100);
+        if (CurrentRepLevel <= 0) CurrentRepLevel = 1;
         if (CurrentRepLevel > oldLevel)
         {
             bool oldVacuum = IsVacuumLocked;
@@ -126,6 +127,7 @@ public class PlayerReputation : MonoBehaviourPun
     //Simple switch case to see what is locked and what isnt per reputation level.
     private void DetermineToolProgression()
     {
+        Debug.Log("REP LEVEL: " + CurrentRepLevel);
         switch (CurrentRepLevel)
         {
             case 1:
