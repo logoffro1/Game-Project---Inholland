@@ -30,8 +30,6 @@ public class Vacuum : Equipment
             }
         }
     }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -101,6 +99,7 @@ public class Vacuum : Equipment
     }
     private void VacuumTrash(Collider other)
     {
+        Debug.Log($"is active {isActive} | ");
         if (!isActive) return;
         if (other.gameObject.TryGetComponent(out Trash trash)) // check if trash is inside collider
         {
@@ -109,6 +108,7 @@ public class Vacuum : Equipment
             {
                 if (!bag.CanCollect())
                 {
+                    Debug.Log($"can collect| ");
                     if (isActive)
                         DoAction();
                     return;

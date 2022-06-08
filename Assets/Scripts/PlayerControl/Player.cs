@@ -76,7 +76,7 @@ public class Player : MonoBehaviourPun
     }
     void Start()
     {
-        Instantiate(equipment);
+        Instantiate(equipment,this.transform);
         Instantiate(playerCanvas);
         playerMovement = GetComponent<PlayerMovement>();
         //miniGameBase = GetComponent<MiniGameBase>();
