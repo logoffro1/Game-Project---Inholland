@@ -10,19 +10,17 @@ public class MiniGameManager : MonoBehaviour
 
     public PlayerReportData PlayerData { get; private set; }
 
-    //Todo: remove after implementation
-    public GameObject tetrisGamePrefab;
+    private PlayFabManager playFabManager;
 
-    //TODO: might remove
     public InteractableTaskObject InteractableObject;
     public event Action<InteractableTaskObject> OnGameWon;
     public event Action<InteractableTaskObject> OnGameOver;
 
-
     public bool IsPlaying { get; private set; }
+    private int miniGameTime;
     private GameObject miniGame;
     public GameObject miniGameScreen;
-    private void Awake()
+    private void Awake() // singleton
     {
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -30,33 +28,95 @@ public class MiniGameManager : MonoBehaviour
             _instance = this;
     }
 
+    private Dictionary<string, int> amountOfGameOccurence;
+    private int maxOccurence = 2;
+
     private void Start()
     {
-        PlayerData = FindObjectOfType<PlayerReportData>();
+        playFabManager = FindObjectOfType<PlayFabManager>();
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject p in players)
+        {
+            if (p.GetComponent<Player>().photonView.IsMine)
+            {
+                PlayerData = p.GetComponent<PlayerReportData>();
+                break; 
+            }
+         }
+        TaskGenerator taskGenerator = FindObjectOfType<TaskGenerator>();
+        amountOfGameOccurence = new Dictionary<string, int>();
+        foreach (GameObject gamePrefab in taskGenerator.GamePrefabs)
+        {
+            amountOfGameOccurence.Add(gamePrefab.name, 0);
+        }
     }
 
     public void StartGame(GameObject miniGamePrefab)
     {
         if (IsPlaying) return;
-
+        miniGameTime = TimerCountdown.Instance.GetRemainingTime();
         PlayerData.AddPlayedGames(miniGamePrefab);
-        UIManager.Instance.ChangeCanvasShown();
-        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 300), miniGamePrefab.transform.rotation);
-        IsPlaying = true;     
+        UIManager.Instance.TurnOnCanvas(false);
+        miniGame = Instantiate(miniGamePrefab, new Vector3(0, 0, 1000), miniGamePrefab.transform.rotation);
+        MiniGameBase miniGameBase = miniGame.GetComponent<MiniGameBase>();
+        miniGameBase.SetLevel();
+
+        amountOfGameOccurence[miniGamePrefab.name]++;
+
+        if (amountOfGameOccurence[miniGamePrefab.name] <= maxOccurence)
+        {
+            miniGameBase.WaitTime = 2f;
+            StartCoroutine(miniGameBase.ShowTutorialCanvas());
+        }
+        else
+        {
+            miniGameBase.WaitTime = 0f;
+        }
+
+        IsPlaying = true;
     }
 
     public IEnumerator StopGame(GameObject go)
     {
+        miniGameTime -= TimerCountdown.Instance.GetRemainingTime();
+        //personalize this later to make it for each mini game.
+        playFabManager.WriteCustomPlayerEvent($"{playFabManager.returnPrefabTaskName(this.InteractableObject.GamePrefab.name.ToString())}_FinishedInSeconds", new Dictionary<string, object>
+        {
+            { miniGame.gameObject.name,miniGameTime}
+        });
         yield return new WaitForSeconds(2f);
+        MiniGameBase miniGameBase = go.GetComponent<MiniGameBase>();
         Destroy(go);
         IsPlaying = false;
-        UIManager.Instance.ChangeCanvasShown();
-    }
+        UIManager.Instance.TurnOnCanvas(true);
 
+        SetAchievements(miniGameBase);
+    }
+    private void SetAchievements(MiniGameBase miniGameBase) // increases the minigame related achievements
+    {
+        //task count
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskbeginner").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskenthusiast").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskexpert").CurrentCount++;
+        FindObjectOfType<GlobalAchievements>().GetAchievement("taskmaster").CurrentCount++;
+
+        //specific tasks
+        if (miniGameBase.GetType() == typeof(SewageMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("sewage").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(RewireMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("cable").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(DiggingMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("gardening").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(ShinglesMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("solar").CurrentCount++;
+        else if (miniGameBase.GetType() == typeof(RecycleMiniGame))
+            FindObjectOfType<GlobalAchievements>().GetAchievement("recycle").CurrentCount++;
+    }
     public void GameOver()
     {
-        PlayerData.AddLostGames(InteractableObject.GamePrefab);
         OnGameOver?.Invoke(InteractableObject);
+        PlayerData.AddLostGames(InteractableObject.GamePrefab);
+        FindObjectOfType<GlobalAchievements>().GetAchievement("failtasks").CurrentCount++;
     }
 
     public void GameWon()
@@ -67,7 +127,7 @@ public class MiniGameManager : MonoBehaviour
 
     public void FreezeScreen(bool wantToFreeze)
     {
-        UIManager.Instance.ChangeCanvasShown();
+        UIManager.Instance.TurnOnCanvas(!wantToFreeze);
         IsPlaying = wantToFreeze;
     }
 }

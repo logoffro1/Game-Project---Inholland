@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,11 +7,14 @@ public class UIManager : MonoBehaviour
 {
     public TextMeshProUGUI hoverText;
     public TextMeshProUGUI trashText;
+    public TextMeshProUGUI flyersText;
     public TextMeshProUGUI countDownText;
     public TextMeshProUGUI startCountDownText;
     public TextMeshProUGUI goalText;
     public GameObject endMissionText;
     public GameObject endOfTheDayReportPrefab;
+    public Canvas playerCanvas;
+    public GameObject Popup;
     
 
     public Image trashFillImage;
@@ -25,7 +26,7 @@ public class UIManager : MonoBehaviour
     private static UIManager _instance = null;
     public static UIManager Instance { get { return _instance; } }
     private Canvas canvas;
-    private void Awake()
+    private void Awake() // singleton
     {
         if (_instance != null && _instance != this)
             Destroy(this.gameObject);
@@ -35,9 +36,9 @@ public class UIManager : MonoBehaviour
         canvas = GetComponent<Canvas>();
 
     }
-
     private void Start()
     {
+        playerCanvas = GameObject.FindObjectOfType<PlayerCanvas>().GetComponent<Canvas>();
         TimerCountdown timerCountdown = GetComponent<TimerCountdown>();
         if(TryGetComponent<TimerCountdown>(out timerCountdown)){
             timerCountdown.OnCountdownEnd += TimerCountdown_OnCountdownEnd;
@@ -45,13 +46,27 @@ public class UIManager : MonoBehaviour
             timerCountdown.OnStartCountdownChange += TimerCountdown_OnStartCountdownChange;
 
             //Setting the start of the countdown
-            countDownText.text = CountdownString(TimerCountdown.SecondsMax);
+            countDownText.text = CountdownString(TimerCountdown.Instance.SecondsMax);
             countDownText.gameObject.SetActive(false);
         }
 
+        flyersText = GameObject.FindGameObjectWithTag("FlyerText").GetComponent<TextMeshProUGUI>();
+
+        MiniGameManager manager = FindObjectOfType<MiniGameManager>();
+        if (manager != null) manager.OnGameWon += ShowPopUp;
+
     }
 
-    public void SetHoverText(string text)
+    // set player inventory
+    public void SetPlayerInfo(TextMeshProUGUI trashText, TextMeshProUGUI flyersText, Canvas playerCanvas, Image trashFillImage)
+    {
+        this.trashText = trashText;
+        this.flyersText = flyersText;
+        this.playerCanvas = playerCanvas;
+        this.trashFillImage = trashFillImage;
+    }
+
+    public void SetHoverText(string text) // set the text when hovering over object
     {
         if(text == null)
         {
@@ -59,19 +74,24 @@ public class UIManager : MonoBehaviour
             return;
         }
         hoverText.text = $"(E) {text}";
-       // hoverText.enabled = isHovered;
     }
-    public void ChangeCanvasShown()
+    public void TurnOnCanvas(bool turnOn)
     {
-        canvas.enabled = !canvas.enabled;
+        canvas.enabled = turnOn;
+        if (playerCanvas == null) return;
+        playerCanvas.enabled = turnOn;
     }
-    public void SetTrashText(int currentAmount, int limit)
+    public bool IsCanvasEnabled() => canvas.enabled;
+    public void SetTrashText(int currentAmount, int limit) // set player trash count
     {
         trashText.text = $"{currentAmount} / {limit}";
         trashFillImage.fillAmount = ((float)currentAmount / (float)limit);
-        Debug.Log(((float)currentAmount / (float)limit));
     }
-    public void BagFullAnim()
+    public void SetFlyersText(int currentAmount, int limit) // set player flyer count
+    {
+        flyersText.text = $"{currentAmount} / {limit}";
+    }
+    public void BagFullAnim() // show animation when the trash bag is full
     {
         Animator anim = trashText.gameObject.GetComponent<Animator>();
         anim.SetTrigger("BagFull");
@@ -79,8 +99,11 @@ public class UIManager : MonoBehaviour
     private void TimerCountdown_OnCountdownEnd(object sender, EventArgs e)
     {
         //Time ended so the progress bar animations has to stop.
-        ProgressBar.Instance.isGameOngoing = false;
-        Instantiate(endOfTheDayReportPrefab);
+        if (ProgressBar.Instance.isGameOngoing)
+        {
+            ProgressBar.Instance.isGameOngoing = false;
+            Instantiate(endOfTheDayReportPrefab);
+        }
     }
 
     private bool FirstSecondPassed = false;
@@ -97,8 +120,11 @@ public class UIManager : MonoBehaviour
 
         if (ProgressBar.Instance.GetSlideValue() == ProgressBar.Instance.GetSliderMaxValue())
         {
-            ProgressBar.Instance.isGameOngoing = false;
-            Instantiate(endOfTheDayReportPrefab);
+            if (ProgressBar.Instance.isGameOngoing) {
+                ProgressBar.Instance.isGameOngoing = false;
+                Debug.Log("100%run");
+                Instantiate(endOfTheDayReportPrefab);
+            }      
         }
         countDownText.text = CountdownString(countDown);
         ChangeColor(countDown);
@@ -153,6 +179,18 @@ public class UIManager : MonoBehaviour
     private bool IsColorChangeNeeded(Color newColor)
     {
         return countDownText.color != newColor;
+    }
+    public void ShowPopUp(string text)
+    {
+        GameObject popup = Instantiate(Popup, Popup.transform.position, transform.rotation,transform);
+        popup.transform.localPosition = new Vector3(0, 320, 0);
+        popup.GetComponent<Popup>().InfoText = text;
+    }
+    private void ShowPopUp(InteractableTaskObject interactableTaskObject)
+    {
+        GameObject popup = Instantiate(Popup, Popup.transform.position, transform.rotation, transform);
+        popup.transform.localPosition = new Vector3(0, 320, 0);
+        popup.GetComponent<Popup>().Task = interactableTaskObject.interactableTaskStatusModels.task;
     }
 
 }

@@ -108,6 +108,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  anim: {fileID: 0}
 --- !u!1 &1105321035479781111
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
+using Photon.Pun;
 
-public class MouseLook : MonoBehaviour
+public class MouseLook : MonoBehaviourPun
 {
     [SerializeField]
     private float sensitivity = 200f;
@@ -10,6 +11,7 @@ public class MouseLook : MonoBehaviour
     private Transform player;
 
     public bool canRotate { get; set; } = true;
+    public bool canR { get; set; } = true;
 
     void Start()
     {
@@ -19,7 +21,9 @@ public class MouseLook : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameManager.Instance != null) {
+        if (!photonView.IsMine && PhotonNetwork.IsConnected) return;
+        if (MiniGameManager.Instance != null)
+        {
 
             if (MiniGameManager.Instance.IsPlaying)
             {
@@ -29,23 +33,21 @@ public class MouseLook : MonoBehaviour
             {
                 canRotate = true;
             }
-        } 
-        if (!canRotate) return;
-        LookAround();
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            LevelManager.Instance.LoadScene("MainMenu");
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
         }
+        if (!canRotate) return;
+
+        if (!canR) return;
+        LookAround();
+
 
     }
-    private void LookAround()
+    private void LookAround() // use mouse input to look around in 3D
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
+        // clamp the rotation so the player can't look too up/down
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);

@@ -1,31 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
-using UnityEngine.Localization;
-using UnityEngine.Localization.Settings;
+using UnityEngine.Localization.Components;
 
 public class OfficeTV : InteractableObject
 {
     private OfficeLevelSelector officeLevels;
 
-    [SerializeField] private RenderObjects normalRenderer;
+    [SerializeField] private LocalizeStringEvent localizeStringEvent;
+
 
     private void Start()
     {
-
-        hoverName = "Interact";
-
         IsInteractable = true;
         officeLevels = GameObject.FindObjectOfType<OfficeLevelSelector>();
-        normalRenderer.SetActive(true);
+        SetLocalizedString(localizeStringEvent); // set hover text
     }
-    public override void DoAction(GameObject player)
+
+    public override void DoAction(GameObject player) // show level selection
     {
         officeLevels.ShowPanel(true);
-        GameObject.FindObjectOfType<MouseLook>().canRotate = false;
-        GameObject.FindObjectOfType<PlayerMovement>().canMove = false;
-        UIManager.Instance.ChangeCanvasShown();
-
     }
 }

@@ -20,10 +20,9 @@ MonoBehaviour:
     - id: 0
   m_TableData:
   - m_Id: 67661500416
-    m_Localized: '{hoverText}'
+    m_Localized: interactie
     m_Metadata:
-      m_Items:
-      - id: 0
+      m_Items: []
   - m_Id: 3058921672704
     m_Localized: Dag is voorbij!
     m_Metadata:
@@ -64,38 +63,17 @@ MonoBehaviour:
     m_Localized: Kies een niveau
     m_Metadata:
       m_Items: []
-  - m_Id: 7893314211840
-    m_Localized: 'Plattegrond: Alkmaar Centrum
-
-
-      Beschrijving: Pro/Cons van
-      het spelen van de kaart
-
-      Doelstelling: Hier schrijven we wat we moeten
-      doen / punt van het spel etc
-
-
-      Aantal keren gespeeld: 0
-
-      Beste
-      score: 0'
-    m_Metadata:
-      m_Items: []
-  - m_Id: 1355809124835328
-    m_Localized: (E) Interactie
-    m_Metadata:
-      m_Items: []
   - m_Id: 1362783803596800
-    m_Localized: 'Naam werknemer : {playerName}'
+    m_Localized: 'Naam werknemer :'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 1
   - m_Id: 1362907405541376
     m_Localized: 'Duurzaamheid vooruitgang:'
     m_Metadata:
       m_Items: []
   - m_Id: 1363087433457664
-    m_Localized: 'Totaal aantal geprobeerde taken:'
+    m_Localized: 'Aantal geprobeerde taken:'
     m_Metadata:
       m_Items: []
   - m_Id: 1363206815932416
@@ -144,9 +122,9 @@ MonoBehaviour:
     m_Localized: '{winconditionDay}'
     m_Metadata:
       m_Items:
-      - id: 0
+      - id: 2
   - m_Id: 1478127297814528
-    m_Localized: INFO (GEPAUZEERD)
+    m_Localized: INFO
     m_Metadata:
       m_Items: []
   - m_Id: 1478634343030784
@@ -155,8 +133,6 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 1481396124442624
     m_Localized: 'W,A,S,D - Beweging
-
-      X - X ray activeren
 
       E - Interactie '
     m_Metadata:
@@ -169,9 +145,597 @@ MonoBehaviour:
     m_Localized: Haal de lat voor duurzaamheid op 80%
     m_Metadata:
       m_Items: []
+  - m_Id: 2385090661462016
+    m_Localized: Afval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039102146588672
+    m_Localized: Boom planten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039134233014272
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039173676249088
+    m_Localized: Schoon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3039229477269504
+    m_Localized: Zonnepaneel bouwen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3052349750915072
+    m_Localized: Lege vuilniszak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3056976688984064
+    m_Localized: Bomen planten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057066228985856
+    m_Localized: Zonnepaneel opzetten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057096683827200
+    m_Localized: Straatlantaarn upgraden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3057184218951680
+    m_Localized: Schone riolen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3068775396159488
+    m_Localized: 'Graaf een gat voor de boom!
+
+      Laat de schop op het juiste
+      moment los
+
+
+      KEYS
+
+      SPACE - Schop loslaten'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3070197948887040
+    m_Localized: 'Herhaal de getoonde volgorde!
+
+
+      Nadat de reeks voorbij is,
+      klikt u in dezelfde volgorde op de knoppen'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071341832056832
+    m_Localized: 'Verzamel al het afval!
+
+
+      TOETSEN
+
+      A,D - Naar links/rechts
+      bewegen
+
+      SPACE - Schiet haak naar beneden'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3071585714057216
+    m_Localized: 'Match de draden op kleur!
+
+
+      Klik op de draad aan de linkerkant
+
+      Sleep
+      om te bewegen
+
+      Laat de klik los om verbinding te maken'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3072020915040256
+    m_Localized: 'Bouw twee rijen om het zonnepaneel te voltooien!
+
+
+      TOETSEN
+
+      A,D
+      - Naar links / rechts bewegen
+
+      S - Drop
+
+      SPACE - Harde val
+
+      Q,E
+      - Links/rechts draaien'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074702782377984
+    m_Localized: Succes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3074801633734656
+    m_Localized: Mislukking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5319780779307008
+    m_Localized: 'Plattegrond: Alkmaar Centrum
+
+
+      Beschrijving: Ontdek de prachtige
+      stad Alkmaar
+
+      Doelstelling: Maak de stad schoon en breng de duurzaamheid
+      boven de 80%!'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6550175411744768
+    m_Localized: Plaats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551456519958528
+    m_Localized: Het inkomen van vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553278366232576
+    m_Localized: Bril opladen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6553462999494656
+    m_Localized: "R\xF6ntgenbril"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690084390842368
+    m_Localized: Kies je upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6690306894475264
+    m_Localized: Haal een paar duurzaamheidspunten
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6551242266521600
+    m_Localized: HOE TE SPELEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13291700499009536
+    m_Localized: Lasventilatoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13295209013334016
+    m_Localized: Lasventilatoren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415166007070720
+    m_Localized: Omarm de natuur
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415337063370752
+    m_Localized: Plant zaden!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415646452011008
+    m_Localized: Gooi afval op de grond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13415861271678976
+    m_Localized: Lichte bomen in brand
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416001197854720
+    m_Localized: Knuffel bomen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416235764305920
+    m_Localized: Zonnepanelen installeren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416346942722048
+    m_Localized: Benzine morsen in kanalen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416541466152960
+    m_Localized: Zorg voor de wereld
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416679999819776
+    m_Localized: Fiets > Bus > Auto
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13416837697261568
+    m_Localized: Maak de stranden schoon!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417160100827136
+    m_Localized: Een douche van 5 minuten staat gelijk aan 20-35 gallons water
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417271979692032
+    m_Localized: Een dikke laag stof op een gloeilamp kan tot de helft van het licht
+      blokkeren.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417507758297088
+    m_Localized: "Verwarmings-, ventilatie- en airconditioningsystemen zijn goed
+      voor 40-60 procent van het totale energieverbruik in de commerci\xEBle sector."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417779205263360
+    m_Localized: 25% van het flessenwater dat je koopt is echt gemeentelijk kraanwater,
+      dus je kunt net zo goed de plastic fles doorgeven
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417814894596096
+    m_Localized: Onderzoek gedaan door 3-jarige toont aan dat blikjes op de grond
+      gooien goed is
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417841977217024
+    m_Localized: Volg deze drie tips om gezonder en duurzamer te leven.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417858674741248
+    m_Localized: Kauwgom spugen in de natuur is eigenlijk goed! Waarom? Nou, het
+      doodt die vervelende natuur eromheen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417877209370624
+    m_Localized: Toerisme in koraalriffen is eigenlijk geweldig, want het vernietigt
+      niet alleen actief koraalriffen, maar het ontmantelt ook hele vispopulaties!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417894334713856
+    m_Localized: "Help je lokale gemeenschap door organische afvalbakken te maken!
+      Gooi je organisch afval om vruchtbare grond te cre\xEBren voor je gele buren!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13417942728593408
+    m_Localized: Barry B. Benson, een idealistische honingbij die met mensen kan
+      praten, is onlangs afgestudeerd aan de universiteit en staat op het punt de
+      Honex Industries-honing van de korf binnen te gaan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13419957840007168
+    m_Localized: Flyers afdrukken?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420065344212992
+    m_Localized: Ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420154334760960
+    m_Localized: Nee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420265110523904
+    m_Localized: Je hebt al genoeg flyers gemaakt voor vandaag
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420368911159296
+    m_Localized: Opbrengst
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13420496602550272
+    m_Localized: 'Aantal geprinte flyers:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13421029346267136
+    m_Localized: Alle flyers klaar!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839357672771584
+    m_Localized: Haal de duurzaamheid naar 80% in 8 minuten!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769775309410304
+    m_Localized: Haal de duurzaamheid naar 80% voordat de tijd om is!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13769965097472000
+    m_Localized: Neem de tijd om de duurzaamheid op 100% te krijgen!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13770079937515520
+    m_Localized: Ruim afval op, repareer het kapotte en breng de duurzaamheidsbalk
+      omhoog!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992611751940096
+    m_Localized: Klassiek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992750046531584
+    m_Localized: Chill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13992829117550592
+    m_Localized: Gek
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13627794507714560
+    m_Localized: "Door \xE9\xE9n glazen fles te recyclen, bespaar je genoeg energie
+      om een lamp van 100 watt vier uur lang te laten branden"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628594088857600
+    m_Localized: Kartonnen dozen kunnen minstens zeven keer worden gerecycled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13628606281699328
+    m_Localized: Zonne-energie is de snelst groeiende energiebron
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632285734883328
+    m_Localized: Zonnepanelen kunnen stroom produceren zonder direct zonlicht
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632494648971264
+    m_Localized: U kunt elektrische voertuigen opladen met zonnepanelen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632540912144384
+    m_Localized: "Straatlantaarns op zonne-energie kunnen overal worden ge\xEFnstalleerd
+      - in het midden van de zee of het bos, in een park of op een berg"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632589633179648
+    m_Localized: Straatlantaarns op zonne-energie zijn praktisch en kosteneffectief
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632615478480896
+    m_Localized: "Wanneer LED is ge\xEFntegreerd, zijn straatverlichting op zonne-energie
+      duurzaam en milieuvriendelijk"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632644645670912
+    m_Localized: Wist u dat de huidige windturbines minder lawaai kunnen maken dan
+      een auto?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632685343002624
+    m_Localized: Windenergie is toonaangevend op de markt voor duurzame energie met
+      installaties die elk jaar groeien.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632712031358976
+    m_Localized: Fossiele brandstofcentrales zijn gevaarlijker voor vogels dan windturbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632741223714816
+    m_Localized: Fossiele brandstofcentrales zijn gevaarlijker voor vogels dan windturbines
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632775394709504
+    m_Localized: "Bomen verminderen geluidsoverlast door als geluidsbarri\xE8re te
+      fungeren"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13632800984158208
+    m_Localized: "E\xE9n boom produceert jaarlijks bijna 120 kg zuurstof"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676581104144384
+    m_Localized: Klik op het juiste moment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13676865993854976
+    m_Localized: Spatietoets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13677853832138752
+    m_Localized: Verbind de kleuren
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678058581282816
+    m_Localized: Verzamel het afval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13678297123934208
+    m_Localized: Beginnen met
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838257938845696
+    m_Localized: 'Alkmaar niveau:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838445269045248
+    m_Localized: Stadscentrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11838915609907200
+    m_Localized: Landbouwgrond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839167805018112
+    m_Localized: Buitenwijken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839685034004480
+    m_Localized: Ontdek het hart van Alkmaar! Met de prachtige kerk en grachten is
+      er veel te zien. Evenals veel dingen om te onderhouden!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11839831578791936
+    m_Localized: Verken de boerderijen van Alkmaar! Je ziet een mix van landbouw
+      en zonnepanelen, waarvan sommige misschien wat onderhoud nodig hebben!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840131802877952
+    m_Localized: "\rVerken de buitenwijken van Alkmaar! Je hebt een glimp van wat\r\nhet
+      leven in de buitenwijken is zoals in Alkmaar terwijl de duurzaamheid toeneemt!"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840374225260544
+    m_Localized: BEGIN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11840659194662912
+    m_Localized: Selecteer een wijk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10218383323975680
+    m_Localized: Artikelen recyclen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10222970051252224
+    m_Localized: Artikelen recyclen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076190596435968
+    m_Localized: 'U bent agent van POCITYF in de gemeente Alkmaar. Het is jouw taak
+      om de stad duurzamer te maken dan ze al is door bestaande groenvoorzieningen
+      op te waarderen of door nieuwe apparatuur te plaatsen die Alkmaar groener maakt.
+
+
+      De
+      bedieningselementen zijn linksonder in het scherm te zien.
+
+      De minimap
+      is linksboven in het scherm te zien.
+
+      De takenlijst is rechtsboven in
+      het scherm te zien.
+
+      De duurzaamheid van de stad Alkmaar zie je bovenaan
+      in het midden van je scherm.
+
+      Als je tijdens een minigame niet zeker
+      weet wat je moet doen, druk je op H om het helpmenu te openen. Hierdoor wordt
+      de minigame gepauzeerd en heb je tijd om de instructies te lezen.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076490606612480
+    m_Localized: HERVAT
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076751186137088
+    m_Localized: TERUG NAAR KANTOOR
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076774460329984
+    m_Localized: HOOFDMENU
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10076805695311872
+    m_Localized: SPEL VERLATEN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 11189247741562880
+    m_Localized: RUG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16619958447411200
+    m_Localized: 'Sorteer het afval!
+
+
+
+      Sleutels
+
+      A: Kunststof
+
+      S:
+      Papier
+
+      D: Voedsel
+
+      F: Glas'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16622348860952576
+    m_Localized: Volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16622630378442752
+    m_Localized: Gevoeligheid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623038438084608
+    m_Localized: LAAG
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623442206953472
+    m_Localized: Prestatie
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16623455922327552
+    m_Localized: Rug
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16624190500147200
+    m_Localized: Word lid van onze Discord!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16624737525469184
+    m_Localized: Kamer naam...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625016752869376
+    m_Localized: "Ruimte cre\xEBren"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625209825071104
+    m_Localized: Wachtwoord
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16625916384940032
+    m_Localized: Gebruikersnaam
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16626341385375744
+    m_Localized: Medewerkers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 16628191144742912
+    m_Localized: 'Hardware lijnen nodig: '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119812092825600
+    m_Localized: Loopsnelheid verhogen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119878778064896
+    m_Localized: Punten voor minigames stijgen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119871287037952
+    m_Localized: De moeilijkheidsgraad van minigames neemt af
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18119905973932032
+    m_Localized: Tijd toegevoegd na minigame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120065000968192
+    m_Localized: Je kunt sneller lopen, misschien zelfs tot een sprint?!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120095027990528
+    m_Localized: Alle minigames worden eenvoudiger en je verdient hetzelfde aantal
+      punten!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120106834956288
+    m_Localized: Krijg meer punten als je een minigame met succes voltooit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18120117018726400
+    m_Localized: Je krijgt wat tijd als je een minigame met succes voltooit!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18151279816642560
+    m_Localized: Je kunt elke upgrade kiezen om je te helpen bij je missie!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 18476058352324608
+    m_Localized: WIJZIG VOLUME
+    m_Metadata:
+      m_Items: []
   references:
     version: 1
     00000000:
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 0090f0c00f00000000e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+        m_Entries: 00e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000001:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400
+    00000002:
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 00e084d471d7040000e0c424d3f6040000e004881cf9040000e0044739f90400

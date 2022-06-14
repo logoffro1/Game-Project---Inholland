@@ -27,6 +27,11 @@ MonoBehaviour:
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale
+  - m_GUID: bceb3b885a1e0274fafa0b669cc2624f
+    m_Address: Romanian (ro)
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: 01c3dba90c1226f40a4234f107e2bc2a, type: 2}
   m_SchemaSet:

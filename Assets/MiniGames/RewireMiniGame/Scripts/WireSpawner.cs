@@ -9,19 +9,31 @@ public class WireSpawner : MonoBehaviour
 {
     public GameObject wirePrefab;
     public Color[] colors;
+    public GameObject explosionParticleEffect;
+
+    //The ranges of where the wires can spawn
     private float spawnX = 100;
-    private float spawnYRange = 100;
+    private float spawnYRange = 110;
+
+    //Change amount of wires that spawn
     public int amountWires = 1;
 
-    public int amountFinished;
-    public int amountCorrect;
-
+    private int amountFinished;
+    private int amountCorrect;
     private List<GameObject> wires;
 
-    public event Action<bool> GameSuccess;
-
+    [HideInInspector]
     public RewireMiniGame rewireMiniGame;
 
+    //Audio
+    [HideInInspector]
+    public AudioSource audioSource;
+    public AudioClip clickAudio;
+    public AudioClip successAudio;
+    public AudioClip failAudio;
+
+    //Events
+    public event Action<bool> GameSuccess;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +41,7 @@ public class WireSpawner : MonoBehaviour
         SetUpGame();
 
         List<Vector3> spawnPositions = CreateSpawnPositoin();
+        audioSource = GetComponent<AudioSource>();
 
         InstansiateAllWires(spawnPositions);
 
@@ -49,9 +62,38 @@ public class WireSpawner : MonoBehaviour
         List<Vector3> spawnPositions = new List<Vector3>();
 
         //Determining spawn positions according to how many wires will spawn, and the x & y coords
-        for (int i = 1; i <= amountWires; i++)
+        int tmpAmount = amountWires - 1;
+        if (tmpAmount <= 0) tmpAmount = 1;
+
+        float median = 0;
+
+        for (int i = 0; i <= tmpAmount; i++)
         {
-            spawnPositions.Add(new Vector3(0, (spawnYRange / amountWires) * i, 0));
+            float positionY = (transform.position.y + (spawnYRange / tmpAmount) * i) * (amountWires * 0.1f);
+            spawnPositions.Add(new Vector3(0, positionY, 0));
+            median += positionY;
+        }
+
+        float middle;
+
+        //if there is an even amount of wires
+        if (spawnPositions.Count % 2 == 0)
+        {
+            middle = (spawnPositions[spawnPositions.Count / 2].y + spawnPositions[(spawnPositions.Count / 2) -1].y)/2;
+        }
+        else
+        {
+            //odd
+            middle = spawnPositions[Mathf.CeilToInt(spawnPositions.Count / 2f)].y;
+        }
+
+        middle -= 60;
+
+        for (int i = 0; i <= tmpAmount; i++)
+        {
+            Vector3 currentPos = spawnPositions[i];
+            currentPos.y -= middle;
+            spawnPositions[i] = currentPos;
         }
 
         return spawnPositions;
@@ -59,11 +101,13 @@ public class WireSpawner : MonoBehaviour
 
     private void InstansiateAllWires(List<Vector3> spawnPositions)
     {
+        //Gets all the positions and colors
         List<Vector3> spawnPositionsEndPoint = new List<Vector3>(spawnPositions);
         List<Color> allColors = colors.ToList();
 
         for (int i = 0; i < amountWires; i++)
         {
+            //Gets random values and instantiates it
             int posIndex = UnityEngine.Random.Range(0, spawnPositions.Count);
             int colorIndex = UnityEngine.Random.Range(0, allColors.Count);
             Color color = allColors[colorIndex];
@@ -74,6 +118,7 @@ public class WireSpawner : MonoBehaviour
             allColors.RemoveAt(colorIndex);
         }
 
+        //Moves the end wire so it randomized where you should commect
         MoveEndWirePart(spawnPositionsEndPoint);
     }
 
@@ -81,7 +126,7 @@ public class WireSpawner : MonoBehaviour
     {
         foreach (GameObject wire in wires)
         {
-            //Changing the position of the EndWire and EndBackground
+            //Changing the position of the EndForeground and EndBackground
             int posIndex = UnityEngine.Random.Range(0, spawnPositionsEndPoint.Count);
             Vector3 spawnPos = spawnPositionsEndPoint[posIndex];
             spawnPos.x = spawnX;
@@ -108,29 +153,46 @@ public class WireSpawner : MonoBehaviour
     {
         amountCorrect++;
 
+        //checks if game is lost/won/continues
         if (amountFinished >= amountWires)
         {
             if (amountCorrect >= amountWires)
             {
+                audioSource.PlayOneShot(successAudio);
                 GameSuccess?.Invoke(true);
             }
             else
             {
+                audioSource.PlayOneShot(failAudio);
                 GameSuccess?.Invoke(false);
             }
+        }
+        else
+        {
+            audioSource.PlayOneShot(clickAudio);
         }
     }
 
     public void OneFailed()
     {
+        audioSource.PlayOneShot(failAudio);
         GameSuccess?.Invoke(false);
     }
 
     private GameObject SpawnWire(Color color, Vector3 spawnPos)
     {
+        //Inmsantianted the wire
         GameObject wire = Instantiate(wirePrefab, spawnPos, wirePrefab.transform.rotation, transform);
+        //Sets a random color to it
         wire.GetComponent<Wire>().color = color;
 
         return wire;
+    }
+
+    public void InstantiateExplosion(Vector3 position, Color color)
+    {
+        var main = explosionParticleEffect.GetComponent<ParticleSystem>().main;
+        main.startColor = color;
+        Instantiate(explosionParticleEffect, position, explosionParticleEffect.transform.rotation);
     }
 }

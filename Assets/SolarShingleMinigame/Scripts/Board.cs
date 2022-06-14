@@ -1,20 +1,28 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using TMPro;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
+    //This class controls tetris mini game.
     public Tilemap tilemap { get; private set; }
 
     public Piece activePiece { get; private set; }
     public TetrominoData[] tetrominoes;
     public Vector3Int spawnPosition;
     public Vector2Int boardSize = new Vector2Int(7, 8);
+    public AudioSource audioSource;
+    public AudioClip lineClear;
+    public TextMeshProUGUI amountText;
+    public Image solarPanelImage;
+    public int imageFillMaxValue;
 
     public ShinglesMiniGame shinglesGame;
-    public int amountOfLinesNeeded { get; private set; }
+    public int amountOfLinesNeeded { get;  set; }
 
     public bool isGameOver = false;
-
+    //Declaring the bounds and the board size.
     public RectInt Bounds
     {
         get
@@ -26,9 +34,10 @@ public class Board : MonoBehaviour
 
     private void Awake()
     {
+        this.solarPanelImage.fillAmount = 0f;
+        this.audioSource = GetComponent<AudioSource>();
         this.tilemap = GetComponentInChildren<Tilemap>();
         this.activePiece = GetComponentInChildren<Piece>();
-        this.amountOfLinesNeeded = 3; //Basic difficulty.
         for (int i = 0; i < this.tetrominoes.Length; i++)
         {
             this.tetrominoes[i].Init();
@@ -36,6 +45,7 @@ public class Board : MonoBehaviour
 
 
     }
+    //This method spawns a piece from the middle top of the board and checks the win condition.
     public void SpawnPiece()
 
     {
@@ -48,6 +58,7 @@ public class Board : MonoBehaviour
         {
             isGameOver = true;
             shinglesGame.GameFinish(false);
+            amountText.text = "0";
         }
         else
         {
@@ -61,6 +72,7 @@ public class Board : MonoBehaviour
         this.tilemap.ClearAllTiles();
     }
 
+    //This method simply spawns the tetris piece.
     public void SetPiece(Piece piece)
     {
         for (int i = 0; i < piece.cells.Length; i++)
@@ -69,6 +81,7 @@ public class Board : MonoBehaviour
             this.tilemap.SetTile(tilePosition, piece.data.tile);
         }
     }
+    //This method clears a certain tile.
     public void ClearTile(Piece piece)
     {
         for (int i = 0; i < piece.cells.Length; i++)
@@ -77,12 +90,13 @@ public class Board : MonoBehaviour
             this.tilemap.SetTile(tilePosition, null);
         }
     }
-
+    //Checks the validity of the position via the tetromino data and the bounds declared.
     public bool IsValidPosition(Piece piece, Vector3Int position)
     {
         RectInt bounds = this.Bounds;
         for (int i = 0; i < piece.cells.Length; i++)
         {
+
             Vector3Int tilePosition = piece.cells[i] + position;
             if (!bounds.Contains((Vector2Int)tilePosition))
             {
@@ -96,7 +110,7 @@ public class Board : MonoBehaviour
         }
         return true;
     }
-
+    //Cleans the line once there is a perfect line.
     public void ClearLines()
     {
         RectInt bounds = this.Bounds;
@@ -107,18 +121,30 @@ public class Board : MonoBehaviour
             {
                 LineClear(row);
                 this.amountOfLinesNeeded--;
+                this.amountText.text = $"{amountOfLinesNeeded}";
+                float diff = (float)imageFillMaxValue - (float)amountOfLinesNeeded;
+                Debug.Log(diff);
+                this.solarPanelImage.fillAmount = diff/ (float)imageFillMaxValue;
                 if (amountOfLinesNeeded <= 0)
                 {
+                    this.amountText.text = "0";
                     isGameOver = true;
                     shinglesGame.GameFinish(true);
+                }
+                else
+                {
+                    this.audioSource.PlayOneShot(lineClear);
                 }
             }
             else
             {
                 row++;
+
             }
+
         }
     }
+
     private void LineClear(int row)
     {
         RectInt bounds = this.Bounds;
@@ -141,7 +167,7 @@ public class Board : MonoBehaviour
             row++;
         }
     }
-
+    //Checking if the line is full, if there is a single tile with no tetris piece, return false.
     private bool isLineFull(int row)
     {
         RectInt bounds = this.Bounds;
@@ -156,6 +182,7 @@ public class Board : MonoBehaviour
         }
         return true;
     }
+    // Begin by spawning the first piece that creates the cycle.
     void Start()
     {
         SpawnPiece();

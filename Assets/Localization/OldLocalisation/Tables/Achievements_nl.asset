@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: Achievements_nl
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: nl
+  m_SharedData: {fileID: 11400000, guid: a9dfc6c274f3f9845aaed295127be1dd, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 7480684544
+    m_Localized: Stop met zwerfafval
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20805988352
+    m_Localized: De Heilige graal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 24312426496
+    m_Localized: Alkmaar Explorer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 31409188864
+    m_Localized: de activist
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33971908608
+    m_Localized: Omweg rond Alkmaar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 36329107456
+    m_Localized: Taak Beginner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39059599360
+    m_Localized: Taak Enthousiasteling
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42113052672
+    m_Localized: Taakexpert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44835155968
+    m_Localized: Taak Meester
+    m_Metadata:
+      m_Items: []
+  - m_Id: 125655199744
+    m_Localized: Wallhacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 129211969536
+    m_Localized: Run Forest, Run!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 132177342464
+    m_Localized: De schoonmaakster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 135272738816
+    m_Localized: moeilijker dan ze eruit zien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 140016496640
+    m_Localized: I like the way you recycle, boy!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 141866184704
+    m_Localized: Tuinieren Simulator
+    m_Metadata:
+      m_Items: []
+  - m_Id: 142579216384
+    m_Localized: De kabelman
+    m_Metadata:
+      m_Items: []
+  - m_Id: 143292248064
+    m_Localized: Rioolreiniger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 143992696832
+    m_Localized: Hoe ben ik daar eigenlijk gekomen?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 3979557875712
+    m_Localized: Ruim 100 afval op van de grond
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4045752381440
+    m_Localized: Bezoek de kerk in het stadscentrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4047094558720
+    m_Localized: "Speel minimaal \xE9\xE9n keer in elke regio van Alkmaar"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4047769841664
+    m_Localized: Geef 30 folders weg
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4048428347392
+    m_Localized: Reis in totaal 5 km in het stadscentrum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4049141379072
+    m_Localized: Voltooi 10 taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4049799884800
+    m_Localized: Voltooi 25 taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4050525499392
+    m_Localized: Voltooi 50 taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051184005120
+    m_Localized: Voltooi 100 taken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4051926396928
+    m_Localized: "Utiliza\u021Bi ochelarii XRay pentru prima dat\u0103"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4052643622912
+    m_Localized: Gebruik de XRay Goggles voor de eerste keer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4053344071680
+    m_Localized: Gebruik de stofzuiger voor de eerste keer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4241014009856
+    m_Localized: 5 taken mislukken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4242964361216
+    m_Localized: Voltooi 25 recyclingtaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4243660615680
+    m_Localized: Voltooi 25 taken voor het planten van bomen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4244340092928
+    m_Localized: Voltooi 25 lamptaken om opnieuw te bedraden
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4245036347392
+    m_Localized: Voltooi 15 rioolreinigingstaken
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4245623549952
+    m_Localized: Voltooi 10 zonnepaneeltaken
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 1

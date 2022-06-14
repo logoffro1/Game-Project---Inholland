@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class GhostPiece : MonoBehaviour
 {
+    //This class simply calculates where a tetris piece will fall.
     public Tile tile;
     public Board mainBoard;
     public Piece trackingPiece;
@@ -26,7 +27,7 @@ public class GhostPiece : MonoBehaviour
         Drop();
         Set();
     }
-
+    //Clearing the position
     private void Clear()
     {
         for (int i = 0; i < cells.Length; i++)
@@ -44,6 +45,7 @@ public class GhostPiece : MonoBehaviour
         }
     }
 
+    //Dropping based on position
     private void Drop()
     {
         Vector3Int position = trackingPiece.position;

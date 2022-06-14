@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
+    //This is a class for tetris pieces. It contains their behavioral logic.
     public Board board { get; private set; }
     public TetrominoData data { get; private set; }
     public Vector3Int position { get; private set; }
@@ -11,14 +12,22 @@ public class Piece : MonoBehaviour
     public Vector3Int[] cells { get; private set; }
 
     public int rotationIndex { get; private set; }
+    public AudioSource audioSource;
+    public AudioClip flipPieceSound;
+    public AudioClip movePieceSound;
 
+    public float stepDelay = 1f; //By default its one second. It is used for determining and changing difficulty.
 
-    public float stepDelay = 1f; //By default its one second.
-
-    public float lockDelay = 0.5f; // These fields can be customizable for increasing difficulty.
+    public float lockDelay = 0.5f; // These fields can be customizable for increasing difficulty. This should ideally start as a low value.
 
     private float stepTime;
     private float lockTime;
+
+    private void Start()
+    {
+        this.audioSource = GetComponent<AudioSource>();
+    }
+    //Init the piece data.
     public void Init(Board board,Vector3Int position, TetrominoData tetrisData)
     {
         this.board = board;
@@ -38,6 +47,7 @@ public class Piece : MonoBehaviour
             this.cells[i] = (Vector3Int)tetrisData.cells[i];
         }
     }
+    //If game isnt over, keep checking for its movement.
     private void Update()
     {
         if (board.isGameOver)
@@ -52,36 +62,42 @@ public class Piece : MonoBehaviour
 
     private void handlePieceMovement()
     {
+        if (Time.time >= this.stepTime)
+        {
+            Step();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             Rotate(1);
+            this.audioSource.PlayOneShot(flipPieceSound);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Rotate(-1);
+            this.audioSource.PlayOneShot(flipPieceSound);
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
             Move(Vector2Int.left);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
         else if (Input.GetKeyDown(KeyCode.D))
         {
             Move(Vector2Int.right);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
 
         if (Input.GetKeyDown(KeyCode.S))
         {
             Move(Vector2Int.down);
+            this.audioSource.PlayOneShot(movePieceSound);
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             HardDrop();
         }
-        if (Time.time >= this.stepTime)
-        {
-            Step();
-        }
+      
     }
 
     private void Step()
@@ -95,12 +111,14 @@ public class Piece : MonoBehaviour
             Lock();
         }
     }
+    //Locking simply settles the piece to the bottom of the board
     private void Lock()
     {
         this.board.SetPiece(this);
         this.board.ClearLines();
         this.board.SpawnPiece();
     }
+    //This is for flipping the tetris pieces
     private void Rotate(int direction)
     {
         //We wrap between 0 and 4 because thats the limit of potential rotations.
@@ -116,7 +134,7 @@ public class Piece : MonoBehaviour
         }
         
     }
-
+    //A mathematical method used for rotating the tetris pieces.
     void ApplyRotationMatrix(int direction)
     {
         for (int i = 0; i < this.cells.Length; i++)
@@ -142,7 +160,7 @@ public class Piece : MonoBehaviour
             this.cells[i] = new Vector3Int(x, y, 0);
         }
     }
-
+    //See if wallkicks work or the piece goes out
     private bool TestWallKicks(int indexRotation,  int directionRotation)
     {
         int wallKickIndex = GetWallKicks(indexRotation, directionRotation);
@@ -157,6 +175,7 @@ public class Piece : MonoBehaviour
         }
         return false;
     }
+    //Getting the wallkick values of pieces.
     private int GetWallKicks(int indexRotation, int directionRotation)
     {
         int wallKickIndex = indexRotation * 2;
@@ -167,7 +186,7 @@ public class Piece : MonoBehaviour
         }
         return Wrap(wallKickIndex, 0, this.data.wallKicks.GetLength(0));
     }
-
+    //Instantly falling and locking the piece.
     private void HardDrop()
     {   
         while (Move(Vector2Int.down))
@@ -182,7 +201,6 @@ public class Piece : MonoBehaviour
         Vector3Int newPosition = this.position;
         newPosition.x += translation.x;
         newPosition.y += translation.y;
-
         bool valid = this.board.IsValidPosition(this,newPosition);
 
         if (valid)

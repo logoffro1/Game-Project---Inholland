@@ -18,13 +18,19 @@ MonoBehaviour:
   m_GUID: 4f9d8e36fe95b06468aef0cdb8242f77
   m_SerializeEntries:
   - m_GUID: 72d555443db398a40a7c2afe5b23b44f
-    m_Address: uiText_en
+    m_Address: r_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en
     - Preload
   - m_GUID: 301f8fe788cece84081e06815b90afb5
     m_Address: textureLocale_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 03b6e12951d7144419672eaaaab1df5c
+    m_Address: Achievements_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

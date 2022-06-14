@@ -47,7 +47,7 @@ MonoBehaviour:
   UntouchedPrefabModel: {fileID: 1928883611837980, guid: af10dd6faf492fd4da4ea4a797d30e15, type: 3}
   TouchedPrefabModel: {fileID: 1928883611837980, guid: af10dd6faf492fd4da4ea4a797d30e15, type: 3}
   SuccessPrefabModel: {fileID: 7378922901172155362, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
-  FailPrefabModel: {fileID: 7378922901172155362, guid: 7096e43400c5e114083805e93fe3193a, type: 3}
+  FailPrefabModel: {fileID: 7378922901172155362, guid: b198ef38722119841b17824d428cbafe, type: 3}
 --- !u!1001 &5362170320603080976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 756905699393695268, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 756905699393695268, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -102,6 +102,14 @@ PrefabInstance:
     - target: {fileID: 1302947910448672875, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429207371816375852, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3429207371816375852, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.198
       objectReference: {fileID: 0}
     - target: {fileID: 7378922901172155362, guid: 473cab74269496c4cb61758ab3e4521b, type: 3}
       propertyPath: m_Name

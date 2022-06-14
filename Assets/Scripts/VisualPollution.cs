@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
-
+//Changed the visual pollution of a map
 public class VisualPollution : MonoBehaviour
 {
     private static VisualPollution _instance;
@@ -44,13 +44,24 @@ public class VisualPollution : MonoBehaviour
 
     private void Start()
     {
+        //Sets the start of the visual pollution
         Instantiate(DustParticlesPrefab);
         StartingVisuals();
         SetDustParticles();
-        SetCanal();
-        SetAnimals();
+
+        if (waters != null)
+        {
+            SetCanal();
+        }
+        if (animals != null)
+        {
+            SetAnimals();
+        }
+        if (people != null)
+        {
+            SetPeople();
+        }
         SetPostProcessing();
-        SetPeople();
     }
 
     private void StartingVisuals()
@@ -61,17 +72,24 @@ public class VisualPollution : MonoBehaviour
 
     }
 
+    //Updates all the ascept of the visual pollution
     public void UpdateVisualPollution(float sustainabilityPercentage)
     {
         if (sustainabilityPercentage < 1) sustainabilityPercentage = 1;
         if (sustainabilityPercentage > 99) sustainabilityPercentage = 99;
 
         UpdateFog(sustainabilityPercentage);
-        //UpdateDustParticles(sustainabilityPercentage);
-        UpdateCanalColor(sustainabilityPercentage);
-        UpdateAnimals(sustainabilityPercentage, allAnimals);
+
+        //needs to be looked at
+        if (waters != null)
+        {
+            UpdateCanalColor(sustainabilityPercentage);
+        }
+        if (animals != null)
+        {
+            UpdateAnimals(sustainabilityPercentage, allAnimals);
+        }
         UpdatePostProcessing(sustainabilityPercentage);
-       // UpdateAnimals(sustainabilityPercentage, allPeople);
     }
 
     private void UpdateFog(float sustainabilityPercentage)
@@ -91,13 +109,11 @@ public class VisualPollution : MonoBehaviour
 
     private void UpdateDustParticles(float sustainabilityPercentage)
     {
-        //eg. sustainabilityPercentage == 100
-
         ParticleSystem.MainModule settings = particleSystem.main;
         var emission = particleSystem.emission;
         var colorOverLifetime = particleSystem.colorOverLifetime;
 
-        //Changing fequencu
+        //Changing fequency
         settings.maxParticles = (int) (startingMaxParticles / (sustainabilityPercentage/4));
         emission.rateOverTime = (startingMaxParticles / 5) / (sustainabilityPercentage/4);
 
@@ -245,7 +261,7 @@ public class VisualPollution : MonoBehaviour
             allPeople.Add(child.gameObject);
         }
 
-        //Randomsize it
+        //Randomsize it, of which people should show up
         int n = allPeople.Count;
         while (n > 1)
         {
@@ -255,7 +271,5 @@ public class VisualPollution : MonoBehaviour
             allPeople[k] = allPeople[n];
             allPeople[n] = value;
         }
-
-      //  UpdateAnimals(ProgressBar.Instance.GetSlideValue(), allPeople);
     }
 }
